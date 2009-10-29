@@ -170,6 +170,30 @@ class Query {
 	}
 	
 	/**
+	 * Alias for notClause
+	 * @see Query#notClause($clause)
+	 */
+	static function not($clause) {
+		return self::notClause($clause);
+	}
+	
+	/**
+	 * Alias for andClause
+	 * @see Query#andClause(...)
+	 */
+	static function n() {
+		call_user_func_array("andClause", func_get_args());
+	}
+	
+	/**
+	 * Alias for orClause
+	 * @see Query#orClause(...) 
+	 */
+	static function o() {
+		call_user_func_array("orClause", func_get_args());
+	}
+	
+	/**
 	 * Produces the logical "not" conjunction 
 	 * @param object $clause if Query then evaluated, otherwise treated as a comparison expresssion
 	 * @return Query object containing the appropriate sql snippet
