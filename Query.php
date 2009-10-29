@@ -164,7 +164,7 @@ class Query {
 		foreach($operators as $op) {
 			if(stripos($expression, $op) !== false) {
 				$parse = explode($op, $expression);
-				return self::column(trim($parse[0])) . $op . self::escape(trim($parse[1]));
+				return self::column(trim($parse[0])) . ' ' . $op . ' ' . self::escape(trim($parse[1]));
 			}
 		}
 	}
@@ -181,16 +181,16 @@ class Query {
 	 * Alias for andClause
 	 * @see Query#andClause(...)
 	 */
-	static function n() {
-		call_user_func_array("andClause", func_get_args());
+	static function conj() {
+		return call_user_func_array(array(__CLASS__, "andClause"), func_get_args());
 	}
 	
 	/**
 	 * Alias for orClause
 	 * @see Query#orClause(...) 
 	 */
-	static function o() {
-		call_user_func_array("orClause", func_get_args());
+	static function union() {
+		return call_user_func_array(array(__CLASS__, "orClause"), func_get_args());
 	}
 	
 	/**
