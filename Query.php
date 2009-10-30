@@ -112,7 +112,7 @@ class Query {
 	 * @todo implement this properly
 	 */
 	static function escape($str) {
-		return $str;
+		return self::$adapter->escape($str);
 	}
 	
 	/**
@@ -148,9 +148,13 @@ class Query {
 					$parts[] = self::column($arg);
 				}
 			}
-			$columns = implode(',', $parts);
+			$columns = implode(', ', $parts);
 		}
 		return new Query("select $columns");
+	}
+	
+	static function insert() {
+		return new Query("insert");
 	}
 	
 	/**
@@ -275,6 +279,30 @@ class Query {
 		} else {
 			$this->sql .= ' where ' . self::comparison($clause);
 		}
+		return $this;
+	}
+	
+	/**
+	 * Chained function for describing the table to insert into
+	 * @param string $table tablename
+	 * @return Query instance for further chaining
+	 */
+	function into($table) {
+		$this->sql .= ' into ' . self::table($table);
+		return $this;
+	}
+	
+	/**
+	 * Chained function for describing the columns and values for an insert statement
+	 * @param array $arr Array of values with column_name => insert_value
+	 * @return Query instance for further chaining
+	 */
+	function values($arr) {
+		foreach($arr as $key => $value) {
+			$columns[] = self::quote($key);
+			$values[] = self::escape($value);
+		}
+		$this->sql .= ' (' . implode(', ', $columns) . ') values (' . implode(', ', $values) . ')';
 		return $this;
 	}
 	

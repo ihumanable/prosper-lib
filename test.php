@@ -9,6 +9,8 @@
 		Query::configure('test', $adapter);
 		
 		echo Query::select()->from('user')->where(Query::conj('a<1', 'b LIKE 2', Query::union('c>=3', 'd!=4')));
+		echo "<br />";
+		echo Query::insert()->into('user')->values(array('fname' => 'Matt', 'lname' => 'Nowack'));
 		
 		echo "<hr />";
 	}
