@@ -38,12 +38,18 @@ class Query {
 			case 'sqlite':
 				self::$adapter = new SqliteAdapter();
 				break;
+			case 'weird':
+				self::$adapter = new WeirdAdapter();
+				break;
 			default:
 				self::$adapter = new MySqlAdapter();
 				break;
 		}		
 		self::$schema = ($schema == "" ? "" : self::quote($schema));
 	} 
+
+	
+	//Common formatting functions
 
 	/**
 	 * Creates an alias string if alias is not empty
@@ -112,7 +118,7 @@ class Query {
 	 * @todo implement this properly
 	 */
 	static function escape($str) {
-		return self::$adapter->escape($str);
+		return self::$adapter->escape(self::deliteral($str)); 
 	}
 	
 	/**
@@ -126,6 +132,58 @@ class Query {
 	static function unescape($str) {
 		return $str;
 	}
+	
+	/**
+	 * Makes a value safe, whether it is a literal, symbol, or sql element
+	 * @param string $str value to make safe
+	 * @return Safe string
+	 */
+	static function safe($str) {
+		$str = trim($str);
+		if(self::is_literal($str)) {
+			return self::escape($str);
+		} else if(self::is_symbol($str)) {
+			return $str;
+		} else {
+			return self::column($str);
+		}
+	}
+
+	
+	/**
+	 * Removes the literal quotes from a string, if called on a non-literal simply returns string
+	 * @param string $str String to deliteral
+	 * @return String with quotes removed
+	 */
+	static function deliteral($str) {
+		return (self::is_literal($str) ? substr($str, 1, strlen($str) - 2) : $str);
+	}
+	
+	
+	
+	//Common testing functions
+	
+	/**
+	 * Determines if a string is a literal value, literal values are surrounded by single quotes
+	 * @param string $str String to check
+	 * @return true if literal, false otherwise
+	 */
+	static function is_literal($str) {
+		return ($str[0] == "'" && $str[strlen($str) - 1] == "'");
+	}
+	
+	/**
+	 * Determines if a string is a symbol value, legal symbol values are '?' and anything beginning with colon ':'
+	 * @param string $str String to check
+	 * @return true if symbol, false otherwise
+	 */
+	static function is_symbol($str) {
+		return ($str == "?" || $str[0] == ":");
+	}
+	
+	
+	
+	//Select Statement Functions
 	
 	/**
 	 * Factory function that creates a select statement query object.
@@ -153,24 +211,62 @@ class Query {
 		return new Query("select $columns");
 	}
 	
-	static function insert() {
-		return new Query("insert");
+	/**
+	 * Chained function for describing the table to pull from
+	 * @param string $table table name
+	 * @param string $alias [optional] alias
+	 * @return Query instance for further chaining
+	 */
+	function from($table, $alias = "") {
+		$this->sql .= " from " . self::table($table) . self::alias($alias);
+		return $this;
 	}
 	
 	/**
-	 * Properly escapes a comparison expression.
-	 * @param string $expression Generic comparison expression
-	 * @return string The properly escaped comparison expression
-	 * @example Query::parseComparison("a<1") => '`a` < "1"' (for mysql)
+	 * Chained function for describing a standard cartesian join
+	 * @param object $table table name
+	 * @param object $alias [optional] alias
+	 * @return Query instance for further chaining
 	 */
-	static function comparison($expression) {
-		$operators = array('<=', ">=", "!=", "<>", "<", ">", "=", "LIKE");
-		foreach($operators as $op) {
-			if(stripos($expression, $op) !== false) {
-				$parse = explode($op, $expression);
-				return self::column(trim($parse[0])) . ' ' . $op . ' ' . self::escape(trim($parse[1]));
-			}
+	function join($table, $alias = "") {
+		$this->sql .= " join " . self::table($table) . self::alias($alias);
+		return $this;
+	}
+
+	/**
+	 * Chained function for describing the on clause
+	 * @param object $clause see below
+	 * @return Query instance for further chaining
+	 * @see Query#conditional($clause) for implementation details.
+	 */	
+	function on($clause) {
+		return $this->conditional('on', $clause);
+	}
+
+	/**
+	 * Chained function for describing the where clause
+	 * @param object $clause see below
+	 * @return Query instance for further chaining
+	 * @see Query#conditional($clause) for implementation details.
+	 */	
+	function where($clause) {
+		return $this->conditional('where', $clause);
+	}
+
+	/**
+	 * Chained function for describing the conditional
+	 * @param string $predicate the sql keyword preceding the full conditional clause
+	 * @param object $clause if a string than treated as a simple codition (i.e. x > 3) 
+	 * 						 if a query instance treated as a complex logic operation
+	 * @return Query instance for further chaining
+	 */
+	function conditional($predicate, $clause) {
+		if($clause instanceof Query) {
+			$this->sql .= " $predicate $clause";
+		} else {
+			$this->sql .= " $predicate " . self::comparison($clause);
 		}
+		return $this;
 	}
 	
 	/**
@@ -247,39 +343,30 @@ class Query {
 	}
 	
 	/**
-	 * Chained function for describing the table to pull from
-	 * @param string $table table name
-	 * @param string $alias [optional] alias
-	 * @return Query instance for further chaining
+	 * Properly escapes a comparison expression.
+	 * @param string $expression Generic comparison expression
+	 * @return string The properly escaped comparison expression
+	 * @example Query::parseComparison("a<1") => '`a` < "1"' (for mysql)
 	 */
-	function from($table, $alias = "") {
-		$this->sql .= " from " . self::table($table) . self::alias($alias);
-		return $this;
-	}
-	
-	/**
-	 * Chained function for describing a standard cartesian join
-	 * @param object $table table name
-	 * @param object $alias [optional] alias
-	 * @return Query instance for further chaining
-	 */
-	function join($table, $alias = "") {
-		$this->sql .= " join " . self::table($table) . self::alias($alias);
-	}
-	
-	/**
-	 * Chained function for describing the where conditions
-	 * @param object $clause if a string than treated as a simple codition (i.e. x > 3) 
-	 * 						 if a query instance treated as a complex logic operation
-	 * @return Query instance for further chaining
-	 */
-	function where($clause) {
-		if($clause instanceof Query) {
-			$this->sql .= " where $clause";
-		} else {
-			$this->sql .= ' where ' . self::comparison($clause);
+	static function comparison($expression) {
+		$operators = array('<=', ">=", "!=", "<>", "<", ">", "=", "LIKE");
+		foreach($operators as $op) {
+			if(stripos($expression, $op) !== false) {
+				$parse = explode($op, $expression);
+				return self::safe($parse[0]) . ' ' . $op . ' ' . self::safe($parse[1]);
+			}
 		}
-		return $this;
+	}
+
+
+	//Insert Statement Functions	
+	
+	/**
+	 * Factory function that creates an insert statement query object.
+	 * @return Insert Statement Query Object
+	 */
+	static function insert() {
+		return new Query("insert");
 	}
 	
 	/**
@@ -305,6 +392,61 @@ class Query {
 		$this->sql .= ' (' . implode(', ', $columns) . ') values (' . implode(', ', $values) . ')';
 		return $this;
 	}
+	
+
+	
+	//Update Statement Functions
+	
+	/**
+	 * Factory function that creates an update statement query object.
+	 * @param string $table Table to update
+	 * @return Update Statement Query Object
+	 */
+	static function update($table) {
+		return new Query("update " . self::table($table));
+	}
+	
+	/**
+	 * Chained function for describing the columns and values to set for an update statement
+	 * @param array $arr Array of values with column_name => update_value
+	 * @return Query instance for further chaining
+	 */
+	function set($arr) {
+		$this->sql .= ' set ';
+		foreach($arr as $key => $value) {
+			$entries[] = self::quote($key) . "=" . self::escape($value);
+		}
+		$this->sql .= implode(', ', $entries);
+		return $this;
+	}
+	
+	
+	
+	//Delete Statement Functions
+	
+	/**
+	 * Factory function that creates a delete statement query object.
+	 * @return Delete Statement Query Object
+	 */
+	static function delete() {
+		return new Query("delete");
+	}
+	
+
+
+	//Utility Functions
+	
+	/**
+	 * Factory function to execute arbitrary native sql
+	 * @param string $sql Sql to create a query out of
+	 * @return Native SQL Query Object
+	 */
+	static function native($sql) {
+		return new Query($sql);
+	}
+
+	
+	//System Functions
 	
 	/**
 	 * Automagic toString method, simply prints wrapped sql statement
