@@ -268,9 +268,7 @@ class Query {
 
 	/**
 	 * Helper function and extensibility function, allows for arbitrary join types.
-	 * left inner join = Query#specified_join($table, $alias, "left inner join");
-	 * natural optimized join = Query#specified_join($table, $alias, "natural optimized join")
-	 * etc.
+	 * @warning use of this function directly greatly reduces backend portability.
 	 * @param string $table table name
 	 * @param string $alias [optional] alias
 	 * @param string $type [optional] join clause
@@ -308,7 +306,7 @@ class Query {
 	 * @return Query instance for further chaining
 	 */
 	function limit($limit, $offset = 0) {
-		$this->sql = self::$adapter->limit($this->sql, $count, $start);
+		$this->sql = self::$adapter->limit($this->sql, $limit, $offset);
 		return $this;
 	}
 

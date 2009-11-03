@@ -10,6 +10,7 @@
 		
 		echo Query::select()
 					->from('user')
+					->left('pref')->on("user.id = pref.user_id")
 					->where(Query::conj("a<'1'", "b LIKE '2'", 
 							Query::union("c>='3'", "d!='4'")))
 					->limit(30, 10);

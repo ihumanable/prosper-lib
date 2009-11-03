@@ -42,7 +42,7 @@ abstract class BaseAdapter {
 	 * @return sql statement with embedded limit statement
 	 */
 	function limit($sql, $limit, $offset) {
-		return $sql . " limit $limit offset $offset";
+		return $sql . " limit $limit" . ($offset !== 0 ? " offset $offset" : "");
 	}
 	
 }
