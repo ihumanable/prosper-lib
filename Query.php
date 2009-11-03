@@ -357,9 +357,9 @@ class Query {
 	 */
 	static function notClause($clause) {
 		if($clause instanceof Query) {
-			$sql = " NOT($clause)";
+			$sql = " not($clause)";
 		} else {
-			$sql = " NOT(" . self::comparison($clause) . ")";
+			$sql = " not(" . self::comparison($clause) . ")";
 		} 
 		return new Query($sql);
 	}
@@ -369,7 +369,7 @@ class Query {
 	 * @return Query object containing the appropriate sql snippet
 	 */
 	static function andClause() {
-		return self::conjunction(' AND ', func_get_args());
+		return self::conjunction(' and ', func_get_args());
 	}
 	
 	/**
@@ -377,7 +377,7 @@ class Query {
 	 * @return Query object containing the appropriate sql snippet
 	 */
 	static function orClause() {
-		return self::conjunction(' OR ', func_get_args());
+		return self::conjunction(' or ', func_get_args());
 	}
 	
 	/**
@@ -512,7 +512,6 @@ class Query {
 	function __toString() {
 		return $this->sql;
 	}
-	
 	
 }
 
