@@ -309,6 +309,25 @@ class Query {
 		$this->sql = self::$adapter->limit($this->sql, $limit, $offset);
 		return $this;
 	}
+	
+	/**
+	 * Chained function for describing an ordering
+	 * @param array or string $columns array for multiple ordering column_name => direction or string for the column name
+	 * @param boolean $asc [optional] if $columns is a string true for ascending ordering false for descending 
+	 * @return Query instance for further chaining
+	 */
+	function order($columns, $asc = true) {
+		if(is_array($columns)) {
+			$this->sql .= " order by";
+			foreach($columns as $key => $value) {
+				$cols[] = self::column($key) . " " . (strtolower($value) == "desc" ? "desc" : "asc");
+			}
+			$this->sql .= implode(', ', $cols);
+		} else {
+			$this->sql .= " order by " . self::column($columns) . " " . ($asc ? "asc" : "desc");
+		}
+		return $this;
+	}
 
 	/**
 	 * Chained function for describing the conditional
@@ -414,7 +433,6 @@ class Query {
 			}
 		}
 	}
-
 
 	//Insert Statement Functions	
 	

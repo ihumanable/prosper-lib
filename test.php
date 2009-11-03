@@ -13,6 +13,7 @@
 					->left('pref')->on("user.id = pref.user_id")
 					->where(Query::conj("a<'1'", "b LIKE '2'", 
 							Query::union("c>='3'", "d!='4'")))
+					->order('fname', 'asc')
 					->limit(30, 10);
 		echo "<br />";
 		echo Query::insert()->into('user')->values(array('fname' => 'Matt', 'lname' => 'Nowack'));

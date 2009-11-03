@@ -49,8 +49,8 @@ class MSSqlAdapter extends BaseAdapter {
 				   "(select * from (" .
 						"select top $limit * from (" . 
 							"select top " . ($limit + $offset) . substr($sql, $pos + 6) . ")" . 
-						"$opdir)" .
-			       "$dir)"; 
+						" $opdir)" .
+			       " $dir)"; 
 		}
 		return $sql;
 	}
