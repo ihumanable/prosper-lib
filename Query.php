@@ -223,13 +223,61 @@ class Query {
 	}
 	
 	/**
-	 * Chained function for describing a standard cartesian join
-	 * @param object $table table name
+	 * Chained function for describing a standard left join
+	 * Convenience function, identical to calling Query#specified_join($table, $alias, "left join");
+	 * @param string $table table name
 	 * @param object $alias [optional] alias
 	 * @return Query instance for further chaining
 	 */
+	function left($table, $alias = "") {
+		return $this->specified_join($table, $alias, "left join");
+	}
+	
+	/**
+	 * Chained function for describing a standard inner join
+	 * Convenience function, identical to calling Query#specified_join($table, $alias, "inner join");
+	 * @param string $table table name
+	 * @param object $alias [optional] alias
+	 * @return Query instance for further chaining
+	 */
+	function inner($table, $alias = "") {
+		return $this->specified_join($table, $alias, "inner join");
+	}
+	
+	/**
+	 * Chained function for describing a standard outer join
+	 * Convenience function, identical to calling Query#specified_join($table, $alias, "outer join");
+	 * @param string $table table name
+	 * @param object $alias [optional] alias
+	 * @return Query instance for further chaining
+	 */
+	function outer($table, $alias = "") {
+		return $this->specified_join($table, $alias, "outer join");
+	}
+	
+	/**
+	 * Chained function for describing a standard cartesian join
+	 * Convenience function, identical to calling Query#specified_join($table, $alias, "join");
+	 * @param string $table table name
+	 * @param string $alias [optional] alias
+	 * @return Query instance for further chaining
+	 */
 	function join($table, $alias = "") {
-		$this->sql .= " join " . self::table($table) . self::alias($alias);
+		return $this->specified_join($table, $alias);
+	}
+
+	/**
+	 * Helper function and extensibility function, allows for arbitrary join types.
+	 * left inner join = Query#specified_join($table, $alias, "left inner join");
+	 * natural optimized join = Query#specified_join($table, $alias, "natural optimized join")
+	 * etc.
+	 * @param string $table table name
+	 * @param string $alias [optional] alias
+	 * @param string $type [optional] join clause
+	 * @return Query instance for further chaining
+	 */
+	function specified_join($table, $alias = "", $type= "join") {
+		$this->sql .= " $type " . self::table($table) . self::alias($alias);
 		return $this;
 	}
 
@@ -253,7 +301,13 @@ class Query {
 		return $this->conditional('where', $clause);
 	}
 
-	function limit($count, $start = 0) {
+	/**
+	 * Chained function for describing an optionally windowed limit
+	 * @param int $limit maximum number of results to return
+	 * @param int $start [optional] where to start, defaults to 0, beginning of set
+	 * @return Query instance for further chaining
+	 */
+	function limit($limit, $offset = 0) {
 		$this->sql = self::$adapter->limit($this->sql, $count, $start);
 		return $this;
 	}
