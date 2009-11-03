@@ -4,7 +4,7 @@ namespace Prosper;
 /**
  * This class is to test the various customizable properties of Prosper
  */
-class WeirdAdapter implements BaseAdapter {
+class WeirdAdapter extends BaseAdapter {
 	function quote($str) {
 		return "[@[$str]@]";
 	}

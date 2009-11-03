@@ -253,6 +253,11 @@ class Query {
 		return $this->conditional('where', $clause);
 	}
 
+	function limit($count, $start = 0) {
+		$this->sql = self::$adapter->limit($this->sql, $count, $start);
+		return $this;
+	}
+
 	/**
 	 * Chained function for describing the conditional
 	 * @param string $predicate the sql keyword preceding the full conditional clause

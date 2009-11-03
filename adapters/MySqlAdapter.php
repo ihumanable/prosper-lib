@@ -1,18 +1,11 @@
 <?php
 namespace Prosper;
 
-class MySqlAdapter implements BaseAdapter {
-	function quote($str) {
-		return "`$str`";
-	}
+/**
+ * MySql Database Adapter
+ */
+class MySqlAdapter extends BaseAdapter {
 	
-	function escape($str) {
-		return "'" . addslashes($str) . "'";
-	}
-	
-	function unescape($str) {
-		return stripslashes($str);
-	}
 	
 }
 
