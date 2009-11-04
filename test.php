@@ -2,27 +2,34 @@
 	namespace Prosper;
 	require_once 'Query.php';
 	
-	$adapters = array('mysql', 'mssql', 'postgre', 'sqlite', 'weird');
+	Query::configure('mysql', 'localhost', 'root', 'xamppdevpwd', 'test');
 	
-	foreach($adapters as $adapter) {
-		echo "<h2>$adapter test</h2>";
-		Query::configure('test', $adapter);
-		
-		echo Query::select()
-					->from('user')
-					->left('pref')->on("user.id = pref.user_id")
-					->where(Query::conj("a<'1'", "b LIKE '2'", 
-							Query::union("c>='3'", "d!='4'")))
-					->order('fname', 'asc')
-					->limit(30, 10);
-		echo "<br />";
-		echo Query::insert()->into('user')->values(array('fname' => 'Matt', 'lname' => 'Nowack'));
-		echo "<br />";
-		echo Query::update('user')->set(array('fname' => 'Matt', 'lname' => 'Nowack'))->where("id='1'");
-		echo "<br />";
-		echo Query::delete()->from('user')->where("fname LIKE 'Matt%'");
-		echo "<br />";
-		
-		echo "<hr />";
-	}
+	$query = Query::select()->from('user');
+	
+	echo $query;
+	echo "<pre>";
+	print_r($query->execute());
+	echo "</pre>";
+	
+	$query = Query::select()->from('user')->where("firstname like 'm%'");
+	
+	echo $query;
+	echo "<pre>";
+	print_r($query->execute());
+	echo "</pre>";
+	
+	$query = Query::insert()->into('user')->values(array('firstname' => 'Mike', 'lastname' => "O'Malley"));
+	
+	echo $query;
+	echo "<pre>";
+	print_r($query->execute());
+	echo "</pre>";
+	
+	$query = Query::delete()->from('user')->where("firstname = 'insert'");
+	
+	echo $query;
+	echo "<pre>";
+	print_r($query->execute());
+	echo "</pre>";
+	
 ?>

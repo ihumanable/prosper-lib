@@ -6,6 +6,20 @@ namespace Prosper;
  */
 abstract class BaseAdapter {
 	
+	protected $connection;
+	
+	/**
+	 * Establishes a connection
+	 * @param string $username Database username
+	 * @param string $password Database password
+	 * @param string $hostname Database hostname
+	 * @param string $schema Database schema
+	 * @return New Adapter Instance
+	 */
+	function __construct($username, $password, $hostname, $schema) {
+		$this->connection = null;
+	}
+	
 	/**
 	 * Quotes a database object, uses the backtick by default
 	 * @param string $str string to quote
@@ -43,6 +57,16 @@ abstract class BaseAdapter {
 	 */
 	function limit($sql, $limit, $offset) {
 		return $sql . " limit $limit" . ($offset !== 0 ? " offset $offset" : "");
+	}
+	
+	/**
+	 * Executes a sql statement, the base implementation does nothing
+	 * @param string $sql statement to execute
+	 * @param string $params [optional] parameters
+	 * @return nothing
+	 */
+	function execute($sql, $params = null) {
+		
 	}
 	
 }

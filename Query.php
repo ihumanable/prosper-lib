@@ -19,32 +19,36 @@ class Query {
 	
 	/**
 	 * Set up Prosper Query Engine
-	 * @param string $schema [optional] Default schema to apply to queries
 	 * @param string $type [optional] Database type, mysql, mssql, pgsql (postgre), and sqlite accepted, defaults to mysql.
+	 * @param string $username [optional] Database username, defaults to nothing
+	 * @param string $password [optional] Database password, defaults to nothing
+	 * @param string $schema [optional] Default schema to apply to queries
 	 * @return null
 	 */
-	static function configure($schema = "", $type = "mysql") {
+	static function configure($type = "mysql", $hostname = "", $username = "", $password = "", $schema = "") {
+		$adapter = "Prosper\\";
 		switch(trim(strtolower($type))) {
 			case 'mysql':
-				self::$adapter = new MySqlAdapter();
+				$adapter .= "MySqlAdapter";
 				break;
 			case 'mssql':
-				self::$adapter = new MSSqlAdapter();
+				$adapter .= "MSSqlAdapter";
 				break;
 			case 'pgsql':
 			case 'postgre':
-				self::$adapter = new PostgreSqlAdapter();
+				$adapter .= "PostgreSqlAdapter";
 				break;
 			case 'sqlite':
-				self::$adapter = new SqliteAdapter();
+				$adapter .= "SqliteAdapter";
 				break;
 			case 'weird':
-				self::$adapter = new WeirdAdapter();
+				$adapter .= "WeirdAdapter";
 				break;
 			default:
-				self::$adapter = new MySqlAdapter();
+				$adapter .= "MySqlAdapter";
 				break;
 		}		
+		self::$adapter = new $adapter($hostname, $username, $password, $schema);
 		self::$schema = ($schema == "" ? "" : self::quote($schema));
 	} 
 
@@ -428,7 +432,13 @@ class Query {
 		$operators = array('<=', ">=", "!=", "<>", "<", ">", "=", "LIKE");
 		foreach($operators as $op) {
 			if(stripos($expression, $op) !== false) {
-				$parse = explode($op, $expression);
+				if($op == "LIKE") {
+					$pos = stripos($expression, $op);
+					$parse[0] = substr($expression, 0, $pos);
+					$parse[1] = substr($expression, $pos + 4);					
+				} else { 
+					$parse = explode($op, $expression);
+				}
 				return self::safe($parse[0]) . ' ' . $op . ' ' . self::safe($parse[1]);
 			}
 		}
@@ -522,6 +532,10 @@ class Query {
 
 	
 	//System Functions
+	
+	function execute() {
+		return self::$adapter->execute($this->sql);
+	}
 	
 	/**
 	 * Automagic toString method, simply prints wrapped sql statement
