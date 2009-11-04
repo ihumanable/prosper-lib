@@ -5,6 +5,23 @@ namespace Prosper;
  * Microsoft SQL Server Database Adapter
  */
 class MSSqlAdapter extends BaseAdapter {
+	function __construct($username, $password, $hostname, $schema) {
+		parent::__construct($username, $password, $hostname, $schema);
+		$this->connection = mssql_connect($hostname, $username, $password);
+	}
+	
+	function execute($sql) {
+		$set =  mssql_query($sql, $this->connection);
+		if($set === true) {
+			$result = mssql_rows_affected($this->connection);
+		} else if($set) {
+			while($row = mssql_fetch_array($query, MSSQL_ASSOC)) {
+				$result[] = $row;
+			}
+		}
+		return $result;
+	}
+	
 	function quote($str) {
 		return "[$str]";
 	}	
