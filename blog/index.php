@@ -1,6 +1,6 @@
 <?php
 	namespace Prosper;
-	require_once 'lib/Query.php';
+	require_once '../lib/Query.php';
 	
 	include 'header.php';
 	
