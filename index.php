@@ -2,13 +2,14 @@
 	namespace Prosper;
 	require_once 'lib/Query.php';
 	
+	include 'header.php';
+	
 	//Let's configure the connection
 	Query::configure('mysql', 'localhost', 'root', 'xamppdevpwd', 'test');
 	
 	//Ok pull out all of the blog posts, newest first
 	$posts = Query::select()->from('blog')->order('timestamp')->execute();
 	
-	echo '<div id="content">';
 	echo "<h1>Blog Posts</h1>";
 	
 	foreach($posts as $post) {
@@ -19,6 +20,6 @@
 		
 	}	
 	
-	echo "</div>";
+	include 'footer.php';
 	
 ?>

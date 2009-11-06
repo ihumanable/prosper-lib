@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>prosper</title>
-		<style type="text.css">
+		<style type="text/css">
 		
 		div#content {
 			width: 600px;
@@ -22,3 +22,5 @@
 		
 		</style>
 	</head>
+	<body>
+		<div id="content">
