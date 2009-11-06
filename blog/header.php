@@ -11,7 +11,7 @@
 			margin-right: auto;
 		}
 		
-		div.post {
+		.post {
 			width: 600px;
 			padding: 10px;
 			float: left;
