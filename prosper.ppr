@@ -1,0 +1,31 @@
+[Config]
+Relative path=1
+Compilator.SaveAll=0
+Compilator.Capture=0
+Compilator.HideOutput=0
+Compilator.LogType=0
+DefaultCPIndex=0
+LogtoEnd=1
+DontOpen=0
+FileFormat=0
+[Project tree]
+prosper
+	+root
+		+adapters
+			adapters\all.php
+			adapters\BaseAdapter.php
+			adapters\MSSqlAdapter.php
+			adapters\MySqlAdapter.php
+			adapters\PostgreSqlAdapter.php
+			adapters\SqliteAdapter.php
+			adapters\WeirdAdapter.php
+		Query.php
+		test.php
+[Open project files]
+0=Query.php
+[Selected Project Files]
+Main=
+Selected=Query.php
+[Query.php]
+TopLine=1
+Caret=14,6
