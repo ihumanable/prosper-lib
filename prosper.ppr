@@ -11,21 +11,30 @@ FileFormat=0
 [Project tree]
 prosper
 	+root
-		+adapters
-			adapters\all.php
-			adapters\BaseAdapter.php
-			adapters\MSSqlAdapter.php
-			adapters\MySqlAdapter.php
-			adapters\PostgreSqlAdapter.php
-			adapters\SqliteAdapter.php
-			adapters\WeirdAdapter.php
-		Query.php
+		+lib
+			+adapters
+				lib\adapters\all.php
+				lib\adapters\BaseAdapter.php
+				lib\adapters\MSSqlAdapter.php
+				lib\adapters\MySqlAdapter.php
+				lib\adapters\PostgreSqlAdapter.php
+				lib\adapters\SqliteAdapter.php
+				lib\adapters\WeirdAdapter.php
+			lib\Query.php
 		test.php
 [Open project files]
-0=Query.php
+0=lib\adapters\all.php
+1=test.php
+2=lib\Query.php
 [Selected Project Files]
 Main=
-Selected=Query.php
-[Query.php]
+Selected=lib\Query.php
+[lib\adapters\all.php]
 TopLine=1
-Caret=14,6
+Caret=3,8
+[test.php]
+TopLine=1
+Caret=20,3
+[lib\Query.php]
+TopLine=1
+Caret=1,1
