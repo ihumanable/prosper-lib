@@ -10,16 +10,8 @@ DontOpen=0
 FileFormat=0
 [Project tree]
 prosper
-	+blog
-		blog\config.php
-		blog\create.php
-		blog\delete.php
-		blog\edit.php
-		blog\footer.php
-		blog\header.php
-		blog\index.php
-	+lib
-		+adapters
+	-lib
+		-adapters
 			lib\adapters\all.php
 			lib\adapters\BaseAdapter.php
 			lib\adapters\MSSqlAdapter.php
@@ -28,39 +20,14 @@ prosper
 			lib\adapters\SqliteAdapter.php
 			lib\adapters\WeirdAdapter.php
 		lib\Query.php
+	+todo
+		todo\config.php
+		todo\create.php
+		todo\delete.php
+		todo\edit.php
+		todo\footer.php
+		todo\header.php
+		todo\index.php
 [Open project files]
-0=blog\config.php
-1=blog\index.php
-2=blog\delete.php
-3=blog\header.php
-4=blog\edit.php
-5=lib\Query.php
-6=lib\adapters\MySqlAdapter.php
-7=blog\create.php
 [Selected Project Files]
 Main=
-Selected=blog\create.php
-[blog\config.php]
-TopLine=1
-Caret=72,5
-[blog\index.php]
-TopLine=1
-Caret=32,17
-[blog\delete.php]
-TopLine=1
-Caret=21,14
-[blog\header.php]
-TopLine=1
-Caret=3,14
-[blog\edit.php]
-TopLine=1
-Caret=3,30
-[lib\Query.php]
-TopLine=1
-Caret=1,1
-[lib\adapters\MySqlAdapter.php]
-TopLine=1
-Caret=1,1
-[blog\create.php]
-TopLine=1
-Caret=3,26
