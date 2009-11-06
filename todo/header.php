@@ -22,7 +22,7 @@
 		}
 		
 		div#create { 
-			float: right;
+			float: left;
 			margin-bottom: 10px;
 		}
 		
@@ -37,7 +37,8 @@
 		}
 		
 		div#footer { 
-			float: left;
+			float: right;
+			font-size: x-small;
 		}
 		
 		.todo {
@@ -67,6 +68,7 @@
 		}
 		
 		button, input {
+			color: black;
 			background: #BBBBBB;
 			border: 1px outset #FF3363;
 			-moz-border-radius: 5px;

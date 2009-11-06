@@ -10,8 +10,8 @@ DontOpen=0
 FileFormat=0
 [Project tree]
 prosper
-	-lib
-		-adapters
+	+lib
+		+adapters
 			lib\adapters\all.php
 			lib\adapters\BaseAdapter.php
 			lib\adapters\MSSqlAdapter.php
@@ -29,5 +29,38 @@ prosper
 		todo\header.php
 		todo\index.php
 [Open project files]
+0=todo\create.php
+1=todo\delete.php
+2=todo\header.php
+3=todo\index.php
+4=todo\edit.php
+5=lib\Query.php
+6=lib\adapters\BaseAdapter.php
+7=todo\config.php
 [Selected Project Files]
 Main=
+Selected=todo\header.php
+[todo\create.php]
+TopLine=1
+Caret=15,17
+[todo\delete.php]
+TopLine=1
+Caret=44,29
+[todo\header.php]
+TopLine=21
+Caret=3,76
+[todo\index.php]
+TopLine=1
+Caret=123,26
+[todo\edit.php]
+TopLine=1
+Caret=12,22
+[lib\Query.php]
+TopLine=529
+Caret=26,546
+[lib\adapters\BaseAdapter.php]
+TopLine=27
+Caret=32,85
+[todo\config.php]
+TopLine=1
+Caret=19,22
