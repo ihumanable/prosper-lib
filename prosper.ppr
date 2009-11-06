@@ -21,20 +21,20 @@ prosper
 				lib\adapters\SqliteAdapter.php
 				lib\adapters\WeirdAdapter.php
 			lib\Query.php
-		test.php
+		index.php
 [Open project files]
 0=lib\adapters\all.php
 1=test.php
 2=lib\Query.php
 [Selected Project Files]
 Main=
-Selected=lib\Query.php
+Selected=test.php
 [lib\adapters\all.php]
 TopLine=1
 Caret=3,8
 [test.php]
 TopLine=1
-Caret=20,3
+Caret=2,13
 [lib\Query.php]
-TopLine=1
-Caret=1,1
+TopLine=292
+Caret=80,331

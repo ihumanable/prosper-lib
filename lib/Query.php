@@ -317,18 +317,18 @@ class Query {
 	/**
 	 * Chained function for describing an ordering
 	 * @param array or string $columns array for multiple ordering column_name => direction or string for the column name
-	 * @param boolean $asc [optional] if $columns is a string true for ascending ordering false for descending 
+	 * @param string $dir [optional] if $columns is a string, "asc" for ascending ordering "desc" for descending, defaults to "asc" 
 	 * @return Query instance for further chaining
 	 */
-	function order($columns, $asc = true) {
+	function order($columns, $dir = "asc") {
 		if(is_array($columns)) {
-			$this->sql .= " order by";
+			$this->sql .= " order by ";
 			foreach($columns as $key => $value) {
 				$cols[] = self::column($key) . " " . (strtolower($value) == "desc" ? "desc" : "asc");
 			}
 			$this->sql .= implode(', ', $cols);
 		} else {
-			$this->sql .= " order by " . self::column($columns) . " " . ($asc ? "asc" : "desc");
+			$this->sql .= " order by " . self::column($columns) . " " . (strtolower($dir) == "desc" ? "desc" : "asc");
 		}
 		return $this;
 	}
@@ -533,8 +533,28 @@ class Query {
 	
 	//System Functions
 	
+	/**
+	 * Executes the sql statement and returns the proper result
+	 * SELECT returns a result array
+	 * UPDATE returns affected row count
+	 * INSERT returns last insert id
+	 * DELETE returns affected row count	 	 
+	 */	 	
 	function execute() {
 		return self::$adapter->execute($this->sql);
+	}
+
+	/**
+	 * Prints the query and the result of the query 
+	 * @param boolean $output [optional] defaults to true, if true automatically echoes result	 
+	 */	 	
+	function verbose($output = true) {
+		$result =  '<pre class="brush: sql">' . $this->sql . "</pre>";
+		$result .= '<pre class="brush: php">' . print_r($this->execute(), true) . "</pre>";
+		if($output) {
+			echo $result;
+		} 
+		return $result;
 	}
 	
 	/**
@@ -544,7 +564,7 @@ class Query {
 	function __toString() {
 		return $this->sql;
 	}
-	
+
 }
 
 
