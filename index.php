@@ -16,9 +16,11 @@
 		echo '<div class="post">';
 			echo "<h2>#{$post['id']} - {$post['title']} @ {$post['timestamp']}</h2>";
 			echo "<p>{$post['content']}</p>";
+			echo "<a href=\"edit.php?id{$post['id']}\">edit</a>  |  <a href=\"delete.php?id={$post['id']}\">delete</a>";
 		echo '</div>';	
-		
 	}	
+	
+	echo "<div style=\"text-align: right; float: left; clear: both; width: 600px\"><a href=\"create.php\">new post</a></div>";
 	
 	include 'footer.php';
 	
