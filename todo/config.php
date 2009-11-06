@@ -4,6 +4,12 @@
 
 	Query::configure('mysql', 'localhost', 'root', 'xamppdevpwd', 'test');
 
+	/**
+	 * Simple function that translates a timestamp from the past into a friendlier
+	 * number of somethings ago (ex: 15 minutes ago, 1 hour ago)
+	 * @param int timestamp unix timestamp to convert
+	 * @return string nicely formatted label	 	 
+	 */	 	  	
 	function time_ago($timestamp) {
 		$spans = array ( "year"   => 31536000,
 		                 "month"  =>  2592000,
@@ -13,9 +19,7 @@
 										 "minute" =>       60,
 										 "second" =>        1	 );
 					
-		
-		$now = mktime();
-		$diff = $now - $timestamp;
+		$diff = mktime() - $timestamp;
 		
 		foreach($spans as $key => $value) {
 			if($diff > $value) {

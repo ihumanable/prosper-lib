@@ -58,7 +58,7 @@
 		}
 		
 		a {
-			color: #FF1493;
+			color: #FF3363;
 			text-decoration: none;
 		}
 		
@@ -68,7 +68,7 @@
 		
 		button, input {
 			background: #BBBBBB;
-			border: 1px outset #FF1493;
+			border: 1px outset #FF3363;
 			-moz-border-radius: 5px;
 		}
 		
