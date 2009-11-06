@@ -530,6 +530,38 @@ class Query {
 		return new Query($sql);
 	}
 
+	/**
+	 * Helper function to translate unix timestamp to database timestamp format
+	 * The inverse of this function is mktime
+	 * ie. 
+	 *	$unix = mktime();
+	 *  $db_time = Query::timestamp($unix);
+	 * 	$unix === Query::mktime($db_time);  
+	 *	 	 	 	 
+	 * @param int timestamp [optional] unix timestamp to translate, defaults to current time
+	 * @return string database timestamp string
+	 */	 	 	 	
+	static function timestamp($timestamp = null) {
+		if($timestamp === null) {
+			$timestamp = mktime();
+		}
+		return self::$adapter->timestamp($timestamp);
+	}
+	
+	/**
+	 * Helper function to translate database timestamp to unix timestamp
+	 * The invers of this function is timestamp
+	 * ie.
+	 *  $db_time = $row['timestamp'];
+	 *  $unix = Query::mktime($db_time);
+	 *  $db_time === Query::timestamp($unix);  
+	 *	 	 
+	 * @param string timestamp database timestamp
+	 * @return int unix timestamp	 	 
+	 */	 
+	static function mktime($timestamp) {
+		return self::$adapter->mktime($timestamp);
+	}
 	
 	//System Functions
 	

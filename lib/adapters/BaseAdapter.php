@@ -69,5 +69,21 @@ abstract class BaseAdapter {
 		
 	}
 	
+	/**
+	 * Return database specific timestamp from unix timestamp
+	 * Default implementation is the sensible MySQL Timestamp	 
+	 */	 	
+	function timestamp($timestamp) {
+		return date ("Y-m-d H:i:s", $timestamp); 
+	}
+	
+	/**
+	 * Return unix timestamp from database specific timestamp
+	 * Default implementation is the sensible MySQL Timestamp
+	 */	 	 	
+	function mktime($timestamp) {
+		return strtotime($timestamp);
+	}
+	
 }
 ?>

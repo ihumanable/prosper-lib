@@ -4,29 +4,39 @@
 	
 	
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
-		//Delete the post and redirect
-		Query::delete()->from('blog')->where("id = '{$_POST['id']}'")->execute();
+		//Delete the todo and redirect
+		Query::delete()
+				 ->from('todo')
+				 ->where("id = '{$_POST['id']}'")
+				 ->execute();
 		header("Location: index.php");
 	} else {
 		include_once 'header.php';
 		
-		$posts = Query::select()->from('blog')->where("id = '{$_GET['id']}'")->execute();
-		$post = $posts[0];
+		$todos = Query::select()
+									->from('todo')
+									->where("id = '{$_GET['id']}'")
+									->execute();
+									
+		$todo = $todos[0];
+?>
+
+		<h3>delete todo</h3>
 		
-		echo "<h1>Delete Post</h1>";
-		
-		echo "<form class='post' action='delete.php' method='post'>";
-			echo "Are you sure you want to delete '{$post['title']}'?<br /><br />";
-			echo "<input type=\"hidden\" name=\"id\" value=\"{$post['id']}\" />";
-			echo "<input type=\"submit\" value=\"Confirm\" />";
-			echo "<button onclick=\"window.location.href='index.php'; return false;\">Cancel</button>";
-		echo "</form>";
-		
-		
+		<form class='todo' action='delete.php' method='post'>
+			<input type="hidden" name="id" value="<?php echo $todo['id']; ?>" />
+			<div class="item">
+				Delete "<?php echo $todo['title']; ?>" ?
+			</div>
+			<div class="controls">
+				<input type="submit" value="Confirm" />
+				<button onclick="window.location.href='index.php'; return false;">Cancel</button>
+			</div>
+		</form>
+
+<?php
+
 		include_once 'footer.php';
 	}
-	
-	
-	
-	
+		
 ?>

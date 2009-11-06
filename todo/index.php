@@ -3,22 +3,32 @@
 	require_once 'config.php';
 	
 	include_once 'header.php';
+?>
+
+	<div id="create">
+		<a href="create.php">
+			<img src="img/create.png" alt="create todo"/> <div>create todo</div>
+		</a>
+	</div>
 	
+<?php
 	
-	//Ok pull out all of the blog posts, newest first
-	$posts = Query::select()->from('blog')->order('timestamp')->execute();
+	//Ok pull out all of the todo items, stable order
+	$todos = Query::select()
+								->from('todo')
+								->order('id')
+								->execute();
 	
-	echo "<h1>Blog Posts</h1>";
-	
-	foreach($posts as $post) {
-		echo '<div class="post">';
-			echo "<h2>#{$post['id']} - {$post['title']} @ {$post['timestamp']}</h2>";
-			echo "<p>{$post['content']}</p>";
-			echo "<a href=\"edit.php?id={$post['id']}\">edit</a>  |  <a href=\"delete.php?id={$post['id']}\">delete</a>";
-		echo '</div>';	
-	}	
-	
-	echo "<div style=\"text-align: right; float: left; clear: both; width: 600px\"><a href=\"create.php\">new post</a></div>";
+	foreach($todos as $todo) {
+?>
+
+	<div class="todo">
+		<div class="item">#<?php echo $todo['id'] . " - " . $todo['title'] . " @ " . time_ago(Query::mktime($todo['timestamp'])); ?> </div>
+		<div class="controls"><a href="edit.php?id=<?php echo $todo['id']; ?>">edit</a>  |  <a href="delete.php?id=<?php echo $todo['id']; ?>">delete</a></div>
+	</div>	
+
+<?php
+	}
 	
 	include_once 'footer.php';
 	
