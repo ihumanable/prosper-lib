@@ -6,6 +6,14 @@ namespace Prosper;
  */
 class PostgreSqlAdapter extends BaseAdapter {
 	
+	/**
+	 * Creates a PostgreSQL Connection Adapter
+	 * @param string $username Database username
+	 * @param string $password Database password
+	 * @param string $hostname Database hostname
+	 * @param string $schema Database schema
+	 * @return Adapter Instance
+	 */
 	function __construct($username, $password, $hostname, $schema) {
 		parent::__construct($username, $password, $hostname, $schema);
 		$conn = ($hostname == "" ? "" : "host=$hostname ") .
@@ -15,21 +23,37 @@ class PostgreSqlAdapter extends BaseAdapter {
 		$this->connection = pg_connect($conn);
 	}
 	
-	function execute($sql) {
-		$set =  pg_query($this->connection, $sql);
-		if($set) {
-			if($row = pg_fetch_assoc($set)) {
-				$result[] = $row;
-				while($row = $set->fetch_array(MYSQLI_ASSOC)) {
-					$result[] = $row;
-				}
-			} else {
-				$result = pg_affected_rows($set);
-			}
-		}
-		return $result;
+	/**
+	 * @see BaseAdapter#platform_execute($sql) 
+	 */
+	protected function platform_execute($sql) {
+		return pg_query($this->connection, $sql);
 	}
 	
+	/**
+	 * @see BaseAdapter#affected_rows($set) 
+	 */
+	protected function affected_rows($set) {
+		return pg_affected_rows($set);
+	}
+	
+	/**
+	 * @see BaseAdapter#fetch_assoc($set) 
+	 */
+	protected function fetch_assoc($set) {
+		return pg_fetch_assoc($set);
+	}
+	
+	/**
+	 * @see BaseAdapter#cleanup($set) 
+	 */
+	protected function cleanup($set) {
+		pg_free_result($set);	
+	}
+	
+	/**
+	 * @see BaseAdapter#quote($str) 
+	 */
 	function quote($str) {
 		return "\"$str\"";
 	}

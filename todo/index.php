@@ -15,11 +15,12 @@
 	
 	//Ok pull out all of the todo items, stable order
 	$todos = Query::select()
-								->from('todo')
+	 							->from('todo')
 								->order('id')
 								->execute();
 	
-	foreach($todos as $todo) {
+	if(is_array($todos)) {
+		foreach($todos as $todo) {
 ?>
 
 	<div class="todo">
@@ -27,6 +28,13 @@
 		<div class="controls"><a href="edit.php?id=<?php echo $todo['id']; ?>">edit</a>  |  <a href="delete.php?id=<?php echo $todo['id']; ?>">delete</a></div>
 	</div>	
 
+<?php
+		}
+	} else {
+?>
+	<div class="todo">
+		<div class="item">No todos, try clicking <a href="create.php">create</a></div>
+	</div>
 <?php
 	}
 	

@@ -4,6 +4,12 @@ namespace Prosper;
 require_once 'adapters/all.php';
 
 class Query {
+	const DELETE_STMT = "DELETE_STMT";
+	const INSERT_STMT = "INSERT_STMT";
+	const SELECT_STMT = "SELECT_STMT";
+	const UPDATE_STMT = "UPDATE_STMT";
+	
+	private $mode;
 	private $sql;
 	private static $adapter;
 	private static $schema;
@@ -13,8 +19,9 @@ class Query {
 	 * @param string $sql [optional] SQL to initialize with
 	 * @return New Query object wrapping supplied sql statement
 	 */
-	private function __construct($sql = "") {
+	private function __construct($sql = "", $mode = "") {
 		$this->sql = $sql;
+		$this->mode = $mode;
 	}
 	
 	/**
@@ -212,7 +219,7 @@ class Query {
 			}
 			$columns = implode(', ', $parts);
 		}
-		return new Query("select $columns");
+		return new Query("select $columns", self::SELECT_STMT);
 	}
 	
 	/**
@@ -451,7 +458,7 @@ class Query {
 	 * @return Insert Statement Query Object
 	 */
 	static function insert() {
-		return new Query("insert");
+		return new Query("insert", self::INSERT_STMT);
 	}
 	
 	/**
@@ -488,7 +495,7 @@ class Query {
 	 * @return Update Statement Query Object
 	 */
 	static function update($table) {
-		return new Query("update " . self::table($table));
+		return new Query("update " . self::table($table), self::UPDATE_STMT);
 	}
 	
 	/**
@@ -514,7 +521,7 @@ class Query {
 	 * @return Delete Statement Query Object
 	 */
 	static function delete() {
-		return new Query("delete");
+		return new Query("delete", self::DELETE_STMT);
 	}
 	
 
@@ -573,7 +580,7 @@ class Query {
 	 * DELETE returns affected row count	 	 
 	 */	 	
 	function execute() {
-		return self::$adapter->execute($this->sql);
+		return self::$adapter->execute($this->sql, $this->mode);
 	}
 
 	/**

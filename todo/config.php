@@ -19,8 +19,9 @@
 										 "minute" =>       60,
 										 "second" =>        1	 );
 					
-		$diff = mktime() - $timestamp;
-		
+		$diff = mktime() - $timestamp - 24;
+		$label = "second";
+		$span = 1;
 		foreach($spans as $key => $value) {
 			if($diff > $value) {
 				$label = $key;
@@ -31,7 +32,7 @@
 		
 		$amt = floor($diff / $span);	
 		
-		return $amt . " " . $label . ($amt > 1 ? "s" : "") . " ago";
+		return $amt . " " . $label . ($amt != 1 ? "s" : "") . " ago";
 	}
 
 ?>

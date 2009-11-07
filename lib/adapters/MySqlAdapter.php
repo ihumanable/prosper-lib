@@ -6,22 +6,47 @@ namespace Prosper;
  */
 class MySqlAdapter extends BaseAdapter {
 	
+	/**
+	 * Creates a MySQL Connection Adapter
+	 * @param string $username Database username
+	 * @param string $password Database password
+	 * @param string $hostname Database hostname
+	 * @param string $schema Database schema
+	 * @return Adapter Instance
+	 */
 	function __construct($hostname, $username, $password, $schema) {
 		parent::__construct($hostname, $username, $password, $schema);
 		$this->connection = new \mysqli($hostname, $username, $password, $schema);
 	}
 	
-	function execute($sql) {
-		$set =  $this->connection->query($sql);
-		if($set instanceof \MySQLi_Result) {
-			while($row = $set->fetch_array(MYSQLI_ASSOC)) {
-				$result[] = $row;
-			}
-		} else {
-			$result = $this->connection->affected_rows;
-		}
-		return $result;
+	/**
+	 * @see BaseAdapter#platform_execute($sql) 
+	 */
+	protected function platform_execute($sql) {
+		return $this->connection->query($sql);
 	}
+	
+	/**
+	 * @see BaseAdapter#affected_rows($set) 
+	 */
+	protected function affected_rows($set) {
+		return $this->connection->affected_rows;
+	}
+	
+	/**
+	 * @see BaseAdapter#insert_id($set)
+	 */
+	protected function insert_id($set) {
+		return $this->connection->insert_id;
+	}
+	
+	/**
+	 * @see BaseAdapter#fetch_assoc($set)
+	 */
+	protected function fetch_assoc($set) {
+		return $set->fetch_array(MYSQLI_ASSOC);
+	}
+	
 }
 
 ?>

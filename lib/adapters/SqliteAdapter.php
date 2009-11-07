@@ -5,21 +5,46 @@ namespace Prosper;
  * Sqlite Database Adapter
  */
 class SqliteAdapter extends BaseAdapter {
+	/**
+	 * Creates a Sqlite Connection Adapter
+	 * @param string $username Database username
+	 * @param string $password Database password
+	 * @param string $hostname Database hostname
+	 * @param string $schema Database schema
+	 * @return Adapter Instance
+	 */
 	function __construct($username, $password, $hostname, $schema) {
 		parent::__construct($username, $password, $hostname, $schema);
 		$this->connection = new \SQLite3($username);
 	}
 	
-	function execute($sql) {
-		$set =  $this->connection->query($sql);
-		if($set instanceof \SQLite3Result) {
-			while($row = $set->fetchArray(SQLITE3_ASSOC)) {
-				$result[] = $row;
-			}
-		} else {
-			$result = $this->connection->changes();
-		}
-		return $result;
+	/**
+	 * @see BaseAdapter#platform_execute($sql)
+	 */
+	protected function platform_execute($sql) {
+		return $this->connection->query($sql);
+	} 
+	
+	/**
+	 * @see BaseAdapter#affected_rows($set) 
+	 */
+	protected function affected_rows($set) {
+		return $this->connection->changes();
 	}
+	
+	/**
+	 * @see BaseAdapter#insert_id($set) 
+	 */
+	protected function insert_id($set) {
+		return $this->connection->lastInsertRowID();
+	}
+	
+	/**
+	 * @see BaseAdapter#fetch_assoc($set) 
+	 */
+	protected function fetch_assoc($set) {
+		return $set->fetchArray(SQLITE3_ASSOC);
+	}
+
 }
 ?>
