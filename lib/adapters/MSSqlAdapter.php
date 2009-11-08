@@ -38,8 +38,10 @@ class MSSqlAdapter extends BaseAdapter {
 	 */
 	protected function insert_id($set) {
 		$result = mssql_query("select SCOPE_IDENTITY AS last_insert_id", $this->connection);
-		$result = $this->fetch_assoc($result);
-		return $result['last_insert_id'];
+		$arr = $this->fetch_assoc($result);
+		$retval = $arr['last_insert_id'];
+		mssql_free_result($result);
+		return $retval;
 	}
 	
 	/**
