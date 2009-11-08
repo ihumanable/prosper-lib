@@ -55,11 +55,20 @@ class Query {
 			case 'maxdb':
 				$adapter .= "MaxDBAdapter";
 				break; 
-			case 'mysql':
-				$adapter .= "MySqlAdapter";
+			case 'msql':
+				$adapter .= "MSqlAdapter";
 				break;
 			case 'mssql':
 				$adapter .= "MSSqlAdapter";
+				break;
+			case 'mysql':
+				$adapter .= "MySqlAdapter";
+				break;
+			case 'ovrimos':
+				$adapter .= "OvrimosAdapter";
+				break;
+			case 'paradox':
+				$adapter .= "ParadoxAdapter";
 				break;
 			case 'pgsql':
 			case 'postgre':
@@ -67,6 +76,9 @@ class Query {
 				break;
 			case 'sqlite':
 				$adapter .= "SqliteAdapter";
+				break;
+			case 'sybase':
+				$adapter .= "SybaseAdapter";
 				break;
 			default:
 				$adapter .= "MySqlAdapter";

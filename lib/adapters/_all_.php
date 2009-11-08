@@ -10,10 +10,14 @@
 	require_once 'InformixAdapter.php';
 	require_once 'IngresAdapter.php';
 	require_once 'MaxDBAdapter.php';
+	require_once 'MSqlAdapter.php';
 	require_once 'MSSqlAdapter.php';
 	require_once 'MySqlAdapter.php';
+	require_once 'OvrimosAdapter.php';
+	require_once 'ParadoxAdapter.php';
 	require_once 'PostgreSqlAdapter.php';
 	require_once 'SqliteAdapter.php';
+	require_once 'SybaseAdapter.php';
     
     
 ?>
