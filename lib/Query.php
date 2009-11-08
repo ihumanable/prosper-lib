@@ -1,8 +1,6 @@
 <?php
 namespace Prosper;
 
-require_once 'adapters/all.php';
-
 class Query {
 	const DELETE_STMT = "DELETE_STMT";
 	const INSERT_STMT = "INSERT_STMT";
@@ -35,6 +33,28 @@ class Query {
 	static function configure($type = "mysql", $hostname = "", $username = "", $password = "", $schema = "") {
 		$adapter = "Prosper\\";
 		switch(trim(strtolower($type))) {
+			case 'db2':
+				$adapter .= "DB2Adapter";
+				break;
+			case 'firebird':
+			case 'ibase':
+				$adapter .= "FirebirdAdapter";
+				break;
+			case 'frontbase':
+			case 'fbsql':
+				$adapter .= "FrontBaseAdapter";
+				break;
+			case 'informix':
+			case 'ifxsql':
+			case 'ifx':
+				$adapter .= "InformixAdapter";
+				break;
+			case 'ingres':
+				$adapter .= "IngresAdapter";
+				break;
+			case 'maxdb':
+				$adapter .= "MaxDBAdapter";
+				break; 
 			case 'mysql':
 				$adapter .= "MySqlAdapter";
 				break;
@@ -47,9 +67,6 @@ class Query {
 				break;
 			case 'sqlite':
 				$adapter .= "SqliteAdapter";
-				break;
-			case 'weird':
-				$adapter .= "WeirdAdapter";
 				break;
 			default:
 				$adapter .= "MySqlAdapter";

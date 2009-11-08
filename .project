@@ -3,6 +3,8 @@
 	<name>prosper-lib</name>
 	<comment></comment>
 	<projects>
+		<project>flourish</project>
+		<project>php-activerecord</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
