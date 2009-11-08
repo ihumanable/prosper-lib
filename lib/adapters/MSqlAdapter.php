@@ -1,10 +1,10 @@
 <?php
 namespace Prosper;
 
-class InformixAdapter extends BaseAdapter {
+class MSqlAdapter extends BaseAdapter {
 	
 	/**
-	 * Establishes an Informix Adapter
+ 	 * Establishes an MSql Adapter 
 	 * @param string $username Database username
 	 * @param string $password Database password
 	 * @param string $hostname Database hostname
@@ -13,47 +13,45 @@ class InformixAdapter extends BaseAdapter {
 	 */
 	function __construct($username, $password, $hostname, $schema) {
 		parent::__construct($username, $password, $hostname, $schema);
-		$database = $schema . "@" . $hostname;
-		$this->connection = ifx_connect($database, $username, $password);
+		$this->connection = msql_connect($hostname, $username, $password);
+		if($schema != "") {
+			msql_select_db($schema, $this->connection);
+		}
 	}
 	
 	/**
 	 * Clean up, destroy the connection
 	 */
 	function __destruct() {
-		ifx_close($this->connection);
+		msql_close($this->connection);
 	}
 	
 	/**
-	 * @see BaseAdapter#platform_execute($sql) 
+	 * @see BaseAdapter#platform_execute($sql)
 	 */
 	function platform_execute($sql) {
-		return ifx_query($sql, $this->connection);
+		return msql_query($sql, $this->connection);
 	}
 	
 	/**
-	 * @see BaseAdapter#affected_rows($set) 
+	 * @see BaseAdapter#affected_rows($set)
 	 */
 	function affected_rows($set) {
-		return ifx_affected_rows($set);
+		return msql_affected_rows($set);
 	}
 	
 	/**
-	 * @see BaseAdapter#fetch_assoc($set) 
+	 * @see BaseAdapter#fetch_assoc($set)
 	 */
 	function fetch_assoc($set) {
-		return ifx_fetch_Row($set, "NEXT");
+		return msql_fetch_array($set, MSQL_ASSOC);
 	}
 	
 	/**
 	 * @see BaseAdapter#cleanup($set)
-	 * @param object $set
-	 * @return 
 	 */
 	function cleanup($set) {
-		ifx_free_result($set);
-	}
-	
-} 
+		msql_free_result($set);
+	} 
+}
 
-?>

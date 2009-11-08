@@ -18,10 +18,17 @@ class DB2Adapter extends BaseAdapter {
 	}
 	
 	/**
+	 * Clean up, destroy the connection
+	 */
+	function __destruct() {
+		db2_close($this->connection);
+	}
+	
+	/**
 	 * @see BaseAdapter#platform_execute($sql) 
 	 */
 	function platform_execute($sql) {
-		return db2_prepare($this->connection, $sql)
+		return db2_prepare($this->connection, $sql);
 	}
 	
 	/**

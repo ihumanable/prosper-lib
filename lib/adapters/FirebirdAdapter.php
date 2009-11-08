@@ -18,6 +18,13 @@ class FirebirdAdapter extends BaseAdapter {
 	}
 	
 	/**
+	 * Clean up, destroy the connection
+	 */
+	function __destruct() {
+		ibase_close($this->connection);
+	}
+	
+	/**
 	 * @see BaseAdapter#platform_execute($sql) 
 	 */
 	function platform_execute($sql) {

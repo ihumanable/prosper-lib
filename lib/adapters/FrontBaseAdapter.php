@@ -17,6 +17,13 @@ class FrontBaseAdapter extends BaseAdapter {
 	}
 	
 	/**
+	 * Clean up, destroy the connection
+	 */
+	function __destruct() {
+		fbsql_close($this->connection);
+	}
+	
+	/**
 	 * @see BaseAdapter#platform_execute($sql)
 	 */
 	function platform_execute($sql) {

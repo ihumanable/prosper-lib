@@ -24,6 +24,13 @@ class PostgreSqlAdapter extends BaseAdapter {
 	}
 	
 	/**
+	 * Clean up, destroy the connection
+	 */
+	function __destruct() {
+		pg_close($this->connection);
+	}
+	
+	/**
 	 * @see BaseAdapter#platform_execute($sql) 
 	 */
 	protected function platform_execute($sql) {

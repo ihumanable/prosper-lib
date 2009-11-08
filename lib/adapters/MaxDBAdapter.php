@@ -17,6 +17,13 @@ class MaxDBAdapter extends BaseAdapter {
 	}
 	
 	/**
+	 * Clean up, destroy the connection
+	 */
+	function __destruct() {
+		$this->connection->close();
+	}
+	
+	/**
 	 * @see BaseAdapter#platform_execute($sql); 
 	 */
 	function platform_execute($sql) {
