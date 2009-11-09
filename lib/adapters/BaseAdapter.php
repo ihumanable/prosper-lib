@@ -81,8 +81,10 @@ abstract class BaseAdapter {
 				$result = $this->insert_id($set);
 				break;
 			case Query::SELECT_STMT:
-				while($row = $this->fetch_assoc($set)) {
-					$result[] = $row;
+				if($set) {
+					while($row = $this->fetch_assoc($set)) {
+						$result[] = $row;
+					}
 				}
 				break;
 			case Query::UPDATE_STMT:
