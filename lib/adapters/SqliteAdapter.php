@@ -26,9 +26,9 @@ class SqliteAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * @see BaseAdapter#platform_execute($sql)
+	 * @see BaseAdapter#platform_execute($sql, $mode)
 	 */
-	protected function platform_execute($sql) {
+	protected function platform_execute($sql, $mode) {
 		return $this->connection->query($sql);
 	} 
 	

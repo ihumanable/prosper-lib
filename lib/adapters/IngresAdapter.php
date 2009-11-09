@@ -24,9 +24,9 @@ class IngresAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * @see BaseAdapter#platform_execute($sql)
+	 * @see BaseAdapter#platform_execute($sql, $mode)
 	 */
-	function platform_execute($sql) {
+	function platform_execute($sql, $mode) {
 		return ingres_query($this->connection, $sql);
 	}
 	

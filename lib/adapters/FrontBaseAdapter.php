@@ -27,9 +27,9 @@ class FrontBaseAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * @see BaseAdapter#platform_execute($sql)
+	 * @see BaseAdapter#platform_execute($sql, $mode)
 	 */
-	function platform_execute($sql) {
+	function platform_execute($sql, $mode) {
 		return fbsql_query($sql, $this->connection);
 	}
 	

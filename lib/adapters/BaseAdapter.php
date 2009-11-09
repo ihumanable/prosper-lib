@@ -71,7 +71,7 @@ abstract class BaseAdapter {
 	 * @return mixed Number of rows affected if update or delete, insert id for insert statements, result set for select
 	 */
 	function execute($sql, $mode) {
-		$set = $this->platform_execute($sql);
+		$set = $this->platform_execute($sql, $mode);
 		
 		switch($mode) {
 			case Query::DELETE_STMT:
@@ -96,9 +96,10 @@ abstract class BaseAdapter {
 	/**
 	 * Platform specific execution wrapper
 	 * @param string $sql SQL to execute 
+	 * @param string $mode Query type
 	 * @return mixed Platform specific result set
 	 */
-	protected function platform_execute($sql) {
+	protected function platform_execute($sql, $mode) {
 		
 	}
 	
