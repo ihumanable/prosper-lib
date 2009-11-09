@@ -14,8 +14,8 @@ class MySqlAdapter extends BaseAdapter {
 	 * @param string $schema Database schema
 	 * @return Adapter Instance
 	 */
-	function __construct($hostname, $username, $password, $schema) {
-		parent::__construct($hostname, $username, $password, $schema);
+	function __construct($username, $password, $hostname, $schema) {
+		parent::__construct($username, $password, $hostname, $schema);
 		$this->connection = new \mysqli($hostname, $username, $password, $schema);
 	}
 	

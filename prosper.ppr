@@ -30,6 +30,7 @@ prosper
 			lib\adapters\SqliteAdapter.php
 			lib\adapters\SybaseAdapter.php
 		lib\Query.php
+		lib\Token.php
 	+todo
 		todo\config.php
 		todo\create.php
@@ -38,39 +39,21 @@ prosper
 		todo\footer.php
 		todo\header.php
 		todo\index.php
+		todo\.htaccess
+		todo\test.php
 [Open project files]
-0=lib\adapters\_common_.php
-1=todo\create.php
-2=todo\delete.php
-3=todo\edit.php
-4=todo\index.php
-5=lib\adapters\PostgreSqlAdapter.php
-6=lib\Query.php
-7=todo\.htaccess
+0=todo\test.php
+1=lib\Token.php
+2=lib\Query.php
 [Selected Project Files]
 Main=
-Selected=todo\.htaccess
-[lib\adapters\_common_.php]
+Selected=lib\Query.php
+[todo\test.php]
 TopLine=1
-Caret=1,1
-[todo\create.php]
+Caret=104,6
+[lib\Token.php]
 TopLine=1
-Caret=18,9
-[todo\delete.php]
-TopLine=1
-Caret=1,1
-[todo\edit.php]
-TopLine=1
-Caret=37,7
-[todo\index.php]
-TopLine=1
-Caret=1,1
-[lib\adapters\PostgreSqlAdapter.php]
-TopLine=23
-Caret=2,54
+Caret=18,119
 [lib\Query.php]
-TopLine=494
-Caret=13,520
-[todo\.htaccess]
-TopLine=1
-Caret=26,4
+TopLine=303
+Caret=3,308

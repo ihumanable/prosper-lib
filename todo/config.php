@@ -3,7 +3,7 @@
 	require_once '../lib/adapters/_all_.php';
 	require_once '../lib/Query.php';
 
-	Query::configure('mysql', 'localhost', 'root', 'xamppdevpwd', 'test');
+	Query::configure('mysql', 'root', 'xamppdevpwd', 'localhost', 'test');
 
 	/**
 	 * Simple function that translates a timestamp from the past into a friendlier

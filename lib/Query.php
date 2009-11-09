@@ -1,6 +1,8 @@
 <?php
 namespace Prosper;
 
+require_once 'Token.php';
+
 class Query {
 	const DELETE_STMT = "DELETE_STMT";
 	const INSERT_STMT = "INSERT_STMT";
@@ -30,7 +32,7 @@ class Query {
 	 * @param string $schema [optional] Default schema to apply to queries
 	 * @return null
 	 */
-	static function configure($type = "mysql", $hostname = "", $username = "", $password = "", $schema = "") {
+	static function configure($type = "mysql", $username = "", $password = "", $hostname = "", $schema = "") {
 		$adapter = "Prosper\\";
 		switch(trim(strtolower($type))) {
 			case 'db2':
@@ -84,7 +86,7 @@ class Query {
 				$adapter .= "MySqlAdapter";
 				break;
 		}		
-		self::$adapter = new $adapter($hostname, $username, $password, $schema);
+		self::$adapter = new $adapter($username, $password, $hostname, $schema);
 		self::$schema = ($schema == "" ? "" : self::quote($schema));
 	} 
 
@@ -174,23 +176,6 @@ class Query {
 	}
 	
 	/**
-	 * Makes a value safe, whether it is a literal, symbol, or sql element
-	 * @param string $str value to make safe
-	 * @return Safe string
-	 */
-	static function safe($str) {
-		$str = trim($str);
-		if(self::is_literal($str)) {
-			return self::escape($str);
-		} else if(self::is_symbol($str)) {
-			return $str;
-		} else {
-			return self::column($str);
-		}
-	}
-
-	
-	/**
 	 * Removes the literal quotes from a string, if called on a non-literal simply returns string
 	 * @param string $str String to deliteral
 	 * @return String with quotes removed
@@ -211,16 +196,6 @@ class Query {
 	static function is_literal($str) {
 		return ($str[0] == "'" && $str[strlen($str) - 1] == "'");
 	}
-	
-	/**
-	 * Determines if a string is a symbol value, legal symbol values are '?' and anything beginning with colon ':'
-	 * @param string $str String to check
-	 * @return true if symbol, false otherwise
-	 */
-	static function is_symbol($str) {
-		return ($str == "?" || $str[0] == ":");
-	}
-	
 	
 	
 	//Select Statement Functions
@@ -343,6 +318,24 @@ class Query {
 		return $this->conditional('where', $clause);
 	}
 
+	function conditional($predicate, $clause) {
+		$result = " $predicate";
+		while($token = Token::next($clause)) {
+			switch($token['type']) {
+				case Token::SQL_ENTITY:
+					$result .= " " . self::quote($token['token']);
+					break;
+				case Token::LITERAL:
+					$result .= " " . self::escape($token['token']);
+					break;
+				default:
+					$result .= " " . $token['token'];
+			}
+		}
+		$this->sql .= $result;
+		return $this;
+	}
+
 	/**
 	 * Chained function for describing an optionally windowed limit
 	 * @param int $limit maximum number of results to return
@@ -371,117 +364,6 @@ class Query {
 			$this->sql .= " order by " . self::column($columns) . " " . (strtolower($dir) == "desc" ? "desc" : "asc");
 		}
 		return $this;
-	}
-
-	/**
-	 * Chained function for describing the conditional
-	 * @param string $predicate the sql keyword preceding the full conditional clause
-	 * @param object $clause if a string than treated as a simple codition (i.e. x > 3) 
-	 * 						 if a query instance treated as a complex logic operation
-	 * @return Query instance for further chaining
-	 */
-	function conditional($predicate, $clause) {
-		if($clause instanceof Query) {
-			$this->sql .= " $predicate $clause";
-		} else {
-			$this->sql .= " $predicate " . self::comparison($clause);
-		}
-		return $this;
-	}
-	
-	/**
-	 * Alias for notClause
-	 * @see Query#notClause($clause)
-	 */
-	static function not($clause) {
-		return self::notClause($clause);
-	}
-	
-	/**
-	 * Alias for andClause
-	 * @see Query#andClause(...)
-	 */
-	static function conj() {
-		return call_user_func_array(array(__CLASS__, "andClause"), func_get_args());
-	}
-	
-	/**
-	 * Alias for orClause
-	 * @see Query#orClause(...) 
-	 */
-	static function union() {
-		return call_user_func_array(array(__CLASS__, "orClause"), func_get_args());
-	}
-	
-	/**
-	 * Produces the logical "not" conjunction 
-	 * @param object $clause if Query then evaluated, otherwise treated as a comparison expresssion
-	 * @return Query object containing the appropriate sql snippet
-	 */
-	static function notClause($clause) {
-		if($clause instanceof Query) {
-			$sql = " not($clause)";
-		} else {
-			$sql = " not(" . self::comparison($clause) . ")";
-		} 
-		return new Query($sql);
-	}
-	
-	/**
-	 * Produces the "and" part of a coditional conjunction
-	 * @return Query object containing the appropriate sql snippet
-	 */
-	static function andClause() {
-		return self::conjunction(' and ', func_get_args());
-	}
-	
-	/**
-	 * Produces the "or" part of a conditional conjunction
-	 * @return Query object containing the appropriate sql snippet
-	 */
-	static function orClause() {
-		return self::conjunction(' or ', func_get_args());
-	}
-	
-	/**
-	 * Generic conjunction generation function
-	 * @param string $glue Text to join conjunctions together with
-	 * @param array $args Arguments to join together
-	 * @return Query object containing the appropriate sql snippet
-	 */
-	static function conjunction($glue, $args) {
-		foreach($args as $arg) {
-			if($arg instanceof Query) {
-				$parts[] = "($arg)";
-			} else {
-				$parts[] = self::comparison($arg);
-			}
-		}
-		$sql .= implode($glue, $parts);
-		
-		return new Query($sql);
-	}
-	
-	/**
-	 * Properly escapes a comparison expression.
-	 * @param string $expression Generic comparison expression
-	 * @return string The properly escaped comparison expression
-	 * @example Query::parseComparison("a<1") => '`a` < "1"' (for mysql)
-	 */
-	static function comparison($expression) {
-		$operators = array('<=', ">=", "!=", "<>", "<", ">", "=", "LIKE");
-		foreach($operators as $op) {
-			if(stripos($expression, $op) !== false) {
-				if($op == "LIKE") {
-					$pos = stripos($expression, $op);
-					$parse[0] = substr($expression, 0, $pos);
-					$parse[1] = substr($expression, $pos + 4);					
-				} else { 
-					$parse = explode($op, $expression);
-				}
-				return self::safe($parse[0]) . ' ' . $op . ' ' . self::safe($parse[1]);
-			}
-		}
 	}
 
 	//Insert Statement Functions	
