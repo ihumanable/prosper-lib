@@ -14,6 +14,9 @@ class FrontBaseAdapter extends BaseAdapter {
 	function __construct($username, $password, $hostname, $schema) {
 		parent::__construct($username, $passwor, $hostname, $schema);
 		$this->connection = fbsql_connect($hostname, $username, $password);
+		if($schema != "") {
+			fbsql_select_db($schema, $this->connection);
+		}
 	}
 	
 	/**

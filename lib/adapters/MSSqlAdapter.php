@@ -17,6 +17,9 @@ class MSSqlAdapter extends BaseAdapter {
 	function __construct($username, $password, $hostname, $schema) {
 		parent::__construct($username, $password, $hostname, $schema);
 		$this->connection = mssql_connect($hostname, $username, $password);
+		if($schema != "") {
+			mssql_select_db($schema, $this->connection);
+		}
 	}
 	
 	/**
