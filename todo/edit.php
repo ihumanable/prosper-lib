@@ -4,7 +4,7 @@
 	
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		Query::update('todo')
-				 ->set(array('title' => $_POST['title']))
+				 ->set('title', $_POST['title'])
 				 ->where("id = '{$_POST['id']}'")
 				 ->execute();
 		

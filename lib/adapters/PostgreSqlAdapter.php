@@ -6,7 +6,7 @@ namespace Prosper;
  */
 class PostgreSqlAdapter extends BaseAdapter {
 	
-	private inserted_cols;
+	private $inserted_cols;
 	
 	/**
 	 * Creates a PostgreSQL Connection Adapter
@@ -38,10 +38,9 @@ class PostgreSqlAdapter extends BaseAdapter {
 	protected function platform_execute($sql, $mode) {
 		if($mode == Query::INSERT_STMT) {
 			$sql .= " RETURNING *";
-			$inserted_cols = explode('(', $sql)[1];
-			$inserted_cols = explode(')', $inserted_cols)[0];
-			$inserted_cols = explode(",", $inserted_cols)
-			$this->inserted_cols = array_map(trim, $inserted_cols);
+			$parse = explode('(', $sql);
+			$parse = explode(')', $parse[1]);
+			$this->inserted_cols = explode(", ", $parse[0]);
 		}
 		return pg_query($this->connection, $sql);
 	}

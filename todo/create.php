@@ -5,7 +5,7 @@
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		Query::insert()
 				 ->into('todo')
-				 ->values(array('title' => $_POST['title']))
+				 ->values('title', $_POST['title'])
 				 ->execute();
 		
 		header("Location: index.php");

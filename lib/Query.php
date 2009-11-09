@@ -253,12 +253,16 @@ class Query {
 	
 	/**
 	 * Chained function for describing the table to pull from
-	 * @param string $table table name
+	 * @param string $table_or_query table name or subquery
 	 * @param string $alias [optional] alias
 	 * @return Query instance for further chaining
 	 */
 	function from($table, $alias = "") {
-		$this->sql .= " from " . self::table($table) . self::alias($alias);
+		if($table_or_query instanceof Query) {
+			$this->sql .= " from (" . $table_or_query . ")" . self :: alias($alias);
+		} else {
+			$this->sql .= " from " . self::table($table) . self::alias($alias);
+		}
 		return $this;
 	}
 	
@@ -502,10 +506,20 @@ class Query {
 	
 	/**
 	 * Chained function for describing the columns and values for an insert statement
-	 * @param array $arr Array of values with column_name => insert_value
+	 * This function can optionally use the alternate calling method
+	 *  ->values(array("first_name" => "Matt", "last_name" => "Nowack"))
+	 *     evaluates identical to
+	 *  ->values("first_name", "Matt", "last_name", "Nowack");	 	 	 	 
+	 * @param array $v Array of values with column_name => insert_value
 	 * @return Query instance for further chaining
 	 */
-	function values($arr) {
+	function values($v) {
+		if(func_num_args() > 1) {
+			$arr = self::associate(func_get_args());
+		} else {
+			$arr = $v;
+		}
+		
 		foreach($arr as $key => $value) {
 			$columns[] = self::quote($key);
 			$values[] = self::escape($value);
@@ -529,10 +543,20 @@ class Query {
 	
 	/**
 	 * Chained function for describing the columns and values to set for an update statement
-	 * @param array $arr Array of values with column_name => update_value
+	 * This function can optionally use the alternate calling method
+	 *  ->set(array("first_name" => "Matt", "last_name" => "Nowack"))
+	 *     evaluates identical to 
+	 *  ->set("first_name", "Matt", "last_name", "Nowack");	 	 	 	 
+	 * @param array $values Array of values with column_name => update_value
 	 * @return Query instance for further chaining
 	 */
-	function set($arr) {
+	function set($values) {
+		if(func_num_args() > 1) {
+			$arr = self::associate(func_get_args());
+		}	else {
+			$arr = $values;
+		}
+		
 		$this->sql .= ' set ';
 		foreach($arr as $key => $value) {
 			$entries[] = self::quote($key) . "=" . self::escape($value);
@@ -558,12 +582,43 @@ class Query {
 	//Utility Functions
 	
 	/**
+	 * Given a flat array, creates an associative array of successive pairs.
+	 * Query::associate(array("key1", "value1", "key2", "value2")); 
+	 *  results in 
+	 * array (
+	 *   [key1] => value1,
+	 *   [key2] => value2
+	 * )
+	 * 
+	 * If array is odd numbered, the last value is null.
+	 * Query::associate(array("key1", "value1", "odd_man_out"));	 
+	 *  results in
+	 * array (
+	 *   [key1] => value1,
+	 *   [odd_man_out] => null
+	 * )
+	 *
+	 * This function is used to implement the alternative calling methodology	  
+	 *	 	 
+	 * @param array $source The array to create the associative array from 
+	 * @return array Associative array
+	 */	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	
+	static function associate($source) {
+		$limit = count($source);
+		for($i = 0; $i < $limit; $i += 2) {
+			$result[$source[$i]] = ($i + 1 < $limit ? $source[$i + 1] : null);
+		}
+		return $result;
+	}
+	
+	/**
 	 * Factory function to execute arbitrary native sql
 	 * @param string $sql Sql to create a query out of
+	 * @param string $mode Type of query, one of Query::DELETE_STMT, Query::INSERT_STMT, Query::SELECT_STMT, or Query::UPDATE_STMT	 
 	 * @return Native SQL Query Object
 	 */
-	static function native($sql) {
-		return new Query($sql);
+	static function native($sql, $mode) {
+		return new Query($sql, $mode);
 	}
 
 	/**
