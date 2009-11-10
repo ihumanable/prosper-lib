@@ -21,21 +21,6 @@
 			margin-right: auto;
 		}
 		
-		div#create { 
-			float: left;
-			margin-bottom: 10px;
-		}
-		
-		div#create img {
-			float: left;
-			margin-right: 5px;
-		}
-		
-		div#create div {
-			float: left;
-			margin-top: 2px;
-		}
-		
 		div#footer { 
 			float: right;
 			font-size: x-small;
@@ -53,6 +38,17 @@
 		.todo .item {
 			float: left;
 		}
+		
+		.todo .item img {
+			float: left;
+			padding-right: 10px;
+		}
+		
+		.todo .item div#create-label {
+			float: left;
+			padding-top: 2px;
+		}
+			
 		
 		.todo .controls {
 			float: right;

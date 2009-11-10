@@ -3,15 +3,6 @@
 	require_once 'config.php';
 	
 	include_once 'header.php';
-?>
-
-	<div id="create">
-		<a href="create.php">
-			<img src="img/create.png" alt="create todo"/> <div>create todo</div>
-		</a>
-	</div>
-	
-<?php
 	
 	//Ok pull out all of the todo items, stable order
 	$todos = Query::select()
@@ -30,13 +21,16 @@
 
 <?php
 		}
-	} else {
+	}
 ?>
 	<div class="todo">
-		<div class="item">No todos, try clicking <a href="create.php">create</a></div>
+		<div class="item">
+			<a href="create.php">
+				<img src="img/create.png" alt="create todo"/> <div id="create-label">create todo</div>
+			</a>
+		</div>
 	</div>
 <?php
-	}
 	
 	include_once 'footer.php';
 	

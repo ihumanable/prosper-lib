@@ -56,7 +56,7 @@ class Token {
 		$limit = strlen($source);
 		
 		for($i = 1; $i < $limit; ++$i) {
-			if(call_user_func_array(array(__CLASS__, $boundary_test), array($source[$i - 1], $source[$i]))) {
+			if(call_user_func_array(array(__CLASS__, $boundary_test), array($source[$i]))) {
 				//Boundary has been found
 				return $i;
 			}
@@ -80,7 +80,7 @@ class Token {
 		return $result;
 	}
 	
-	static function sql_entity_test($last, $char) {
+	static function sql_entity_test($char) {
 		return !( ctype_alnum($char) ||
 		          in_array($char, self::$allowed) );
 		         
@@ -104,7 +104,7 @@ class Token {
 		return $result;
 	}
 		
-	static function comparison_test($last, $char) {
+	static function comparison_test($char) {
 			return !in_array($char, self::$comparisons);
 	}	
 
@@ -114,8 +114,8 @@ class Token {
 		return $result;
 	}
 
-	static function literal_test($last, $char) {
-		return $char == self::$quote && $last != self::$escape;
+	static function literal_test($char) {
+		return $char == self::$quote;
 	}
 
 	static function literal_parse(&$source) {
