@@ -15,6 +15,7 @@ class Token {
 	const ARITHMETIC  = "ARITHMETIC";
 	const CONCATENATE = "CONCATENATE";
 	const BOOLEAN     = "BOOLEAN";
+	const MODULUS     = "MODULUS";
 	
 	static $whitespace = ' ';
 	static $quote = "'";
@@ -28,8 +29,8 @@ class Token {
 	static $comparisons = array('<', '>', '=', '!');
 	static $logical = array('and', 'or', 'not');
 	static $allowed = array('.', '_'); 
-	static $keywords = array('in', 'between');
-	static $arithmetic = array('+', '-', '*', '/', '%');
+	static $keywords = array('in', 'between', 'mod');
+	static $arithmetic = array('+', '-', '*', '/');
 	static $boolean = array('true', 'false');
 	
 	static function next(&$source) {
@@ -103,7 +104,11 @@ class Token {
 		} else if(strtolower($token) == self::$like_op) {
 			$result['type'] = self::COMPARISON;
 		} else if(in_array(strtolower($token), self::$keywords)) {
-			$result['type'] = self::KEYWORD;
+			if(strtolower($token) == 'mod') {
+				$result['type'] = self::MODULUS;
+			} else {
+				$result['type'] = self::KEYWORD;
+			}
 		} else if(in_array(strtolower($token), self::$boolean)) {
 			$result['type'] = self::BOOLEAN;
 		} else {

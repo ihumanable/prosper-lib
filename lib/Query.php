@@ -335,39 +335,51 @@ class Query {
 	 */	 	
 	function conditional($predicate, $clause, $args) {
 		$result = " $predicate";
-		$named = null;	
+		$named = $args[count($args) - 1];	
 		while($token = Token::next($clause)) {
-			switch($token['type']) {
-				case Token::BOOLEAN:
-					$result .= " " . (strtolower($token['token']) == 'true' ? self::true_value() : self::false_value());
-					break;
-				case Token::CLOSE_PAREN:
-					$result .= $token['token'];
-					break;
-				case Token::LITERAL:
-					$result .= " " . self::escape($token['token']);
-					break;
-				case Token::NAMED_PARAM:
-					if($named === null) {
-						$named = array_pop($args);
-					}
-					$result .= self::parameterize($named[substr($token['token'], 1)]);
-					break;
-				case Token::PARAMETER:
-					$result .= self::parameterize(array_shift($args));
-					break;
-				case Token::SQL_ENTITY:
-					$result .= " " . self::quote($token['token']);
-					break;
-				default:
-					$result .= " " . $token['token'];
-					break;
-			}
+			$result .= $this->process_token($clause, $token, $args, $named);
 		}
 		$this->sql .= $result;
 		return $this;
 	}
 
+	/**
+	 * Processes a token
+	 * @param string $clause sql string
+	 * @param array $token token array
+	 * @param array $args arguments
+	 * @param array $named associative array
+	 * @return tokenized string
+	 */
+	function process_token(&$clause, $token, &$args, $named) {
+		switch($token['type']) {
+			case Token::BOOLEAN:
+				return " " . (strtolower($token['token']) == 'true' ? self::true_value() : self::false_value());
+				break;
+			case Token::LITERAL:
+				return " " . self::escape($token['token']);
+				break;
+			case Token::MODULUS:
+				$func_args = $this->parse_func_args($clause, $args, $named);
+				if(count($func_args) == 2) {
+					return self::modulus($func_args[0], $func_args[1]);
+				}
+				break;
+			case Token::NAMED_PARAM:
+				return self::parameterize($named[substr($token['token'], 1)]);
+				break;
+			case Token::PARAMETER:
+				return self::parameterize(array_shift($args));
+				break;
+			case Token::SQL_ENTITY:
+				return " " . self::quote($token['token']);
+				break;
+			default:
+				return " " . $token['token'];
+				break;
+		}
+	}
+	
 	/**
 	 * Performs safe parameter interpolation
 	 * @param mixed $value Value to interpolate, can be an array (will be imploded with commas), a subquery, or a literal value.
@@ -375,7 +387,7 @@ class Query {
 	 */	 	
 	function parameterize($value) {
 		if(is_array($value)) {
-			return implode(', ', array_map(array(__CLASS__, "escape"), $value));
+			return " " . implode(', ', array_map(array(__CLASS__, "escape"), $value));
 		} else if($value instanceof Query) {
 			return " $value";
 		} else {
@@ -383,6 +395,50 @@ class Query {
 		}
 	}
 
+	/**
+	 * Parses sql function arguments into a php array
+	 * @param $clause sql clause to process
+	 * @param $args arguments used for interpolation
+	 * @param $named named interpolation arguments
+	 * @return array arguments
+	 */
+	function parse_func_args(&$clause, &$args, $named) {
+		$token = Token::next($clause);	
+		if($token['type'] == Token::OPEN_PAREN) {
+			$depth = 1;
+			$temp = "";
+			while($depth > 0) {
+				$token = Token::next($clause);
+				switch($token['type']) {
+					case Token::OPEN_PAREN:
+						$depth += 1;
+						$temp .= $this->process_token($clause, $token, $args, $named);
+						break;
+					case Token::CLOSE_PAREN:
+						$depth -= 1;
+						if($depth == 0) {
+							$result[] = $temp;
+						}
+						$temp .= $this->process_token($clause, $token, $args, $named);
+						break;
+					case Token::COMMA:
+						if($depth == 1) {
+							$result[] = $temp;
+							$temp = "";
+						}
+						break;
+					default:
+						$temp .= $this->process_token($clause, $token, $args, $named);
+						break;
+				}
+			}
+			return $result;
+		} else {
+			//Something is wrong -- return the processed token
+			return $this->process_token($clause, $tkn, $args, $named);
+		}
+	}
+	
 	/**
 	 * Chained function for describing an optionally windowed limit
 	 * @param int $limit maximum number of results to return
@@ -595,6 +651,16 @@ class Query {
 	 */	 	 	
 	static function false_value() {
 		return self::$adapter->false_value();
+	}
+	
+	/**
+	 * Get the platform specific modulus value
+	 * @param string $lhs left hand side snippet
+	 * @param string $rhs right hand side snippet
+	 * @return string modulus snippet
+	 */
+	static function modulus($lhs, $rhs) {
+		return self::$adapter->modulus($lhs, $rhs);
 	}
 	
 	//System Functions

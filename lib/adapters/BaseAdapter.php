@@ -172,5 +172,15 @@ abstract class BaseAdapter {
 	function false_value() {
 		return "FALSE";
 	}
+	
+	/**
+	 * Platform specific modulus function
+	 * @param string $lhs left hand side snippet
+	 * @param string $rhs right hand side snippet
+	 * @return string modulus snippet
+	 */
+	function modulus($lhs, $rhs) {
+		return " ($lhs % $rhs ) ";
+	}
 }
 ?>
