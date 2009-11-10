@@ -24,13 +24,13 @@ class Token {
 	static $open_paren = '(';
 	static $close_paren = ')';
 	static $concatenate = '|';
-	static $like_op = 'LIKE';
+	static $like_op = 'like';
 	static $comparisons = array('<', '>', '=', '!');
-	static $logical = array('AND', 'OR', 'NOT');
+	static $logical = array('and', 'or', 'not');
 	static $allowed = array('.', '_'); 
-	static $keywords = array('IN', 'BETWEEN');
+	static $keywords = array('in', 'between');
 	static $arithmetic = array('+', '-', '*', '/', '%');
-	static $boolean = array('TRUE', 'FALSE');
+	static $boolean = array('true', 'false');
 	
 	static function next(&$source) {
 		$source = ltrim($source);
@@ -98,13 +98,13 @@ class Token {
 	static function sql_entity_parse(&$source) { 
 		$token = self::parse_token($source, self::generic_parse($source, "sql_entity_test"));
 		
-		if(in_array(strtoupper($token), self::$logical)) {
+		if(in_array(strtolower($token), self::$logical)) {
 			$result['type'] = self::LOGICAL_OP;
-		} else if(strtoupper($token) == self::$like_op) {
+		} else if(strtolower($token) == self::$like_op) {
 			$result['type'] = self::COMPARISON;
-		} else if(in_array(strtoupper($token), self::$keywords)) {
+		} else if(in_array(strtolower($token), self::$keywords)) {
 			$result['type'] = self::KEYWORD;
-		} else if(in_array(strtoupper($token), self::$boolean)) {
+		} else if(in_array(strtolower($token), self::$boolean)) {
 			$result['type'] = self::BOOLEAN;
 		} else {
 			$result['type'] = self::SQL_ENTITY;

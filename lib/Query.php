@@ -324,6 +324,12 @@ class Query {
 		return $this->conditional('where', $clause, $args);
 	}
 
+	/**
+	 * Used by where and on to parse conditional strings, interpolating parameters,
+	 * quoting, escaping, and cross-platform replacements where needed
+	 * @param string $predicate result predicate, i.e. 'where' or 'on'
+	 * @param string $clause conditional clause	 	 	 	 
+	 */	 	
 	function conditional($predicate, $clause, $args) {
 		$result = " $predicate";
 		$named = null;	
@@ -333,29 +339,19 @@ class Query {
 					$result .= " " . self::quote($token['token']);
 					break;
 				case Token::BOOLEAN:
-					$result .= " " . ($token['token'] == 'TRUE' ? self::$adapter->truth() : self::$adapter->falsehood());
+					$result .= " " . (strtolower($token['token']) == 'true' ? self::$adapter->truth() : self::$adapter->falsehood());
 					break;
 				case Token::LITERAL:
 					$result .= " " . self::escape($token['token']);
 					break;
 				case Token::PARAMETER:
-					$value = array_shift($args);
-					if(is_array($value)) {
-						$result .= implode(', ', array_map(array(__CLASS__, "escape"), $value));
-					} else {
-						$result .= " " . self::escape($value);
-					}
+					$result .= self::parameterize(array_shift($args));
 					break;
 				case Token::NAMED_PARAM:
 					if($named === null) {
 						$named = array_pop($args);
 					}
-					$value = $named[$token['token']];
-					if(is_array($value)) {
-						$result .= implode(', ', array_map(array(__CLASS__, "escape"), $value));
-					} else {
-						$result .= " " . self::escape($value);
-					}
+					$result .= self::parameterize($named[substr($token['token'], 1)]);
 					break;
 				case Token::CLOSE_PAREN:
 					$result .= $token['token'];
@@ -367,6 +363,21 @@ class Query {
 		}
 		$this->sql .= $result;
 		return $this;
+	}
+
+	/**
+	 * Performs safe parameter interpolation
+	 * @param mixed $value Value to interpolate, can be an array (will be imploded with commas), a subquery, or a literal value.
+	 * @return string parameterized fragment	 	 
+	 */	 	
+	function parameterize($value) {
+		if(is_array($value)) {
+			return implode(', ', array_map(array(__CLASS__, "escape"), $value));
+		} else if($value instanceof Query) {
+			return " $value";
+		} else {
+			return " " . self::escape($value);
+		}
 	}
 
 	/**
@@ -421,25 +432,39 @@ class Query {
 	
 	/**
 	 * Chained function for describing the columns and values for an insert statement
-	 * This function can optionally use the alternate calling method
-	 *  ->values(array("first_name" => "Matt", "last_name" => "Nowack"))
-	 *     evaluates identical to
-	 *  ->values("first_name", "Matt", "last_name", "Nowack");	 	 	 	 
-	 * @param array $v Array of values with column_name => insert_value
+	 * This function takes an optional variadic argument for filtering the values
+	 * 	 Example:
+	 * 	   Assume we have a $_POST array where print_r($_POST) =>
+	 * 	    array ( 'first_name' => 'Matt',
+	 * 	            'last_name' => 'Nowack',
+	 * 	            'some_junk' => 'Not wanted' );
+	 * 	   ->values('first_name', 'last_name', $_POST) [read: values 'first_name', 'last_name' from $_POST]
+	 * 	     is identical to
+	 * 	   ->values(array('first_name' => $_POST['first_name'], 'last_name' => $_POST['last_name']))
+	 * @param variadic $filter [optional] list of elements to pull out of $values	 
+	 * @param array $values Array of values with column_name => insert_value
 	 * @return Query instance for further chaining
 	 */
-	function values($v) {
+	function values($values) {
 		if(func_num_args() > 1) {
-			$arr = self::associate(func_get_args());
+			$filters = func_get_args();
+			$values = array_pop($filters);			//Remove $values
+			foreach($filters as $filter) {
+				if(array_key_exists($filter, $values)) {
+					$cols[] = self::quote($filter);
+					$vals[] = self::escape($values[$filter]);
+				}
+			}
 		} else {
-			$arr = $v;
+			foreach($values as $key => $value) {
+				$cols[] = self::quote($key);
+				$vals[] = self::escape($value);
+			}
 		}
 		
-		foreach($arr as $key => $value) {
-			$columns[] = self::quote($key);
-			$values[] = self::escape($value);
+		if(is_array($cols) && is_array($vals)) {
+			$this->sql .= ' (' . implode(', ', $cols) . ') values (' . implode(', ', $vals) . ')';
 		}
-		$this->sql .= ' (' . implode(', ', $columns) . ') values (' . implode(', ', $values) . ')';
 		return $this;
 	}
 	
@@ -458,25 +483,39 @@ class Query {
 	
 	/**
 	 * Chained function for describing the columns and values to set for an update statement
-	 * This function can optionally use the alternate calling method
-	 *  ->set(array("first_name" => "Matt", "last_name" => "Nowack"))
-	 *     evaluates identical to 
-	 *  ->set("first_name", "Matt", "last_name", "Nowack");	 	 	 	 
+	 * This function takes an optional variadic argument for filtering the values
+	 * 	 Example:
+	 * 	   Assume we have a $_POST array where print_r($_POST) =>
+	 * 	    array ( 'id' => 1,
+	 * 	    		    'first_name' => 'Matt',
+	 * 	            'last_name' => 'Nowack' )
+	 * 	   ->set('first_name', 'last_name', $_POST) [read: set 'first_name', 'last_name' from $_POST]
+	 * 	     is identical to
+	 * 	   ->set(array('first_name' => $_POST['first_name'], 'last_name' => $_POST['last_name']))
+	 * @param variadic $filter [optional] list of elements to pull ovt of $values
 	 * @param array $values Array of values with column_name => update_value
 	 * @return Query instance for further chaining
 	 */
 	function set($values) {
 		if(func_num_args() > 1) {
-			$arr = self::associate(func_get_args());
+			$filters = func_get_args();
+			$values = array_pop($filters);		//Remove $values
+			foreach($filters as $filter) {
+				if(array_key_exists($filter, $values)) {
+					$arr[$filter] = $values[$filter];
+				}
+			}
 		}	else {
 			$arr = $values;
 		}
 		
 		$this->sql .= ' set ';
-		foreach($arr as $key => $value) {
-			$entries[] = self::quote($key) . "=" . self::escape($value);
+		if(is_array($arr)) {
+			foreach($arr as $key => $value) {
+				$entries[] = self::quote($key) . "=" . self::escape($value);
+			}
+			$this->sql .= implode(', ', $entries);
 		}
-		$this->sql .= implode(', ', $entries);
 		return $this;
 	}
 	
@@ -495,36 +534,6 @@ class Query {
 
 
 	//Utility Functions
-	
-	/**
-	 * Given a flat array, creates an associative array of successive pairs.
-	 * Query::associate(array("key1", "value1", "key2", "value2")); 
-	 *  results in 
-	 * array (
-	 *   [key1] => value1,
-	 *   [key2] => value2
-	 * )
-	 * 
-	 * If array is odd numbered, the last value is null.
-	 * Query::associate(array("key1", "value1", "odd_man_out"));	 
-	 *  results in
-	 * array (
-	 *   [key1] => value1,
-	 *   [odd_man_out] => null
-	 * )
-	 *
-	 * This function is used to implement the alternative calling methodology	  
-	 *	 	 
-	 * @param array $source The array to create the associative array from 
-	 * @return array Associative array
-	 */	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	
-	static function associate($source) {
-		$limit = count($source);
-		for($i = 0; $i < $limit; $i += 2) {
-			$result[$source[$i]] = ($i + 1 < $limit ? $source[$i + 1] : null);
-		}
-		return $result;
-	}
 	
 	/**
 	 * Factory function to execute arbitrary native sql

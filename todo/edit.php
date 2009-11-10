@@ -4,8 +4,8 @@
 	
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		Query::update('todo')
-				 ->set('title', $_POST['title'])
-				 ->where("id = '{$_POST['id']}'")
+				 ->set('title', $_POST)
+				 ->where("id = :id", $_POST)
 				 ->execute();
 		
 		header("Location: index.php");
@@ -14,7 +14,7 @@
 		
 		$todos = Query::select()
 									->from('todo')
-									->where("id = ?", $_GET['id'])
+									->where("id = :id", $_GET)
 									->execute();
 		$todo = $todos[0];
 ?>
