@@ -301,25 +301,36 @@ class Query {
 	/**
 	 * Chained function for describing the on clause
 	 * @param object $clause see below
+	 * @param variadic [optional] values to use for parameterization
 	 * @return Query instance for further chaining
 	 * @see Query#conditional($clause) for implementation details.
 	 */	
 	function on($clause) {
-		return $this->conditional('on', $clause);
+		$args = func_get_args();
+		array_shift($args);
+		return $this->conditional('on', $clause, $args);
 	}
 
 	/**
 	 * Chained function for describing the where clause
 	 * @param object $clause see below
+	 * @param variadic [optional] values to use for parameterization
 	 * @return Query instance for further chaining
 	 * @see Query#conditional($clause) for implementation details.
 	 */	
 	function where($clause) {
-		return $this->conditional('where', $clause);
+		$args = func_get_args();
+		array_shift($args);
+		return $this->conditional('where', $clause, $args);
 	}
 
-	function conditional($predicate, $clause) {
+	function conditional($predicate, $clause, $args) {
 		$result = " $predicate";
+		
+		if(is_array($args[count($args) - 1])) {
+			$named = array_pop($args);
+		}
+		
 		while($token = Token::next($clause)) {
 			switch($token['type']) {
 				case Token::SQL_ENTITY:
@@ -328,8 +339,15 @@ class Query {
 				case Token::LITERAL:
 					$result .= " " . self::escape($token['token']);
 					break;
+				case Token::PARAMETER:
+					$result .= " " . self::escape(array_shift($args));
+					break;
+				case Token::NAMED_PARAM:
+					$result .= " " . self::escape($named[$token['token']]);
+					break;
 				default:
 					$result .= " " . $token['token'];
+					break;
 			}
 		}
 		$this->sql .= $result;
