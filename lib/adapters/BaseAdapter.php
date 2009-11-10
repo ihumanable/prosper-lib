@@ -157,5 +157,20 @@ abstract class BaseAdapter {
 		return strtotime($timestamp);
 	}
 	
+	/**
+	 * Platform specific truth value
+	 * @return mixed truth value
+	 */
+	function truth() {
+		return "TRUE";
+	}
+	
+	/**
+	 * Platform specific false value
+	 * @return mixed false value
+	 */
+	function falsehood() {
+		return "FALSE";
+	}
 }
 ?>

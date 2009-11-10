@@ -332,6 +332,9 @@ class Query {
 				case Token::SQL_ENTITY:
 					$result .= " " . self::quote($token['token']);
 					break;
+				case Token::BOOLEAN:
+					$result .= " " . ($token['token'] == 'TRUE' ? self::$adapter->truth() : self::$adapter->falsehood());
+					break;
 				case Token::LITERAL:
 					$result .= " " . self::escape($token['token']);
 					break;

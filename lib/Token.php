@@ -12,19 +12,25 @@ class Token {
 	const NAMED_PARAM = "NAMED_PARAM";
 	const COMMA       = "COMMA";
 	const KEYWORD     = "KEYWORD";
+	const ARITHMETIC  = "ARITHMETIC";
+	const CONCATENATE = "CONCATENATE";
+	const BOOLEAN     = "BOOLEAN";
 	
 	static $whitespace = ' ';
 	static $quote = "'";
-	static $comma = ",";
-	static $parameter = "?";
-	static $named_param = ":";
+	static $comma = ',';
+	static $parameter = '?';
+	static $named_param = ':';
 	static $open_paren = '(';
 	static $close_paren = ')';
+	static $concatenate = '|';
 	static $like_op = 'LIKE';
 	static $comparisons = array('<', '>', '=', '!');
 	static $logical = array('AND', 'OR', 'NOT');
 	static $allowed = array('.', '_'); 
-	static $keywords = array("IN", "BETWEEN");
+	static $keywords = array('IN', 'BETWEEN');
+	static $arithmetic = array('+', '-', '*', '/', '%');
+	static $boolean = array('TRUE', 'FALSE');
 	
 	static function next(&$source) {
 		$source = ltrim($source);
@@ -38,8 +44,12 @@ class Token {
 			return self::literal_parse($source);
 		} else if($sample == self::$named_param) {
 			return self::named_param_parse($source);		
+		} else if($sample == self::$concatenate) {
+			return self::concatenate_parse($source);
 		} else if($sample == self::$parameter) {
 			return self::parse_char($source, self::PARAMETER);
+		} else if(in_array($sample, self::$arithmetic)) {
+			return self::parse_char($source, self::ARITHMETIC);
 		} else if($sample == self::$open_paren) {
 			return self::parse_char($source, self::OPEN_PAREN);
 		} else if($sample == self::$close_paren) {
@@ -49,7 +59,6 @@ class Token {
 		}
 		
 		return false;
-		
 	}
 	
 	static function generic_parse($source, $boundary_test) {
@@ -95,6 +104,8 @@ class Token {
 			$result['type'] = self::COMPARISON;
 		} else if(in_array(strtoupper($token), self::$keywords)) {
 			$result['type'] = self::KEYWORD;
+		} else if(in_array(strtoupper($token), self::$boolean)) {
+			$result['type'] = self::BOOLEAN;
 		} else {
 			$result['type'] = self::SQL_ENTITY;
 		}
@@ -113,7 +124,7 @@ class Token {
 		$result['token'] = self::parse_token($source, self::generic_parse($source, "comparison_test"));
 		return $result;
 	}
-
+	
 	static function literal_test($char) {
 		return $char == self::$quote;
 	}
@@ -130,6 +141,16 @@ class Token {
 		return $result;
 	}
 
+	static function concatenate_test($char) {
+		return $char != self::$concatenate;
+	}
+	
+	static function concatenate_parse(&$source) {
+		$result['type'] = self::CONCATENATE;
+		$result['token'] = self::parse_token($source, self::generic_parse($source, "concatenate_test"));
+		return $result;
+	}
+	
 }
 
 

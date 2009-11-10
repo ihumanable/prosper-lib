@@ -120,6 +120,20 @@ class MSSqlAdapter extends BaseAdapter {
 		}
 		return $sql;
 	}
+
+	/**
+	 * @see BaseAdapter#truth()
+	 */
+	function truth() {
+		return "'1'";
+	}
+	
+	/**
+	 * @see BaseAdapter#falsehood()
+	 */
+	function falsehood() {
+		return "'0'";
+	}
 }
 
 ?>
