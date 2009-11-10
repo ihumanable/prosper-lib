@@ -66,6 +66,9 @@ class Query {
 			case 'mysql':
 				$adapter .= "MySqlAdapter";
 				break;
+			case 'oracle':
+				$adapter .= "OracleAdapter";
+				break;
 			case 'ovrimos':
 				$adapter .= "OvrimosAdapter";
 				break;
@@ -335,17 +338,14 @@ class Query {
 		$named = null;	
 		while($token = Token::next($clause)) {
 			switch($token['type']) {
-				case Token::SQL_ENTITY:
-					$result .= " " . self::quote($token['token']);
-					break;
 				case Token::BOOLEAN:
 					$result .= " " . (strtolower($token['token']) == 'true' ? self::true_value() : self::false_value());
 					break;
+				case Token::CLOSE_PAREN:
+					$result .= $token['token'];
+					break;
 				case Token::LITERAL:
 					$result .= " " . self::escape($token['token']);
-					break;
-				case Token::PARAMETER:
-					$result .= self::parameterize(array_shift($args));
 					break;
 				case Token::NAMED_PARAM:
 					if($named === null) {
@@ -353,8 +353,11 @@ class Query {
 					}
 					$result .= self::parameterize($named[substr($token['token'], 1)]);
 					break;
-				case Token::CLOSE_PAREN:
-					$result .= $token['token'];
+				case Token::PARAMETER:
+					$result .= self::parameterize(array_shift($args));
+					break;
+				case Token::SQL_ENTITY:
+					$result .= " " . self::quote($token['token']);
 					break;
 				default:
 					$result .= " " . $token['token'];
