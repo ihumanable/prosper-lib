@@ -339,7 +339,7 @@ class Query {
 					$result .= " " . self::quote($token['token']);
 					break;
 				case Token::BOOLEAN:
-					$result .= " " . (strtolower($token['token']) == 'true' ? self::$adapter->truth() : self::$adapter->falsehood());
+					$result .= " " . (strtolower($token['token']) == 'true' ? self::true_value() : self::false_value());
 					break;
 				case Token::LITERAL:
 					$result .= " " . self::escape($token['token']);
@@ -576,6 +576,22 @@ class Query {
 	 */	 
 	static function mktime($timestamp) {
 		return self::$adapter->mktime($timestamp);
+	}
+	
+	/**
+	 * Get the platform specific true value
+	 * @return mixed Boolean True Value ex: 1 or TRUE
+	 */	 	
+	static function true_value() {
+		return self::$adapter->true_value();
+	}
+	
+	/**
+	 * Get the platform specific false value
+	 * @return mixed Boolean False Value ex: 0 or FALSE
+	 */	 	 	
+	static function false_value() {
+		return self::$adapter->false_value();
 	}
 	
 	//System Functions

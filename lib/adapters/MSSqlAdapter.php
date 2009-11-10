@@ -122,16 +122,16 @@ class MSSqlAdapter extends BaseAdapter {
 	}
 
 	/**
-	 * @see BaseAdapter#truth()
+	 * @see BaseAdapter#true_value()
 	 */
-	function truth() {
+	function true_value() {
 		return "'1'";
 	}
 	
 	/**
-	 * @see BaseAdapter#falsehood()
+	 * @see BaseAdapter#false_value()
 	 */
-	function falsehood() {
+	function false_value() {
 		return "'0'";
 	}
 }

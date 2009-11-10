@@ -158,10 +158,10 @@ abstract class BaseAdapter {
 	}
 	
 	/**
-	 * Platform specific truth value
+	 * Platform specific true value
 	 * @return mixed truth value
 	 */
-	function truth() {
+	function true_value() {
 		return "TRUE";
 	}
 	
@@ -169,7 +169,7 @@ abstract class BaseAdapter {
 	 * Platform specific false value
 	 * @return mixed false value
 	 */
-	function falsehood() {
+	function false_value() {
 		return "FALSE";
 	}
 }
