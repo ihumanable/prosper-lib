@@ -10,9 +10,12 @@ class Token {
 	const LITERAL     = "LITERAL";
 	const PARAMETER   = "PARAMETER";
 	const NAMED_PARAM = "NAMED_PARAM";
+	const COMMA       = "COMMA";
+	const KEYWORD     = "KEYWORD";
 	
 	static $whitespace = ' ';
 	static $quote = "'";
+	static $comma = ",";
 	static $parameter = "?";
 	static $named_param = ":";
 	static $open_paren = '(';
@@ -21,6 +24,7 @@ class Token {
 	static $comparisons = array('<', '>', '=', '!');
 	static $logical = array('AND', 'OR', 'NOT');
 	static $allowed = array('.', '_'); 
+	static $keywords = array("IN", "BETWEEN");
 	
 	static function next(&$source) {
 		$source = ltrim($source);
@@ -35,15 +39,13 @@ class Token {
 		} else if($sample == self::$named_param) {
 			return self::named_param_parse($source);		
 		} else if($sample == self::$parameter) {
-			$result['type'] = self::PARAMETER;
-			$result['token'] = $sample;
-			$source = substr($source, 1);
-			return $result;
-		} else if($sample == self::$open_paren || $sample == self::$close_paren) {
-			$result['type'] = ($sample == self::$open_paren ? self::OPEN_PAREN : self::CLOSE_PAREN);
-			$result['token'] = $sample;
-			$source = substr($source, 1);
-			return $result;
+			return self::parse_char($source, self::PARAMETER);
+		} else if($sample == self::$open_paren) {
+			return self::parse_char($source, self::OPEN_PAREN);
+		} else if($sample == self::$close_paren) {
+			return self::parse_char($source, self::CLOSE_PAREN);
+		} else if($sample == self::$comma) {
+			return self::parse_char($source, self::COMMA);
 		}
 		
 		return false;
@@ -70,6 +72,13 @@ class Token {
 		$source = substr($source, $position);
 		return $token;
 	}
+
+	static function parse_char(&$source, $type) {
+		$result['type'] = $type;
+		$result['token'] = substr($source, 0, 1);
+		$source = substr($source, 1);
+		return $result;
+	}
 	
 	static function sql_entity_test($last, $char) {
 		return !( ctype_alnum($char) ||
@@ -84,6 +93,8 @@ class Token {
 			$result['type'] = self::LOGICAL_OP;
 		} else if(strtoupper($token) == self::$like_op) {
 			$result['type'] = self::COMPARISON;
+		} else if(in_array(strtoupper($token), self::$keywords)) {
+			$result['type'] = self::KEYWORD;
 		} else {
 			$result['type'] = self::SQL_ENTITY;
 		}

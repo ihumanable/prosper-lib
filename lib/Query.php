@@ -326,11 +326,7 @@ class Query {
 
 	function conditional($predicate, $clause, $args) {
 		$result = " $predicate";
-		
-		if(is_array($args[count($args) - 1])) {
-			$named = array_pop($args);
-		}
-		
+		$named = null;	
 		while($token = Token::next($clause)) {
 			switch($token['type']) {
 				case Token::SQL_ENTITY:
@@ -340,10 +336,26 @@ class Query {
 					$result .= " " . self::escape($token['token']);
 					break;
 				case Token::PARAMETER:
-					$result .= " " . self::escape(array_shift($args));
+					$value = array_shift($args);
+					if(is_array($value)) {
+						$result .= implode(', ', array_map(array(__CLASS__, "escape"), $value));
+					} else {
+						$result .= " " . self::escape($value);
+					}
 					break;
 				case Token::NAMED_PARAM:
-					$result .= " " . self::escape($named[$token['token']]);
+					if($named === null) {
+						$named = array_pop($args);
+					}
+					$value = $named[$token['token']];
+					if(is_array($value)) {
+						$result .= implode(', ', array_map(array(__CLASS__, "escape"), $value));
+					} else {
+						$result .= " " . self::escape($value);
+					}
+					break;
+				case Token::CLOSE_PAREN:
+					$result .= $token['token'];
 					break;
 				default:
 					$result .= " " . $token['token'];

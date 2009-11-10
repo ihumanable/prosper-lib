@@ -14,7 +14,7 @@
 		
 		$todos = Query::select()
 									->from('todo')
-									->where("id = '{$_GET['id']}'")
+									->where("id = ?", $_GET['id'])
 									->execute();
 		$todo = $todos[0];
 ?>

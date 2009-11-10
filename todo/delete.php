@@ -7,7 +7,7 @@
 		//Delete the todo and redirect
 		Query::delete()
 				 ->from('todo')
-				 ->where("id = '{$_POST['id']}'")
+				 ->where("id = ?", $_POST['id'])
 				 ->execute();
 		header("Location: index.php");
 	} else {
@@ -15,7 +15,7 @@
 		
 		$todos = Query::select()
 									->from('todo')
-									->where("id = '{$_GET['id']}'")
+									->where("id = ?", $_GET['id'])
 									->execute();
 									
 		$todo = $todos[0];
