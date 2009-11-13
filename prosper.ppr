@@ -10,7 +10,9 @@ DontOpen=0
 FileFormat=0
 [Project tree]
 prosper
-	+lib
+	+doc
+		doc\index.html
+	-lib
 		+adapters
 			lib\adapters\_all_.php
 			lib\adapters\_common_.php
@@ -42,34 +44,14 @@ prosper
 		todo\header.php
 		todo\index.php
 [Open project files]
-0=todo\create.php
-1=todo\delete.php
-2=todo\edit.php
-3=lib\Query.php
-4=lib\adapters\BaseAdapter.php
-5=lib\adapters\MSSqlAdapter.php
-6=lib\adapters\SqliteAdapter.php
+0=..\twitter\index.php
+1=..\twitter\lib\PublicTwitter.php
 [Selected Project Files]
 Main=
-Selected=lib\Query.php
-[todo\create.php]
+Selected=..\twitter\lib\PublicTwitter.php
+[..\twitter\index.php]
 TopLine=1
-Caret=18,9
-[todo\delete.php]
-TopLine=1
-Caret=1,1
-[todo\edit.php]
-TopLine=1
-Caret=18,9
-[lib\Query.php]
-TopLine=343
-Caret=5,365
-[lib\adapters\BaseAdapter.php]
-TopLine=114
-Caret=22,172
-[lib\adapters\MSSqlAdapter.php]
-TopLine=77
-Caret=33,132
-[lib\adapters\SqliteAdapter.php]
-TopLine=9
-Caret=22,66
+Caret=2,18
+[..\twitter\lib\PublicTwitter.php]
+TopLine=15
+Caret=3,59
