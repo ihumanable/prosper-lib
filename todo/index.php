@@ -4,7 +4,7 @@
 	
 	include_once 'header.php';
 	
-	//Ok pull out all of the todo items, stable order
+	//Pull out all of the todo items, stable order
 	$todos = Query::select()
 	 							->from('todo')
 								->order('id')

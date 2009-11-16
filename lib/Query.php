@@ -670,7 +670,8 @@ class Query {
 	 * SELECT returns a result array
 	 * UPDATE returns affected row count
 	 * INSERT returns last insert id
-	 * DELETE returns affected row count	 	 
+	 * DELETE returns affected row count
+	 * @return a flat result set	 	 
 	 */	 	
 	function execute() {
 		return self::$adapter->execute($this->sql, $this->mode);
@@ -678,14 +679,14 @@ class Query {
 
 	/**
 	 * Prints the query and the result of the query 
-	 * @param boolean $output [optional] defaults to true, if true automatically echoes result	 
+	 * @return the same result set as Query#execute()
 	 */	 	
-	function verbose($output = true) {
-		$result =  '<pre class="brush: sql">' . $this->sql . "</pre>";
-		$result .= '<pre class="brush: php">' . print_r($this->execute(), true) . "</pre>";
-		if($output) {
-			echo $result;
-		} 
+	function verbose() {
+		echo '<pre class="brush: sql">' . $this->sql . "</pre>";
+		$result = $this->execute();
+		echo '<pre class="brush: php">';
+			print_r($result);
+		echo "</pre>";
 		return $result;
 	}
 	
