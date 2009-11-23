@@ -19,6 +19,7 @@ class Query {
   const MSQL_MODE      = "MSqlAdapter";
   const MSSQL_MODE     = "MSSqlAdapter";
   const MYSQL_MODE     = "MySqlAdapter";
+  const MYSQL_OLD_MODE = "MySqlOldAdapter";
   const ORACLE_MODE    = "OracleAdapter";
   const OVRIMOS_MODE   = "OvrimosAdapter";
   const PARADOX_MODE   = "ParadoxAdapter";
@@ -244,6 +245,14 @@ class Query {
 	 */
 	static function is_mysql() {
     return self::db_mode() == MYSQL_MODE;
+  }                                       
+  
+  /**
+	 * Convenience function to check if the configuration is MySql Old
+	 * @return true if configured for MySql Old, false otherwise
+	 */
+	static function is_mysql_old() {
+    return self::db_mode() == MYSQL_OLD_MODE;
   }                                       
           
 	/**

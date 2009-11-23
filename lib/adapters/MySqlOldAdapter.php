@@ -2,9 +2,9 @@
 namespace Prosper;
 
 /**
- * MySql Database Adapter
+ * MySql Old Database Adapter
  */
-class MySqlAdapter extends BaseAdapter {
+class MySqlOldAdapter extends BaseAdapter {
 	
 	/**
 	 * Creates a MySQL Connection Adapter
@@ -16,49 +16,52 @@ class MySqlAdapter extends BaseAdapter {
 	 */
 	function __construct($username, $password, $hostname, $schema) {
 		parent::__construct($username, $password, $hostname, $schema);
-		$this->connection = new \mysqli($hostname, $username, $password, $schema);
+		$this->connection = mysql_connect($hostname, $username, $password);
+		if($schema != "") {
+      mysql_select_db($schema, $this->connection);
+    }
 	}
 	
 	/**
 	 * Clean up, destroy the connection
 	 */
 	function __destruct() {
-		$this->connection->close();
+		mysql_close($this->connection);
 	}
 	
 	/**
 	 * @see BaseAdapter#platform_execute($sql, $mode) 
 	 */
 	protected function platform_execute($sql, $mode) {
-		return $this->connection->query($sql);
+		return mysql_query($sql, $this->connection);
 	}
 	
 	/**
 	 * @see BaseAdapter#affected_rows($set) 
 	 */
 	protected function affected_rows($set) {
-		return $this->connection->affected_rows;
+		return mysql_affected_rows($this->connection);
 	}
 	
 	/**
 	 * @see BaseAdapter#insert_id($set)
 	 */
 	protected function insert_id($set) {
-		return $this->connection->insert_id;
+		return mysql_insert_id($this->connection);
 	}
 	
 	/**
 	 * @see BaseAdapter#fetch_assoc($set)
 	 */
 	protected function fetch_assoc($set) {
-		return $set->fetch_array(MYSQLI_ASSOC);
+		return mysql_fetch_assoc($set);
 	}
 	
 	/**
 	 * @see BaseAdapter#cleanup($set)
 	 */   	
 	protected function cleanup($set) {
-    $set->close();
+    mysql_free_result($set);
   }
 	
 }
