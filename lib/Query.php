@@ -4,15 +4,33 @@ namespace Prosper;
 require_once 'Token.php';
 
 class Query {
+  //Statement Types
 	const DELETE_STMT = "DELETE_STMT";
 	const INSERT_STMT = "INSERT_STMT";
 	const SELECT_STMT = "SELECT_STMT";
 	const UPDATE_STMT = "UPDATE_STMT";
+  //SQL Modes
+  const DB2_MODE       = "DB2Adapter";
+  const FIREBIRD_MODE  = "FirebirdAdapter";
+	const FRONTBASE_MODE = "FrontBaseAdapter";
+  const INFORMIX_MODE  = "InformixAdapter";
+  const INGRES_MODE    = "IngresAdapter";
+  const MAXDB_MODE     = "MaxDBAdapter";
+  const MSQL_MODE      = "MSqlAdapter";
+  const MSSQL_MODE     = "MSSqlAdapter";
+  const MYSQL_MODE     = "MySqlAdapter";
+  const ORACLE_MODE    = "OracleAdapter";
+  const OVRIMOS_MODE   = "OvrimosAdapter";
+  const PARADOX_MODE   = "ParadoxAdapter";
+  const POSTGRE_MODE   = "PostgreAdapter";
+  const SQLITE_MODE    = "SqliteAdapter";
+  const SYBASE_MODE    = "SybaseAdapter";
 	
 	private $mode;
 	private $sql;
 	private static $adapter;
 	private static $schema;
+	private static $db_mode;
 	
 	/**
 	 * Private constructor used by factory methods
@@ -26,70 +44,16 @@ class Query {
 	
 	/**
 	 * Set up Prosper Query Engine
-	 * @param string $type [optional] Database type, mysql, mssql, pgsql (postgre), and sqlite accepted, defaults to mysql.
+	 * @param string $type [optional] Database type, use one of the [DATABASE]_MODE constants.
 	 * @param string $username [optional] Database username, defaults to nothing
 	 * @param string $password [optional] Database password, defaults to nothing
 	 * @param string $schema [optional] Default schema to apply to queries
 	 * @return null
 	 */
-	static function configure($type = "mysql", $username = "", $password = "", $hostname = "", $schema = "") {
-		$adapter = "Prosper\\";
-		switch(trim(strtolower($type))) {
-			case 'db2':
-				$adapter .= "DB2Adapter";
-				break;
-			case 'firebird':
-			case 'ibase':
-				$adapter .= "FirebirdAdapter";
-				break;
-			case 'frontbase':
-			case 'fbsql':
-				$adapter .= "FrontBaseAdapter";
-				break;
-			case 'informix':
-			case 'ifxsql':
-			case 'ifx':
-				$adapter .= "InformixAdapter";
-				break;
-			case 'ingres':
-				$adapter .= "IngresAdapter";
-				break;
-			case 'maxdb':
-				$adapter .= "MaxDBAdapter";
-				break; 
-			case 'msql':
-				$adapter .= "MSqlAdapter";
-				break;
-			case 'mssql':
-				$adapter .= "MSSqlAdapter";
-				break;
-			case 'mysql':
-				$adapter .= "MySqlAdapter";
-				break;
-			case 'oracle':
-				$adapter .= "OracleAdapter";
-				break;
-			case 'ovrimos':
-				$adapter .= "OvrimosAdapter";
-				break;
-			case 'paradox':
-				$adapter .= "ParadoxAdapter";
-				break;
-			case 'pgsql':
-			case 'postgre':
-				$adapter .= "PostgreSqlAdapter";
-				break;
-			case 'sqlite':
-				$adapter .= "SqliteAdapter";
-				break;
-			case 'sybase':
-				$adapter .= "SybaseAdapter";
-				break;
-			default:
-				$adapter .= "MySqlAdapter";
-				break;
-		}		
-		self::$adapter = new $adapter($username, $password, $hostname, $schema);
+	static function configure($type = MYSQL_MODE, $username = "", $password = "", $hostname = "", $schema = "") {
+		$adapter = "Prosper\\$type";
+    self::$db_mode = $type;
+    self::$adapter = new $adapter($username, $password, $hostname, $schema);
 		self::$schema = ($schema == "" ? "" : self::quote($schema));
 	} 
 
@@ -200,6 +164,134 @@ class Query {
 		return ($str[0] == "'" && $str[strlen($str) - 1] == "'");
 	}
 	
+	/**
+	 * Returns the current database mode, see the family of is_[DATABASE] 
+	 * functions that use this function	 
+	 * @return string one of the [DATABASE]_MODE constants	 
+	 */      	
+	static function db_mode() {
+    return self::$db_mode;
+  }
+	
+	/**
+	 * Convenience function to check if the configuration is DB2
+	 * @return true if configured for DB2, false otherwise
+	 */      	
+	static function is_db2() {
+    return self::db_mode() == DB2_MODE;
+  }
+  
+  /**
+	 * Convenience function to check if the configuration is Firebird
+	 * @return true if configured for Firebird, false otherwise
+	 */
+  static function is_firebird() {
+    return self::db_mode() == FIREBIRD_MODE;
+  }
+	
+	/**
+	 * Convenience function to check if the configuration is FrontBase
+	 * @return true if configured for FrontBase, false otherwise
+	 */
+	static function is_frontbase() {
+    return self::db_mode() == FRONTBASE_MODE;
+  }
+	
+	/**
+	 * Convenience function to check if the configuration is Informix
+	 * @return true if configured for Informix, false otherwise
+	 */
+	static function is_informix() {
+    return self::db_mode() == INFORMIX_MODE;
+  }
+	
+	/**
+	 * Convenience function to check if the configuration is Ingres
+	 * @return true if configured for Ingres, false otherwise
+	 */
+	static function is_ingres() {
+    return self::db_mode() == INGRES_MODE;
+  }                                       
+	
+	/**
+	 * Convenience function to check if the configuration is MaxDB
+	 * @return true if configured for MaxDB, false otherwise
+	 */
+	static function is_maxdb() {
+    return self::db_mode() == MAXDB_MODE;
+  }                                       
+	
+	/**
+	 * Convenience function to check if the configuration is MSql
+	 * @return true if configured for MSql, false otherwise
+	 */
+	static function is_msql() {
+    return self::db_mode() == MSQL_MODE;
+  }                               
+  
+  /**
+	 * Convenience function to check if the configuration is MSSql
+	 * @return true if configured for MSSql, false otherwise
+	 */
+	static function is_mssql() {
+    return self::db_mode() == MSSQL_MODE;
+  }                                       
+  
+  /**
+	 * Convenience function to check if the configuration is MySql
+	 * @return true if configured for MySql, false otherwise
+	 */
+	static function is_mysql() {
+    return self::db_mode() == MYSQL_MODE;
+  }                                       
+          
+	/**
+	 * Convenience function to check if the configuration is Oracle
+	 * @return true if configured for Oracle, false otherwise
+	 */
+	static function is_oracle() {
+    return self::db_mode() == ORACLE_MODE;
+  }                                       
+	
+	/**
+	 * Convenience function to check if the configuration is Ovrimos
+	 * @return true if configured for Ovrimos, false otherwise
+	 */
+	static function is_ovrimos() {
+    return self::db_mode() == OVRIMOS_MODE;
+  }                                  
+  
+  /**
+	 * Convenience function to check if the configuration is Paradox
+	 * @return true if configured for Paradox, false otherwise
+	 */
+	static function is_paradox() {
+    return self::db_mode() == PARADOX_MODE;
+  }                                            
+	
+	/**
+	 * Convenience function to check if the configuration is Postgre
+	 * @return true if configured for Postgre, false otherwise
+	 */
+	static function is_postgre() {
+    return self::db_mode() == POSTGRE_MODE;
+  }                                       
+	
+	/**
+	 * Convenience function to check if the configuration is Sqlite
+	 * @return true if configured for Sqlite, false otherwise
+	 */
+	static function is_sqlite() {
+    return self::db_mode() == SQLITE_MODE;
+  }                                       
+	
+	/**
+	 * Convenience function to check if the configuration is Sybase
+	 * @return true if configured for Sybase, false otherwise
+	 */
+	static function is_sybase() {
+    return self::db_mode() == SYBASE_MODE;
+  }                                       
 	
 	//Select Statement Functions
 	
