@@ -1,5 +1,4 @@
 [Config]
-Relative path=1
 Compilator.SaveAll=0
 Compilator.Capture=0
 Compilator.HideOutput=0
@@ -7,12 +6,14 @@ Compilator.LogType=0
 DefaultCPIndex=0
 LogtoEnd=1
 DontOpen=0
+AbsolutePath=0
 FileFormat=0
+ProjectFilesOnly=0
 [Project tree]
 prosper
-	+doc
+	-doc
 		doc\index.html
-	-lib
+	+lib
 		+adapters
 			lib\adapters\_all_.php
 			lib\adapters\_common_.php
@@ -44,14 +45,14 @@ prosper
 		todo\header.php
 		todo\index.php
 [Open project files]
-0=..\twitter\index.php
-1=..\twitter\lib\PublicTwitter.php
+0=lib\Query.php
+1=todo\config.php
 [Selected Project Files]
 Main=
-Selected=..\twitter\lib\PublicTwitter.php
-[..\twitter\index.php]
+Selected=lib\Query.php
+[lib\Query.php]
+TopLine=27
+Caret=49,28
+[todo\config.php]
 TopLine=1
-Caret=2,18
-[..\twitter\lib\PublicTwitter.php]
-TopLine=15
-Caret=3,59
+Caret=36,6
