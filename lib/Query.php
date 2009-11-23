@@ -44,16 +44,16 @@ class Query {
 	
 	/**
 	 * Set up Prosper Query Engine
-	 * @param string $mode [optional] Database mode, use one of the [DATABASE]_MODE constants.
+	 * @param string $db_mode [optional] Database mode, use one of the [DATABASE]_MODE constants.
    * @param string $username [optional] Database username, defaults to nothing
 	 * @param string $password [optional] Database password, defaults to nothing
 	 * @param string $hostname [optional] Database hostname	 
 	 * @param string $schema [optional] Default schema to apply to queries	 
 	 * @return null
 	 */
-	static function configure($mode = MYSQL_MODE, $username = "", $password = "", $hostname = "", $schema = "") {
-		$adapter = "Prosper\\$mode";
-    self::$db_mode = $mode;
+	static function configure($db_mode = MYSQL_MODE, $username = "", $password = "", $hostname = "", $schema = "") {
+		$adapter = "Prosper\\$db_mode";
+    self::$db_mode = $db_mode;
     self::$adapter = new $adapter($username, $password, $hostname, $schema);
 		self::$schema = ($schema == "" ? "" : self::quote($schema));
 	} 
