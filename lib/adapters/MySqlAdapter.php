@@ -58,7 +58,9 @@ class MySqlAdapter extends BaseAdapter {
 	 * @see BaseAdapter#cleanup($set)
 	 */   	
 	protected function cleanup($set) {
-    $set->close();
+    if($set instanceof mysqli_result) {
+      $set->close();
+    }
   }
 	
 }

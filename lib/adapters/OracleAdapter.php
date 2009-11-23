@@ -58,14 +58,14 @@ class OracleAdapter extends BaseAdapter {
 	/**
 	 * @see BaseAdapter#truth()
 	 */
-	function truth() {
+	function true_value() {
 		return "1";
 	}
 	
 	/**
 	 * @see BaseAdapter#falsehood()
 	 */
-	function falsehood() {
+	function false_value() {
 		return "0";
 	}
 	

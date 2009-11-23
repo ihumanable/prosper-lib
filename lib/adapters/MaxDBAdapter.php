@@ -55,7 +55,9 @@ class MaxDBAdapter extends BaseAdapter {
 	 * @see BaseAdapter#cleanup($set) 
 	 */
 	function cleanup($set) {
-		$set->free();
+		if($set instanceof maxdb_result) {
+      $set->free();
+    }
 	}
 	
 }

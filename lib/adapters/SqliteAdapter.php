@@ -53,6 +53,15 @@ class SqliteAdapter extends BaseAdapter {
 		return $set->fetchArray(SQLITE3_ASSOC);
 	}
 
+  /**
+   * @see BaseAdapter#cleanup($set)
+   */     
+  protected function cleanup($set) {
+    if($set instanceof SQLite3Result) {
+      $set->finalize();
+    }
+  }
+
 	/**
 	 * @see BaseAdapter#true_value()
 	 */
