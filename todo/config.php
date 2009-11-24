@@ -1,7 +1,9 @@
 <?php
 	namespace Prosper;
-	require_once '../lib/adapters/_all_.php';
-	require_once '../lib/Query.php';
+	define('PROSPER_PATH', '../lib/');
+	
+	require_once PROSPER_PATH . 'adapters/_common_.php';
+	require_once PROSPER_PATH . 'Query.php';
 
 	Query::configure(Query::MYSQL_MODE, 'root', 'xamppdevpwd', 'localhost', 'test');
 
