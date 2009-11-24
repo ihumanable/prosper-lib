@@ -14,10 +14,21 @@ PHP 5.3+
 
 ## backends ##
 
-
-- MySQL
-- SQLite
-
+- DB2
+- Firebird / Interbase
+- FrontBase
+- Informix
+- Ingres
+- MaxDB
+- MSql
+- Microsoft SQL Server
+- MySQL (through the use of mysql)
+- MySQL (through the use of mysqli)
+- Ovrimos File Database
+- Paradox File Database
+- Postgre SQL
+- Sqlite3
+- Sybase 
 
 ## install ##
 
