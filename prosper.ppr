@@ -46,14 +46,10 @@ prosper
 		todo\header.php
 		todo\index.php
 [Open project files]
-0=New1.txt
-1=todo\config.php
+0=todo\config.php
 [Selected Project Files]
 Main=
 Selected=todo\config.php
-[New1.txt]
-TopLine=1
-Caret=1,1
 [todo\config.php]
 TopLine=1
 Caret=47,5
