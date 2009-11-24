@@ -3,7 +3,7 @@
 Version 0.5 - 2009.11.16
 
 by Matt Nowack
-<ihuamanable@gmail.com>
+<ihumanable@gmail.com>
 <http://ihumanable.com/blog/prosper/>
 
 ## intro ##
