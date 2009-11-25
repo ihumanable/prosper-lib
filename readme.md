@@ -10,7 +10,7 @@ by Matt Nowack
 
 ## intro ##
 
-Prosper is a database abstraction layer for PHP. This means that you can now write your database code once, and have it work on any backend database. If you have an existing php library you can swap out your database access layer with prosper and voilà, your library now supports every backend that prosper supports.
+Prosper is a database abstraction layer for PHP. This means that you can now write your database code once, and have it work on any backend database. If you have an existing php library you can swap out your database access layer with prosper and voil&agrave;, your library now supports every backend that prosper supports.
 
 ## requirements ##
 
