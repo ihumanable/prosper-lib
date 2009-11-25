@@ -12,9 +12,9 @@ class FirebirdAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * Clean up, destroy the connection
+	 * @see BaseAdapter#disconnect()
 	 */
-	function __destruct() {
+	function disconnect() {
 		ibase_close($this->connection());
 	}
 	
@@ -40,9 +40,9 @@ class FirebirdAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * @see BaseAdapter#cleanup($set) 
+	 * @see BaseAdapter#free_result($set) 
 	 */
-	function cleanup($set) {
+	function free_result($set) {
 		ibase_free_result($set);	
 	}
 	

@@ -11,9 +11,9 @@ class OvrimosAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * Clean up, destroy the connection
+	 * @see BaseAdapter#disconnect()
 	 */
-	function __destruct() {
+	function disconnect() {
 		ovrimos_close($this->connection());
 	}
 	
@@ -45,9 +45,9 @@ class OvrimosAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * @see BaseAdapter#cleanup($set)
+	 * @see BaseAdapter#free_result($set)
 	 */
-	function cleanup($set) {
+	function free_result($set) {
 		ovrimos_free_result($set);
 	}
 	

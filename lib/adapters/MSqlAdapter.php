@@ -14,9 +14,9 @@ class MSqlAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * Clean up, destroy the connection
+	 * @see BaseAdapter#disconnect()
 	 */
-	function __destruct() {
+	function disconnect() {
 		msql_close($this->connection());
 	}
 	
@@ -42,9 +42,9 @@ class MSqlAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * @see BaseAdapter#cleanup($set)
+	 * @see BaseAdapter#free_result($set)
 	 */
-	function cleanup($set) {
+	function free_result($set) {
 		msql_free_result($set);
 	} 
 }

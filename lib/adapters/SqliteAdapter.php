@@ -14,44 +14,44 @@ class SqliteAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * Clean up, destroy the connection
+	 * @see BaseAdapter#disconnect()
 	 */
-	function __destruct() {
+	function disconnect() {
 		$this->connection()->close();
 	}
 	
 	/**
 	 * @see BaseAdapter#platform_execute($sql, $mode)
 	 */
-	protected function platform_execute($sql, $mode) {
+	function platform_execute($sql, $mode) {
 		return $this->connection()->query($sql);
 	} 
 	
 	/**
 	 * @see BaseAdapter#affected_rows($set) 
 	 */
-	protected function affected_rows($set) {
+	function affected_rows($set) {
 		return $this->connection()->changes();
 	}
 	
 	/**
 	 * @see BaseAdapter#insert_id($set) 
 	 */
-	protected function insert_id($set) {
+	function insert_id($set) {
 		return $this->connection()->lastInsertRowID();
 	}
 	
 	/**
 	 * @see BaseAdapter#fetch_assoc($set) 
 	 */
-	protected function fetch_assoc($set) {
+	function fetch_assoc($set) {
 		return $set->fetchArray(SQLITE3_ASSOC);
 	}
 
   /**
-   * @see BaseAdapter#cleanup($set)
+   * @see BaseAdapter#free_result($set)
    */     
-  protected function cleanup($set) {
+  function free_result($set) {
     if($set instanceof SQLite3Result) {
       $set->finalize();
     }

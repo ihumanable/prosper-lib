@@ -15,9 +15,9 @@ class ParadoxAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * Clean up, destroy the connection
+	 * @see BaseAdapter#disconnect()
 	 */
-	function __destruct() {
+	function disconnect() {
 		$this->connection()->close();
 		fclose($this->file_handle);
 	}

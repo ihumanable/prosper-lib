@@ -12,9 +12,9 @@ class DB2Adapter extends BaseAdapter {
 	}
 	
 	/**
-	 * Clean up, destroy the connection
+	 * @see BaseAdapter#disconnect()
 	 */
-	function __destruct() {
+	function disconnect() {
 		db2_close($this->connection());
 	}
 	
@@ -47,9 +47,9 @@ class DB2Adapter extends BaseAdapter {
 	}
 	
 	/**
-	 * @see BaseAdapter#cleanup($set) 
+	 * @see BaseAdapter#free_result($set) 
 	 */
-	function cleanup($set) {
+	function free_result($set) {
 		db2_free_stmt($set);
 	}
 	

@@ -13,12 +13,12 @@ abstract class BaseAdapter {
 	protected $schema;
 	
 	/**
-	 * Establishes a connection
+	 * Creates a new adapter instance
 	 * @param string $username Database username
 	 * @param string $password Database password
 	 * @param string $hostname Database hostname
 	 * @param string $schema Database schema
-	 * @param bool $lazy Lazy Loading	 
+	 * @param bool $lazy [optional] Lazy loading, defaults to true
 	 * @return New Adapter Instance
 	 */
 	function __construct($username, $password, $hostname, $schema, $lazy = true) {
@@ -32,6 +32,15 @@ abstract class BaseAdapter {
       $this->connect();
     }
 	}
+	
+	/**
+	 * Destroys an adapter instance
+	 */   	
+	function __destruct() {
+    if($this->connection) {
+      $this->disconnect();
+    }
+  }
 	
 	/**
 	 * Get the connection, lazy loads connection if necessary
@@ -48,6 +57,11 @@ abstract class BaseAdapter {
 	 * Create a connection to the database backend
 	 */   	
 	abstract function connect();
+	
+	/**
+	 * Destroy the connection to the database backend
+	 */   	
+	abstract function disconnect();
 	
 	/**
 	 * Quotes a database object, uses the backtick by default
@@ -114,13 +128,13 @@ abstract class BaseAdapter {
 					while($row = $this->fetch_assoc($set)) {
 						$result[] = $row;
 					}
+					$this->free_result($set);
 				}
 				break;
 			case Query::UPDATE_STMT:
 				$result = $this->affected_rows($set);
 				break;
 		}		
-		$this->cleanup($set);
 		return $result;		
 	}
 	
@@ -166,7 +180,7 @@ abstract class BaseAdapter {
 	 * @param mixed $set Platform specific result set
 	 * @return nothing
 	 */
-	protected function cleanup($set) {
+	protected function free_result($set) {
 		
 	}
 	

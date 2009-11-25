@@ -17,44 +17,44 @@ class MySqlOldAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * Clean up, destroy the connection
+	 * @see BaseAdapter#disconnect()
 	 */
-	function __destruct() {
+	function disconnect() {
 		mysql_close($this->connection());
 	}
 	
 	/**
 	 * @see BaseAdapter#platform_execute($sql, $mode) 
 	 */
-	protected function platform_execute($sql, $mode) {
+	function platform_execute($sql, $mode) {
 		return mysql_query($sql, $this->connection());
 	}
 	
 	/**
 	 * @see BaseAdapter#affected_rows($set) 
 	 */
-	protected function affected_rows($set) {
+	function affected_rows($set) {
 		return mysql_affected_rows($this->connection());
 	}
 	
 	/**
 	 * @see BaseAdapter#insert_id($set)
 	 */
-	protected function insert_id($set) {
+	function insert_id($set) {
 		return mysql_insert_id($this->connection());
 	}
 	
 	/**
 	 * @see BaseAdapter#fetch_assoc($set)
 	 */
-	protected function fetch_assoc($set) {
+	function fetch_assoc($set) {
 		return mysql_fetch_assoc($set);
 	}
 	
 	/**
-	 * @see BaseAdapter#cleanup($set)
+	 * @see BaseAdapter#free_result($set)
 	 */   	
-	protected function cleanup($set) {
+	function free_result($set) {
     mysql_free_result($set);
   }
 	

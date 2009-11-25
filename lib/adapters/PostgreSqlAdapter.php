@@ -20,16 +20,16 @@ class PostgreSqlAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * Clean up, destroy the connection
+	 * @see BaseAdapter#disconnect()
 	 */
-	function __destruct() {
+	function disconnect() {
 		pg_close($this->connection());
 	}
 	
 	/**
 	 * @see BaseAdapter#platform_execute($sql, $mode) 
 	 */
-	protected function platform_execute($sql, $mode) {
+	function platform_execute($sql, $mode) {
 		if($mode == Query::INSERT_STMT) {
 			$sql .= " RETURNING *";
 			$parse = explode('(', $sql);
@@ -42,21 +42,21 @@ class PostgreSqlAdapter extends BaseAdapter {
 	/**
 	 * @see BaseAdapter#affected_rows($set) 
 	 */
-	protected function affected_rows($set) {
+	function affected_rows($set) {
 		return pg_affected_rows($set);
 	}
 	
 	/**
 	 * @see BaseAdapter#fetch_assoc($set) 
 	 */
-	protected function fetch_assoc($set) {
+	function fetch_assoc($set) {
 		return pg_fetch_assoc($set);
 	}
 	
 	/**
 	 * @see BaseAdapter#insert_id($set) 
 	 */
-	protected function insert_id($set) {
+	function insert_id($set) {
 		$result = $this->fetch_assoc($set);
 		foreach($result as $key => $value) {
 			if(!in_array($key, $this->inserted_cols)) {
@@ -67,9 +67,9 @@ class PostgreSqlAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * @see BaseAdapter#cleanup($set) 
+	 * @see BaseAdapter#free_result($set) 
 	 */
-	protected function cleanup($set) {
+	function free_result($set) {
 		pg_free_result($set);	
 	}
 	

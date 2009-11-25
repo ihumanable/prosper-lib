@@ -14,9 +14,9 @@ class FrontBaseAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * Clean up, destroy the connection
+	 * @see BaseAdapter#disconnect()
 	 */
-	function __destruct() {
+	function disconnect() {
 		fbsql_close($this->connection());
 	}
 	
@@ -49,9 +49,9 @@ class FrontBaseAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * @see BaseAdapter#cleanup($set) 
+	 * @see BaseAdapter#free_result($set) 
 	 */
-	function cleanup($set) {
+	function free_result($set) {
 		fbsql_free_result($set);
 	}
 	

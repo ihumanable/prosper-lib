@@ -12,9 +12,9 @@ class InformixAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * Clean up, destroy the connection
+	 * @see BaseAdapter#disconnect()
 	 */
-	function __destruct() {
+	function disconnect() {
 		ifx_close($this->connection());
 	}
 	
@@ -40,11 +40,9 @@ class InformixAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * @see BaseAdapter#cleanup($set)
-	 * @param object $set
-	 * @return 
+	 * @see BaseAdapter#free_result($set) 
 	 */
-	function cleanup($set) {
+	function free_result($set) {
 		ifx_free_result($set);
 	}
 	

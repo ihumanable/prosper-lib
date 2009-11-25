@@ -17,30 +17,30 @@ class MSSqlAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * Clean up, destroy the connection
+	 * @see BaseAdapter#disconnect()
 	 */
-	function __destruct() {
+	function disconnect() {
 		mssql_close($this->connection());
 	}
 	
 	/**
 	 * @see BaseAdapter#platform_execute($sql, $mode) 
 	 */
-	protected function platform_execute($sql, $mode) {
+	function platform_execute($sql, $mode) {
 		return mssql_query($sql, $this->connection());
 	}
 	
 	/**
 	 * @see BaseAdapter#affected_rows($set) 
 	 */
-	protected function affected_rows($set) {
+	function affected_rows($set) {
 		return mssql_rows_affected($this->connection());
 	}
 	
 	/**
 	 * @see BaseAdapter#insert_id($set) 
 	 */
-	protected function insert_id($set) {
+	function insert_id($set) {
 		$result = mssql_query("select SCOPE_IDENTITY AS last_insert_id", $this->connection());
 		$arr = $this->fetch_assoc($result);
 		$retval = $arr['last_insert_id'];
@@ -51,14 +51,14 @@ class MSSqlAdapter extends BaseAdapter {
 	/**
 	 * @see BaseAdapter#fetch_assoc($set)
 	 */
-	protected function fetch_assoc($set) {
+	function fetch_assoc($set) {
 		return mssql_fetch_assoc($set);
 	}
 	
 	/**
-	 * @see BaseAdapter#cleanup($set) 
+	 * @see BaseAdapter#free_result($set) 
 	 */
-	protected function cleanup($set) {
+	function free_result($set) {
 		mssql_free_result($set);
 	}
 	

@@ -11,9 +11,9 @@ class MaxDBAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * Clean up, destroy the connection
+	 * @see BaseAdapter#disconnect()
 	 */
-	function __destruct() {
+	function disconnect() {
 		$this->connection()->close();
 	}
 	
@@ -46,9 +46,9 @@ class MaxDBAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * @see BaseAdapter#cleanup($set) 
+	 * @see BaseAdapter#free_result($set) 
 	 */
-	function cleanup($set) {
+	function free_result($set) {
 		if($set instanceof maxdb_result) {
       $set->free();
     }

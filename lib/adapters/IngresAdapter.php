@@ -11,9 +11,9 @@ class IngresAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * Clean up, destroy the connection
+	 * @see BaseAdapter#disconnect()
 	 */
-	function __destruct() {
+	function disconnect() {
 		ingres_close($this->connection());
 	}
 	
@@ -39,9 +39,9 @@ class IngresAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * @see BaseAdapter#cleanup($set)
+	 * @see BaseAdapter#free_result($set)
 	 */
-	function cleanup($set) { 
+	function free_result($set) { 
 		ingres_free_result($set);
 	}
 	

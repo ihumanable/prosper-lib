@@ -12,16 +12,16 @@ class OracleAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * Clean up, destroy the connection
+	 * @see BaseAdapter#disconnect()
 	 */
-	function __destruct() {
+	function disconnect() {
 		oci_close($this->connection());
 	}
 	
 	/**
 	 * @see BaseAdapter#platform_execute($sql, $mode)
 	 */
-	protected function platform_execute($sql, $mode) {
+	function platform_execute($sql, $mode) {
 		$stmt = oci_parse($this->connection(), $sql);
 		oci_execute($stmt);
 		return $stmt;
@@ -30,7 +30,7 @@ class OracleAdapter extends BaseAdapter {
 	/**
 	 * @see BaseAdapter#affected_rows($set) 
 	 */
-	protected function affected_rows($set) {
+	function affected_rows($set) {
 		return oci_num_rows($set);
 	}
 	
@@ -38,14 +38,14 @@ class OracleAdapter extends BaseAdapter {
 	/**
 	 * @see BaseAdapter#fetch_assoc($set) 
 	 */
-	protected function fetch_assoc($set) {
+	function fetch_assoc($set) {
 		return oci_fetch_assoc($set);
 	}
 
 	/**
-	 * @see BaseAdapter#cleanup($set)
+	 * @see BaseAdapter#free_result($set)
 	 */
-	protected function cleanup($set) {
+	function free_result($set) {
 		oci_free_statment($set);
 	}
 	
