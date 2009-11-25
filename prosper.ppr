@@ -11,7 +11,7 @@ FileFormat=0
 ProjectFilesOnly=0
 [Project tree]
 prosper
-	-doc
+	+doc
 		readme.md
 	-lib
 		-adapters
@@ -54,5 +54,14 @@ prosper
 		todo\index.php
 		todo\utility.php
 [Open project files]
+0=readme.md
+1=lib\Query.php
 [Selected Project Files]
 Main=
+Selected=readme.md
+[readme.md]
+TopLine=131
+Caret=49,139
+[lib\Query.php]
+TopLine=319
+Caret=1,1

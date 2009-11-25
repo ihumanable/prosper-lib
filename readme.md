@@ -104,13 +104,15 @@ Check out the todo example application in the todo folder to see these used in p
 
 ### select ###
 
+
+
 #### basics ####
 
-The select statement is the most basic statement used to pull data from the database.
+The select statement is the most basic statement used to pull data from the database.  This will return you a select statement ready to pull all the columns out
 
     Prosper\Query::select();
 
-This will return you a select statement ready to pull all the columns out, you can specify particular columns in the arguments if you wish like so:
+You can specify particular columns in the arguments if you wish like so
 
     Prosper\Query::select('name', 'age');
 
@@ -120,11 +122,11 @@ You can also provide aliased columns using associative arrays and mix and match 
 
 #### from clause ####
 
-After you've figured out what you want to pull, you just need to tell prosper what table to pull from
+After you've figured out what you want to pull, you just need to tell prosper what table to pull from.  This code tells it to look in the 'user' table.
 
     Prosper\Query::select()->from('user');
 
-This code tells it to look in the 'user' table.  From accepts an optional second argument to use as a table alias.
+From accepts an optional second argument to use as a table alias.
 
     Prosper\Query::select()->from('stupid_naming_convention_user', 'user');
 
