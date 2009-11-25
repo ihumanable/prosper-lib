@@ -4,18 +4,12 @@ namespace Prosper;
 class FrontBaseAdapter extends BaseAdapter {
 	
 	/**
-	 * Establishes a connection
-	 * @param string $username Database username
-	 * @param string $password Database password
-	 * @param string $hostname Database hostname
-	 * @param string $schema Database schema
-	 * @return New Adapter Instance
-	 */
-	function __construct($username, $password, $hostname, $schema) {
-		parent::__construct($username, $passwor, $hostname, $schema);
-		$this->connection = fbsql_connect($hostname, $username, $password);
-		if($schema != "") {
-			fbsql_select_db($schema, $this->connection);
+   * @see BaseAdapter#connect()
+   */
+	function connect() {
+		$this->connection = fbsql_connect($this->hostname, $this->username, $this->password);
+		if($this->schema != "") {
+			fbsql_select_db($this->schema, $this->connection);
 		}
 	}
 	
@@ -23,28 +17,28 @@ class FrontBaseAdapter extends BaseAdapter {
 	 * Clean up, destroy the connection
 	 */
 	function __destruct() {
-		fbsql_close($this->connection);
+		fbsql_close($this->connection());
 	}
 	
 	/**
 	 * @see BaseAdapter#platform_execute($sql, $mode)
 	 */
 	function platform_execute($sql, $mode) {
-		return fbsql_query($sql, $this->connection);
+		return fbsql_query($sql, $this->connection());
 	}
 	
 	/**
 	 * @see BaseAdapter#affected_rows($set) 
 	 */
 	function affected_rows($set) {
-		return fbsql_affected_rows($this->connection);
+		return fbsql_affected_rows($this->connection());
 	}
 	
 	/**
 	 * @see BaseAdapter#insert_id($set) 
 	 */
 	function insert_id($set) {
-		return fbsql_insert_id($this->connection);
+		return fbsql_insert_id($this->connection());
 	}
 	
 	/**

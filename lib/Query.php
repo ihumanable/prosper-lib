@@ -26,6 +26,9 @@ class Query {
   const POSTGRE_MODE   = "PostgreAdapter";
   const SQLITE_MODE    = "SqliteAdapter";
   const SYBASE_MODE    = "SybaseAdapter";
+  //Loading Modes
+  const LAZY_LOADING   = true;
+  const EAGER_LOADING  = false;
 	
 	private $mode;
 	private $sql;
@@ -52,10 +55,10 @@ class Query {
 	 * @param string $schema [optional] Default schema to apply to queries	 
 	 * @return null
 	 */
-	static function configure($db_mode = MYSQL_MODE, $username = "", $password = "", $hostname = "", $schema = "") {
+	static function configure($db_mode = MYSQL_MODE, $username = "", $password = "", $hostname = "", $schema = "", $loading = LAZY_LOADING) {
 		$adapter = "Prosper\\$db_mode";
     self::$db_mode = $db_mode;
-    self::$adapter = new $adapter($username, $password, $hostname, $schema);
+    self::$adapter = new $adapter($username, $password, $hostname, $schema, $loading);
 		self::$schema = ($schema == "" ? "" : self::quote($schema));
 	} 
 

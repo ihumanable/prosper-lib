@@ -4,31 +4,25 @@ namespace Prosper;
 class OracleAdapter extends BaseAdapter {
 	
 	/**
-	 * Creates an Oracle Connection Adapter
-	 * @param string $username Database username
-	 * @param string $password Database password
-	 * @param string $hostname Database hostname
-	 * @param string $schema Database schema
-	 * @return Adapter Instance
-	 */
-	function __construct($username, $password, $hostname, $schema) {
-		parent::__construct($username, $password, $hostname, $schema);
-		$conn = "//$hostname/$schema";
-		$this->connection = oci_connect($username, $password, $conn);
+   * @see BaseAdapter#connect()
+   */
+	function connect() {
+		$conn = "//{$this->hostname}" . ($this->schema != "" ? "/{$this->schema}" : "");
+		$this->connection = oci_connect($this->username, $this->password, $conn);
 	}
 	
 	/**
 	 * Clean up, destroy the connection
 	 */
 	function __destruct() {
-		oci_close($this->connection);
+		oci_close($this->connection());
 	}
 	
 	/**
 	 * @see BaseAdapter#platform_execute($sql, $mode)
 	 */
 	protected function platform_execute($sql, $mode) {
-		$stmt = oci_parse($this->connection, $sql);
+		$stmt = oci_parse($this->connection(), $sql);
 		oci_execute($stmt);
 		return $stmt;
 	} 

@@ -4,18 +4,12 @@ namespace Prosper;
 class SybaseAdapter extends BaseAdapter {
 	
 	/**
-	 * Establishes a Sybase Adapter
-	 * @param string $username Database username
-	 * @param string $password Database password
-	 * @param string $hostname Database hostname
-	 * @param string $schema Database schema
-	 * @return New Adapter Instance
-	 */
-	function __construct($username, $password, $hostname, $schema) {
-		parent::__construct($username, $password, $hostname, $schema);
-		$this->connection = sybase_connect($hostname, $username, $password);
-		if($schema != "") {
-			sybase_select_db($schema, $this->connection);
+   * @see BaseAdapter#connect()
+   */
+	function connect() {
+		$this->connection = sybase_connect($this->hostname, $this->username, $this->password);
+		if($this->schema != "") {
+			sybase_select_db($this->schema, $this->connection);
 		}
 	}
 	
@@ -23,14 +17,14 @@ class SybaseAdapter extends BaseAdapter {
 	 * Clean up, destroy the connection
 	 */
 	function __destruct() {
-		sybase_close($this->connection);
+		sybase_close($this->connection());
 	}
 	
 	/**
 	 * @see BaseAdapter#platform_execute($sql, $mode)
 	 */
 	function platform_execute($sql, $mode) {
-		return sybase_query($sql, $this->connection);
+		return sybase_query($sql, $this->connection());
 	}
 	
 	/**

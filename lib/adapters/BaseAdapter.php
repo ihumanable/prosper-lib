@@ -7,6 +7,10 @@ namespace Prosper;
 abstract class BaseAdapter {
 	
 	protected $connection;
+	protected $username;
+	protected $password;
+	protected $hostname;
+	protected $schema;
 	
 	/**
 	 * Establishes a connection
@@ -14,11 +18,36 @@ abstract class BaseAdapter {
 	 * @param string $password Database password
 	 * @param string $hostname Database hostname
 	 * @param string $schema Database schema
+	 * @param bool $lazy Lazy Loading	 
 	 * @return New Adapter Instance
 	 */
-	function __construct($username, $password, $hostname, $schema) {
+	function __construct($username, $password, $hostname, $schema, $lazy = true) {
 		$this->connection = null;
+		$this->username = $username;
+		$this->password = $password;
+		$this->hostname = $hostname;
+		$this->schema = $schema;
+		
+    if(!$lazy) {
+      $this->connect();
+    }
 	}
+	
+	/**
+	 * Get the connection, lazy loads connection if necessary
+	 * @return mixed $connection The connection to the database
+	 */      	
+	function connection() {
+    if($this->connection == null) {
+      $this->connect();
+    }
+    return $this->connection;
+  }
+	
+	/**
+	 * Create a connection to the database backend
+	 */   	
+	abstract function connect();
 	
 	/**
 	 * Quotes a database object, uses the backtick by default

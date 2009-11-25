@@ -12,6 +12,7 @@
 	require_once 'MaxDBAdapter.php';
 	require_once 'MSqlAdapter.php';
 	require_once 'MSSqlAdapter.php';
+	require_once 'MySqlOldAdapter.php';
 	require_once 'MySqlAdapter.php';
 	require_once 'OvrimosAdapter.php';
 	require_once 'ParadoxAdapter.php';

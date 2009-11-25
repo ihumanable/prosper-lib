@@ -2,33 +2,27 @@
 namespace Prosper;
 
 class InformixAdapter extends BaseAdapter {
-	
-	/**
-	 * Establishes an Informix Adapter
-	 * @param string $username Database username
-	 * @param string $password Database password
-	 * @param string $hostname Database hostname
-	 * @param string $schema Database schema
-	 * @return New Adapter Instance
-	 */
-	function __construct($username, $password, $hostname, $schema) {
-		parent::__construct($username, $password, $hostname, $schema);
-		$database = $schema . "@" . $hostname;
-		$this->connection = ifx_connect($database, $username, $password);
+  
+  /**
+   * @see BaseAdapter#connect()
+   */
+  function connect() {	
+    $database = $this->schema . "@" . $this->hostname;
+		$this->connection = ifx_connect($database, $this->username, $this->password);
 	}
 	
 	/**
 	 * Clean up, destroy the connection
 	 */
 	function __destruct() {
-		ifx_close($this->connection);
+		ifx_close($this->connection());
 	}
 	
 	/**
 	 * @see BaseAdapter#platform_execute($sql, $mode) 
 	 */
 	function platform_execute($sql, $mode) {
-		return ifx_query($sql, $this->connection);
+		return ifx_query($sql, $this->connection());
 	}
 	
 	/**

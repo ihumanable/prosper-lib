@@ -5,20 +5,14 @@ namespace Prosper;
  * Microsoft SQL Server Database Adapter
  */
 class MSSqlAdapter extends BaseAdapter {
-	
-	/**
-	 * Creates a MSSQL Connection Adapter
-	 * @param string $username Database username
-	 * @param string $password Database password
-	 * @param string $hostname Database hostname
-	 * @param string $schema Database schema
-	 * @return Adapter Instance
-	 */
-	function __construct($username, $password, $hostname, $schema) {
-		parent::__construct($username, $password, $hostname, $schema);
-		$this->connection = mssql_connect($hostname, $username, $password);
+  
+  /**
+   * @see BaseAdapter#connect()
+   */
+  function connect() {
+    $this->connection = mssql_connect($this->hostname, $this->username, $this->password);
 		if($schema != "") {
-			mssql_select_db($schema, $this->connection);
+			mssql_select_db($this->schema, $this->connection);
 		}
 	}
 	
@@ -26,28 +20,28 @@ class MSSqlAdapter extends BaseAdapter {
 	 * Clean up, destroy the connection
 	 */
 	function __destruct() {
-		mssql_close($this->connection);
+		mssql_close($this->connection());
 	}
 	
 	/**
 	 * @see BaseAdapter#platform_execute($sql, $mode) 
 	 */
 	protected function platform_execute($sql, $mode) {
-		return mssql_query($sql, $this->connection);
+		return mssql_query($sql, $this->connection());
 	}
 	
 	/**
 	 * @see BaseAdapter#affected_rows($set) 
 	 */
 	protected function affected_rows($set) {
-		return mssql_rows_affected($this->connection);
+		return mssql_rows_affected($this->connection());
 	}
 	
 	/**
 	 * @see BaseAdapter#insert_id($set) 
 	 */
 	protected function insert_id($set) {
-		$result = mssql_query("select SCOPE_IDENTITY AS last_insert_id", $this->connection);
+		$result = mssql_query("select SCOPE_IDENTITY AS last_insert_id", $this->connection());
 		$arr = $this->fetch_assoc($result);
 		$retval = $arr['last_insert_id'];
 		mssql_free_result($result);
@@ -125,14 +119,14 @@ class MSSqlAdapter extends BaseAdapter {
 	 * @see BaseAdapter#true_value()
 	 */
 	function true_value() {
-		return "'1'";
+		return "1";
 	}
 	
 	/**
 	 * @see BaseAdapter#false_value()
 	 */
 	function false_value() {
-		return "'0'";
+		return "0";
 	}
 }
 

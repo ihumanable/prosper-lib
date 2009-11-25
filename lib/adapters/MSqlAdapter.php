@@ -2,20 +2,14 @@
 namespace Prosper;
 
 class MSqlAdapter extends BaseAdapter {
-	
-	/**
- 	 * Establishes an MSql Adapter 
-	 * @param string $username Database username
-	 * @param string $password Database password
-	 * @param string $hostname Database hostname
-	 * @param string $schema Database schema
-	 * @return New Adapter Instance
-	 */
-	function __construct($username, $password, $hostname, $schema) {
-		parent::__construct($username, $password, $hostname, $schema);
-		$this->connection = msql_connect($hostname, $username, $password);
-		if($schema != "") {
-			msql_select_db($schema, $this->connection);
+  
+  /**
+   * @see BaseAdapter#connect()
+   */
+  function connect() {
+    $this->connection = msql_connect($this->hostname, $this->username, $this->password);
+		if($this->schema != "") {
+			msql_select_db($this->schema, $this->connection);
 		}
 	}
 	
@@ -23,14 +17,14 @@ class MSqlAdapter extends BaseAdapter {
 	 * Clean up, destroy the connection
 	 */
 	function __destruct() {
-		msql_close($this->connection);
+		msql_close($this->connection());
 	}
 	
 	/**
 	 * @see BaseAdapter#platform_execute($sql, $mode)
 	 */
 	function platform_execute($sql, $mode) {
-		return msql_query($sql, $this->connection);
+		return msql_query($sql, $this->connection());
 	}
 	
 	/**

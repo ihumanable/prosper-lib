@@ -9,19 +9,13 @@ class PostgreSqlAdapter extends BaseAdapter {
 	private $inserted_cols;
 	
 	/**
-	 * Creates a PostgreSQL Connection Adapter
-	 * @param string $username Database username
-	 * @param string $password Database password
-	 * @param string $hostname Database hostname
-	 * @param string $schema Database schema
-	 * @return Adapter Instance
-	 */
-	function __construct($username, $password, $hostname, $schema) {
-		parent::__construct($username, $password, $hostname, $schema);
-		$conn = ($hostname == "" ? "" : "host=$hostname ") .
-		        ($schema   == "" ? "" : "dbname=$schema ") .
-				($username == "" ? "" : "user=$username ") .
-				($password == "" ? "" : "password=$password");
+   * @see BaseAdapter#connect()
+   */
+	function connect() {
+		$conn = ($this->hostname == "" ? "" : "host={$this->hostname} ") .
+		        ($this->schema   == "" ? "" : "dbname={$this->schema} ") .
+				($this->username == "" ? "" : "user={$this->username} ") .
+				($this->password == "" ? "" : "password={$this->password}");
 		$this->connection = pg_connect($conn);
 	}
 	
@@ -29,7 +23,7 @@ class PostgreSqlAdapter extends BaseAdapter {
 	 * Clean up, destroy the connection
 	 */
 	function __destruct() {
-		pg_close($this->connection);
+		pg_close($this->connection());
 	}
 	
 	/**

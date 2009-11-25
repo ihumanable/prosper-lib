@@ -2,18 +2,12 @@
 namespace Prosper;
 
 class DB2Adapter extends BaseAdapter {
-	
-	/**
-	 * Establishes a DB2 Adapter
-	 * @param string $username Database username
-	 * @param string $password Database password
-	 * @param string $hostname Database hostname
-	 * @param string $schema Database schema
-	 * @return New Adapter Instance
-	 */
-	function __construct($username, $password, $hostname, $schema) {
-		parent::__construct($username, $password, $hostname, $schema);
-		$conn = "DRIVER={IBM DB2 ODBC DRIVER};DATABASE=$schema;HOSTNAME=$hostname;PORT=50000;PROTOCOL=TCPIP;UID=$user;PWD=$password";
+
+  /**
+   * @see BaseAdapter#connect()
+   */     	
+	function connect() {
+		$conn = "DRIVER={IBM DB2 ODBC DRIVER};DATABASE={$this->schema};HOSTNAME={$this->hostname};PORT=50000;PROTOCOL=TCPIP;UID={$this->username};PWD={$this->password}";
 		$this->connection = db2_connect($conn);
 	}
 	
@@ -21,14 +15,14 @@ class DB2Adapter extends BaseAdapter {
 	 * Clean up, destroy the connection
 	 */
 	function __destruct() {
-		db2_close($this->connection);
+		db2_close($this->connection());
 	}
 	
 	/**
 	 * @see BaseAdapter#platform_execute($sql, $mode) 
 	 */
 	function platform_execute($sql, $mode) {
-		return db2_prepare($this->connection, $sql);
+		return db2_prepare($this->connection(), $sql);
 	}
 	
 	/**
@@ -42,7 +36,7 @@ class DB2Adapter extends BaseAdapter {
 	 * @see BaseAdapter#insert_id($set) 
 	 */
 	function insert_id($set) {
-		return db2_last_insert_id($this->connection);
+		return db2_last_insert_id($this->connection());
 	}
 	
 	/**
