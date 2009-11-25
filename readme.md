@@ -100,7 +100,61 @@ Use prosper even when you can't use prosper, that's how you guarentee 100% cover
 
 ## usage ##
 
+Check out the todo example application in the todo folder to see these used in practice, there is also in code documentation.
+
 ### select ###
+
+#### basics ####
+
+The select statement is the most basic statement used to pull data from the database.
+
+    Prosper\Query::select();
+
+This will return you a select statement ready to pull all the columns out, you can specify particular columns in the arguments if you wish like so:
+
+    Prosper\Query::select('name', 'age');
+
+You can also provide aliased columns using associative arrays and mix and match this to your heart's content
+
+    Prosper\Query::select(array('my_really_long_column_name' => 'col'), 'name', 'age');
+
+#### from clause ####
+
+After you've figured out what you want to pull, you just need to tell prosper what table to pull from
+
+    Prosper\Query::select()->from('user');
+
+This code tells it to look in the 'user' table.  From accepts an optional second argument to use as a table alias.
+
+    Prosper\Query::select()->from('stupid_naming_convention_user', 'user');
+
+#### where clause ####
+
+Now you can use a where clause to limit your results, where clauses are automatically parsed, there are a few rules to keep in mind.
+
+ * Any literal should be surrounded by single quotes (')
+ * Any non-literal value should be parameterized
+ * Where clauses can be arbitrarily complex
+
+Literal values are surrounded by single quotes, if the database backend uses a different convention it will be automatically converted for you.
+
+    Prosper\Query::select()->from('user')->where("name = 'Matt'");
+
+Literal values are not escaped, to prevent sql injection attacks, use parameterized values.  Prosper supports named and unnamed parameters.  For unnamed parameters simply use a question mark (?), you can provide any number of unnamed parameters.
+
+    Prosper\Query::select()->from('user')->where('name = ? and age = ?', $name, $age);
+
+Named parameters are any symbol that begins with a colon, they are pulled from an associative array like so:
+
+    Prosper\Query::select()->from('user')->where('name = :name and age = :age', array('name' => $name, 'age' => $age));
+
+This functionality is useful for pulling values out of larger arrays, like $_GET or $_POST, so if posting a form with a name and age field you can easily write
+
+    Prosper\Query::select()->from('user')->where('name = :name and age = :age', $_POST);
+
+You are allowed to mix and match named and unnamed parameters, although this is probably not a great idea.  The named parameter associative array should always be the last argument.
+
+    Prosper\Query::select()->from('user')->where('name = :name and age = ?', 23, $_POST);
 
 ### insert ###
 
