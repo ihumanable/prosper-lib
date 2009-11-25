@@ -40,7 +40,7 @@
    * @param string $id [optional] Todo id to be embedded in the form as a hidden field
    * @param bool $edit [optional] should the text box be editable, defaults to true
    */
-  function display_form($action, $label, $value="", $id = null, $edit = true) {
+  function display_form($action, $label, $value = "", $id = null, $edit = true) {
     $result = "<h3>$label todo</h3>\n";
     
     $result .= "<form class=\"todo\" action=\"$action\" method=\"post\">\n";
