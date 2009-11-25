@@ -80,7 +80,7 @@ Sane output, no magic, and as a bonus, you didn't just drop all your tables.
 
 Prosper was designed to allow the backend to be quickly and easily changed.  Let's take a look at the output for the above Bobby Tables query in other sql dialects
 
- * MySQL - select * from `schema`.`students` where `name` = 'Robert\'); DROP TABLE Students;--'
+ * MySQL - select * from \`schema\`.\`students\` where \`name\` = 'Robert\'); DROP TABLE Students;--'
  * Microsoft SQL Server - select * from [schema].[students] where [name] = 'Robert\'); DROP TABLE Students;--'
  * Postgre - select * from "schema"."students" where "name" = 'Robert\'); DROP TABLE Students;--'
 
@@ -88,7 +88,7 @@ This follows along the path of least surprise.  There are some surprises within 
 
 ### opt out ###
 
-Prosper is designed to be _the_ way for your application or library to talk to the database.  Part of acheiving this lofty goal is realizing that there will be times that despite its best efforts, prosper will be incapable of doing something you need it to do.  Prosper is prepared for this eventuality with the native function and the is_* family of functions.  It allows you to write code like this:
+Prosper is designed to be __the__ way for your application or library to talk to the database.  Part of acheiving this lofty goal is realizing that there will be times that despite its best efforts, prosper will be incapable of doing something you need it to do.  Prosper is prepared for this eventuality with the native function and the is_* family of functions.  It allows you to write code like this:
 
     if(Prosper\Query::is_oracle()) {
       Prosper\Query::native('some crazy oracle stuff')->execute();
