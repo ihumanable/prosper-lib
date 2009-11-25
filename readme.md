@@ -150,7 +150,7 @@ Named parameters are any symbol that begins with a colon, they are pulled from a
 
     Prosper\Query::select()->from('user')->where('name = :name and age = :age', array('name' => $name, 'age' => $age));
 
-This functionality is useful for pulling values out of larger arrays, like $_GET or $_POST, so if posting a form with a name and age field you can easily write
+This functionality is useful for pulling values out of larger arrays, like $\_GET or $\_POST, so if posting a form with a name and age field you can easily write
 
     Prosper\Query::select()->from('user')->where('name = :name and age = :age', $_POST);
 
