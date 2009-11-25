@@ -11,10 +11,10 @@ FileFormat=0
 ProjectFilesOnly=0
 [Project tree]
 prosper
-	+doc
+	-doc
 		readme.md
-	+lib
-		+adapters
+	-lib
+		-adapters
 			lib\adapters\_all_.php
 			lib\adapters\_common_.php
 			lib\adapters\BaseAdapter.php
@@ -36,10 +36,10 @@ prosper
 			lib\adapters\SybaseAdapter.php
 		lib\Query.php
 		lib\Token.php
-	+todo
-		+img
+	-todo
+		-img
 			todo\img\create.png
-		+style
+		-style
 			todo\style\main.css
 		todo\.htaccess
 		todo\config.php
@@ -51,18 +51,74 @@ prosper
 		todo\index.php
 		todo\utility.php
 [Open project files]
-0=readme.md
-1=lib\adapters\_common_.php
-2=New1.txt
+0=lib\adapters\BaseAdapter.php
+1=lib\adapters\DB2Adapter.php
+2=lib\adapters\FirebirdAdapter.php
+3=lib\adapters\FrontBaseAdapter.php
+4=lib\adapters\InformixAdapter.php
+5=lib\adapters\IngresAdapter.php
+6=lib\adapters\MaxDBAdapter.php
+7=lib\adapters\MSqlAdapter.php
+8=lib\adapters\MSSqlAdapter.php
+9=lib\adapters\MySqlAdapter.php
+10=lib\adapters\MySqlOldAdapter.php
+11=lib\adapters\OracleAdapter.php
+12=lib\adapters\OvrimosAdapter.php
+13=lib\adapters\ParadoxAdapter.php
+14=lib\adapters\PostgreSqlAdapter.php
+15=lib\adapters\SqliteAdapter.php
+16=lib\adapters\SybaseAdapter.php
 [Selected Project Files]
 Main=
-Selected=New1.txt
-[readme.md]
+Selected=lib\adapters\SybaseAdapter.php
+[lib\adapters\BaseAdapter.php]
+TopLine=4
+Caret=27,181
+[lib\adapters\DB2Adapter.php]
 TopLine=1
-Caret=246,12
-[lib\adapters\_common_.php]
+Caret=34,15
+[lib\adapters\FirebirdAdapter.php]
+TopLine=27
+Caret=33,43
+[lib\adapters\FrontBaseAdapter.php]
+TopLine=29
+Caret=22,54
+[lib\adapters\InformixAdapter.php]
+TopLine=23
+Caret=22,45
+[lib\adapters\IngresAdapter.php]
+TopLine=11
+Caret=22,44
+[lib\adapters\MaxDBAdapter.php]
+TopLine=29
+Caret=22,51
+[lib\adapters\MSqlAdapter.php]
+TopLine=25
+Caret=22,47
+[lib\adapters\MSSqlAdapter.php]
+TopLine=91
+Caret=33,59
+[lib\adapters\MySqlAdapter.php]
 TopLine=1
-Caret=1,7
-[New1.txt]
+Caret=2,26
+[lib\adapters\MySqlOldAdapter.php]
+TopLine=37
+Caret=33,55
+[lib\adapters\OracleAdapter.php]
+TopLine=35
+Caret=33,46
+[lib\adapters\OvrimosAdapter.php]
+TopLine=19
+Caret=33,48
+[lib\adapters\ParadoxAdapter.php]
+TopLine=29
+Caret=34,18
+[lib\adapters\PostgreSqlAdapter.php]
 TopLine=1
-Caret=1,8
+Caret=2,32
+[lib\adapters\SqliteAdapter.php]
+TopLine=35
+Caret=23,54
+[lib\adapters\SybaseAdapter.php]
+TopLine=19
+Caret=19,43
