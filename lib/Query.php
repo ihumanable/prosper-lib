@@ -23,7 +23,7 @@ class Query {
   const ORACLE_MODE    = "OracleAdapter";
   const OVRIMOS_MODE   = "OvrimosAdapter";
   const PARADOX_MODE   = "ParadoxAdapter";
-  const POSTGRE_MODE   = "PostgreAdapter";
+  const POSTGRE_MODE   = "PostgreSqlAdapter";
   const SQLITE_MODE    = "SqliteAdapter";
   const SYBASE_MODE    = "SybaseAdapter";
   //Loading Modes

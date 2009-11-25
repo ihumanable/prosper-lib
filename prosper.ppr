@@ -36,6 +36,9 @@ prosper
 			lib\adapters\SybaseAdapter.php
 		lib\Query.php
 		lib\Token.php
+	-test
+		test\config.php
+		test\index.php
 	-todo
 		-img
 			todo\img\create.png
