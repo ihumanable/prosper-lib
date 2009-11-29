@@ -1,0 +1,1817 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Docs For Class Query</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+  <script src="../media/lib/classTree.js"></script>
+<link id="webfx-tab-style-sheet" type="text/css" rel="stylesheet" href="../media/lib/tab.webfx.css" />
+<script type="text/javascript" src="../media/lib/tabpane.js"></script>
+  <script language="javascript" type="text/javascript" src="../media/lib/ua.js"></script>
+<script language="javascript" type="text/javascript">
+	var imgPlus = new Image();
+	var imgMinus = new Image();
+	imgPlus.src = "../media/images/plus.gif";
+	imgMinus.src = "../media/images/minus.gif";
+	
+	function showNode(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+				var oImg = document.layers["img" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+				var oImg = document.all["img" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+				var oImg = document.getElementById("img" + Node);
+        		break;
+        }
+		oImg.src = imgMinus.src;
+		oTable.style.display = "block";
+	}
+	
+	function hideNode(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+				var oImg = document.layers["img" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+				var oImg = document.all["img" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+				var oImg = document.getElementById("img" + Node);
+        		break;
+        }
+		oImg.src = imgPlus.src;
+		oTable.style.display = "none";
+	}
+	
+	function nodeIsVisible(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+        		break;
+        }
+		return (oTable && oTable.style.display == "block");
+	}
+	
+	function toggleNodeVisibility(Node){
+		if (nodeIsVisible(Node)){
+			hideNode(Node);
+		}else{
+			showNode(Node);
+		}
+	}
+</script>
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><!-- Start of Class Data -->
+<h2>
+	Class Query
+</h2> (line <span class="linenumber">6</span>)
+<div class="tab-pane" id="tabPane1">
+<script type="text/javascript">
+tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
+</script>
+
+<div class="tab-page" id="Description">
+<h2 class="tab">Description</h2>
+<pre>
+</pre>
+<p>
+	<b><i>Located in File: <a href="_lib---Query.php.html">/lib/Query.php</a></i></b><br>
+</p>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+<br /><hr />
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "Description" ) );</script>
+<div class="tab-page" id="tabPage1">
+
+<h2 class="tab">Class Variables</h2>
+<!-- ============ VARIABLE DETAIL =========== -->
+<strong>Summary:</strong><br />
+<hr />
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage1" ) );</script>
+</div>
+<div class="tab-page" id="constantsTabpage">
+
+<h2 class="tab">Class Constants</h2>
+<!-- ============ VARIABLE DETAIL =========== -->
+<strong>Summary:</strong><br />
+<div class="const-title">
+    <a href="#constDB2_MODE" title="details" class="property"><strong>DB2_MODE</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constDELETE_STMT" title="details" class="property"><strong>DELETE_STMT</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constEAGER_LOADING" title="details" class="property"><strong>EAGER_LOADING</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constFIREBIRD_MODE" title="details" class="property"><strong>FIREBIRD_MODE</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constFRONTBASE_MODE" title="details" class="property"><strong>FRONTBASE_MODE</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constINFORMIX_MODE" title="details" class="property"><strong>INFORMIX_MODE</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constINGRES_MODE" title="details" class="property"><strong>INGRES_MODE</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constINSERT_STMT" title="details" class="property"><strong>INSERT_STMT</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constLAZY_LOADING" title="details" class="property"><strong>LAZY_LOADING</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constMAXDB_MODE" title="details" class="property"><strong>MAXDB_MODE</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constMSQL_MODE" title="details" class="property"><strong>MSQL_MODE</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constMSSQL_MODE" title="details" class="property"><strong>MSSQL_MODE</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constMYSQL_MODE" title="details" class="property"><strong>MYSQL_MODE</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constMYSQL_OLD_MODE" title="details" class="property"><strong>MYSQL_OLD_MODE</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constORACLE_MODE" title="details" class="property"><strong>ORACLE_MODE</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constOVRIMOS_MODE" title="details" class="property"><strong>OVRIMOS_MODE</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constPARADOX_MODE" title="details" class="property"><strong>PARADOX_MODE</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constPOSTGRE_MODE" title="details" class="property"><strong>POSTGRE_MODE</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constSELECT_STMT" title="details" class="property"><strong>SELECT_STMT</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constSQLITE_MODE" title="details" class="property"><strong>SQLITE_MODE</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constSYBASE_MODE" title="details" class="property"><strong>SYBASE_MODE</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constUPDATE_STMT" title="details" class="property"><strong>UPDATE_STMT</strong></a>
+</div>
+<hr />
+<a name="constDB2_MODE" id="constDB2_MODE"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">DB2_MODE =  &quot;DB2Adapter&quot;</strong> (line <span class="linenumber">13</span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constDELETE_STMT" id="constDELETE_STMT"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">DELETE_STMT =  &quot;DELETE_STMT&quot;</strong> (line <span class="linenumber">8</span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constEAGER_LOADING" id="constEAGER_LOADING"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">EAGER_LOADING =  false</strong> (line <span class="linenumber">31</span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constFIREBIRD_MODE" id="constFIREBIRD_MODE"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">FIREBIRD_MODE =  &quot;FirebirdAdapter&quot;</strong> (line <span class="linenumber">14</span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constFRONTBASE_MODE" id="constFRONTBASE_MODE"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">FRONTBASE_MODE =  &quot;FrontBaseAdapter&quot;</strong> (line <span class="linenumber">15</span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constINFORMIX_MODE" id="constINFORMIX_MODE"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">INFORMIX_MODE =  &quot;InformixAdapter&quot;</strong> (line <span class="linenumber">16</span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constINGRES_MODE" id="constINGRES_MODE"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">INGRES_MODE =  &quot;IngresAdapter&quot;</strong> (line <span class="linenumber">17</span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constINSERT_STMT" id="constINSERT_STMT"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">INSERT_STMT =  &quot;INSERT_STMT&quot;</strong> (line <span class="linenumber">9</span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constLAZY_LOADING" id="constLAZY_LOADING"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">LAZY_LOADING =  true</strong> (line <span class="linenumber">30</span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constMAXDB_MODE" id="constMAXDB_MODE"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">MAXDB_MODE =  &quot;MaxDBAdapter&quot;</strong> (line <span class="linenumber">18</span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constMSQL_MODE" id="constMSQL_MODE"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">MSQL_MODE =  &quot;MSqlAdapter&quot;</strong> (line <span class="linenumber">19</span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constMSSQL_MODE" id="constMSSQL_MODE"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">MSSQL_MODE =  &quot;MSSqlAdapter&quot;</strong> (line <span class="linenumber">20</span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constMYSQL_MODE" id="constMYSQL_MODE"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">MYSQL_MODE =  &quot;MySqlAdapter&quot;</strong> (line <span class="linenumber">21</span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constMYSQL_OLD_MODE" id="constMYSQL_OLD_MODE"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">MYSQL_OLD_MODE =  &quot;MySqlOldAdapter&quot;</strong> (line <span class="linenumber">22</span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constORACLE_MODE" id="constORACLE_MODE"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">ORACLE_MODE =  &quot;OracleAdapter&quot;</strong> (line <span class="linenumber">23</span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constOVRIMOS_MODE" id="constOVRIMOS_MODE"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">OVRIMOS_MODE =  &quot;OvrimosAdapter&quot;</strong> (line <span class="linenumber">24</span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constPARADOX_MODE" id="constPARADOX_MODE"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">PARADOX_MODE =  &quot;ParadoxAdapter&quot;</strong> (line <span class="linenumber">25</span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constPOSTGRE_MODE" id="constPOSTGRE_MODE"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">POSTGRE_MODE =  &quot;PostgreSqlAdapter&quot;</strong> (line <span class="linenumber">26</span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constSELECT_STMT" id="constSELECT_STMT"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">SELECT_STMT =  &quot;SELECT_STMT&quot;</strong> (line <span class="linenumber">10</span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constSQLITE_MODE" id="constSQLITE_MODE"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">SQLITE_MODE =  &quot;SqliteAdapter&quot;</strong> (line <span class="linenumber">27</span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constSYBASE_MODE" id="constSYBASE_MODE"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">SYBASE_MODE =  &quot;SybaseAdapter&quot;</strong> (line <span class="linenumber">28</span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constUPDATE_STMT" id="constUPDATE_STMT"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">UPDATE_STMT =  &quot;UPDATE_STMT&quot;</strong> (line <span class="linenumber">11</span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "constantsTabpage" ) );</script>
+</div>
+<div class="tab-page" id="tabPage2">
+<h2 class="tab">Method Detail</h2>
+<!-- ============ METHOD DETAIL =========== -->
+<strong>Summary:</strong><br />
+<div class="method-summary">
+    <div class="method-definition">
+    static         <span class="method-result">string</span>
+        <a href="#methodalias" title="details" class="method-name">alias</a>
+        (<span class="var-type">string</span>&nbsp;<span class="var-name">$alias</span>)
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">Properly</span>
+        <a href="#methodcolumn" title="details" class="method-name">column</a>
+        (<span class="var-type">string</span>&nbsp;<span class="var-name">$col</span>)
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">null</span>
+        <a href="#methodconfigure" title="details" class="method-name">configure</a>
+        ([<span class="var-type">string</span>&nbsp;<span class="var-name">$db_mode</span> = <span class="var-default">MYSQL_MODE</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$username</span> = <span class="var-default">&quot;&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$password</span> = <span class="var-default">&quot;&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$hostname</span> = <span class="var-default">&quot;&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$schema</span> = <span class="var-default">&quot;&quot;</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$loading</span> = <span class="var-default">LAZY_LOADING</span>])
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">string</span>
+        <a href="#methoddb_mode" title="details" class="method-name">db_mode</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">Delete</span>
+        <a href="#methoddelete" title="details" class="method-name">delete</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">String</span>
+        <a href="#methoddeliteral" title="details" class="method-name">deliteral</a>
+        (<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>)
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">Properly</span>
+        <a href="#methodescape" title="details" class="method-name">escape</a>
+        (<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>)
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">mixed</span>
+        <a href="#methodfalse_value" title="details" class="method-name">false_value</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">Insert</span>
+        <a href="#methodinsert" title="details" class="method-name">insert</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">true</span>
+        <a href="#methodis_db2" title="details" class="method-name">is_db2</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">true</span>
+        <a href="#methodis_firebird" title="details" class="method-name">is_firebird</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">true</span>
+        <a href="#methodis_frontbase" title="details" class="method-name">is_frontbase</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">true</span>
+        <a href="#methodis_informix" title="details" class="method-name">is_informix</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">true</span>
+        <a href="#methodis_ingres" title="details" class="method-name">is_ingres</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">true</span>
+        <a href="#methodis_literal" title="details" class="method-name">is_literal</a>
+        (<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>)
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">true</span>
+        <a href="#methodis_maxdb" title="details" class="method-name">is_maxdb</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">true</span>
+        <a href="#methodis_msql" title="details" class="method-name">is_msql</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">true</span>
+        <a href="#methodis_mssql" title="details" class="method-name">is_mssql</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">true</span>
+        <a href="#methodis_mysql" title="details" class="method-name">is_mysql</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">true</span>
+        <a href="#methodis_mysql_old" title="details" class="method-name">is_mysql_old</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">true</span>
+        <a href="#methodis_oracle" title="details" class="method-name">is_oracle</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">true</span>
+        <a href="#methodis_ovrimos" title="details" class="method-name">is_ovrimos</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">true</span>
+        <a href="#methodis_paradox" title="details" class="method-name">is_paradox</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">true</span>
+        <a href="#methodis_postgre" title="details" class="method-name">is_postgre</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">true</span>
+        <a href="#methodis_sqlite" title="details" class="method-name">is_sqlite</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">true</span>
+        <a href="#methodis_sybase" title="details" class="method-name">is_sybase</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">int</span>
+        <a href="#methodmktime" title="details" class="method-name">mktime</a>
+        (<span class="var-type">string</span>&nbsp;<span class="var-name">$timestamp</span>)
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">string</span>
+        <a href="#methodmodulus" title="details" class="method-name">modulus</a>
+        (<span class="var-type">string</span>&nbsp;<span class="var-name">$lhs</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$rhs</span>)
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">Native</span>
+        <a href="#methodnative" title="details" class="method-name">native</a>
+        (<span class="var-type">string</span>&nbsp;<span class="var-name">$sql</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$mode</span>)
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">Properly</span>
+        <a href="#methodquote" title="details" class="method-name">quote</a>
+        (<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>)
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">void</span>
+        <a href="#methodschema" title="details" class="method-name">schema</a>
+        ([<span class="var-type">object</span>&nbsp;<span class="var-name">$append</span> = <span class="var-default">&quot;&quot;</span>])
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">Select</span>
+        <a href="#methodselect" title="details" class="method-name">select</a>
+        (<span class="var-type">varargs</span>&nbsp;<span class="var-name">0</span>)
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">Properly</span>
+        <a href="#methodtable" title="details" class="method-name">table</a>
+        (<span class="var-type">string</span>&nbsp;<span class="var-name">$table</span>)
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">string</span>
+        <a href="#methodtimestamp" title="details" class="method-name">timestamp</a>
+        ([<span class="var-type">int</span>&nbsp;<span class="var-name">$timestamp</span> = <span class="var-default">null</span>])
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">mixed</span>
+        <a href="#methodtrue_value" title="details" class="method-name">true_value</a>
+        ()
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">Properly</span>
+        <a href="#methodunescape" title="details" class="method-name">unescape</a>
+        (<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>)
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">Update</span>
+        <a href="#methodupdate" title="details" class="method-name">update</a>
+        (<span class="var-type">string</span>&nbsp;<span class="var-name">$table</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
+        <a href="#methodconditional" title="details" class="method-name">conditional</a>
+        (<span class="var-type">string</span>&nbsp;<span class="var-name">$predicate</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$clause</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$args</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">a</span>
+        <a href="#methodexecute" title="details" class="method-name">execute</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result"><a href="../default/Query.html">Query</a></span>
+        <a href="#methodfrom" title="details" class="method-name">from</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">$table</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$alias</span> = <span class="var-default">&quot;&quot;</span>], <span class="var-type">string</span>&nbsp;<span class="var-name">$table_or_query</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result"><a href="../default/Query.html">Query</a></span>
+        <a href="#methodinner" title="details" class="method-name">inner</a>
+        (<span class="var-type">string</span>&nbsp;<span class="var-name">$table</span>, [<span class="var-type">object</span>&nbsp;<span class="var-name">$alias</span> = <span class="var-default">&quot;&quot;</span>])
+        </div>
+    <div class="method-definition">
+            <span class="method-result"><a href="../default/Query.html">Query</a></span>
+        <a href="#methodinto" title="details" class="method-name">into</a>
+        (<span class="var-type">string</span>&nbsp;<span class="var-name">$table</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result"><a href="../default/Query.html">Query</a></span>
+        <a href="#methodjoin" title="details" class="method-name">join</a>
+        (<span class="var-type">string</span>&nbsp;<span class="var-name">$table</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$alias</span> = <span class="var-default">&quot;&quot;</span>])
+        </div>
+    <div class="method-definition">
+            <span class="method-result"><a href="../default/Query.html">Query</a></span>
+        <a href="#methodleft" title="details" class="method-name">left</a>
+        (<span class="var-type">string</span>&nbsp;<span class="var-name">$table</span>, [<span class="var-type">object</span>&nbsp;<span class="var-name">$alias</span> = <span class="var-default">&quot;&quot;</span>])
+        </div>
+    <div class="method-definition">
+            <span class="method-result"><a href="../default/Query.html">Query</a></span>
+        <a href="#methodlimit" title="details" class="method-name">limit</a>
+        (<span class="var-type">int</span>&nbsp;<span class="var-name">$limit</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$offset</span> = <span class="var-default">0</span>], <span class="var-type">int</span>&nbsp;<span class="var-name">$start</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result"><a href="../default/Query.html">Query</a></span>
+        <a href="#methodon" title="details" class="method-name">on</a>
+        (<span class="var-type">object</span>&nbsp;<span class="var-name">$clause</span>, <span class="var-type">variadic</span>&nbsp;<span class="var-name">1</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result"><a href="../default/Query.html">Query</a></span>
+        <a href="#methodorder" title="details" class="method-name">order</a>
+        (<span class="var-type">array</span>&nbsp;<span class="var-name">$columns</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$dir</span> = <span class="var-default">&quot;asc&quot;</span>])
+        </div>
+    <div class="method-definition">
+            <span class="method-result"><a href="../default/Query.html">Query</a></span>
+        <a href="#methodouter" title="details" class="method-name">outer</a>
+        (<span class="var-type">string</span>&nbsp;<span class="var-name">$table</span>, [<span class="var-type">object</span>&nbsp;<span class="var-name">$alias</span> = <span class="var-default">&quot;&quot;</span>])
+        </div>
+    <div class="method-definition">
+            <span class="method-result">string</span>
+        <a href="#methodparameterize" title="details" class="method-name">parameterize</a>
+        (<span class="var-type">mixed</span>&nbsp;<span class="var-name">$value</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">array</span>
+        <a href="#methodparse_func_args" title="details" class="method-name">parse_func_args</a>
+        (<span class="var-type">$clause</span>&nbsp;<span class="var-name">&$clause</span>, <span class="var-type">$args</span>&nbsp;<span class="var-name">&$args</span>, <span class="var-type">$named</span>&nbsp;<span class="var-name">$named</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">tokenized</span>
+        <a href="#methodprocess_token" title="details" class="method-name">process_token</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">&$clause</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$token</span>, <span class="var-type"></span>&nbsp;<span class="var-name">&$args</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$named</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$clause</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$args</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result"><a href="../default/Query.html">Query</a></span>
+        <a href="#methodset" title="details" class="method-name">set</a>
+        (<span class="var-type">array</span>&nbsp;<span class="var-name">$values</span>, <span class="var-type">variadic</span>&nbsp;<span class="var-name">$filter</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result"><a href="../default/Query.html">Query</a></span>
+        <a href="#methodspecified_join" title="details" class="method-name">specified_join</a>
+        (<span class="var-type">string</span>&nbsp;<span class="var-name">$table</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$alias</span> = <span class="var-default">&quot;&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$type</span> = <span class="var-default">&quot;join&quot;</span>])
+        </div>
+    <div class="method-definition">
+            <span class="method-result"><a href="../default/Query.html">Query</a></span>
+        <a href="#methodvalues" title="details" class="method-name">values</a>
+        (<span class="var-type">array</span>&nbsp;<span class="var-name">$values</span>, <span class="var-type">variadic</span>&nbsp;<span class="var-name">$filter</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">the</span>
+        <a href="#methodverbose" title="details" class="method-name">verbose</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result"><a href="../default/Query.html">Query</a></span>
+        <a href="#methodwhere" title="details" class="method-name">where</a>
+        (<span class="var-type">object</span>&nbsp;<span class="var-name">$clause</span>, <span class="var-type">variadic</span>&nbsp;<span class="var-name">1</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">Wrapped</span>
+        <a href="#method__toString" title="details" class="method-name">__toString</a>
+        ()
+        </div>
+</div>
+<hr />
+<A NAME='method_detail'></A>
+
+
+<a name="methodalias" id="methodalias"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method alias</strong> (line <span class="linenumber">73</span>)
+ </h4> 
+<h4><i>string</i> <strong>alias(
+string
+$alias)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Creates an alias string if alias is not empty</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $alias</strong>: alias to create</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - template is &quot; as self::quote($alias)&quot;</li>
+		</ul>
+</div>
+<a name="methodcolumn" id="methodcolumn"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method column</strong> (line <span class="linenumber">82</span>)
+ </h4> 
+<h4><i>Properly</i> <strong>column(
+string
+$col)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Properly quotes a potential column, allowing for compound table.column format</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $col</strong>: column name, simple or compound</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - quoted column</li>
+		</ul>
+</div>
+<a name="methodconfigure" id="methodconfigure"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method configure</strong> (line <span class="linenumber">58</span>)
+ </h4> 
+<h4><i>null</i> <strong>configure(
+[string
+$db_mode = MYSQL_MODE], [string
+$username = &quot;&quot;], [string
+$password = &quot;&quot;], [string
+$hostname = &quot;&quot;], [string
+$schema = &quot;&quot;], [
+$loading = LAZY_LOADING])</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Set up Prosper Query Engine</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $db_mode</strong>: [optional] Database mode, use one of the [DATABASE]_MODE constants.</li>
+			<li><strong>string $username</strong>: [optional] Database username, defaults to nothing</li>
+			<li><strong>string $password</strong>: [optional] Database password, defaults to nothing</li>
+			<li><strong>string $hostname</strong>: [optional] Database hostname</li>
+			<li><strong>string $schema</strong>: [optional] Default schema to apply to queries</li>
+			<li><strong> $loading</strong>: </li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+		</ul>
+</div>
+<a name="methoddb_mode" id="methoddb_mode"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method db_mode</strong> (line <span class="linenumber">177</span>)
+ </h4> 
+<h4><i>string</i> <strong>db_mode(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Returns the current database mode, see the family of is_[DATABASE]</h5>
+<div class="desc"><p>functions that use this function</p></div>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - one of the [DATABASE]_MODE constants</li>
+		</ul>
+</div>
+<a name="methoddelete" id="methoddelete"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method delete</strong> (line <span class="linenumber">694</span>)
+ </h4> 
+<h4><i>Delete</i> <strong>delete(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Factory function that creates a delete statement query object.</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - Statement Query Object</li>
+		</ul>
+</div>
+<a name="methoddeliteral" id="methoddeliteral"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method deliteral</strong> (line <span class="linenumber">155</span>)
+ </h4> 
+<h4><i>String</i> <strong>deliteral(
+string
+$str)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Removes the literal quotes from a string, if called on a non-literal simply returns string</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $str</strong>: String to deliteral</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - with quotes removed</li>
+		</ul>
+</div>
+<a name="methodescape" id="methodescape"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method escape</strong> (line <span class="linenumber">134</span>)
+ </h4> 
+<h4><i>Properly</i> <strong>escape(
+string
+$str)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Escapes the given string using the appropriate adapter's escape function.</h5>
+<div class="desc"><p>Used with values to be serialized</p></div>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $str</strong>: the text to escape</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - escaped text</li>
+			<li><strong>see</strong> - escape($str)</li>
+			<li><strong>todo</strong> - implement this properly</li>
+		</ul>
+</div>
+<a name="methodfalse_value" id="methodfalse_value"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method false_value</strong> (line <span class="linenumber">757</span>)
+ </h4> 
+<h4><i>mixed</i> <strong>false_value(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Get the platform specific false value</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - Boolean False Value ex: 0 or FALSE</li>
+		</ul>
+</div>
+<a name="methodinsert" id="methodinsert"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method insert</strong> (line <span class="linenumber">583</span>)
+ </h4> 
+<h4><i>Insert</i> <strong>insert(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Factory function that creates an insert statement query object.</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - Statement Query Object</li>
+		</ul>
+</div>
+<a name="methodis_db2" id="methodis_db2"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method is_db2</strong> (line <span class="linenumber">185</span>)
+ </h4> 
+<h4><i>true</i> <strong>is_db2(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Convenience function to check if the configuration is DB2</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - if configured for DB2, false otherwise</li>
+		</ul>
+</div>
+<a name="methodis_firebird" id="methodis_firebird"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method is_firebird</strong> (line <span class="linenumber">193</span>)
+ </h4> 
+<h4><i>true</i> <strong>is_firebird(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Convenience function to check if the configuration is Firebird</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - if configured for Firebird, false otherwise</li>
+		</ul>
+</div>
+<a name="methodis_frontbase" id="methodis_frontbase"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method is_frontbase</strong> (line <span class="linenumber">201</span>)
+ </h4> 
+<h4><i>true</i> <strong>is_frontbase(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Convenience function to check if the configuration is FrontBase</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - if configured for FrontBase, false otherwise</li>
+		</ul>
+</div>
+<a name="methodis_informix" id="methodis_informix"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method is_informix</strong> (line <span class="linenumber">209</span>)
+ </h4> 
+<h4><i>true</i> <strong>is_informix(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Convenience function to check if the configuration is Informix</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - if configured for Informix, false otherwise</li>
+		</ul>
+</div>
+<a name="methodis_ingres" id="methodis_ingres"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method is_ingres</strong> (line <span class="linenumber">217</span>)
+ </h4> 
+<h4><i>true</i> <strong>is_ingres(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Convenience function to check if the configuration is Ingres</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - if configured for Ingres, false otherwise</li>
+		</ul>
+</div>
+<a name="methodis_literal" id="methodis_literal"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method is_literal</strong> (line <span class="linenumber">168</span>)
+ </h4> 
+<h4><i>true</i> <strong>is_literal(
+string
+$str)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Determines if a string is a literal value, literal values are surrounded by single quotes</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $str</strong>: String to check</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - if literal, false otherwise</li>
+		</ul>
+</div>
+<a name="methodis_maxdb" id="methodis_maxdb"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method is_maxdb</strong> (line <span class="linenumber">225</span>)
+ </h4> 
+<h4><i>true</i> <strong>is_maxdb(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Convenience function to check if the configuration is MaxDB</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - if configured for MaxDB, false otherwise</li>
+		</ul>
+</div>
+<a name="methodis_msql" id="methodis_msql"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method is_msql</strong> (line <span class="linenumber">233</span>)
+ </h4> 
+<h4><i>true</i> <strong>is_msql(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Convenience function to check if the configuration is MSql</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - if configured for MSql, false otherwise</li>
+		</ul>
+</div>
+<a name="methodis_mssql" id="methodis_mssql"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method is_mssql</strong> (line <span class="linenumber">241</span>)
+ </h4> 
+<h4><i>true</i> <strong>is_mssql(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Convenience function to check if the configuration is MSSql</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - if configured for MSSql, false otherwise</li>
+		</ul>
+</div>
+<a name="methodis_mysql" id="methodis_mysql"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method is_mysql</strong> (line <span class="linenumber">249</span>)
+ </h4> 
+<h4><i>true</i> <strong>is_mysql(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Convenience function to check if the configuration is MySql</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - if configured for MySql, false otherwise</li>
+		</ul>
+</div>
+<a name="methodis_mysql_old" id="methodis_mysql_old"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method is_mysql_old</strong> (line <span class="linenumber">257</span>)
+ </h4> 
+<h4><i>true</i> <strong>is_mysql_old(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Convenience function to check if the configuration is MySql Old</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - if configured for MySql Old, false otherwise</li>
+		</ul>
+</div>
+<a name="methodis_oracle" id="methodis_oracle"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method is_oracle</strong> (line <span class="linenumber">265</span>)
+ </h4> 
+<h4><i>true</i> <strong>is_oracle(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Convenience function to check if the configuration is Oracle</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - if configured for Oracle, false otherwise</li>
+		</ul>
+</div>
+<a name="methodis_ovrimos" id="methodis_ovrimos"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method is_ovrimos</strong> (line <span class="linenumber">273</span>)
+ </h4> 
+<h4><i>true</i> <strong>is_ovrimos(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Convenience function to check if the configuration is Ovrimos</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - if configured for Ovrimos, false otherwise</li>
+		</ul>
+</div>
+<a name="methodis_paradox" id="methodis_paradox"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method is_paradox</strong> (line <span class="linenumber">281</span>)
+ </h4> 
+<h4><i>true</i> <strong>is_paradox(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Convenience function to check if the configuration is Paradox</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - if configured for Paradox, false otherwise</li>
+		</ul>
+</div>
+<a name="methodis_postgre" id="methodis_postgre"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method is_postgre</strong> (line <span class="linenumber">289</span>)
+ </h4> 
+<h4><i>true</i> <strong>is_postgre(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Convenience function to check if the configuration is Postgre</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - if configured for Postgre, false otherwise</li>
+		</ul>
+</div>
+<a name="methodis_sqlite" id="methodis_sqlite"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method is_sqlite</strong> (line <span class="linenumber">297</span>)
+ </h4> 
+<h4><i>true</i> <strong>is_sqlite(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Convenience function to check if the configuration is Sqlite</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - if configured for Sqlite, false otherwise</li>
+		</ul>
+</div>
+<a name="methodis_sybase" id="methodis_sybase"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method is_sybase</strong> (line <span class="linenumber">305</span>)
+ </h4> 
+<h4><i>true</i> <strong>is_sybase(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Convenience function to check if the configuration is Sybase</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - if configured for Sybase, false otherwise</li>
+		</ul>
+</div>
+<a name="methodmktime" id="methodmktime"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method mktime</strong> (line <span class="linenumber">741</span>)
+ </h4> 
+<h4><i>int</i> <strong>mktime(
+string
+$timestamp)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Helper function to translate database timestamp to unix timestamp  The invers of this function is timestamp  ie.</h5>
+<div class="desc"><p>$db_time = $row['timestamp'];   $unix = Query::mktime($db_time);   $db_time === Query::timestamp($unix);</p></div>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $timestamp</strong>: timestamp database timestamp</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - unix timestamp</li>
+		</ul>
+</div>
+<a name="methodmodulus" id="methodmodulus"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method modulus</strong> (line <span class="linenumber">767</span>)
+ </h4> 
+<h4><i>string</i> <strong>modulus(
+string
+$lhs, string
+$rhs)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Get the platform specific modulus value</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $lhs</strong>: left hand side snippet</li>
+			<li><strong>string $rhs</strong>: right hand side snippet</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - modulus snippet</li>
+		</ul>
+</div>
+<a name="methodnative" id="methodnative"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method native</strong> (line <span class="linenumber">708</span>)
+ </h4> 
+<h4><i>Native</i> <strong>native(
+string
+$sql, string
+$mode)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Factory function to execute arbitrary native sql</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $sql</strong>: Sql to create a query out of</li>
+			<li><strong>string $mode</strong>: Type of query, one of Query::DELETE_STMT, Query::INSERT_STMT, Query::SELECT_STMT, or Query::UPDATE_STMT</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - SQL Query Object</li>
+		</ul>
+</div>
+<a name="methodquote" id="methodquote"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method quote</strong> (line <span class="linenumber">122</span>)
+ </h4> 
+<h4><i>Properly</i> <strong>quote(
+string
+$str)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Quotes the given string using the appropriate adapter's quote function.</h5>
+<div class="desc"><p>Used with schema object names</p></div>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $str</strong>: the text to quote</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - quoted text</li>
+			<li><strong>see</strong> - quote($str)</li>
+		</ul>
+</div>
+<a name="methodschema" id="methodschema"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method schema</strong> (line <span class="linenumber">111</span>)
+ </h4> 
+<h4><i>void</i> <strong>schema(
+[object
+$append = &quot;&quot;])</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Retrieves the schema with an optional suffix</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>object $append</strong>: [optional] If the schema exists this text will be appended, most useful for appending a dot (.)</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+		</ul>
+</div>
+<a name="methodselect" id="methodselect"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method select</strong> (line <span class="linenumber">318</span>)
+ </h4> 
+<h4><i>Select</i> <strong>select(
+varargs
+0)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Factory function that creates a select statement query object.</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>varargs 0</strong>: [optional] If nothing is provided assumes 'select *'              otherwise processes each argument as a column,              array arguments are processed as any number of aliased columns where column_name =&gt; alias</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - Statement Query Object</li>
+		</ul>
+</div>
+<a name="methodtable" id="methodtable"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method table</strong> (line <span class="linenumber">102</span>)
+ </h4> 
+<h4><i>Properly</i> <strong>table(
+string
+$table)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Properly quotes and scopes a potential table.</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $table</strong>: table name</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - scoped and quoted tablename ex: Query::table('hello') =&gt; `schema`.`hello` (for mysql)</li>
+		</ul>
+</div>
+<a name="methodtimestamp" id="methodtimestamp"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method timestamp</strong> (line <span class="linenumber">723</span>)
+ </h4> 
+<h4><i>string</i> <strong>timestamp(
+[int
+$timestamp = null])</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Helper function to translate unix timestamp to database timestamp format  The inverse of this function is mktime  ie.</h5>
+<div class="desc"><p>$unix = mktime();   $db_time = Query::timestamp($unix);  	$unix === Query::mktime($db_time);</p></div>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>int $timestamp</strong>: timestamp [optional] unix timestamp to translate, defaults to current time</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - database timestamp string</li>
+		</ul>
+</div>
+<a name="methodtrue_value" id="methodtrue_value"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method true_value</strong> (line <span class="linenumber">749</span>)
+ </h4> 
+<h4><i>mixed</i> <strong>true_value(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Get the platform specific true value</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - Boolean True Value ex: 1 or TRUE</li>
+		</ul>
+</div>
+<a name="methodunescape" id="methodunescape"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method unescape</strong> (line <span class="linenumber">146</span>)
+ </h4> 
+<h4><i>Properly</i> <strong>unescape(
+string
+$str)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Unescapes the given string using the approriate adapter's unescape function</h5>
+<div class="desc"><p>Used with values to be deserialized</p></div>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $str</strong>: the text to unescape</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - unescaped text</li>
+			<li><strong>see</strong> - unescape($str)</li>
+			<li><strong>todo</strong> - implement this properly</li>
+		</ul>
+</div>
+<a name="methodupdate" id="methodupdate"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method update</strong> (line <span class="linenumber">644</span>)
+ </h4> 
+<h4><i>Update</i> <strong>update(
+string
+$table)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Factory function that creates an update statement query object.</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $table</strong>: Table to update</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - Statement Query Object</li>
+		</ul>
+</div>
+<a name="methodconditional" id="methodconditional"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method conditional</strong> (line <span class="linenumber">441</span>)
+ </h4> 
+<h4><i>void</i> <strong>conditional(
+string
+$predicate, string
+$clause, 
+$args)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Used by where and on to parse conditional strings, interpolating parameters,</h5>
+<div class="desc"><p>quoting, escaping, and cross-platform replacements where needed</p></div>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $predicate</strong>: result predicate, i.e. 'where' or 'on'</li>
+			<li><strong>string $clause</strong>: conditional clause</li>
+			<li><strong> $args</strong>: </li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+		</ul>
+</div>
+<a name="methodexecute" id="methodexecute"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method execute</strong> (line <span class="linenumber">781</span>)
+ </h4> 
+<h4><i>a</i> <strong>execute(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Executes the sql statement and returns the proper result</h5>
+<div class="desc"><p>SELECT returns a result array  UPDATE returns affected row count  INSERT returns last insert id  DELETE returns affected row count</p></div>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - flat result set</li>
+		</ul>
+</div>
+<a name="methodfrom" id="methodfrom"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method from</strong> (line <span class="linenumber">343</span>)
+ </h4> 
+<h4><i><a href="../default/Query.html">Query</a></i> <strong>from(
+
+$table, [string
+$alias = &quot;&quot;], string
+$table_or_query)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Chained function for describing the table to pull from</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $table_or_query</strong>: table name or subquery</li>
+			<li><strong>string $alias</strong>: [optional] alias</li>
+			<li><strong> $table</strong>: </li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - instance for further chaining</li>
+		</ul>
+</div>
+<a name="methodinner" id="methodinner"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method inner</strong> (line <span class="linenumber">370</span>)
+ </h4> 
+<h4><i><a href="../default/Query.html">Query</a></i> <strong>inner(
+string
+$table, [object
+$alias = &quot;&quot;])</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Chained function for describing a standard inner join</h5>
+<div class="desc"><p>Convenience function, identical to calling Query#specified_join($table, $alias, &quot;inner join&quot;);</p></div>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $table</strong>: table name</li>
+			<li><strong>object $alias</strong>: [optional] alias</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - instance for further chaining</li>
+		</ul>
+</div>
+<a name="methodinto" id="methodinto"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method into</strong> (line <span class="linenumber">592</span>)
+ </h4> 
+<h4><i><a href="../default/Query.html">Query</a></i> <strong>into(
+string
+$table)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Chained function for describing the table to insert into</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $table</strong>: tablename</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - instance for further chaining</li>
+		</ul>
+</div>
+<a name="methodjoin" id="methodjoin"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method join</strong> (line <span class="linenumber">392</span>)
+ </h4> 
+<h4><i><a href="../default/Query.html">Query</a></i> <strong>join(
+string
+$table, [string
+$alias = &quot;&quot;])</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Chained function for describing a standard cartesian join</h5>
+<div class="desc"><p>Convenience function, identical to calling Query#specified_join($table, $alias, &quot;join&quot;);</p></div>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $table</strong>: table name</li>
+			<li><strong>string $alias</strong>: [optional] alias</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - instance for further chaining</li>
+		</ul>
+</div>
+<a name="methodleft" id="methodleft"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method left</strong> (line <span class="linenumber">359</span>)
+ </h4> 
+<h4><i><a href="../default/Query.html">Query</a></i> <strong>left(
+string
+$table, [object
+$alias = &quot;&quot;])</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Chained function for describing a standard left join</h5>
+<div class="desc"><p>Convenience function, identical to calling Query#specified_join($table, $alias, &quot;left join&quot;);</p></div>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $table</strong>: table name</li>
+			<li><strong>object $alias</strong>: [optional] alias</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - instance for further chaining</li>
+		</ul>
+</div>
+<a name="methodlimit" id="methodlimit"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method limit</strong> (line <span class="linenumber">553</span>)
+ </h4> 
+<h4><i><a href="../default/Query.html">Query</a></i> <strong>limit(
+int
+$limit, [
+$offset = 0], int
+$start)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Chained function for describing an optionally windowed limit</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>int $limit</strong>: maximum number of results to return</li>
+			<li><strong>int $start</strong>: [optional] where to start, defaults to 0, beginning of set</li>
+			<li><strong> $offset</strong>: </li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - instance for further chaining</li>
+		</ul>
+</div>
+<a name="methodon" id="methodon"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method on</strong> (line <span class="linenumber">416</span>)
+ </h4> 
+<h4><i><a href="../default/Query.html">Query</a></i> <strong>on(
+object
+$clause, variadic
+1)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Chained function for describing the on clause</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>object $clause</strong>: see below</li>
+			<li><strong>variadic 1</strong>: [optional] values to use for parameterization</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - instance for further chaining</li>
+			<li><strong>see</strong> - conditional($clause) for implementation details.</li>
+		</ul>
+</div>
+<a name="methodorder" id="methodorder"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method order</strong> (line <span class="linenumber">564</span>)
+ </h4> 
+<h4><i><a href="../default/Query.html">Query</a></i> <strong>order(
+array
+$columns, [string
+$dir = &quot;asc&quot;])</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Chained function for describing an ordering</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $dir</strong>: [optional] if $columns is a string, &quot;asc&quot; for ascending ordering &quot;desc&quot; for descending, defaults to &quot;asc&quot;</li>
+			<li><strong>array $columns</strong>: or string $columns array for multiple ordering column_name =&gt; direction or string for the column name</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - instance for further chaining</li>
+		</ul>
+</div>
+<a name="methodouter" id="methodouter"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method outer</strong> (line <span class="linenumber">381</span>)
+ </h4> 
+<h4><i><a href="../default/Query.html">Query</a></i> <strong>outer(
+string
+$table, [object
+$alias = &quot;&quot;])</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Chained function for describing a standard outer join</h5>
+<div class="desc"><p>Convenience function, identical to calling Query#specified_join($table, $alias, &quot;outer join&quot;);</p></div>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $table</strong>: table name</li>
+			<li><strong>object $alias</strong>: [optional] alias</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - instance for further chaining</li>
+		</ul>
+</div>
+<a name="methodparameterize" id="methodparameterize"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method parameterize</strong> (line <span class="linenumber">493</span>)
+ </h4> 
+<h4><i>string</i> <strong>parameterize(
+mixed
+$value)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Performs safe parameter interpolation</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>mixed $value</strong>: Value to interpolate, can be an array (will be imploded with commas), a subquery, or a literal value.</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - parameterized fragment</li>
+		</ul>
+</div>
+<a name="methodparse_func_args" id="methodparse_func_args"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method parse_func_args</strong> (line <span class="linenumber">510</span>)
+ </h4> 
+<h4><i>array</i> <strong>parse_func_args(
+$clause
+&$clause, $args
+&$args, $named
+$named)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Parses sql function arguments into a php array</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>$clause &$clause</strong>: sql clause to process</li>
+			<li><strong>$args &$args</strong>: arguments used for interpolation</li>
+			<li><strong>$named $named</strong>: named interpolation arguments</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - arguments</li>
+		</ul>
+</div>
+<a name="methodprocess_token" id="methodprocess_token"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method process_token</strong> (line <span class="linenumber">459</span>)
+ </h4> 
+<h4><i>tokenized</i> <strong>process_token(
+
+&$clause, array
+$token, 
+&$args, array
+$named, string
+$clause, array
+$args)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Processes a token</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $clause</strong>: sql string</li>
+			<li><strong>array $token</strong>: token array</li>
+			<li><strong>array $args</strong>: arguments</li>
+			<li><strong>array $named</strong>: associative array</li>
+			<li><strong> &$clause</strong>: </li>
+			<li><strong> &$args</strong>: </li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - string</li>
+		</ul>
+</div>
+<a name="methodset" id="methodset"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method set</strong> (line <span class="linenumber">663</span>)
+ </h4> 
+<h4><i><a href="../default/Query.html">Query</a></i> <strong>set(
+array
+$values, variadic
+$filter)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Chained function for describing the columns and values to set for an update statement</h5>
+<div class="desc"><p>This function takes an optional variadic argument for filtering the values  	 Example:  	   Assume we have a $_POST array where print_r($_POST) =&gt;  	    array ( 'id' =&gt; 1,  	    		    'first_name' =&gt; 'Matt',  	            'last_name' =&gt; 'Nowack' )  	   -&gt;set('first_name', 'last_name', $_POST) [read: set 'first_name', 'last_name' from $_POST]  	     is identical to  	   -&gt;set(array('first_name' =&gt; $_POST['first_name'], 'last_name' =&gt; $_POST['last_name']))</p></div>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>variadic $filter</strong>: [optional] list of elements to pull ovt of $values</li>
+			<li><strong>array $values</strong>: Array of values with column_name =&gt; update_value</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - instance for further chaining</li>
+		</ul>
+</div>
+<a name="methodspecified_join" id="methodspecified_join"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method specified_join</strong> (line <span class="linenumber">404</span>)
+ </h4> 
+<h4><i><a href="../default/Query.html">Query</a></i> <strong>specified_join(
+string
+$table, [string
+$alias = &quot;&quot;], [string
+$type = &quot;join&quot;])</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Helper function and extensibility function, allows for arbitrary join types.</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $table</strong>: table name</li>
+			<li><strong>string $alias</strong>: [optional] alias</li>
+			<li><strong>string $type</strong>: [optional] join clause</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - instance for further chaining</li>
+		</ul>
+</div>
+<a name="methodvalues" id="methodvalues"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method values</strong> (line <span class="linenumber">612</span>)
+ </h4> 
+<h4><i><a href="../default/Query.html">Query</a></i> <strong>values(
+array
+$values, variadic
+$filter)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Chained function for describing the columns and values for an insert statement</h5>
+<div class="desc"><p>This function takes an optional variadic argument for filtering the values  	 Example:  	   Assume we have a $_POST array where print_r($_POST) =&gt;  	    array ( 'first_name' =&gt; 'Matt',  	            'last_name' =&gt; 'Nowack',  	            'some_junk' =&gt; 'Not wanted' );  	   -&gt;values('first_name', 'last_name', $_POST) [read: values 'first_name', 'last_name' from $_POST]  	     is identical to  	   -&gt;values(array('first_name' =&gt; $_POST['first_name'], 'last_name' =&gt; $_POST['last_name']))</p></div>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>variadic $filter</strong>: [optional] list of elements to pull out of $values</li>
+			<li><strong>array $values</strong>: Array of values with column_name =&gt; insert_value</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - instance for further chaining</li>
+		</ul>
+</div>
+<a name="methodverbose" id="methodverbose"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method verbose</strong> (line <span class="linenumber">789</span>)
+ </h4> 
+<h4><i>the</i> <strong>verbose(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Prints the query and the result of the query</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - same result set as Query#execute()</li>
+		</ul>
+</div>
+<a name="methodwhere" id="methodwhere"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method where</strong> (line <span class="linenumber">429</span>)
+ </h4> 
+<h4><i><a href="../default/Query.html">Query</a></i> <strong>where(
+object
+$clause, variadic
+1)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Chained function for describing the where clause</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>object $clause</strong>: see below</li>
+			<li><strong>variadic 1</strong>: [optional] values to use for parameterization</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - instance for further chaining</li>
+			<li><strong>see</strong> - conditional($clause) for implementation details.</li>
+		</ul>
+</div>
+<a name="method__toString" id="method__toString"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method __toString</strong> (line <span class="linenumber">802</span>)
+ </h4> 
+<h4><i>Wrapped</i> <strong>__toString(
+)</strong></h4>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Automagic toString method, simply prints wrapped sql statement</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - Sql Statement</li>
+		</ul>
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage2" ) );</script></div>
+<div class="tab-page" id="iVars">
+<h2 class="tab">Inherited Variables</h2>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "iVars" ) );</script>
+<!-- =========== VAR INHERITED SUMMARY =========== -->
+<A NAME='var_inherited_summary'><!-- --></A>
+<h3>Inherited Class Variable Summary</h3>
+
+	</div>
+<div class="tab-page" id="iMethods">
+<h2 class="tab">Inherited Methods</h2>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "iMethods" ) );</script>
+<!-- =========== INHERITED METHOD SUMMARY =========== -->
+<A NAME='functions_inherited'><!-- --></A>
+<h3>Inherited Method Summary</h3>
+
+	</div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+
+setupAllTabs();
+
+//]]>
+</script>
+	<div id="credit">
+		<hr />
+		Documentation generated on Wed, 25 Nov 2009 15:35:23 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>File Source for DB2Adapter.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+						<h1>Source for file DB2Adapter.php</h1>
+<p>Documentation is available at <a href="../default/_lib---adapters---DB2Adapter.php.html">DB2Adapter.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a>namespace&nbsp;<span class="src-id">Prosper</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a3"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-key">class&nbsp;</span><a href="../default/DB2Adapter.html">DB2Adapter</a>&nbsp;<span class="src-key">extends&nbsp;</span><a href="../default/BaseAdapter.html">BaseAdapter</a>&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a5"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a6"></a>&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a7"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@see</span><span class="src-doc">&nbsp;BaseAdapter#connect()</span></div></li>
+<li><div class="src-line"><a name="a8"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;*/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a9"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../default/DB2Adapter.html#methodconnect">connect</a><span class="src-sym">(</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a10"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$conn&nbsp;</span>=&nbsp;<span class="src-str">&quot;</span><span class="src-str">DRIVER={IBM&nbsp;DB2&nbsp;ODBC&nbsp;DRIVER};DATABASE={<span class="src-var">$this</span></span><span class="src-sym">-&gt;</span><a href="../default/BaseAdapter.html#var$schema">schema</a><span class="src-sym">}</span>;HOSTNAME={<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../default/BaseAdapter.html#var$hostname">hostname</a><span class="src-sym">}</span>;PORT=50000;PROTOCOL=TCPIP;UID={<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../default/BaseAdapter.html#var$username">username</a><span class="src-sym">}</span>;PWD={<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../default/BaseAdapter.html#var$password">password</a><span class="src-sym">}</span><span class="src-str"></span><span class="src-str">"</span><span class="src-sym">;</span></span></div></li>
+<li><div class="src-line"><a name="a11"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span></span><span class="src-sym">-&gt;</span><a href="../default/BaseAdapter.html#var$connection">connection</a>&nbsp;=&nbsp;<span class="src-id">db2_connect</span><span class="src-sym">(</span><span class="src-var">$conn</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a12"></a>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="src-str"><span class="src-sym">}</span></span></div></li>
+<li><div class="src-line"><a name="a13"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a14"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;/**</span></div></li>
+<li><div class="src-line"><a name="a15"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter#disconnect()</span></div></li>
+<li><div class="src-line"><a name="a16"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a17"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function</span>&nbsp;<span class="src-id">disconnect</span><span class="src-sym">(</span><span class="src-sym">)</span>&nbsp;<span class="src-sym">{</span></span></div></li>
+<li><div class="src-line"><a name="a18"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">db2_close</span><span class="src-sym">(</span><span class="src-var">$this</span></span><span class="src-sym">-&gt;</span><a href="../default/BaseAdapter.html#methodconnection">connection</a><span class="src-sym">(</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a19"></a>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="src-str"><span class="src-sym">}</span></span></div></li>
+<li><div class="src-line"><a name="a20"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a21"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;/**</span></div></li>
+<li><div class="src-line"><a name="a22"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter#platform_execute($sql,&nbsp;$mode)&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a23"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a24"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function</span>&nbsp;<span class="src-id">platform_execute</span><span class="src-sym">(</span><span class="src-var">$sql</span><span class="src-sym">,</span>&nbsp;<span class="src-var">$mode</span><span class="src-sym">)</span>&nbsp;<span class="src-sym">{</span></span></div></li>
+<li><div class="src-line"><a name="a25"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return</span>&nbsp;<span class="src-id">db2_prepare</span><span class="src-sym">(</span><span class="src-var">$this</span></span><span class="src-sym">-&gt;</span><a href="../default/BaseAdapter.html#methodconnection">connection</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">,&nbsp;</span><span class="src-var">$sql</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a26"></a>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="src-str"><span class="src-sym">}</span></span></div></li>
+<li><div class="src-line"><a name="a27"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a28"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;/**</span></div></li>
+<li><div class="src-line"><a name="a29"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter#affected_rows($set)&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a30"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a31"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function</span>&nbsp;<span class="src-id">affected_rows</span><span class="src-sym">(</span><span class="src-var">$set</span><span class="src-sym">)</span>&nbsp;<span class="src-sym">{</span></span></div></li>
+<li><div class="src-line"><a name="a32"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return</span>&nbsp;<span class="src-id">db2_num_rows</span><span class="src-sym">(</span><span class="src-var">$set</span><span class="src-sym">)</span><span class="src-sym">;</span></span></div></li>
+<li><div class="src-line"><a name="a33"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></span></div></li>
+<li><div class="src-line"><a name="a34"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a35"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;/**</span></div></li>
+<li><div class="src-line"><a name="a36"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter#insert_id($set)&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a37"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a38"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function</span>&nbsp;<span class="src-id">insert_id</span><span class="src-sym">(</span><span class="src-var">$set</span><span class="src-sym">)</span>&nbsp;<span class="src-sym">{</span></span></div></li>
+<li><div class="src-line"><a name="a39"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return</span>&nbsp;<span class="src-id">db2_last_insert_id</span><span class="src-sym">(</span><span class="src-var">$this</span></span><span class="src-sym">-&gt;</span><a href="../default/BaseAdapter.html#methodconnection">connection</a><span class="src-sym">(</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="src-str"><span class="src-sym">}</span></span></div></li>
+<li><div class="src-line"><a name="a41"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a42"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;/**</span></div></li>
+<li><div class="src-line"><a name="a43"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter#fetch_assoc($set)</span></div></li>
+<li><div class="src-line"><a name="a44"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a45"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function</span>&nbsp;<span class="src-id">fetch_assoc</span><span class="src-sym">(</span><span class="src-var">$set</span><span class="src-sym">)</span>&nbsp;<span class="src-sym">{</span></span></div></li>
+<li><div class="src-line"><a name="a46"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return</span>&nbsp;<span class="src-id">db2_fetch_assoc</span><span class="src-sym">(</span><span class="src-var">$set</span><span class="src-sym">)</span><span class="src-sym">;</span></span></div></li>
+<li><div class="src-line"><a name="a47"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></span></div></li>
+<li><div class="src-line"><a name="a48"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a49"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;/**</span></div></li>
+<li><div class="src-line"><a name="a50"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter#free_result($set)&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a51"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a52"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function</span>&nbsp;<span class="src-id">free_result</span><span class="src-sym">(</span><span class="src-var">$set</span><span class="src-sym">)</span>&nbsp;<span class="src-sym">{</span></span></div></li>
+<li><div class="src-line"><a name="a53"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">db2_free_stmt</span><span class="src-sym">(</span><span class="src-var">$set</span><span class="src-sym">)</span><span class="src-sym">;</span></span></div></li>
+<li><div class="src-line"><a name="a54"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></span></div></li>
+<li><div class="src-line"><a name="a55"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a56"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a57"></a></span><span class="src-str"><span class="src-sym">}</span></span></div></li>
+<li><div class="src-line"><a name="a58"></a>&nbsp;</div></li>
+</ol></div>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Sun, 29 Nov 2009 15:23:41 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</body>
+</html>

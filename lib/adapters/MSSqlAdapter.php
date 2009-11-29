@@ -79,7 +79,7 @@ class MSSqlAdapter extends BaseAdapter {
 	 * @param string $sql sql statement
 	 * @param int $limit how many records to return
 	 * @param int $offset where to start returning 
-	 * @return modified sql statement
+	 * @return string modified sql statement
 	 */
 	function limit($sql, $limit, $offset) {
 		if($offset == 0) {

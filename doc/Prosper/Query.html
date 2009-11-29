@@ -1,0 +1,2533 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class Query</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class Query</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+											<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+						
+			</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">The Query Class that drives Prosper</p>
+		<p class="notes">
+			Located in <a class="field" href="_Query.php.html">/Query.php</a> (line <span class="field"><a href="../__filesource/fsource_Prosper__Query.php.html#a12">12</a></span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+	<a name="sec-const-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Class Constant Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Constants</span> (<a href="#sec-consts">details</a>)
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<div class="const-summary">
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#DB2_MODE" title="details" class="const-name">DB2_MODE</a> = 					<span class="var-type"> &quot;DB2Adapter&quot;</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#DELETE_STMT" title="details" class="const-name">DELETE_STMT</a> = 					<span class="var-type"> &quot;DELETE_STMT&quot;</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#EAGER_LOADING" title="details" class="const-name">EAGER_LOADING</a> = 					<span class="var-type"> false</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#FIREBIRD_MODE" title="details" class="const-name">FIREBIRD_MODE</a> = 					<span class="var-type"> &quot;FirebirdAdapter&quot;</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#FRONTBASE_MODE" title="details" class="const-name">FRONTBASE_MODE</a> = 					<span class="var-type"> &quot;FrontBaseAdapter&quot;</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#INFORMIX_MODE" title="details" class="const-name">INFORMIX_MODE</a> = 					<span class="var-type"> &quot;InformixAdapter&quot;</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#INGRES_MODE" title="details" class="const-name">INGRES_MODE</a> = 					<span class="var-type"> &quot;IngresAdapter&quot;</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#INSERT_STMT" title="details" class="const-name">INSERT_STMT</a> = 					<span class="var-type"> &quot;INSERT_STMT&quot;</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#LAZY_LOADING" title="details" class="const-name">LAZY_LOADING</a> = 					<span class="var-type"> true</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#MAXDB_MODE" title="details" class="const-name">MAXDB_MODE</a> = 					<span class="var-type"> &quot;MaxDBAdapter&quot;</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#MSQL_MODE" title="details" class="const-name">MSQL_MODE</a> = 					<span class="var-type"> &quot;MSqlAdapter&quot;</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#MSSQL_MODE" title="details" class="const-name">MSSQL_MODE</a> = 					<span class="var-type"> &quot;MSSqlAdapter&quot;</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#MYSQL_MODE" title="details" class="const-name">MYSQL_MODE</a> = 					<span class="var-type"> &quot;MySqlAdapter&quot;</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#MYSQL_OLD_MODE" title="details" class="const-name">MYSQL_OLD_MODE</a> = 					<span class="var-type"> &quot;MySqlOldAdapter&quot;</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#ORACLE_MODE" title="details" class="const-name">ORACLE_MODE</a> = 					<span class="var-type"> &quot;OracleAdapter&quot;</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#OVRIMOS_MODE" title="details" class="const-name">OVRIMOS_MODE</a> = 					<span class="var-type"> &quot;OvrimosAdapter&quot;</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#PARADOX_MODE" title="details" class="const-name">PARADOX_MODE</a> = 					<span class="var-type"> &quot;ParadoxAdapter&quot;</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#POSTGRE_MODE" title="details" class="const-name">POSTGRE_MODE</a> = 					<span class="var-type"> &quot;PostgreSqlAdapter&quot;</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#SELECT_STMT" title="details" class="const-name">SELECT_STMT</a> = 					<span class="var-type"> &quot;SELECT_STMT&quot;</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#SQLITE_MODE" title="details" class="const-name">SQLITE_MODE</a> = 					<span class="var-type"> &quot;SqliteAdapter&quot;</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#SYBASE_MODE" title="details" class="const-name">SYBASE_MODE</a> = 					<span class="var-type"> &quot;SybaseAdapter&quot;</span>
+
+				</div>
+								<div class="const-title">
+					<img src="../media/images/Constant.png" alt=" " />
+					<a href="#UPDATE_STMT" title="details" class="const-name">UPDATE_STMT</a> = 					<span class="var-type"> &quot;UPDATE_STMT&quot;</span>
+
+				</div>
+							</div>
+		</div>
+	</div>
+
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+									<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+												<div class="method-definition">
+					static 						<span class="method-result">string</span>
+										<a href="#alias" title="details" class="method-name">alias</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$alias</span>)
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">Properly</span>
+										<a href="#column" title="details" class="method-name">column</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$col</span>)
+									</div>
+																								<div class="method-definition">
+					static 						<span class="method-result">null</span>
+										<a href="#configure" title="details" class="method-name">configure</a>
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$db_mode</span> = <span class="var-default">MYSQL_MODE</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$username</span> = <span class="var-default">&quot;&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$password</span> = <span class="var-default">&quot;&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$hostname</span> = <span class="var-default">&quot;&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$schema</span> = <span class="var-default">&quot;&quot;</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$loading</span> = <span class="var-default">LAZY_LOADING</span>])
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">string</span>
+										<a href="#db_mode" title="details" class="method-name">db_mode</a>
+										()
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">Delete</span>
+										<a href="#delete" title="details" class="method-name">delete</a>
+										()
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">String</span>
+										<a href="#deliteral" title="details" class="method-name">deliteral</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>)
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">Properly</span>
+										<a href="#escape" title="details" class="method-name">escape</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>)
+									</div>
+																								<div class="method-definition">
+					static 						<span class="method-result">mixed</span>
+										<a href="#false_value" title="details" class="method-name">false_value</a>
+										()
+									</div>
+																																<div class="method-definition">
+					static 						<span class="method-result">Insert</span>
+										<a href="#insert" title="details" class="method-name">insert</a>
+										()
+									</div>
+																								<div class="method-definition">
+					static 						<span class="method-result">true</span>
+										<a href="#is_db2" title="details" class="method-name">is_db2</a>
+										()
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">true</span>
+										<a href="#is_firebird" title="details" class="method-name">is_firebird</a>
+										()
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">true</span>
+										<a href="#is_frontbase" title="details" class="method-name">is_frontbase</a>
+										()
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">true</span>
+										<a href="#is_informix" title="details" class="method-name">is_informix</a>
+										()
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">true</span>
+										<a href="#is_ingres" title="details" class="method-name">is_ingres</a>
+										()
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">true</span>
+										<a href="#is_literal" title="details" class="method-name">is_literal</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>)
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">true</span>
+										<a href="#is_maxdb" title="details" class="method-name">is_maxdb</a>
+										()
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">true</span>
+										<a href="#is_msql" title="details" class="method-name">is_msql</a>
+										()
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">true</span>
+										<a href="#is_mssql" title="details" class="method-name">is_mssql</a>
+										()
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">true</span>
+										<a href="#is_mysql" title="details" class="method-name">is_mysql</a>
+										()
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">true</span>
+										<a href="#is_mysql_old" title="details" class="method-name">is_mysql_old</a>
+										()
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">true</span>
+										<a href="#is_oracle" title="details" class="method-name">is_oracle</a>
+										()
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">true</span>
+										<a href="#is_ovrimos" title="details" class="method-name">is_ovrimos</a>
+										()
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">true</span>
+										<a href="#is_paradox" title="details" class="method-name">is_paradox</a>
+										()
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">true</span>
+										<a href="#is_postgre" title="details" class="method-name">is_postgre</a>
+										()
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">true</span>
+										<a href="#is_sqlite" title="details" class="method-name">is_sqlite</a>
+										()
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">true</span>
+										<a href="#is_sybase" title="details" class="method-name">is_sybase</a>
+										()
+									</div>
+																																								<div class="method-definition">
+					static 						<span class="method-result">int</span>
+										<a href="#mktime" title="details" class="method-name">mktime</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$timestamp</span>)
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">string</span>
+										<a href="#modulus" title="details" class="method-name">modulus</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$lhs</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$rhs</span>)
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">Native</span>
+										<a href="#native" title="details" class="method-name">native</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$sql</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$mode</span>)
+									</div>
+																																																																<div class="method-definition">
+					static 						<span class="method-result">Properly</span>
+										<a href="#quote" title="details" class="method-name">quote</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>)
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">Schema</span>
+										<a href="#schema" title="details" class="method-name">schema</a>
+											([<span class="var-type">object</span>&nbsp;<span class="var-name">$append</span> = <span class="var-default">&quot;&quot;</span>])
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">Select</span>
+										<a href="#select" title="details" class="method-name">select</a>
+											(<span class="var-type">varargs</span>&nbsp;<span class="var-name">0</span>)
+									</div>
+																																<div class="method-definition">
+					static 						<span class="method-result">Properly</span>
+										<a href="#table" title="details" class="method-name">table</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$table</span>)
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">string</span>
+										<a href="#timestamp" title="details" class="method-name">timestamp</a>
+											([<span class="var-type">int</span>&nbsp;<span class="var-name">$timestamp</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">mixed</span>
+										<a href="#true_value" title="details" class="method-name">true_value</a>
+										()
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">Properly</span>
+										<a href="#unescape" title="details" class="method-name">unescape</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>)
+									</div>
+																<div class="method-definition">
+					static 						<span class="method-result">Update</span>
+										<a href="#update" title="details" class="method-name">update</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$table</span>)
+									</div>
+																																								
+																												<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#conditional" title="details" class="method-name">conditional</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$predicate</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$clause</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$args</span>)
+									</div>
+																																																								<div class="method-definition">
+											<span class="method-result">a</span>
+										<a href="#execute" title="details" class="method-name">execute</a>
+										()
+									</div>
+																								<div class="method-definition">
+											<span class="method-result"><a href="../Prosper/Query.html">Query</a></span>
+										<a href="#from" title="details" class="method-name">from</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$table</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$alias</span> = <span class="var-default">&quot;&quot;</span>], <span class="var-type">string</span>&nbsp;<span class="var-name">$table_or_query</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../Prosper/Query.html">Query</a></span>
+										<a href="#inner" title="details" class="method-name">inner</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$table</span>, [<span class="var-type">object</span>&nbsp;<span class="var-name">$alias</span> = <span class="var-default">&quot;&quot;</span>])
+									</div>
+																								<div class="method-definition">
+											<span class="method-result"><a href="../Prosper/Query.html">Query</a></span>
+										<a href="#into" title="details" class="method-name">into</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$table</span>)
+									</div>
+																																																																																																																																																								<div class="method-definition">
+											<span class="method-result"><a href="../Prosper/Query.html">Query</a></span>
+										<a href="#join" title="details" class="method-name">join</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$table</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$alias</span> = <span class="var-default">&quot;&quot;</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../Prosper/Query.html">Query</a></span>
+										<a href="#left" title="details" class="method-name">left</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$table</span>, [<span class="var-type">object</span>&nbsp;<span class="var-name">$alias</span> = <span class="var-default">&quot;&quot;</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../Prosper/Query.html">Query</a></span>
+										<a href="#limit" title="details" class="method-name">limit</a>
+											(<span class="var-type">int</span>&nbsp;<span class="var-name">$limit</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$offset</span> = <span class="var-default">0</span>], <span class="var-type">int</span>&nbsp;<span class="var-name">$start</span>)
+									</div>
+																																								<div class="method-definition">
+											<span class="method-result"><a href="../Prosper/Query.html">Query</a></span>
+										<a href="#on" title="details" class="method-name">on</a>
+											(<span class="var-type">object</span>&nbsp;<span class="var-name">$clause</span>, <span class="var-type">variadic</span>&nbsp;<span class="var-name">1</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../Prosper/Query.html">Query</a></span>
+										<a href="#order" title="details" class="method-name">order</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$columns</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$dir</span> = <span class="var-default">&quot;asc&quot;</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../Prosper/Query.html">Query</a></span>
+										<a href="#outer" title="details" class="method-name">outer</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$table</span>, [<span class="var-type">object</span>&nbsp;<span class="var-name">$alias</span> = <span class="var-default">&quot;&quot;</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#parameterize" title="details" class="method-name">parameterize</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$value</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">array</span>
+										<a href="#parse_func_args" title="details" class="method-name">parse_func_args</a>
+											(<span class="var-type">$clause</span>&nbsp;<span class="var-name">&$clause</span>, <span class="var-type">$args</span>&nbsp;<span class="var-name">&$args</span>, <span class="var-type">$named</span>&nbsp;<span class="var-name">$named</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">tokenized</span>
+										<a href="#process_token" title="details" class="method-name">process_token</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">&$clause</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$token</span>, <span class="var-type"></span>&nbsp;<span class="var-name">&$args</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$named</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$clause</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$args</span>)
+									</div>
+																																								<div class="method-definition">
+											<span class="method-result"><a href="../Prosper/Query.html">Query</a></span>
+										<a href="#set" title="details" class="method-name">set</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$values</span>, <span class="var-type">variadic</span>&nbsp;<span class="var-name">$filter</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../Prosper/Query.html">Query</a></span>
+										<a href="#specified_join" title="details" class="method-name">specified_join</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$table</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$alias</span> = <span class="var-default">&quot;&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$type</span> = <span class="var-default">&quot;join&quot;</span>])
+									</div>
+																																																								<div class="method-definition">
+											<span class="method-result"><a href="../Prosper/Query.html">Query</a></span>
+										<a href="#values" title="details" class="method-name">values</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$values</span>, <span class="var-type">variadic</span>&nbsp;<span class="var-name">$filter</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">the</span>
+										<a href="#verbose" title="details" class="method-name">verbose</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../Prosper/Query.html">Query</a></span>
+										<a href="#where" title="details" class="method-name">where</a>
+											(<span class="var-type">object</span>&nbsp;<span class="var-name">$clause</span>, <span class="var-type">variadic</span>&nbsp;<span class="var-name">1</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">Wrapped</span>
+										<a href="#__toString" title="details" class="method-name">__toString</a>
+										()
+									</div>
+								</div>
+		</div>
+	</div>		
+
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																		<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
+							
+										<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodalias" id="alias"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method alias</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a78">78</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Creates an alias string if alias is not empty</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> template is &quot; as self::quote($alias)&quot;</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">string</span>
+		<span class="method-name">
+			alias
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$alias</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$alias</span><span class="var-description">: alias to create</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodcolumn" id="column"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method column</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a87">87</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Properly quotes a potential column, allowing for compound table.column format</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> quoted column</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">Properly</span>
+		<span class="method-name">
+			column
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$col</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$col</span><span class="var-description">: column name, simple or compound</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodconfigure" id="configure"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method configure</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a64">64</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set up Prosper Query Engine</p>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">null</span>
+		<span class="method-name">
+			configure
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$db_mode</span> = <span class="var-default">MYSQL_MODE</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$username</span> = <span class="var-default">&quot;&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$password</span> = <span class="var-default">&quot;&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$hostname</span> = <span class="var-default">&quot;&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$schema</span> = <span class="var-default">&quot;&quot;</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$loading</span> = <span class="var-default">LAZY_LOADING</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$db_mode</span><span class="var-description">: [optional] Database mode, use one of the [DATABASE]_MODE constants.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$username</span><span class="var-description">: [optional] Database username, defaults to nothing</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$password</span><span class="var-description">: [optional] Database password, defaults to nothing</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$hostname</span><span class="var-description">: [optional] Database hostname</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$schema</span><span class="var-description">: [optional] Default schema to apply to queries</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$loading</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methoddb_mode" id="db_mode"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method db_mode</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a177">177</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the current database mode, see the family of is_[DATABASE]</p>
+<p class="description"><p>functions that use this function</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> one of the [DATABASE]_MODE constants</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">string</span>
+		<span class="method-name">
+			db_mode
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methoddelete" id="delete"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method delete</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a690">690</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Factory function that creates a delete statement query object.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Statement Query Object</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">Delete</span>
+		<span class="method-name">
+			delete
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methoddeliteral" id="deliteral"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method deliteral</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a157">157</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Removes the literal quotes from a string, if called on a non-literal simply returns string</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> with quotes removed</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">String</span>
+		<span class="method-name">
+			deliteral
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$str</span><span class="var-description">: String to deliteral</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodescape" id="escape"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method escape</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a137">137</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Escapes the given string using the appropriate adapter's escape function.</p>
+<p class="description"><p>Used with values to be serialized</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> escaped text</li>
+				<li><span class="field">see:</span> escape($str)</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">Properly</span>
+		<span class="method-name">
+			escape
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$str</span><span class="var-description">: the text to escape</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodfalse_value" id="false_value"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method false_value</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a749">749</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get the platform specific false value</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Boolean False Value ex: 0 or FALSE</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			false_value
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodinsert" id="insert"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method insert</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a583">583</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Factory function that creates an insert statement query object.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Statement Query Object</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">Insert</span>
+		<span class="method-name">
+			insert
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_db2" id="is_db2"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method is_db2</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a185">185</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Convenience function to check if the configuration is DB2</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> if configured for DB2, false otherwise</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">true</span>
+		<span class="method-name">
+			is_db2
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_firebird" id="is_firebird"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method is_firebird</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a193">193</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Convenience function to check if the configuration is Firebird</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> if configured for Firebird, false otherwise</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">true</span>
+		<span class="method-name">
+			is_firebird
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_frontbase" id="is_frontbase"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method is_frontbase</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a201">201</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Convenience function to check if the configuration is FrontBase</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> if configured for FrontBase, false otherwise</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">true</span>
+		<span class="method-name">
+			is_frontbase
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_informix" id="is_informix"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method is_informix</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a209">209</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Convenience function to check if the configuration is Informix</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> if configured for Informix, false otherwise</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">true</span>
+		<span class="method-name">
+			is_informix
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_ingres" id="is_ingres"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method is_ingres</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a217">217</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Convenience function to check if the configuration is Ingres</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> if configured for Ingres, false otherwise</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">true</span>
+		<span class="method-name">
+			is_ingres
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_literal" id="is_literal"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method is_literal</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a168">168</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Determines if a string is a literal value, literal values are surrounded by single quotes</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> if literal, false otherwise</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">true</span>
+		<span class="method-name">
+			is_literal
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$str</span><span class="var-description">: String to check</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodis_maxdb" id="is_maxdb"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method is_maxdb</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a225">225</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Convenience function to check if the configuration is MaxDB</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> if configured for MaxDB, false otherwise</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">true</span>
+		<span class="method-name">
+			is_maxdb
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_msql" id="is_msql"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method is_msql</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a233">233</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Convenience function to check if the configuration is MSql</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> if configured for MSql, false otherwise</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">true</span>
+		<span class="method-name">
+			is_msql
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_mssql" id="is_mssql"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method is_mssql</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a241">241</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Convenience function to check if the configuration is MSSql</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> if configured for MSSql, false otherwise</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">true</span>
+		<span class="method-name">
+			is_mssql
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_mysql" id="is_mysql"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method is_mysql</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a249">249</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Convenience function to check if the configuration is MySql</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> if configured for MySql, false otherwise</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">true</span>
+		<span class="method-name">
+			is_mysql
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_mysql_old" id="is_mysql_old"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method is_mysql_old</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a257">257</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Convenience function to check if the configuration is MySql Old</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> if configured for MySql Old, false otherwise</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">true</span>
+		<span class="method-name">
+			is_mysql_old
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_oracle" id="is_oracle"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method is_oracle</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a265">265</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Convenience function to check if the configuration is Oracle</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> if configured for Oracle, false otherwise</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">true</span>
+		<span class="method-name">
+			is_oracle
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_ovrimos" id="is_ovrimos"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method is_ovrimos</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a273">273</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Convenience function to check if the configuration is Ovrimos</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> if configured for Ovrimos, false otherwise</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">true</span>
+		<span class="method-name">
+			is_ovrimos
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_paradox" id="is_paradox"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method is_paradox</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a281">281</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Convenience function to check if the configuration is Paradox</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> if configured for Paradox, false otherwise</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">true</span>
+		<span class="method-name">
+			is_paradox
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_postgre" id="is_postgre"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method is_postgre</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a289">289</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Convenience function to check if the configuration is Postgre</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> if configured for Postgre, false otherwise</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">true</span>
+		<span class="method-name">
+			is_postgre
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_sqlite" id="is_sqlite"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method is_sqlite</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a297">297</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Convenience function to check if the configuration is Sqlite</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> if configured for Sqlite, false otherwise</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">true</span>
+		<span class="method-name">
+			is_sqlite
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodis_sybase" id="is_sybase"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method is_sybase</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a305">305</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Convenience function to check if the configuration is Sybase</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> if configured for Sybase, false otherwise</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">true</span>
+		<span class="method-name">
+			is_sybase
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodmktime" id="mktime"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method mktime</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a733">733</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Helper function to translate database timestamp to unix timestamp  The invers of this function is timestamp  ie.</p>
+<p class="description"><p>$db_time = $row['timestamp'];   $unix = Query::mktime($db_time);   $db_time === Query::timestamp($unix);</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> unix timestamp</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">int</span>
+		<span class="method-name">
+			mktime
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$timestamp</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$timestamp</span><span class="var-description">: timestamp database timestamp</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodmodulus" id="modulus"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method modulus</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a759">759</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get the platform specific modulus value</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> modulus snippet</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">string</span>
+		<span class="method-name">
+			modulus
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$lhs</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$rhs</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$lhs</span><span class="var-description">: left hand side snippet</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$rhs</span><span class="var-description">: right hand side snippet</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodnative" id="native"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method native</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a702">702</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Factory function to execute arbitrary native sql</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> SQL Query Object</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">Native</span>
+		<span class="method-name">
+			native
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$sql</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$mode</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$sql</span><span class="var-description">: Sql to create a query out of</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$mode</span><span class="var-description">: Type of query, one of Query::DELETE_STMT, Query::INSERT_STMT, Query::SELECT_STMT, or Query::UPDATE_STMT</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodquote" id="quote"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method quote</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a126">126</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Quotes the given string using the appropriate adapter's quote function.</p>
+<p class="description"><p>Used with schema object names</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> quoted text</li>
+				<li><span class="field">see:</span> quote($str)</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">Properly</span>
+		<span class="method-name">
+			quote
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$str</span><span class="var-description">: the text to quote</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodschema" id="schema"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method schema</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a115">115</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Retrieves the schema with an optional suffix</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> with an optional suffix</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">Schema</span>
+		<span class="method-name">
+			schema
+		</span>
+					([<span class="var-type">object</span>&nbsp;<span class="var-name">$append</span> = <span class="var-default">&quot;&quot;</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">object</span>
+				<span class="var-name">$append</span><span class="var-description">: [optional] If the schema exists this text will be appended, most useful for appending a dot (.)</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodselect" id="select"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method select</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a318">318</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Factory function that creates a select statement query object.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Statement Query Object</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">Select</span>
+		<span class="method-name">
+			select
+		</span>
+					(<span class="var-type">varargs</span>&nbsp;<span class="var-name">0</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">varargs</span>
+				<span class="var-name">0</span><span class="var-description">: [optional] If nothing is provided assumes 'select *'       otherwise processes each argument as a column,        array arguments are processed as any number of aliased columns where column_name =&gt; alias</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodtable" id="table"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method table</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a106">106</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Properly quotes and scopes a potential table.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> scoped and quoted tablename ex: Query::table('hello') =&gt; `schema`.`hello` (for mysql)</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">Properly</span>
+		<span class="method-name">
+			table
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$table</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$table</span><span class="var-description">: table name</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodtimestamp" id="timestamp"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method timestamp</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a716">716</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Helper function to translate unix timestamp to database timestamp format  The inverse of this function is mktime  ie.</p>
+<p class="description"><p>$unix = mktime();   $db_time = Query::timestamp($unix);   $unix === Query::mktime($db_time);</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> database timestamp string</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">string</span>
+		<span class="method-name">
+			timestamp
+		</span>
+					([<span class="var-type">int</span>&nbsp;<span class="var-name">$timestamp</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$timestamp</span><span class="var-description">: timestamp [optional] unix timestamp to translate, defaults to current time</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodtrue_value" id="true_value"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method true_value</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a741">741</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get the platform specific true value</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Boolean True Value ex: 1 or TRUE</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			true_value
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodunescape" id="unescape"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method unescape</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a148">148</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Unescapes the given string using the approriate adapter's unescape function</p>
+<p class="description"><p>Used with values to be deserialized</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> unescaped text</li>
+				<li><span class="field">see:</span> unescape($str)</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">Properly</span>
+		<span class="method-name">
+			unescape
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$str</span><span class="var-description">: the text to unescape</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodupdate" id="update"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method update</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a642">642</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Factory function that creates an update statement query object.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Statement Query Object</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">Update</span>
+		<span class="method-name">
+			update
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$table</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$table</span><span class="var-description">: Table to update</span>			</li>
+				</ul>
+		
+			
+	</div>
+
+<a name="methodconditional" id="conditional"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">conditional</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a441">441</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Used by where and on to parse conditional strings, interpolating parameters,</p>
+<p class="description"><p>quoting, escaping, and cross-platform replacements where needed</p></p>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			conditional
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$predicate</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$clause</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$args</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$predicate</span><span class="var-description">: result predicate, i.e. 'where' or 'on'</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$clause</span><span class="var-description">: conditional clause</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$args</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodexecute" id="execute"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">execute</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a773">773</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Executes the sql statement and returns the proper result</p>
+<p class="description"><p>SELECT returns a result array  UPDATE returns affected row count  INSERT returns last insert id  DELETE returns affected row count</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> flat result set</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">a</span>
+		<span class="method-name">
+			execute
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodfrom" id="from"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">from</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a343">343</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Chained function for describing the table to pull from</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> instance for further chaining</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Prosper/Query.html">Query</a></span>
+		<span class="method-name">
+			from
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$table</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$alias</span> = <span class="var-default">&quot;&quot;</span>], <span class="var-type">string</span>&nbsp;<span class="var-name">$table_or_query</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$table_or_query</span><span class="var-description">: table name or subquery</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$alias</span><span class="var-description">: [optional] alias</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$table</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodinner" id="inner"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">inner</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a370">370</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Chained function for describing a standard inner join</p>
+<p class="description"><p>Convenience function, identical to calling Query#specified_join($table, $alias, &quot;inner join&quot;);</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> instance for further chaining</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Prosper/Query.html">Query</a></span>
+		<span class="method-name">
+			inner
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$table</span>, [<span class="var-type">object</span>&nbsp;<span class="var-name">$alias</span> = <span class="var-default">&quot;&quot;</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$table</span><span class="var-description">: table name</span>			</li>
+					<li>
+				<span class="var-type">object</span>
+				<span class="var-name">$alias</span><span class="var-description">: [optional] alias</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodinto" id="into"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">into</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a592">592</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Chained function for describing the table to insert into</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> instance for further chaining</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Prosper/Query.html">Query</a></span>
+		<span class="method-name">
+			into
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$table</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$table</span><span class="var-description">: tablename</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodjoin" id="join"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">join</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a392">392</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Chained function for describing a standard cartesian join</p>
+<p class="description"><p>Convenience function, identical to calling Query#specified_join($table, $alias, &quot;join&quot;);</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> instance for further chaining</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Prosper/Query.html">Query</a></span>
+		<span class="method-name">
+			join
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$table</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$alias</span> = <span class="var-default">&quot;&quot;</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$table</span><span class="var-description">: table name</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$alias</span><span class="var-description">: [optional] alias</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodleft" id="left"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">left</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a359">359</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Chained function for describing a standard left join</p>
+<p class="description"><p>Convenience function, identical to calling Query#specified_join($table, $alias, &quot;left join&quot;);</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> instance for further chaining</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Prosper/Query.html">Query</a></span>
+		<span class="method-name">
+			left
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$table</span>, [<span class="var-type">object</span>&nbsp;<span class="var-name">$alias</span> = <span class="var-default">&quot;&quot;</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$table</span><span class="var-description">: table name</span>			</li>
+					<li>
+				<span class="var-type">object</span>
+				<span class="var-name">$alias</span><span class="var-description">: [optional] alias</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodlimit" id="limit"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">limit</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a553">553</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Chained function for describing an optionally windowed limit</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> instance for further chaining</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Prosper/Query.html">Query</a></span>
+		<span class="method-name">
+			limit
+		</span>
+					(<span class="var-type">int</span>&nbsp;<span class="var-name">$limit</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$offset</span> = <span class="var-default">0</span>], <span class="var-type">int</span>&nbsp;<span class="var-name">$start</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$limit</span><span class="var-description">: maximum number of results to return</span>			</li>
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$start</span><span class="var-description">: [optional] where to start, defaults to 0, beginning of set</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$offset</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodon" id="on"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">on</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a416">416</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Chained function for describing the on clause</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> instance for further chaining</li>
+				<li><span class="field">see:</span> conditional($clause) for implementation details.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Prosper/Query.html">Query</a></span>
+		<span class="method-name">
+			on
+		</span>
+					(<span class="var-type">object</span>&nbsp;<span class="var-name">$clause</span>, <span class="var-type">variadic</span>&nbsp;<span class="var-name">1</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">object</span>
+				<span class="var-name">$clause</span><span class="var-description">: see below</span>			</li>
+					<li>
+				<span class="var-type">variadic</span>
+				<span class="var-name">1</span><span class="var-description">: [optional] values to use for parameterization</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodorder" id="order"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">order</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a564">564</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Chained function for describing an ordering</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> instance for further chaining</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Prosper/Query.html">Query</a></span>
+		<span class="method-name">
+			order
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$columns</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$dir</span> = <span class="var-default">&quot;asc&quot;</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$dir</span><span class="var-description">: [optional] if $columns is a string, &quot;asc&quot; for ascending ordering &quot;desc&quot; for descending, defaults to &quot;asc&quot;</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$columns</span><span class="var-description">: or string $columns array for multiple ordering column_name =&gt; direction or string for the column name</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodouter" id="outer"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">outer</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a381">381</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Chained function for describing a standard outer join</p>
+<p class="description"><p>Convenience function, identical to calling Query#specified_join($table, $alias, &quot;outer join&quot;);</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> instance for further chaining</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Prosper/Query.html">Query</a></span>
+		<span class="method-name">
+			outer
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$table</span>, [<span class="var-type">object</span>&nbsp;<span class="var-name">$alias</span> = <span class="var-default">&quot;&quot;</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$table</span><span class="var-description">: table name</span>			</li>
+					<li>
+				<span class="var-type">object</span>
+				<span class="var-name">$alias</span><span class="var-description">: [optional] alias</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodparameterize" id="parameterize"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">parameterize</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a493">493</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Performs safe parameter interpolation</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> parameterized fragment</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			parameterize
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$value</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$value</span><span class="var-description">: Value to interpolate, can be an array (will be imploded with commas), a subquery, or a literal value.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodparse_func_args" id="parse_func_args"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">parse_func_args</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a510">510</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Parses sql function arguments into a php array</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> arguments</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			parse_func_args
+		</span>
+					(<span class="var-type">$clause</span>&nbsp;<span class="var-name">&$clause</span>, <span class="var-type">$args</span>&nbsp;<span class="var-name">&$args</span>, <span class="var-type">$named</span>&nbsp;<span class="var-name">$named</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$clause</span>
+				<span class="var-name">&$clause</span><span class="var-description">: sql clause to process</span>			</li>
+					<li>
+				<span class="var-type">$args</span>
+				<span class="var-name">&$args</span><span class="var-description">: arguments used for interpolation</span>			</li>
+					<li>
+				<span class="var-type">$named</span>
+				<span class="var-name">$named</span><span class="var-description">: named interpolation arguments</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodprocess_token" id="process_token"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">process_token</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a459">459</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Processes a token</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> string</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">tokenized</span>
+		<span class="method-name">
+			process_token
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">&$clause</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$token</span>, <span class="var-type"></span>&nbsp;<span class="var-name">&$args</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$named</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$clause</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$args</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$clause</span><span class="var-description">: sql string</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$token</span><span class="var-description">: token array</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$args</span><span class="var-description">: arguments</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$named</span><span class="var-description">: associative array</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">&$clause</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">&$args</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodset" id="set"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">set</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a661">661</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Chained function for describing the columns and values to set for an update statement</p>
+<p class="description"><p>This function takes an optional variadic argument for filtering the values    Example:      Assume we have a $_POST array where print_r($_POST) =&gt;       array ( 'id' =&gt; 1,               'first_name' =&gt; 'Matt',               'last_name' =&gt; 'Nowack' )      -&gt;set('first_name', 'last_name', $_POST) [read: set 'first_name', 'last_name' from $_POST]        is identical to      -&gt;set(array('first_name' =&gt; $_POST['first_name'], 'last_name' =&gt; $_POST['last_name']))</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> instance for further chaining</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Prosper/Query.html">Query</a></span>
+		<span class="method-name">
+			set
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$values</span>, <span class="var-type">variadic</span>&nbsp;<span class="var-name">$filter</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">variadic</span>
+				<span class="var-name">$filter</span><span class="var-description">: [optional] list of elements to pull ovt of $values</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$values</span><span class="var-description">: Array of values with column_name =&gt; update_value</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodspecified_join" id="specified_join"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">specified_join</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a404">404</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Helper function and extensibility function, allows for arbitrary join types.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> instance for further chaining</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Prosper/Query.html">Query</a></span>
+		<span class="method-name">
+			specified_join
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$table</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$alias</span> = <span class="var-default">&quot;&quot;</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$type</span> = <span class="var-default">&quot;join&quot;</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$table</span><span class="var-description">: table name</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$alias</span><span class="var-description">: [optional] alias</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$type</span><span class="var-description">: [optional] join clause</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodvalues" id="values"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">values</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a612">612</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Chained function for describing the columns and values for an insert statement</p>
+<p class="description"><p>This function takes an optional variadic argument for filtering the values    Example:      Assume we have a $_POST array where print_r($_POST) =&gt;       array ( 'first_name' =&gt; 'Matt',               'last_name' =&gt; 'Nowack',               'some_junk' =&gt; 'Not wanted' );      -&gt;values('first_name', 'last_name', $_POST) [read: values 'first_name', 'last_name' from $_POST]        is identical to      -&gt;values(array('first_name' =&gt; $_POST['first_name'], 'last_name' =&gt; $_POST['last_name']))</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> instance for further chaining</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Prosper/Query.html">Query</a></span>
+		<span class="method-name">
+			values
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$values</span>, <span class="var-type">variadic</span>&nbsp;<span class="var-name">$filter</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">variadic</span>
+				<span class="var-name">$filter</span><span class="var-description">: [optional] list of elements to pull out of $values</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$values</span><span class="var-description">: Array of values with column_name =&gt; insert_value</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodverbose" id="verbose"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">verbose</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a781">781</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Prints the query and the result of the query</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> same result set as Query#execute()</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">the</span>
+		<span class="method-name">
+			verbose
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodwhere" id="where"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">where</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a429">429</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Chained function for describing the where clause</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> instance for further chaining</li>
+				<li><span class="field">see:</span> conditional($clause) for implementation details.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../Prosper/Query.html">Query</a></span>
+		<span class="method-name">
+			where
+		</span>
+					(<span class="var-type">object</span>&nbsp;<span class="var-name">$clause</span>, <span class="var-type">variadic</span>&nbsp;<span class="var-name">1</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">object</span>
+				<span class="var-name">$clause</span><span class="var-description">: see below</span>			</li>
+					<li>
+				<span class="var-type">variadic</span>
+				<span class="var-name">1</span><span class="var-description">: [optional] values to use for parameterization</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method__toString" id="__toString"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">__toString</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a794">794</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Automagic toString method, simply prints wrapped sql statement</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Sql Statement</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">Wrapped</span>
+		<span class="method-name">
+			__toString
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+	<a name="sec-consts"></a>
+	<div class="info-box">
+		<div class="info-box-title">Class Constants</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Constants</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="constDB2_MODE" id="DB2_MODE"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">DB2_MODE</span>
+			 = <span class="const-default"> &quot;DB2Adapter&quot;</span>
+			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a19">19</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constDELETE_STMT" id="DELETE_STMT"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">DELETE_STMT</span>
+			 = <span class="const-default"> &quot;DELETE_STMT&quot;</span>
+			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a14">14</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constEAGER_LOADING" id="EAGER_LOADING"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">EAGER_LOADING</span>
+			 = <span class="const-default"> false</span>
+			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a37">37</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constFIREBIRD_MODE" id="FIREBIRD_MODE"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">FIREBIRD_MODE</span>
+			 = <span class="const-default"> &quot;FirebirdAdapter&quot;</span>
+			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a20">20</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constFRONTBASE_MODE" id="FRONTBASE_MODE"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">FRONTBASE_MODE</span>
+			 = <span class="const-default"> &quot;FrontBaseAdapter&quot;</span>
+			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a21">21</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constINFORMIX_MODE" id="INFORMIX_MODE"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">INFORMIX_MODE</span>
+			 = <span class="const-default"> &quot;InformixAdapter&quot;</span>
+			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a22">22</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constINGRES_MODE" id="INGRES_MODE"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">INGRES_MODE</span>
+			 = <span class="const-default"> &quot;IngresAdapter&quot;</span>
+			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a23">23</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constINSERT_STMT" id="INSERT_STMT"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">INSERT_STMT</span>
+			 = <span class="const-default"> &quot;INSERT_STMT&quot;</span>
+			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a15">15</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constLAZY_LOADING" id="LAZY_LOADING"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">LAZY_LOADING</span>
+			 = <span class="const-default"> true</span>
+			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a36">36</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constMAXDB_MODE" id="MAXDB_MODE"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">MAXDB_MODE</span>
+			 = <span class="const-default"> &quot;MaxDBAdapter&quot;</span>
+			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a24">24</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constMSQL_MODE" id="MSQL_MODE"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">MSQL_MODE</span>
+			 = <span class="const-default"> &quot;MSqlAdapter&quot;</span>
+			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a25">25</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constMSSQL_MODE" id="MSSQL_MODE"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">MSSQL_MODE</span>
+			 = <span class="const-default"> &quot;MSSqlAdapter&quot;</span>
+			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a26">26</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constMYSQL_MODE" id="MYSQL_MODE"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">MYSQL_MODE</span>
+			 = <span class="const-default"> &quot;MySqlAdapter&quot;</span>
+			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a27">27</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constMYSQL_OLD_MODE" id="MYSQL_OLD_MODE"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">MYSQL_OLD_MODE</span>
+			 = <span class="const-default"> &quot;MySqlOldAdapter&quot;</span>
+			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a28">28</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constORACLE_MODE" id="ORACLE_MODE"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">ORACLE_MODE</span>
+			 = <span class="const-default"> &quot;OracleAdapter&quot;</span>
+			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a29">29</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constOVRIMOS_MODE" id="OVRIMOS_MODE"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">OVRIMOS_MODE</span>
+			 = <span class="const-default"> &quot;OvrimosAdapter&quot;</span>
+			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a30">30</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constPARADOX_MODE" id="PARADOX_MODE"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">PARADOX_MODE</span>
+			 = <span class="const-default"> &quot;ParadoxAdapter&quot;</span>
+			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a31">31</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constPOSTGRE_MODE" id="POSTGRE_MODE"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">POSTGRE_MODE</span>
+			 = <span class="const-default"> &quot;PostgreSqlAdapter&quot;</span>
+			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a32">32</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constSELECT_STMT" id="SELECT_STMT"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">SELECT_STMT</span>
+			 = <span class="const-default"> &quot;SELECT_STMT&quot;</span>
+			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a16">16</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constSQLITE_MODE" id="SQLITE_MODE"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">SQLITE_MODE</span>
+			 = <span class="const-default"> &quot;SqliteAdapter&quot;</span>
+			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a33">33</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constSYBASE_MODE" id="SYBASE_MODE"><!-- --></A>
+<div class="evenrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">SYBASE_MODE</span>
+			 = <span class="const-default"> &quot;SybaseAdapter&quot;</span>
+			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a34">34</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+<a name="constUPDATE_STMT" id="UPDATE_STMT"><!-- --></A>
+<div class="oddrow">
+
+	<div class="const-header">
+		<img src="../media/images/Variable.png" />
+		<span class="const-title">
+			<span class="const-name">UPDATE_STMT</span>
+			 = <span class="const-default"> &quot;UPDATE_STMT&quot;</span>
+			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Query.php.html#a17">17</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+</div>
+						
+		</div>
+	</div>
+
+	<p class="notes" id="credit">
+		Documentation generated on Sun, 29 Nov 2009 15:40:17 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>
