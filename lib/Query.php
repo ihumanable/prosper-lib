@@ -1,8 +1,14 @@
 <?php
+/**
+ * @package Prosper
+ */
 namespace Prosper;
 
 require_once 'Token.php';
 
+/**
+ * The Query Class that drives Prosper
+ */
 class Query {
   //Statement Types
   const DELETE_STMT = "DELETE_STMT";

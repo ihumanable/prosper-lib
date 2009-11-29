@@ -1,6 +1,13 @@
 <?php
+/**
+ * @package Prosper
+ */
 namespace Prosper;
 
+/**
+ * This forward looking tokenizer is used to process SQL
+ * This is an internal class used by Query
+ */
 class Token {
 	const SQL_ENTITY  = "SQL_ENTITY";
 	const LOGICAL_OP  = "LOGICAL_OP";
