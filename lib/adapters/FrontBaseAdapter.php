@@ -1,6 +1,12 @@
 <?php
+/**
+ * @package Prosper
+ */
 namespace Prosper;
 
+/**
+ * FrontBase Database Adapter
+ */ 
 class FrontBaseAdapter extends BaseAdapter {
 	
 	/**

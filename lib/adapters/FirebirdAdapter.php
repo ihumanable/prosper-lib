@@ -1,6 +1,12 @@
 <?php
+/**
+ * @package Prosper
+ */
 namespace Prosper;
 
+/**
+ * Firebird (interbase) Database Adapter
+ */
 class FirebirdAdapter extends BaseAdapter {
 	
 	/**

@@ -1,6 +1,12 @@
 <?php
+/**
+ * @package Prosper
+ */
 namespace Prosper;
 
+/**
+ * Informix Database Adapter
+ */
 class InformixAdapter extends BaseAdapter {
   
   /**

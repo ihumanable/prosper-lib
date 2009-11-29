@@ -1,6 +1,12 @@
 <?php
+/**
+ * @package Prosper
+ */
 namespace Prosper;
 
+/**
+ * Sybase Database Adapter
+ */
 class SybaseAdapter extends BaseAdapter {
 	
 	/**

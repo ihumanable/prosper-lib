@@ -1,6 +1,12 @@
 <?php
+/**
+ * @package Prosper
+ */
 namespace Prosper;
 
+/**
+ * Ovrimos Database Adapter
+ */
 class OvrimosAdapter extends BaseAdapter {
 	
 	/**

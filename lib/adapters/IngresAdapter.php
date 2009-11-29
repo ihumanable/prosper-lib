@@ -1,6 +1,12 @@
 <?php
+/**
+ * @package Prosper
+ */
 namespace Prosper;
 
+/**
+ * Ingres Database Adapter
+ */
 class IngresAdapter extends BaseAdapter {
 	
 	/**

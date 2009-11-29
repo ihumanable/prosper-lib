@@ -1,6 +1,12 @@
 <?php
+/**
+ * @package Prosper
+ */
 namespace Prosper;
 
+/**
+ * Oracle Database Adapter
+ */
 class OracleAdapter extends BaseAdapter {
 	
 	/**

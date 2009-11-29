@@ -1,6 +1,12 @@
 <?php
+/**
+ * @package Prosper
+ */
 namespace Prosper;
 
+/**
+ * Paradox Database Adapter
+ */
 class ParadoxAdapter extends BaseAdapter {
 	
 	private $file_handle;

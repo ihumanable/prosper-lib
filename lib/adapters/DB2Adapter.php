@@ -1,6 +1,12 @@
 <?php
+/**
+ * @package Prosper
+ */
 namespace Prosper;
 
+/**
+ * DB2 Database Adapter
+ */
 class DB2Adapter extends BaseAdapter {
 
   /**

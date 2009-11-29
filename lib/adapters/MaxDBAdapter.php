@@ -1,6 +1,12 @@
 <?php
+/**
+ * @package Prosper
+ */
 namespace Prosper;
 
+/**
+ * MaxDB Database Adapter
+ */
 class MaxDBAdapter extends BaseAdapter {
 	
 	/**

@@ -1,6 +1,12 @@
 <?php
+/**
+ * @package Prosper
+ */
 namespace Prosper;
 
+/**
+ * MSQL Database Adapter
+ */
 class MSqlAdapter extends BaseAdapter {
   
   /**

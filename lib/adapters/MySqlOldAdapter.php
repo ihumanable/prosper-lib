@@ -1,4 +1,7 @@
 <?php
+/**
+ * @package Prosper
+ */
 namespace Prosper;
 
 /**
