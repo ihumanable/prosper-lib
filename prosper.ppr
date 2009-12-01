@@ -11,10 +11,10 @@ FileFormat=0
 ProjectFilesOnly=0
 [Project tree]
 prosper
-	+doc
+	-doc
 		readme.md
-	+lib
-		+adapters
+	-lib
+		-adapters
 			lib\adapters\_all_.php
 			lib\adapters\_common_.php
 			lib\adapters\BaseAdapter.php
@@ -36,7 +36,7 @@ prosper
 			lib\adapters\SybaseAdapter.php
 		lib\Query.php
 		lib\Token.php
-	+test
+	-test
 		test\config.php
 		test\index.php
 	-todo
@@ -54,5 +54,10 @@ prosper
 		todo\index.php
 		todo\utility.php
 [Open project files]
+0=readme.md
 [Selected Project Files]
 Main=
+Selected=readme.md
+[readme.md]
+TopLine=91
+Caret=104,105
