@@ -158,7 +158,7 @@ This functionality is useful for pulling values out of larger arrays, like $\_GE
 
 You are allowed to mix and match named and unnamed parameters, although this is probably not a great idea.  The named parameter associative array should always be the last argument.
 
-    Prosper\Query::select()->from('user')->where('name = :name and age = ?', 24, $_POST);
+    Prosper\Query::select()->from('user')->where('name = :name and age = ?', 23, $_POST);
 
 #### join clauses ####
 
@@ -217,7 +217,7 @@ This should give you all the control needed to order your results.
 
 Inserting information into a table is simple, let's add a user to our sample user table
 
-    Prosper\Query::insert()->into('user')->values(array('name' => 'Matt', 'age' => '24'));
+    Prosper\Query::insert()->into('user')->values(array('name' => 'Matt', 'age' => '23'));
 
 Inserting is fairly straightforward, the `into()` function takes the table name to insert into and the `values()` function can be called in one of two ways.
 
@@ -231,7 +231,7 @@ In the first example we used an associative array to insert values into a table.
 
 But wait, didn't we just open ourselves up to a SQL injection attack?  No worries the values will automatically be sanitized by prosper.
 
-#### values from an associate array ####
+#### values from an associative array ####
 
 Sounds very similar doesn't it, but it is a bit different.  This calling method is useful for inserting some of the values in an array but not all.  Let's look at an example
 
@@ -240,10 +240,43 @@ Sounds very similar doesn't it, but it is a bit different.  This calling method 
 This is commonly read as "insert into user values name and age from post."  This is a shortcut to writing the following
 
     Prosper\Query::insert()->into('user')->values(array('name' => $_POST['name'], 'age' => $_POST['age']))
+
+Again, since prosper takes care of sanitizing these values for us we can take input straight from the user and pass it off to prosper.
     
 ### update ###
 
+Updating information in a database table uses a lot of what we already know, let's change the new user's age, because I just had a birthday ;)
+
+    Prosper\Query::update('user')->set(array('age' => '24'))->where("name = 'Matt'");
+    
+The `update()` function takes the tablename to update in, the where clause is the same where clause we saw up in the select section.  Let's take a look at the `set()` function, if you were paying attention to the `values()` function you will feel right at home here
+
+#### set with associative array ####
+
+You can explicitely pass an associative array of key value pairs where keys are columns and values are, well, values to the set funciton
+
+    $id   = $_POST['id'];
+    $name = $_POST['first_name'] . " " . $_POST['middle_initial'] . " " . $_POST['last_name']
+    $age  = ticks_to_years(mktime() - strtotime($_POST['birthdate']));
+    Prosper\Query::update('user')->set(array('name' => $name, 'age' => $age))->where('id = ?', $id);
+    
+That sure did look familiar.
+
+#### set from an associative array ####
+
+Let's assume you have a nice pretty update form with a hidden id field, a name field, and an age field.
+
+    Prosper\Query::update('user')->set('name', 'age', $_POST)->where('id = :id', $_POST);
+    
+The magic of the "pull from" form of `set()` and named parameters makes this an easy task indeed.
+
 ### delete ###
+
+Deletes are almost identical to selects, except instead of returning the selected records, it deletes them.
+
+    Propser\Query::delete()->from('user')->where("name = 'Matt' and age = '24'");
+    
+That was simple.
 
 ## changelog ##
 
