@@ -36,7 +36,7 @@ PHP 5.3+
 
 ## install ##
 
-Pull down the source code and put it in your PHP include path.  Then you can use it by requiring the proper adapter, the Query class and configuring Query to work with your backend.  There are two convenience files in the adapters folder, \_all\_.php and \_common\_.php.  \_all\_.php includes every adapter allowing for ultimate flexibility with trade off being some extra overhead.  \_common\_.php includes only the most common backend adapters mysql, postgre, microsoft sql server, and sqlite.  You can also simply choose the exact adapter you want, for example, for mysql you would include MySqlAdapter.
+Pull down the source code and put it in your PHP include path.  Then you can use it by requiring the proper adapter, the Query class and configuring Query to work with your backend.  There are two convenience files in the adapters folder, \_all\_.php and \_common\_.php.  \_all\_.php includes every adapter allowing for ultimate flexibility with the trade off being some extra overhead.  \_common\_.php includes only the most common backend adapters mysql, postgre, microsoft sql server, and sqlite.  You can also simply choose the exact adapter you want, for example, for mysql you would include MySqlAdapter.
 
     define('PROSPER_PATH', "/path/to/prosper/lib/");
     require_once PROSPER_PATH . "/adapters/_all_.php";  //For simplicity include all adapters
