@@ -44,7 +44,7 @@ Pull down the source code and put it in your PHP include path.  Then you can use
     
     Prosper\Query::configure(Prosper\Query::MYSQL_MODE, "username", "password", "hostname", "schema");
 
-Now you have a cross platform database abstraction layer that will protect you from sql injection attacks, automatically handle resources for you, and provide named and unnamed parameterization.  There is an extra parameter you can past to force an immediate connection, simply pass Prosper\Query::EAGER_LOADING as the last parameter to do so.  The default behaviour is to connect only if a query is actually issued, this allows you to include this configuration with limited overhead on pages that do not talk to the database.
+Now you have a cross platform database abstraction layer that will protect you from sql injection attacks, automatically handle resources for you, and provide named and unnamed parameterization.  There is an extra parameter you can pass to force an immediate connection, simply pass `Prosper\Query::EAGER_LOADING` as the last parameter to do so.  The default behaviour is to connect only if a query is actually issued, this allows you to include this configuration with limited overhead on pages that do not talk to the database.
 
 ## features ##
 
@@ -102,13 +102,9 @@ Use prosper even when you can't use prosper, that's how you guarentee 100% cover
 
 Check out the todo example application in the todo folder to see these used in practice, there is also in code documentation.
 
-For all examples we will assume that there is a table named user with columns id, name, and age
+For all examples we will assume that there is a table named `user` with columns `id`, `name`, and `age`
 
 ### select ###
-
-
-
-#### basics ####
 
 The select statement is the most basic statement used to pull data from the database.  This will return you a select statement ready to pull all the columns out
 
