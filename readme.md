@@ -102,6 +102,8 @@ Use prosper even when you can't use prosper, that's how you guarentee 100% cover
 
 Check out the todo example application in the todo folder to see these used in practice, there is also in code documentation.
 
+For all examples we will assume that there is a table named user with columns id, name, and age
+
 ### select ###
 
 
@@ -156,10 +158,89 @@ This functionality is useful for pulling values out of larger arrays, like $\_GE
 
 You are allowed to mix and match named and unnamed parameters, although this is probably not a great idea.  The named parameter associative array should always be the last argument.
 
-    Prosper\Query::select()->from('user')->where('name = :name and age = ?', 23, $_POST);
+    Prosper\Query::select()->from('user')->where('name = :name and age = ?', 24, $_POST);
+
+#### join clauses ####
+
+Joining tables allows you to pull data from multiple sources and place return them in a single record.  There are various ways to join tables in prosper, the most common are built in.
+
+ * Left joins are invoked by using the `left()` function
+ * Inner joins are invoked by using the `inner()` function
+ * Outer joins are invoked by using the `outer()` function
+ * Standard (Cartesian) joins are invoked by using the `join()` function
+
+The join syntax is fairly simple, let's look at an example
+
+    Prosper\Query::select()->from('user')->join('permission')->on('user.id = permission.user_id');
+  
+The `on()` function allows you to provide an arbitrarily complex join condition, it is parsed by the same tokenizing parser that processes the where clause.
+
+Left, inner, outer, and standard joins cover the majority of joins you will encounter in the wild, but in keeping with the spirit of the best way for prosper to get 100% coverage is to allow you to opt out when needed, you can define your own joins.  The magic here is the `specified_join()` function, `left()`, `inner()`, `outer()`, and `join()` are all defined in terms of `specified_join()`.
+
+    function specified_join($table, $alias = "", $type= "join")
+  
+Let's say you wanted to have a `RIGHT OUTER JOIN` for some unholy reason.  Prosper has no built in support for this, but you can use the `specified_join()` like so
+
+    Prosper\Query::select()->from('user', 'u')->specified_join('permission', 'p', 'RIGHT OUTER JOIN')->on('u.id = p.user_id');
+
+This allows you to write arbitrary joins.  
+
+#### limit clause ####
+
+Does your table have half a million records, probably don't want them all back.  You can limit the amount of results by using the `limit()` function, here is how you would return the first 10 users
+
+    Prosper\Query::select()->from('user')->limit(10);
+
+This function also allows for easy pagination with an optional offset, lets show how to get a few pages of data
+
+    Prosper\Query::select()->from('user')->limit(10);     //Get the first 10 users (page 1)
+    Prosper\Query::select()->from('user')->limit(10, 10); //Get the first 10 starting at 10 (page 2)
+    Prosper\Query::select()->from('user')->limit(10, 20); //Get the first 10 starting at 20 (page 3)
+  
+#### order clause ####
+
+Ordering data is done through the `order()` clause.  The simplest form of the order function is the column ordering.  Here is how to return all the users ordered by name (ascending)
+
+    Prosper\Query::select()->from('user')->order('name');
+
+The default is to order ascending, you can override this behavior by passing an ordering
+
+    Prosper\Query::select()->from('user')->order('name', 'desc');
+
+You can perform multi-column orderings by passing an associative array, let's order by age descending and then by name ascending
+
+    Prosper\Query::select()->from('user')->order(array('age' => 'desc', 'name' => 'asc'));
+
+This should give you all the control needed to order your results.
 
 ### insert ###
 
+Inserting information into a table is simple, let's add a user to our sample user table
+
+    Prosper\Query::insert()->into('user')->values(array('name' => 'Matt', 'age' => '24'));
+
+Inserting is fairly straightforward, the `into()` function takes the table name to insert into and the `values()` function can be called in one of two ways.
+
+#### values with associative array ####
+
+In the first example we used an associative array to insert values into a table.  This can be useful for when you wish to perform some preprocessing and checking before inserting information
+
+    $name = $_POST['first_name'] . " " . $_POST['middle_initial'] . " " . $_POST['last_name'];
+    $age  = ticks_to_years(mktime() - strtotime($_POST['birthdate']));
+    Prosper\Query::insert()->into('user')->values(array('name' => $name, 'age' => $age));
+
+But wait, didn't we just open ourselves up to a SQL injection attack?  No worries the values will automatically be sanitized by prosper.
+
+#### values from an associate array ####
+
+Sounds very similar doesn't it, but it is a bit different.  This calling method is useful for inserting some of the values in an array but not all.  Let's look at an example
+
+    Prosper\Query::insert()->into('user')->values('name', 'age', $_POST);
+    
+This is commonly read as "insert into user values name and age from post."  This is a shortcut to writing the following
+
+    Prosper\Query::insert()->into('user')->values(array('name' => $_POST['name'], 'age' => $_POST['age']))
+    
 ### update ###
 
 ### delete ###
