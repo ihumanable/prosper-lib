@@ -14,7 +14,7 @@ class MSSqlAdapter extends BaseAdapter {
    */
   function connect() {
     $this->connection = mssql_connect($this->hostname, $this->username, $this->password);
-		if($schema != "") {
+    if($schema != "") {
 			mssql_select_db($this->schema, $this->connection);
 		}
 	}
@@ -30,7 +30,7 @@ class MSSqlAdapter extends BaseAdapter {
 	 * @see BaseAdapter#platform_execute($sql, $mode) 
 	 */
 	function platform_execute($sql, $mode) {
-		return mssql_query($sql, $this->connection());
+    return mssql_query($sql, $this->connection());
 	}
 	
 	/**
