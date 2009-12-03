@@ -290,7 +290,6 @@ That was simple.
     
 ## changelog ##
 
-- 2009.11.16 - v0.5 - Initial Release
 - 2009.12.03 - v0.6 
     - Changed the configuration system to take constants instead of string literals
     - Added support for the older mysql library in addition to the mysqli library
@@ -299,3 +298,5 @@ That was simple.
     - Adapters are lazy loading now, this allows the configuration to be done with minimal overhead.  This functionality also allows for unit testing
     - Added phpDoc Documentation to the project
     - Added this frontpage documentation and project roadmap
+- 2009.11.16 - v0.5 - Initial Release
+
