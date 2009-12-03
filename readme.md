@@ -274,6 +274,20 @@ Deletes are almost identical to selects, except instead of returning the selecte
     
 That was simple.
 
+## roadmap ##
+
+- v0.7
+    - Rewrite incorrect phpDoc to be phpDoc compliant
+    - Write unit tests
+    - Perform more real world testing for adapters
+    - Improve official documentation
+    - Perform load testing
+    - Add manual transaction management ( `begin()`, `rollback()`, `commit()` )
+    - Add schema reflection api
+    - Add table management api
+    - Possible modularization
+    - Clean up Tokenizer
+    
 ## changelog ##
 
 - 2009.11.16 - v0.5 - Initial Release
@@ -284,3 +298,4 @@ That was simple.
     - Moved project to GitHub
     - Adapters are lazy loading now, this allows the configuration to be done with minimal overhead.  This functionality also allows for unit testing
     - Added phpDoc Documentation to the project
+    - Added this frontpage documentation and project roadmap
