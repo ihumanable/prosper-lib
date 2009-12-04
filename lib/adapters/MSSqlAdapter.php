@@ -10,7 +10,7 @@ namespace Prosper;
 class MSSqlAdapter extends BaseAdapter {
   
   /**
-   * @see BaseAdapter#connect()
+   * @see BaseAdapter::connect()
    */
   function connect() {
     $this->connection = mssql_connect($this->hostname, $this->username, $this->password);
@@ -20,28 +20,28 @@ class MSSqlAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * @see BaseAdapter#disconnect()
+	 * @see BaseAdapter::disconnect()
 	 */
 	function disconnect() {
 		mssql_close($this->connection());
 	}
 	
 	/**
-	 * @see BaseAdapter#platform_execute($sql, $mode) 
+	 * @see BaseAdapter::platform_execute($sql, $mode) 
 	 */
 	function platform_execute($sql, $mode) {
     return mssql_query($sql, $this->connection());
 	}
 	
 	/**
-	 * @see BaseAdapter#affected_rows($set) 
+	 * @see BaseAdapter::affected_rows($set) 
 	 */
 	function affected_rows($set) {
 		return mssql_rows_affected($this->connection());
 	}
 	
 	/**
-	 * @see BaseAdapter#insert_id($set) 
+	 * @see BaseAdapter::insert_id($set) 
 	 */
 	function insert_id($set) {
 		$result = mssql_query("select SCOPE_IDENTITY AS last_insert_id", $this->connection());
@@ -52,21 +52,21 @@ class MSSqlAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * @see BaseAdapter#fetch_assoc($set)
+	 * @see BaseAdapter::fetch_assoc($set)
 	 */
 	function fetch_assoc($set) {
 		return mssql_fetch_assoc($set);
 	}
 	
 	/**
-	 * @see BaseAdapter#free_result($set) 
+	 * @see BaseAdapter::free_result($set) 
 	 */
 	function free_result($set) {
 		mssql_free_result($set);
 	}
 	
 	/**
-	 * @see BaseAdapter#query($str) 
+	 * @see BaseAdapter::query($str) 
 	 */
 	function quote($str) {
 		return "[$str]";
@@ -119,14 +119,14 @@ class MSSqlAdapter extends BaseAdapter {
 	}
 
 	/**
-	 * @see BaseAdapter#true_value()
+	 * @see BaseAdapter::true_value()
 	 */
 	function true_value() {
 		return "1";
 	}
 	
 	/**
-	 * @see BaseAdapter#false_value()
+	 * @see BaseAdapter::false_value()
 	 */
 	function false_value() {
 		return "0";

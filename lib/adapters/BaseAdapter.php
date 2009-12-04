@@ -108,15 +108,15 @@ abstract class BaseAdapter {
 	/**
 	 * Executes a sql statement, the base implementation drives the query results using
 	 * several derivitive functions
-	 * @see BaseAdapter#platform_execute($sql)
-	 * @see BaseAdapter#affected_rows($set)
-	 * @see BaseAdapter#last_id($set)
-	 * @see BaseAdapter#fetch_assoc($set)
+	 * @see BaseAdapter::platform_execute($sql)
+	 * @see BaseAdapter::affected_rows($set)
+	 * @see BaseAdapter::last_id($set)
+	 * @see BaseAdapter::fetch_assoc($set)
 	 * @param string $sql statement to execute
-	 * @param string $mode statement type
+	 * @param string $mode [optional] statement type, defaults to Query::SELECT_STMT
 	 * @return mixed Number of rows affected if update or delete, insert id for insert statements, result set for select
 	 */
-	function execute($sql, $mode) {
+	function execute($sql, $mode = Query::SELECT_STMT) {
 		$set = $this->platform_execute($sql, $mode);
 		
 		switch($mode) {
@@ -147,7 +147,7 @@ abstract class BaseAdapter {
 	 * @param string $mode Query type
 	 * @return mixed Platform specific result set
 	 */
-	protected function platform_execute($sql, $mode) {
+	function platform_execute($sql, $mode) {
 		
 	}
 	
@@ -156,7 +156,7 @@ abstract class BaseAdapter {
 	 * @param mixed $set Platform specific result set
 	 * @return int number of rows affected
 	 */
-	protected function affected_rows($set) {
+	function affected_rows($set) {
 		
 	}
 	
@@ -165,7 +165,7 @@ abstract class BaseAdapter {
 	 * @param mixed $set Platform specific result set
 	 * @return int inserted id
 	 */
-	protected function insert_id($set) {
+	function insert_id($set) {
 		
 	}
 	
@@ -174,7 +174,7 @@ abstract class BaseAdapter {
 	 * @param mixed $set Platform specific result set
 	 * @return array row as associative array
 	 */ 
-	protected function fetch_assoc($set) {
+	function fetch_assoc($set) {
 		
 	} 
 	
@@ -183,7 +183,7 @@ abstract class BaseAdapter {
 	 * @param mixed $set Platform specific result set
 	 * @return nothing
 	 */
-	protected function free_result($set) {
+	function free_result($set) {
 		
 	}
 	
@@ -192,7 +192,7 @@ abstract class BaseAdapter {
 	 * @param array $filter [optional] Filter of table names to return
 	 * @return array Table data
 	 */          	
-	protected function tables($filter = null) {
+	function tables($filter = null) {
     
   }
 	

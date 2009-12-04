@@ -315,7 +315,7 @@ class Query {
    * @return array Table data
    */        
   static function tables() {
-    return self::$adapter->tables(get_func_args());
+    return self::$adapter->tables(func_get_args());
   }
   
   //Select Statement Functions

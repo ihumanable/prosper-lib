@@ -10,7 +10,7 @@ namespace Prosper;
 class MySqlOldAdapter extends BaseAdapter {
 	
 	/**
-   * @see BaseAdapter#connect()
+   * @see BaseAdapter::connect()
    */
 	function connect() {
 		$this->connection = mysql_connect($this->hostname, $this->username, $this->password);
@@ -20,42 +20,42 @@ class MySqlOldAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * @see BaseAdapter#disconnect()
+	 * @see BaseAdapter::disconnect()
 	 */
 	function disconnect() {
 		mysql_close($this->connection());
 	}
 	
 	/**
-	 * @see BaseAdapter#platform_execute($sql, $mode) 
+	 * @see BaseAdapter::platform_execute($sql, $mode) 
 	 */
 	function platform_execute($sql, $mode) {
 		return mysql_query($sql, $this->connection());
 	}
 	
 	/**
-	 * @see BaseAdapter#affected_rows($set) 
+	 * @see BaseAdapter::affected_rows($set) 
 	 */
 	function affected_rows($set) {
 		return mysql_affected_rows($this->connection());
 	}
 	
 	/**
-	 * @see BaseAdapter#insert_id($set)
+	 * @see BaseAdapter::insert_id($set)
 	 */
 	function insert_id($set) {
 		return mysql_insert_id($this->connection());
 	}
 	
 	/**
-	 * @see BaseAdapter#fetch_assoc($set)
+	 * @see BaseAdapter::fetch_assoc($set)
 	 */
 	function fetch_assoc($set) {
 		return mysql_fetch_assoc($set);
 	}
 	
 	/**
-	 * @see BaseAdapter#free_result($set)
+	 * @see BaseAdapter::free_result($set)
 	 */   	
 	function free_result($set) {
     mysql_free_result($set);

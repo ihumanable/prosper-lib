@@ -12,7 +12,7 @@ class PostgreSqlAdapter extends BaseAdapter {
 	private $inserted_cols;
 	
 	/**
-   * @see BaseAdapter#connect()
+   * @see BaseAdapter::connect()
    */
 	function connect() {
 		$conn = ($this->hostname == "" ? "" : "host={$this->hostname} ") .
@@ -23,14 +23,14 @@ class PostgreSqlAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * @see BaseAdapter#disconnect()
+	 * @see BaseAdapter::disconnect()
 	 */
 	function disconnect() {
 		pg_close($this->connection());
 	}
 	
 	/**
-	 * @see BaseAdapter#platform_execute($sql, $mode) 
+	 * @see BaseAdapter::platform_execute($sql, $mode) 
 	 */
 	function platform_execute($sql, $mode) {
 		if($mode == Query::INSERT_STMT) {
@@ -43,21 +43,21 @@ class PostgreSqlAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * @see BaseAdapter#affected_rows($set) 
+	 * @see BaseAdapter::affected_rows($set) 
 	 */
 	function affected_rows($set) {
 		return pg_affected_rows($set);
 	}
 	
 	/**
-	 * @see BaseAdapter#fetch_assoc($set) 
+	 * @see BaseAdapter::fetch_assoc($set) 
 	 */
 	function fetch_assoc($set) {
 		return pg_fetch_assoc($set);
 	}
 	
 	/**
-	 * @see BaseAdapter#insert_id($set) 
+	 * @see BaseAdapter::insert_id($set) 
 	 */
 	function insert_id($set) {
 		$result = $this->fetch_assoc($set);
@@ -70,14 +70,14 @@ class PostgreSqlAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * @see BaseAdapter#free_result($set) 
+	 * @see BaseAdapter::free_result($set) 
 	 */
 	function free_result($set) {
 		pg_free_result($set);	
 	}
 	
 	/**
-	 * @see BaseAdapter#quote($str) 
+	 * @see BaseAdapter::quote($str) 
 	 */
 	function quote($str) {
 		return "\"$str\"";

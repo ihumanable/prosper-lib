@@ -12,7 +12,7 @@ class ParadoxAdapter extends BaseAdapter {
 	private $file_handle;
 	
 	/**
-	 * @see BaseAdapter#connect()
+	 * @see BaseAdapter::connect()
 	 */
 	function connect() {
 		$this->file_handle = fopen($this->username, "rw");
@@ -21,7 +21,7 @@ class ParadoxAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * @see BaseAdapter#disconnect()
+	 * @see BaseAdapter::disconnect()
 	 */
 	function disconnect() {
 		$this->connection()->close();
@@ -32,7 +32,7 @@ class ParadoxAdapter extends BaseAdapter {
 	 * This function is experimental, as is the adapter.  
 	 * It can only be used with the non-portable native function
 	 * @see Query#native($sql)
-	 * @see BaseAdapter#platform_execute($sql, $mode) 
+	 * @see BaseAdapter::platform_execute($sql, $mode) 
 	 */
 	function platform_execute($sql, $mode) {
 		switch($mode) {
@@ -54,7 +54,7 @@ class ParadoxAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * @see BaseAdapter#fetch_assoc($set) 
+	 * @see BaseAdapter::fetch_assoc($set) 
 	 */
 	function fetch_assoc($set) {
 		return $set;
