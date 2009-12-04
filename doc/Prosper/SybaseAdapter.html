@@ -1,369 +1,417 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-  <html xmlns="http://www.w3.org/1999/xhtml">
-		<head>
-			<!-- template designed by Marco Von Ballmoos -->
-			<title>Docs For Class SybaseAdapter</title>
-			<link rel="stylesheet" href="../media/stylesheet.css" />
-			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
-		</head>
-		<body>
-			<div class="page-body">			
-<h2 class="class-name">Class SybaseAdapter</h2>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Docs For Class SybaseAdapter</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+  <script src="../media/lib/classTree.js"></script>
+<link id="webfx-tab-style-sheet" type="text/css" rel="stylesheet" href="../media/lib/tab.webfx.css" />
+<script type="text/javascript" src="../media/lib/tabpane.js"></script>
+  <script language="javascript" type="text/javascript" src="../media/lib/ua.js"></script>
+<script language="javascript" type="text/javascript">
+	var imgPlus = new Image();
+	var imgMinus = new Image();
+	imgPlus.src = "../media/images/plus.gif";
+	imgMinus.src = "../media/images/minus.gif";
+	
+	function showNode(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+				var oImg = document.layers["img" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+				var oImg = document.all["img" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+				var oImg = document.getElementById("img" + Node);
+        		break;
+        }
+		oImg.src = imgMinus.src;
+		oTable.style.display = "block";
+	}
+	
+	function hideNode(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+				var oImg = document.layers["img" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+				var oImg = document.all["img" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+				var oImg = document.getElementById("img" + Node);
+        		break;
+        }
+		oImg.src = imgPlus.src;
+		oTable.style.display = "none";
+	}
+	
+	function nodeIsVisible(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+        		break;
+        }
+		return (oTable && oTable.style.display == "block");
+	}
+	
+	function toggleNodeVisibility(Node){
+		if (nodeIsVisible(Node)){
+			hideNode(Node);
+		}else{
+			showNode(Node);
+		}
+	}
+</script>
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><!-- Start of Class Data -->
+<h2>
+	Class SybaseAdapter
+</h2> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersSybaseAdapter.php.html#a10">10</a></span>)
+<div class="tab-pane" id="tabPane1">
+<script type="text/javascript">
+tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
+</script>
 
-<a name="sec-description"></a>
-<div class="info-box">
-	<div class="info-box-title">Description</div>
-	<div class="nav-bar">
-					<span class="disabled">Description</span> |
-													<a href="#sec-vars">Vars</a>
-						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
-						
-					</div>
-	<div class="info-box-body">
-        		<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">Sybase Database Adapter</p>
-		<p class="notes">
-			Located in <a class="field" href="_adapters---SybaseAdapter.php.html">/adapters/SybaseAdapter.php</a> (line <span class="field"><a href="../__filesource/fsource_Prosper__adaptersSybaseAdapter.php.html#a10">10</a></span>)
-		</p>
-		
-				
-		<pre><a href="../Prosper/BaseAdapter.html">BaseAdapter</a>
+<div class="tab-page" id="Description">
+<h2 class="tab">Description</h2>
+<pre>
+<a href="../Prosper/BaseAdapter.html">BaseAdapter</a>
    |
    --SybaseAdapter</pre>
-	
-			</div>
+<p>
+	<b><i>Located in File: <a href="_adapters---SybaseAdapter.php.html">/adapters/SybaseAdapter.php</a></i></b><br>
+</p>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>Sybase Database Adapter</h5>
+<ul>
+	</ul>
+<br /><hr />
 </div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "Description" ) );</script>
+<div class="tab-page" id="tabPage1">
+
+<h2 class="tab">Class Variables</h2>
+<!-- ============ VARIABLE DETAIL =========== -->
+<strong>Summary:</strong><br />
+<hr />
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage1" ) );</script>
+</div>
+<div class="tab-page" id="constantsTabpage">
+
+<h2 class="tab">Class Constants</h2>
+<!-- ============ VARIABLE DETAIL =========== -->
+<strong>Summary:</strong><br />
+<hr />
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "constantsTabpage" ) );</script>
+</div>
+<div class="tab-page" id="tabPage2">
+<h2 class="tab">Method Detail</h2>
+<!-- ============ METHOD DETAIL =========== -->
+<strong>Summary:</strong><br />
+<div class="method-summary">
+    <div class="method-definition">
+            <span class="method-result">void</span>
+        <a href="#methodaffected_rows" title="details" class="method-name">affected_rows</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">$set</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
+        <a href="#methodconnect" title="details" class="method-name">connect</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
+        <a href="#methoddisconnect" title="details" class="method-name">disconnect</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
+        <a href="#methodfetch_assoc" title="details" class="method-name">fetch_assoc</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">$set</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
+        <a href="#methodfree_result" title="details" class="method-name">free_result</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">$set</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
+        <a href="#methodplatform_execute" title="details" class="method-name">platform_execute</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">$sql</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$mode</span>)
+        </div>
+</div>
+<hr />
+<A NAME='method_detail'></A>
 
 
+<a name="methodaffected_rows" id="methodaffected_rows"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method affected_rows</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersSybaseAdapter.php.html#a39">39</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>affected_rows(
 
+$set)</strong></h4>
 
-	<a name="sec-method-summary"></a>
-	<div class="info-box">
-		<div class="info-box-title">Method Summary</span></div>
-		<div class="nav-bar">
-			<a href="#sec-description">Description</a> |
-																		<a href="#sec-vars">Vars</a>
-				 
-				|
-						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodaffected_rows">BaseAdapter::affected_rows()</a> Get the number of affected rows for a platform specific result object</p>
+	<!-- ========== Info from phpDoc block ========= -->
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong> $set</strong>: </li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - affected_rows($set)</li>
+		</ul>
+</div>
+<a name="methodconnect" id="methodconnect"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method connect</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersSybaseAdapter.php.html#a15">15</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>connect(
+)</strong></h4>
+
+<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodconnect">BaseAdapter::connect()</a> Create a connection to the database backend</p>
+	<!-- ========== Info from phpDoc block ========= -->
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - connect()</li>
+		</ul>
+</div>
+<a name="methoddisconnect" id="methoddisconnect"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method disconnect</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersSybaseAdapter.php.html#a25">25</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>disconnect(
+)</strong></h4>
+
+<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methoddisconnect">BaseAdapter::disconnect()</a> Destroy the connection to the database backend</p>
+	<!-- ========== Info from phpDoc block ========= -->
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - disconnect()</li>
+		</ul>
+</div>
+<a name="methodfetch_assoc" id="methodfetch_assoc"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method fetch_assoc</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersSybaseAdapter.php.html#a46">46</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>fetch_assoc(
+
+$set)</strong></h4>
+
+<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodfetch_assoc">BaseAdapter::fetch_assoc()</a> Retrieve an associative array from a platform specific result set</p>
+	<!-- ========== Info from phpDoc block ========= -->
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong> $set</strong>: </li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - fetch_assoc($set)</li>
+		</ul>
+</div>
+<a name="methodfree_result" id="methodfree_result"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method free_result</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersSybaseAdapter.php.html#a53">53</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>free_result(
+
+$set)</strong></h4>
+
+<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodfree_result">BaseAdapter::free_result()</a> Do optional memory cleanup, not necessary but will allow for long running scripts</p>
+	<!-- ========== Info from phpDoc block ========= -->
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong> $set</strong>: </li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - free_result($set)</li>
+		</ul>
+</div>
+<a name="methodplatform_execute" id="methodplatform_execute"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method platform_execute</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersSybaseAdapter.php.html#a32">32</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>platform_execute(
+
+$sql, 
+$mode)</strong></h4>
+
+<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodplatform_execute">BaseAdapter::platform_execute()</a> Platform specific execution wrapper</p>
+	<!-- ========== Info from phpDoc block ========= -->
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong> $sql</strong>: </li>
+			<li><strong> $mode</strong>: </li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - platform_execute($sql, $mode)</li>
+		</ul>
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage2" ) );</script></div>
+<div class="tab-page" id="iVars">
+<h2 class="tab">Inherited Variables</h2>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "iVars" ) );</script>
+<!-- =========== VAR INHERITED SUMMARY =========== -->
+<A NAME='var_inherited_summary'><!-- --></A>
+<h3>Inherited Class Variable Summary</h3>
+
+		<!-- =========== Summary =========== -->
+	<h4>Inherited From Class <a href="../Prosper/BaseAdapter.html">BaseAdapter</a></h4>
+		<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /><strong class="property"> <a href="../Prosper/BaseAdapter.html#var$connection">BaseAdapter::$connection</a></strong> - 
+	</h4> 
+		<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /><strong class="property"> <a href="../Prosper/BaseAdapter.html#var$hostname">BaseAdapter::$hostname</a></strong> - 
+	</h4> 
+		<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /><strong class="property"> <a href="../Prosper/BaseAdapter.html#var$password">BaseAdapter::$password</a></strong> - 
+	</h4> 
+		<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /><strong class="property"> <a href="../Prosper/BaseAdapter.html#var$schema">BaseAdapter::$schema</a></strong> - 
+	</h4> 
+		<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /><strong class="property"> <a href="../Prosper/BaseAdapter.html#var$username">BaseAdapter::$username</a></strong> - 
+	</h4> 
 		</div>
-		<div class="info-box-body">			
-			<div class="method-summary">
-																																																				
-												<div class="method-definition">
-											<span class="method-result">void</span>
-										<a href="#affected_rows" title="details" class="method-name">affected_rows</a>
-											(<span class="var-type"></span>&nbsp;<span class="var-name">$set</span>)
-									</div>
-																<div class="method-definition">
-											<span class="method-result">void</span>
-										<a href="#connect" title="details" class="method-name">connect</a>
-										()
-									</div>
-																<div class="method-definition">
-											<span class="method-result">void</span>
-										<a href="#disconnect" title="details" class="method-name">disconnect</a>
-										()
-									</div>
-																<div class="method-definition">
-											<span class="method-result">void</span>
-										<a href="#fetch_assoc" title="details" class="method-name">fetch_assoc</a>
-											(<span class="var-type"></span>&nbsp;<span class="var-name">$set</span>)
-									</div>
-																<div class="method-definition">
-											<span class="method-result">void</span>
-										<a href="#free_result" title="details" class="method-name">free_result</a>
-											(<span class="var-type"></span>&nbsp;<span class="var-name">$set</span>)
-									</div>
-																<div class="method-definition">
-											<span class="method-result">void</span>
-										<a href="#platform_execute" title="details" class="method-name">platform_execute</a>
-											(<span class="var-type"></span>&nbsp;<span class="var-name">$sql</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$mode</span>)
-									</div>
-								</div>
-		</div>
-	</div>		
+<div class="tab-page" id="iMethods">
+<h2 class="tab">Inherited Methods</h2>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "iMethods" ) );</script>
+<!-- =========== INHERITED METHOD SUMMARY =========== -->
+<A NAME='functions_inherited'><!-- --></A>
+<h3>Inherited Method Summary</h3>
 
-	<a name="sec-vars"></a>
-	<div class="info-box">
-		<div class="info-box-title">Variables</div>
-		<div class="nav-bar">
-			<a href="#sec-description">Description</a> |
-										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
-						
-			
-										| 
-									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
-							
-					</div>
-		<div class="info-box-body">
-										<h4>Inherited Variables</h4>
-				<A NAME='inherited_vars'><!-- --></A>
-									<p>Inherited from <span class="classname"><a href="../Prosper/BaseAdapter.html">BaseAdapter</a></span></p>
-					<blockquote>
-													<span class="var-title">
-								<span class="var-name"><a href="../Prosper/BaseAdapter.html#var$connection">BaseAdapter::$connection</a></span><br>
-							</span>
-													<span class="var-title">
-								<span class="var-name"><a href="../Prosper/BaseAdapter.html#var$hostname">BaseAdapter::$hostname</a></span><br>
-							</span>
-													<span class="var-title">
-								<span class="var-name"><a href="../Prosper/BaseAdapter.html#var$password">BaseAdapter::$password</a></span><br>
-							</span>
-													<span class="var-title">
-								<span class="var-name"><a href="../Prosper/BaseAdapter.html#var$schema">BaseAdapter::$schema</a></span><br>
-							</span>
-													<span class="var-title">
-								<span class="var-name"><a href="../Prosper/BaseAdapter.html#var$username">BaseAdapter::$username</a></span><br>
-							</span>
-											</blockquote> 
-										
-		</div>
-	</div>
-	
-	<a name="sec-methods"></a>
-	<div class="info-box">
-		<div class="info-box-title">Methods</div>
-		<div class="nav-bar">
-			<a href="#sec-description">Description</a> |
-															<a href="#sec-vars">Vars</a>
-																	<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
-						
-		</div>
-		<div class="info-box-body">
-			<A NAME='method_detail'></A>
+		<!-- =========== Summary =========== -->
+	<h4>Inherited From Class <a href="../Prosper/BaseAdapter.html">BaseAdapter</a></h4>
+				<h4>
+<img src="../media/images/Constructor.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#method__construct">BaseAdapter::__construct()</a></strong> - Creates a new adapter instance
+		</h4> 
 
-<a name="methodaffected_rows" id="affected_rows"><!-- --></a>
-<div class="evenrow">
-	
-	<div class="method-header">
-		<span class="method-title">affected_rows</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__adaptersSybaseAdapter.php.html#a39">39</a></span>)
-	</div> 
-	
-	<!-- ========== Info from phpDoc block ========= -->
-	<ul class="tags">
-				<li><span class="field">see:</span> affected_rows($set)</li>
-			</ul>
-	
-	<div class="method-signature">
-		<span class="method-result">void</span>
-		<span class="method-name">
-			affected_rows
-		</span>
-					(<span class="var-type"></span>&nbsp;<span class="var-name">$set</span>)
-			</div>
-	
-			<ul class="parameters">
-					<li>
-				<span class="var-type"></span>
-				<span class="var-name">$set</span>			</li>
-				</ul>
-		
-			<hr class="separator" />
-		<div class="notes">Redefinition of:</div>
-		<dl>
-			<dt><a href="../Prosper/BaseAdapter.html#methodaffected_rows">BaseAdapter::affected_rows()</a></dt>
-						<dd>Get the number of affected rows for a platform specific result object</dd>
-					</dl>
-			
-	</div>
-<a name="methodconnect" id="connect"><!-- --></a>
-<div class="oddrow">
-	
-	<div class="method-header">
-		<span class="method-title">connect</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__adaptersSybaseAdapter.php.html#a15">15</a></span>)
-	</div> 
-	
-	<!-- ========== Info from phpDoc block ========= -->
-	<ul class="tags">
-				<li><span class="field">see:</span> connect()</li>
-			</ul>
-	
-	<div class="method-signature">
-		<span class="method-result">void</span>
-		<span class="method-name">
-			connect
-		</span>
-				()
-			</div>
-	
-		
-			<hr class="separator" />
-		<div class="notes">Redefinition of:</div>
-		<dl>
-			<dt><a href="../Prosper/BaseAdapter.html#methodconnect">BaseAdapter::connect()</a></dt>
-						<dd>Create a connection to the database backend</dd>
-					</dl>
-			
-	</div>
-<a name="methoddisconnect" id="disconnect"><!-- --></a>
-<div class="evenrow">
-	
-	<div class="method-header">
-		<span class="method-title">disconnect</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__adaptersSybaseAdapter.php.html#a25">25</a></span>)
-	</div> 
-	
-	<!-- ========== Info from phpDoc block ========= -->
-	<ul class="tags">
-				<li><span class="field">see:</span> disconnect()</li>
-			</ul>
-	
-	<div class="method-signature">
-		<span class="method-result">void</span>
-		<span class="method-name">
-			disconnect
-		</span>
-				()
-			</div>
-	
-		
-			<hr class="separator" />
-		<div class="notes">Redefinition of:</div>
-		<dl>
-			<dt><a href="../Prosper/BaseAdapter.html#methoddisconnect">BaseAdapter::disconnect()</a></dt>
-						<dd>Destroy the connection to the database backend</dd>
-					</dl>
-			
-	</div>
-<a name="methodfetch_assoc" id="fetch_assoc"><!-- --></a>
-<div class="oddrow">
-	
-	<div class="method-header">
-		<span class="method-title">fetch_assoc</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__adaptersSybaseAdapter.php.html#a46">46</a></span>)
-	</div> 
-	
-	<!-- ========== Info from phpDoc block ========= -->
-	<ul class="tags">
-				<li><span class="field">see:</span> fetch_assoc($set)</li>
-			</ul>
-	
-	<div class="method-signature">
-		<span class="method-result">void</span>
-		<span class="method-name">
-			fetch_assoc
-		</span>
-					(<span class="var-type"></span>&nbsp;<span class="var-name">$set</span>)
-			</div>
-	
-			<ul class="parameters">
-					<li>
-				<span class="var-type"></span>
-				<span class="var-name">$set</span>			</li>
-				</ul>
-		
-			<hr class="separator" />
-		<div class="notes">Redefinition of:</div>
-		<dl>
-			<dt><a href="../Prosper/BaseAdapter.html#methodfetch_assoc">BaseAdapter::fetch_assoc()</a></dt>
-						<dd>Retrieve an associative array from a platform specific result set</dd>
-					</dl>
-			
-	</div>
-<a name="methodfree_result" id="free_result"><!-- --></a>
-<div class="evenrow">
-	
-	<div class="method-header">
-		<span class="method-title">free_result</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__adaptersSybaseAdapter.php.html#a53">53</a></span>)
-	</div> 
-	
-	<!-- ========== Info from phpDoc block ========= -->
-	<ul class="tags">
-				<li><span class="field">see:</span> free_result($set)</li>
-			</ul>
-	
-	<div class="method-signature">
-		<span class="method-result">void</span>
-		<span class="method-name">
-			free_result
-		</span>
-					(<span class="var-type"></span>&nbsp;<span class="var-name">$set</span>)
-			</div>
-	
-			<ul class="parameters">
-					<li>
-				<span class="var-type"></span>
-				<span class="var-name">$set</span>			</li>
-				</ul>
-		
-			<hr class="separator" />
-		<div class="notes">Redefinition of:</div>
-		<dl>
-			<dt><a href="../Prosper/BaseAdapter.html#methodfree_result">BaseAdapter::free_result()</a></dt>
-						<dd>Do optional memory cleanup, not necessary but will allow for long running scripts</dd>
-					</dl>
-			
-	</div>
-<a name="methodplatform_execute" id="platform_execute"><!-- --></a>
-<div class="oddrow">
-	
-	<div class="method-header">
-		<span class="method-title">platform_execute</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__adaptersSybaseAdapter.php.html#a32">32</a></span>)
-	</div> 
-	
-	<!-- ========== Info from phpDoc block ========= -->
-	<ul class="tags">
-				<li><span class="field">see:</span> platform_execute($sql, $mode)</li>
-			</ul>
-	
-	<div class="method-signature">
-		<span class="method-result">void</span>
-		<span class="method-name">
-			platform_execute
-		</span>
-					(<span class="var-type"></span>&nbsp;<span class="var-name">$sql</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$mode</span>)
-			</div>
-	
-			<ul class="parameters">
-					<li>
-				<span class="var-type"></span>
-				<span class="var-name">$sql</span>			</li>
-					<li>
-				<span class="var-type"></span>
-				<span class="var-name">$mode</span>			</li>
-				</ul>
-		
-			<hr class="separator" />
-		<div class="notes">Redefinition of:</div>
-		<dl>
-			<dt><a href="../Prosper/BaseAdapter.html#methodplatform_execute">BaseAdapter::platform_execute()</a></dt>
-						<dd>Platform specific execution wrapper</dd>
-					</dl>
-			
-	</div>
-							<h4>Inherited Methods</h4>
-				<a name='inherited_methods'><!-- --></a>	
-									<!-- =========== Summary =========== -->
-					<p>Inherited From <span class="classname"><a href="../Prosper/BaseAdapter.html">BaseAdapter</a></span></p>
-					<blockquote>
-													<span class="method-name"><a href="../Prosper/BaseAdapter.html#method__construct">BaseAdapter::__construct()</a></span><br>
-													<span class="method-name"><a href="../Prosper/BaseAdapter.html#methodaffected_rows">BaseAdapter::affected_rows()</a></span><br>
-													<span class="method-name"><a href="../Prosper/BaseAdapter.html#methodconnect">BaseAdapter::connect()</a></span><br>
-													<span class="method-name"><a href="../Prosper/BaseAdapter.html#methodconnection">BaseAdapter::connection()</a></span><br>
-													<span class="method-name"><a href="../Prosper/BaseAdapter.html#methoddisconnect">BaseAdapter::disconnect()</a></span><br>
-													<span class="method-name"><a href="../Prosper/BaseAdapter.html#methodescape">BaseAdapter::escape()</a></span><br>
-													<span class="method-name"><a href="../Prosper/BaseAdapter.html#methodexecute">BaseAdapter::execute()</a></span><br>
-													<span class="method-name"><a href="../Prosper/BaseAdapter.html#methodfalse_value">BaseAdapter::false_value()</a></span><br>
-													<span class="method-name"><a href="../Prosper/BaseAdapter.html#methodfetch_assoc">BaseAdapter::fetch_assoc()</a></span><br>
-													<span class="method-name"><a href="../Prosper/BaseAdapter.html#methodfree_result">BaseAdapter::free_result()</a></span><br>
-													<span class="method-name"><a href="../Prosper/BaseAdapter.html#methodinsert_id">BaseAdapter::insert_id()</a></span><br>
-													<span class="method-name"><a href="../Prosper/BaseAdapter.html#methodlimit">BaseAdapter::limit()</a></span><br>
-													<span class="method-name"><a href="../Prosper/BaseAdapter.html#methodmktime">BaseAdapter::mktime()</a></span><br>
-													<span class="method-name"><a href="../Prosper/BaseAdapter.html#methodmodulus">BaseAdapter::modulus()</a></span><br>
-													<span class="method-name"><a href="../Prosper/BaseAdapter.html#methodplatform_execute">BaseAdapter::platform_execute()</a></span><br>
-													<span class="method-name"><a href="../Prosper/BaseAdapter.html#methodquote">BaseAdapter::quote()</a></span><br>
-													<span class="method-name"><a href="../Prosper/BaseAdapter.html#methodtimestamp">BaseAdapter::timestamp()</a></span><br>
-													<span class="method-name"><a href="../Prosper/BaseAdapter.html#methodtrue_value">BaseAdapter::true_value()</a></span><br>
-													<span class="method-name"><a href="../Prosper/BaseAdapter.html#methodunescape">BaseAdapter::unescape()</a></span><br>
-													<span class="method-name"><a href="../Prosper/BaseAdapter.html#method__destruct">BaseAdapter::__destruct()</a></span><br>
-											</blockquote>
-										
-		</div>
-	</div>
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodaffected_rows">BaseAdapter::affected_rows()</a></strong> - Get the number of affected rows for a platform specific result object
+		</h4> 
 
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodconnect">BaseAdapter::connect()</a></strong> - Create a connection to the database backend
+		</h4> 
 
-	<p class="notes" id="credit">
-		Documentation generated on Sun, 29 Nov 2009 15:40:18 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
-	</p>
-	</div></body>
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodconnection">BaseAdapter::connection()</a></strong> - Get the connection, lazy loads connection if necessary
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methoddisconnect">BaseAdapter::disconnect()</a></strong> - Destroy the connection to the database backend
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodescape">BaseAdapter::escape()</a></strong> - Escapes a value, adds slashes and surrounds with single quotes
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodexecute">BaseAdapter::execute()</a></strong> - Executes a sql statement, the base implementation drives the query results using
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodfalse_value">BaseAdapter::false_value()</a></strong> - Platform specific false value
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodfetch_assoc">BaseAdapter::fetch_assoc()</a></strong> - Retrieve an associative array from a platform specific result set
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodfree_result">BaseAdapter::free_result()</a></strong> - Do optional memory cleanup, not necessary but will allow for long running scripts
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodinsert_id">BaseAdapter::insert_id()</a></strong> - Retrieve the last insert id for a statement
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodlimit">BaseAdapter::limit()</a></strong> - Since various databases support a wide variety of limit syntaxes the adapter  is responsible for writing the limit syntax.
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodmktime">BaseAdapter::mktime()</a></strong> - Return unix timestamp from database specific timestamp
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodmodulus">BaseAdapter::modulus()</a></strong> - Platform specific modulus function
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodplatform_execute">BaseAdapter::platform_execute()</a></strong> - Platform specific execution wrapper
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodquote">BaseAdapter::quote()</a></strong> - Quotes a database object, uses the backtick by default
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodtables">BaseAdapter::tables()</a></strong> - Retrieve table information from the current schema
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodtimestamp">BaseAdapter::timestamp()</a></strong> - Return database specific timestamp from unix timestamp
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodtrue_value">BaseAdapter::true_value()</a></strong> - Platform specific true value
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodunescape">BaseAdapter::unescape()</a></strong> - Unescapes a value out of the database, strips slashes
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#method__destruct">BaseAdapter::__destruct()</a></strong> - Destroys an adapter instance
+		</h4> 
+
+				<br />
+	</div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+
+setupAllTabs();
+
+//]]>
+</script>
+	<div id="credit">
+		<hr />
+		Documentation generated on Fri, 04 Dec 2009 10:30:01 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</div>
+</body>
 </html>

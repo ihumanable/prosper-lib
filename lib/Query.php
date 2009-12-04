@@ -45,7 +45,7 @@ class Query {
   /**
    * Private constructor used by factory methods
    * @param string $sql [optional] SQL to initialize with
-   * @return New Query object wrapping supplied sql statement
+   * @return Query New Query object wrapping supplied sql statement
    */
   private function __construct($sql = "", $mode = "") {
     $this->sql = $sql;
@@ -59,7 +59,6 @@ class Query {
    * @param string $password [optional] Database password, defaults to nothing
    * @param string $hostname [optional] Database hostname	 
    * @param string $schema [optional] Default schema to apply to queries	 
-   * @return null
    */
   static function configure($db_mode = MYSQL_MODE, $username = "", $password = "", $hostname = "", $schema = "", $loading = LAZY_LOADING) {
     $adapter = "Prosper\\$db_mode";
@@ -82,7 +81,7 @@ class Query {
   /**
    * Properly quotes a potential column, allowing for compound table.column format
    * @param string $col column name, simple or compound
-   * @return Properly quoted column
+   * @return string Properly quoted column
    */
   static function column($col) {
     if(strpos($col, '.') === false) {
@@ -101,7 +100,7 @@ class Query {
   /**
    * Properly quotes and scopes a potential table.
    * @param string $table table name 
-   * @return Properly scoped and quoted tablename ex: Query::table('hello') => `schema`.`hello` (for mysql)
+   * @return string Properly scoped and quoted tablename ex: Query::table('hello') => `schema`.`hello` (for mysql)
    */
   static function table($table) {
     return self::schema('.') . self::quote($table);
@@ -109,8 +108,8 @@ class Query {
   
   /**
    * Retrieves the schema with an optional suffix
-   * @param object $append [optional] If the schema exists this text will be appended, most useful for appending a dot (.)
-   * @return Schema with an optional suffix 
+   * @param string $append [optional] If the schema exists this text will be appended, most useful for appending a dot (.)
+   * @return string Schema with an optional suffix 
    */
   static function schema($append = "") {
     return (self::$schema == "" ? "" : self::$schema . $append);
@@ -121,7 +120,7 @@ class Query {
    * Used with schema object names
    * @param string $str the text to quote
    * @return Properly quoted text
-   * @see BaseAdapter#quote($str)
+   * @see BaseAdapter::quote($str)
    */	
   static function quote($str) {
     return self::$adapter->quote($str);
@@ -131,8 +130,8 @@ class Query {
    * Escapes the given string using the appropriate adapter's escape function.
    * Used with values to be serialized
    * @param string $str the text to escape
-   * @return Properly escaped text
-   * @see BaseAdapter#escape($str)
+   * @return string Properly escaped text
+   * @see BaseAdapter::escape($str)
    */
   static function escape($str) {
     return self::$adapter->escape(self::deliteral($str)); 
@@ -142,8 +141,8 @@ class Query {
    * Unescapes the given string using the approriate adapter's unescape function
    * Used with values to be deserialized
    * @param string $str the text to unescape
-   * @return Properly unescaped text
-   * @see BaseAdapter#unescape($str)
+   * @return string Properly unescaped text
+   * @see BaseAdapter::unescape($str)
    */
   static function unescape($str) {
     return $str;
@@ -163,7 +162,7 @@ class Query {
   /**
    * Determines if a string is a literal value, literal values are surrounded by single quotes
    * @param string $str String to check
-   * @return true if literal, false otherwise
+   * @return boolean true if literal, false otherwise
    */
   static function is_literal($str) {
     return ($str[0] == "'" && $str[strlen($str) - 1] == "'");
@@ -180,7 +179,7 @@ class Query {
   
   /**
    * Convenience function to check if the configuration is DB2
-   * @return true if configured for DB2, false otherwise
+   * @return boolean true if configured for DB2, false otherwise
    */
   static function is_db2() {
     return self::db_mode() == DB2_MODE;
@@ -188,7 +187,7 @@ class Query {
   
   /**
    * Convenience function to check if the configuration is Firebird
-   * @return true if configured for Firebird, false otherwise
+   * @return boolean true if configured for Firebird, false otherwise
    */
   static function is_firebird() {
     return self::db_mode() == FIREBIRD_MODE;
@@ -196,7 +195,7 @@ class Query {
   
   /**
    * Convenience function to check if the configuration is FrontBase
-   * @return true if configured for FrontBase, false otherwise
+   * @return boolean true if configured for FrontBase, false otherwise
    */
   static function is_frontbase() {
     return self::db_mode() == FRONTBASE_MODE;
@@ -204,7 +203,7 @@ class Query {
   
   /**
    * Convenience function to check if the configuration is Informix
-   * @return true if configured for Informix, false otherwise
+   * @return boolean true if configured for Informix, false otherwise
    */
   static function is_informix() {
     return self::db_mode() == INFORMIX_MODE;
@@ -212,7 +211,7 @@ class Query {
   
   /**
    * Convenience function to check if the configuration is Ingres
-   * @return true if configured for Ingres, false otherwise
+   * @return boolean true if configured for Ingres, false otherwise
    */
   static function is_ingres() {
     return self::db_mode() == INGRES_MODE;
@@ -220,7 +219,7 @@ class Query {
   
   /**
    * Convenience function to check if the configuration is MaxDB
-   * @return true if configured for MaxDB, false otherwise
+   * @return boolean true if configured for MaxDB, false otherwise
    */
   static function is_maxdb() {
     return self::db_mode() == MAXDB_MODE;
@@ -228,7 +227,7 @@ class Query {
   
   /**
    * Convenience function to check if the configuration is MSql
-   * @return true if configured for MSql, false otherwise
+   * @return boolean true if configured for MSql, false otherwise
    */
   static function is_msql() {
     return self::db_mode() == MSQL_MODE;
@@ -236,7 +235,7 @@ class Query {
   
   /**
    * Convenience function to check if the configuration is MSSql
-   * @return true if configured for MSSql, false otherwise
+   * @return boolean true if configured for MSSql, false otherwise
    */
   static function is_mssql() {
     return self::db_mode() == MSSQL_MODE;
@@ -244,7 +243,7 @@ class Query {
   
   /**
    * Convenience function to check if the configuration is MySql
-   * @return true if configured for MySql, false otherwise
+   * @return boolean true if configured for MySql, false otherwise
    */
   static function is_mysql() {
     return self::db_mode() == MYSQL_MODE;
@@ -252,7 +251,7 @@ class Query {
   
   /**
    * Convenience function to check if the configuration is MySql Old
-   * @return true if configured for MySql Old, false otherwise
+   * @return boolean true if configured for MySql Old, false otherwise
    */
   static function is_mysql_old() {
     return self::db_mode() == MYSQL_OLD_MODE;
@@ -260,7 +259,7 @@ class Query {
   
   /**
    * Convenience function to check if the configuration is Oracle
-   * @return true if configured for Oracle, false otherwise
+   * @return boolean true if configured for Oracle, false otherwise
    */
   static function is_oracle() {
     return self::db_mode() == ORACLE_MODE;
@@ -268,7 +267,7 @@ class Query {
   
   /**
    * Convenience function to check if the configuration is Ovrimos
-   * @return true if configured for Ovrimos, false otherwise
+   * @return boolean true if configured for Ovrimos, false otherwise
    */
   static function is_ovrimos() {
     return self::db_mode() == OVRIMOS_MODE;
@@ -276,7 +275,7 @@ class Query {
   
   /**
    * Convenience function to check if the configuration is Paradox
-   * @return true if configured for Paradox, false otherwise
+   * @return boolean true if configured for Paradox, false otherwise
    */
   static function is_paradox() {
     return self::db_mode() == PARADOX_MODE;
@@ -284,7 +283,7 @@ class Query {
   
   /**
    * Convenience function to check if the configuration is Postgre
-   * @return true if configured for Postgre, false otherwise
+   * @return boolean true if configured for Postgre, false otherwise
    */
   static function is_postgre() {
     return self::db_mode() == POSTGRE_MODE;
@@ -292,7 +291,7 @@ class Query {
   
   /**
    * Convenience function to check if the configuration is Sqlite
-   * @return true if configured for Sqlite, false otherwise
+   * @return boolean true if configured for Sqlite, false otherwise
    */
   static function is_sqlite() {
     return self::db_mode() == SQLITE_MODE;
@@ -300,7 +299,7 @@ class Query {
   
   /**
    * Convenience function to check if the configuration is Sybase
-   * @return true if configured for Sybase, false otherwise
+   * @return boolean true if configured for Sybase, false otherwise
    */
   static function is_sybase() {
     return self::db_mode() == SYBASE_MODE;
@@ -312,7 +311,7 @@ class Query {
    * Get an array of all the tables in the current schema
    * Accepts optional table names to retrieve
    * Result is structured as follows
-   * @params strings [optional] variadic table names
+   * @params varargs [optional] table names to retrieve
    * @return array Table data
    */        
   static function tables() {
@@ -326,7 +325,7 @@ class Query {
    * @param varargs [optional] If nothing is provided assumes 'select *' 
    *      otherwise processes each argument as a column, 
    *       array arguments are processed as any number of aliased columns where column_name => alias 
-   * @return Select Statement Query Object
+   * @return Query Select Statement Query Object
    */
   static function select() {
     if(func_num_args() == 0) {
@@ -349,7 +348,7 @@ class Query {
   
   /**
    * Chained function for describing the table to pull from
-   * @param string $table_or_query table name or subquery
+   * @param string $table table name or subquery
    * @param string $alias [optional] alias
    * @return Query instance for further chaining
    */
@@ -364,7 +363,7 @@ class Query {
   
   /**
    * Chained function for describing a standard left join
-   * Convenience function, identical to calling Query#specified_join($table, $alias, "left join");
+   * Convenience function, identical to calling Query::specified_join($table, $alias, "left join");
    * @param string $table table name
    * @param object $alias [optional] alias
    * @return Query instance for further chaining
@@ -375,7 +374,7 @@ class Query {
   
   /**
    * Chained function for describing a standard inner join
-   * Convenience function, identical to calling Query#specified_join($table, $alias, "inner join");
+   * Convenience function, identical to calling Query::specified_join($table, $alias, "inner join");
    * @param string $table table name
    * @param object $alias [optional] alias
    * @return Query instance for further chaining
@@ -386,7 +385,7 @@ class Query {
   
   /**
    * Chained function for describing a standard outer join
-   * Convenience function, identical to calling Query#specified_join($table, $alias, "outer join");
+   * Convenience function, identical to calling Query::specified_join($table, $alias, "outer join");
    * @param string $table table name
    * @param object $alias [optional] alias
    * @return Query instance for further chaining
@@ -397,7 +396,7 @@ class Query {
   
   /**
    * Chained function for describing a standard cartesian join
-   * Convenience function, identical to calling Query#specified_join($table, $alias, "join");
+   * Convenience function, identical to calling Query::specified_join($table, $alias, "join");
    * @param string $table table name
    * @param string $alias [optional] alias
    * @return Query instance for further chaining
@@ -422,9 +421,9 @@ class Query {
   /**
    * Chained function for describing the on clause
    * @param object $clause see below
-   * @param variadic [optional] values to use for parameterization
+   * @param varargs [optional] values to use for parameterization
    * @return Query instance for further chaining
-   * @see Query#conditional($clause) for implementation details.
+   * @see Query::conditional($clause) for implementation details.
    */
   function on($clause) {
     $args = func_get_args();
@@ -435,9 +434,9 @@ class Query {
   /**
    * Chained function for describing the where clause
    * @param object $clause see below
-   * @param variadic [optional] values to use for parameterization
+   * @param varargs [optional] values to use for parameterization
    * @return Query instance for further chaining
-   * @see Query#conditional($clause) for implementation details.
+   * @see Query::conditional($clause) for implementation details.
    */
   function where($clause) {
     $args = func_get_args();
@@ -446,8 +445,9 @@ class Query {
   }
   
   /**
-   * Used by where and on to parse conditional strings, interpolating parameters,
-   * quoting, escaping, and cross-platform replacements where needed
+   * Used by Query::where and Query::on to parse conditional strings, 
+   * interpolating parameters, quoting, escaping, and cross-platform 
+   * replacements where needed
    * @param string $predicate result predicate, i.e. 'where' or 'on'
    * @param string $clause conditional clause	 	 	 	 
    */
@@ -463,11 +463,11 @@ class Query {
   
   /**
    * Processes a token
-   * @param string $clause sql string
+   * @param string $clause sql cluase to process, by reference
    * @param array $token token array
-   * @param array $args arguments
+   * @param array $args arguments used for interpolation, by reference
    * @param array $named associative array
-   * @return tokenized string
+   * @return string processed clause
    */
   function process_token(&$clause, $token, &$args, $named) {
     switch($token['type']) {
@@ -515,9 +515,9 @@ class Query {
   
   /**
    * Parses sql function arguments into a php array
-   * @param $clause sql clause to process
-   * @param $args arguments used for interpolation
-   * @param $named named interpolation arguments
+   * @param string $clause sql clause to process, by reference
+   * @param array $args arguments used for interpolation, by reference
+   * @param array $named named interpolation arguments
    * @return array arguments
    */
   function parse_func_args(&$clause, &$args, $named) {
@@ -560,7 +560,7 @@ class Query {
   /**
    * Chained function for describing an optionally windowed limit
    * @param int $limit maximum number of results to return
-   * @param int $start [optional] where to start, defaults to 0, beginning of set
+   * @param int $offset [optional] where to start, defaults to 0, beginning of set
    * @return Query instance for further chaining
    */
   function limit($limit, $offset = 0) {
@@ -591,7 +591,7 @@ class Query {
   
   /**
    * Factory function that creates an insert statement query object.
-   * @return Insert Statement Query Object
+   * @return Query Insert Statement Query Object
    */
   static function insert() {
     return new Query("insert", self::INSERT_STMT);
@@ -618,7 +618,7 @@ class Query {
    *     ->values('first_name', 'last_name', $_POST) [read: values 'first_name', 'last_name' from $_POST]
    *       is identical to
    *     ->values(array('first_name' => $_POST['first_name'], 'last_name' => $_POST['last_name']))
-   * @param variadic $filter [optional] list of elements to pull out of $values	 
+   * @param varargs $filter [optional] list of elements to pull out of $values	 
    * @param array $values Array of values with column_name => insert_value
    * @return Query instance for further chaining
    */
@@ -650,7 +650,7 @@ class Query {
   /**
    * Factory function that creates an update statement query object.
    * @param string $table Table to update
-   * @return Update Statement Query Object
+   * @return Query Update Statement Query Object
    */
   static function update($table) {
     return new Query("update " . self::table($table), self::UPDATE_STMT);
@@ -667,7 +667,7 @@ class Query {
    *     ->set('first_name', 'last_name', $_POST) [read: set 'first_name', 'last_name' from $_POST]
    *       is identical to
    *     ->set(array('first_name' => $_POST['first_name'], 'last_name' => $_POST['last_name']))
-   * @param variadic $filter [optional] list of elements to pull ovt of $values
+   * @param varargs $filter [optional] list of elements to pull ovt of $values
    * @param array $values Array of values with column_name => update_value
    * @return Query instance for further chaining
    */
@@ -698,7 +698,7 @@ class Query {
   
   /**
    * Factory function that creates a delete statement query object.
-   * @return Delete Statement Query Object
+   * @return Query Delete Statement Query Object
    */
   static function delete() {
     return new Query("delete", self::DELETE_STMT);
@@ -710,7 +710,7 @@ class Query {
    * Factory function to execute arbitrary native sql
    * @param string $sql Sql to create a query out of
    * @param string $mode Type of query, one of Query::DELETE_STMT, Query::INSERT_STMT, Query::SELECT_STMT, or Query::UPDATE_STMT
-   * @return Native SQL Query Object
+   * @return Query Native SQL Query Object
    */
   static function native($sql, $mode) {
     return new Query($sql, $mode);
@@ -718,13 +718,14 @@ class Query {
   
   /**
    * Helper function to translate unix timestamp to database timestamp format
-   * The inverse of this function is mktime
+   * The inverse of this function is Query::mktime($timestamp)
    * ie. 
    *  $unix = mktime();
    *  $db_time = Query::timestamp($unix);
    *  $unix === Query::mktime($db_time);
    * @param int timestamp [optional] unix timestamp to translate, defaults to current time
    * @return string database timestamp string
+   * @see Query::mktime($timestamp)   
    */
   static function timestamp($timestamp = null) {
     if($timestamp === null) {
@@ -735,13 +736,14 @@ class Query {
   
   /**
    * Helper function to translate database timestamp to unix timestamp
-   * The invers of this function is timestamp
+   * The inverse of this function is Query::timestamp($timestamp)
    * ie.
    *  $db_time = $row['timestamp'];
    *  $unix = Query::mktime($db_time);
    *  $db_time === Query::timestamp($unix);
    * @param string timestamp database timestamp
    * @return int unix timestamp	 	 
+   * @see Query::timestamp($timestamp)   
    */
   static function mktime($timestamp) {
     return self::$adapter->mktime($timestamp);
@@ -781,7 +783,7 @@ class Query {
    * UPDATE returns affected row count
    * INSERT returns last insert id
    * DELETE returns affected row count
-   * @return a flat result set	 	 
+   * @return mixed execution result	 	 
    */
   function execute() {
     return self::$adapter->execute($this->sql, $this->mode);
@@ -789,7 +791,7 @@ class Query {
   
   /**
    * Prints the query and the result of the query 
-   * @return the same result set as Query#execute()
+   * @return mixed the same result set as Query::execute()
    */
   function verbose() {
     echo '<pre class="brush: sql">' . $this->sql . "</pre>";
@@ -802,7 +804,7 @@ class Query {
   
   /**
    * Automagic toString method, simply prints wrapped sql statement
-   * @return Wrapped Sql Statement
+   * @return string internal sql statement
    */
   function __toString() {
     return $this->sql;

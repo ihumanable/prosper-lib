@@ -1,91 +1,91 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-  <html xmlns="http://www.w3.org/1999/xhtml">
-		<head>
-			<!-- template designed by Marco Von Ballmoos -->
-			<title>File Source for OracleAdapter.php</title>
-			<link rel="stylesheet" href="../media/stylesheet.css" />
-			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
-		</head>
-		<body>
-						<h1>Source for file OracleAdapter.php</h1>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>File Source for OracleAdapter.php</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><h1 align="center">Source for file OracleAdapter.php</h1>
 <p>Documentation is available at <a href="../Prosper/_adapters---OracleAdapter.php.html">OracleAdapter.php</a></p>
 <div class="src-code">
-<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
-<li><div class="src-line"><a name="a2"></a><span class="src-doc">/**</span></div></li>
-<li><div class="src-line"><a name="a3"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;Prosper</span></div></li>
-<li><div class="src-line"><a name="a4"></a><span class="src-doc">&nbsp;*/</span></div></li>
-<li><div class="src-line"><a name="a5"></a>namespace&nbsp;<span class="src-id">Prosper</span><span class="src-sym">;</span></div></li>
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><strong>&lt;?php</strong></div></li>
+<li><div class="src-line"><a name="a2"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a3"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@package</font></strong><font color="#009999">&nbsp;Prosper</font></div></li>
+<li><div class="src-line"><a name="a4"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a5"></a>namespace&nbsp;Prosper<strong>;</strong></div></li>
 <li><div class="src-line"><a name="a6"></a>&nbsp;</div></li>
-<li><div class="src-line"><a name="a7"></a><span class="src-doc">/**</span></div></li>
-<li><div class="src-line"><a name="a8"></a><span class="src-doc">&nbsp;*&nbsp;Oracle&nbsp;Database&nbsp;Adapter</span></div></li>
-<li><div class="src-line"><a name="a9"></a><span class="src-doc">&nbsp;*/</span></div></li>
-<li><div class="src-line"><a name="a10"></a><span class="src-key">class&nbsp;</span><a href="../Prosper/OracleAdapter.html">OracleAdapter</a>&nbsp;<span class="src-key">extends&nbsp;</span><a href="../Prosper/BaseAdapter.html">BaseAdapter</a>&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a7"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a8"></a><font color="#009999">&nbsp;*&nbsp;Oracle&nbsp;Database&nbsp;Adapter</font></div></li>
+<li><div class="src-line"><a name="a9"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a10"></a><font color="blue">class&nbsp;</font><a href="../Prosper/OracleAdapter.html">OracleAdapter</a>&nbsp;<font color="blue">extends&nbsp;</font><a href="../Prosper/BaseAdapter.html">BaseAdapter</a>&nbsp;<strong>{</strong></div></li>
 <li><div class="src-line"><a name="a11"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
-<li><div class="src-line"><a name="a12"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
-<li><div class="src-line"><a name="a13"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@see</span><span class="src-doc">&nbsp;BaseAdapter#connect()</span></div></li>
-<li><div class="src-line"><a name="a14"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;*/</span></div></li>
-<li><div class="src-line"><a name="a15"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../Prosper/OracleAdapter.html#methodconnect">connect</a><span class="src-sym">(</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
-<li><div class="src-line"><a name="a16"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$conn&nbsp;</span>=&nbsp;<span class="src-str">&quot;</span><span class="src-str">//{<span class="src-var">$this</span></span><span class="src-sym">-&gt;</span><a href="../Prosper/BaseAdapter.html#var$hostname">hostname</a><span class="src-sym">}</span><span class="src-str"></span><span class="src-str">"</span>&nbsp;.&nbsp;<span class="src-sym">(</span><span class="src-var">$this</span></span><span class="src-sym">-&gt;</span><a href="../Prosper/BaseAdapter.html#var$schema">schema</a>&nbsp;!=&nbsp;<span class="src-str">&quot;&quot;&nbsp;</span>?&nbsp;</span><span class="src-str"><span class="src-str">"</span>/</span>{<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Prosper/BaseAdapter.html#var$schema">schema</a><span class="src-sym">}</span><span class="src-str"></span><span class="src-str">"</span>&nbsp;:&nbsp;<span class="src-str">&quot;&quot;</span><span class="src-sym">)</span><span class="src-sym">;</span></span></div></li>
-<li><div class="src-line"><a name="a17"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span></span><span class="src-sym">-&gt;</span><a href="../Prosper/BaseAdapter.html#var$connection">connection</a>&nbsp;=&nbsp;<span class="src-id">oci_connect</span><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Prosper/BaseAdapter.html#var$username">username</a><span class="src-sym">,&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Prosper/BaseAdapter.html#var$password">password</a><span class="src-sym">,&nbsp;</span><span class="src-var">$conn</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line"><a name="a18"></a>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="src-str"><span class="src-sym">}</span></span></div></li>
-<li><div class="src-line"><a name="a19"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;</span></div></li>
-<li><div class="src-line"><a name="a20"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;/**</span></div></li>
-<li><div class="src-line"><a name="a21"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter#disconnect()</span></div></li>
-<li><div class="src-line"><a name="a22"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
-<li><div class="src-line"><a name="a23"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function</span>&nbsp;<span class="src-id">disconnect</span><span class="src-sym">(</span><span class="src-sym">)</span>&nbsp;<span class="src-sym">{</span></span></div></li>
-<li><div class="src-line"><a name="a24"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">oci_close</span><span class="src-sym">(</span><span class="src-var">$this</span></span><span class="src-sym">-&gt;</span><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><span class="src-sym">(</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line"><a name="a25"></a>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="src-str"><span class="src-sym">}</span></span></div></li>
-<li><div class="src-line"><a name="a26"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;</span></div></li>
-<li><div class="src-line"><a name="a27"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;/**</span></div></li>
-<li><div class="src-line"><a name="a28"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter#platform_execute($sql,&nbsp;$mode)</span></div></li>
-<li><div class="src-line"><a name="a29"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
-<li><div class="src-line"><a name="a30"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function</span>&nbsp;<span class="src-id">platform_execute</span><span class="src-sym">(</span><span class="src-var">$sql</span><span class="src-sym">,</span>&nbsp;<span class="src-var">$mode</span><span class="src-sym">)</span>&nbsp;<span class="src-sym">{</span></span></div></li>
-<li><div class="src-line"><a name="a31"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$stmt</span>&nbsp;=&nbsp;<span class="src-id">oci_parse</span><span class="src-sym">(</span><span class="src-var">$this</span></span><span class="src-sym">-&gt;</span><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">,&nbsp;</span><span class="src-var">$sql</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line"><a name="a32"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">oci_execute</span><span class="src-sym">(</span><span class="src-var">$stmt</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line"><a name="a33"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$stmt</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line"><a name="a34"></a>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="src-str"><span class="src-sym">}</span>&nbsp;</span></div></li>
-<li><div class="src-line"><a name="a35"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;</span></div></li>
-<li><div class="src-line"><a name="a36"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;/**</span></div></li>
-<li><div class="src-line"><a name="a37"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter#affected_rows($set)&nbsp;</span></div></li>
-<li><div class="src-line"><a name="a38"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
-<li><div class="src-line"><a name="a39"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function</span>&nbsp;<span class="src-id">affected_rows</span><span class="src-sym">(</span><span class="src-var">$set</span><span class="src-sym">)</span>&nbsp;<span class="src-sym">{</span></span></div></li>
-<li><div class="src-line"><a name="a40"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return</span>&nbsp;<span class="src-id">oci_num_rows</span><span class="src-sym">(</span><span class="src-var">$set</span><span class="src-sym">)</span><span class="src-sym">;</span></span></div></li>
-<li><div class="src-line"><a name="a41"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></span></div></li>
-<li><div class="src-line"><a name="a42"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;</span></div></li>
-<li><div class="src-line"><a name="a43"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;</span></div></li>
-<li><div class="src-line"><a name="a44"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;/**</span></div></li>
-<li><div class="src-line"><a name="a45"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter#fetch_assoc($set)&nbsp;</span></div></li>
-<li><div class="src-line"><a name="a46"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
-<li><div class="src-line"><a name="a47"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function</span>&nbsp;<span class="src-id">fetch_assoc</span><span class="src-sym">(</span><span class="src-var">$set</span><span class="src-sym">)</span>&nbsp;<span class="src-sym">{</span></span></div></li>
-<li><div class="src-line"><a name="a48"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return</span>&nbsp;<span class="src-id">oci_fetch_assoc</span><span class="src-sym">(</span><span class="src-var">$set</span><span class="src-sym">)</span><span class="src-sym">;</span></span></div></li>
-<li><div class="src-line"><a name="a49"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></span></div></li>
+<li><div class="src-line"><a name="a12"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a13"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter#connect()</font></div></li>
+<li><div class="src-line"><a name="a14"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a15"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/OracleAdapter.html#methodconnect">connect</a><strong>(</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a16"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$conn&nbsp;</strong>=&nbsp;<font color="#66cccc">&quot;</font><font color="#66cccc">//{<strong>$this</strong></font><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$hostname">hostname</a><strong>}</font><font color="#66cccc"></strong><font color="#66cccc">"</font>&nbsp;.&nbsp;<strong>(</strong><strong>$this</strong></font><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$schema">schema</a>&nbsp;!=&nbsp;<font color="#66cccc">&quot;&quot;&nbsp;</font>?&nbsp;</font><font color="#66cccc"><font color="#66cccc">"</font>/</font>{<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$schema">schema</a><strong>}</font><font color="#66cccc"></strong><font color="#66cccc">"</font>&nbsp;:&nbsp;<font color="#66cccc">&quot;&quot;</font><strong>)</strong><strong>;</strong></font></div></li>
+<li><div class="src-line"><a name="a17"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$this</strong></font><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$connection">connection</a>&nbsp;=&nbsp;oci_connect<strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$username">username</a><strong>,&nbsp;</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$password">password</a><strong>,&nbsp;</strong><strong>$conn</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a18"></a>&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#66cccc"><strong>}</strong></font></div></li>
+<li><div class="src-line"><a name="a19"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a20"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;/**</font></div></li>
+<li><div class="src-line"><a name="a21"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter#disconnect()</font></div></li>
+<li><div class="src-line"><a name="a22"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a23"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">function</font>&nbsp;disconnect<strong>(</strong><strong>)</strong>&nbsp;<strong>{</strong></font></div></li>
+<li><div class="src-line"><a name="a24"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oci_close<strong>(</strong><strong>$this</strong></font><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a25"></a>&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#66cccc"><strong>}</strong></font></div></li>
+<li><div class="src-line"><a name="a26"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a27"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;/**</font></div></li>
+<li><div class="src-line"><a name="a28"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter#platform_execute($sql,&nbsp;$mode)</font></div></li>
+<li><div class="src-line"><a name="a29"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a30"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">function</font>&nbsp;platform_execute<strong>(</strong><strong>$sql</strong><strong>,</strong>&nbsp;<strong>$mode</strong><strong>)</strong>&nbsp;<strong>{</strong></font></div></li>
+<li><div class="src-line"><a name="a31"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$stmt</strong>&nbsp;=&nbsp;oci_parse<strong>(</strong><strong>$this</strong></font><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>)</strong><strong>,&nbsp;</strong><strong>$sql</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a32"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oci_execute<strong>(</strong><strong>$stmt</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a33"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><strong>$stmt</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#66cccc"><strong>}</strong>&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a35"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a36"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;/**</font></div></li>
+<li><div class="src-line"><a name="a37"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter#affected_rows($set)&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a38"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a39"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">function</font>&nbsp;affected_rows<strong>(</strong><strong>$set</strong><strong>)</strong>&nbsp;<strong>{</strong></font></div></li>
+<li><div class="src-line"><a name="a40"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font>&nbsp;oci_num_rows<strong>(</strong><strong>$set</strong><strong>)</strong><strong>;</strong></font></div></li>
+<li><div class="src-line"><a name="a41"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></font></div></li>
+<li><div class="src-line"><a name="a42"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a43"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a44"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;/**</font></div></li>
+<li><div class="src-line"><a name="a45"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter#fetch_assoc($set)&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a46"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a47"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">function</font>&nbsp;fetch_assoc<strong>(</strong><strong>$set</strong><strong>)</strong>&nbsp;<strong>{</strong></font></div></li>
+<li><div class="src-line"><a name="a48"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font>&nbsp;oci_fetch_assoc<strong>(</strong><strong>$set</strong><strong>)</strong><strong>;</strong></font></div></li>
+<li><div class="src-line"><a name="a49"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></font></div></li>
 <li><div class="src-line"><a name="a50"></a>&nbsp;</div></li>
-<li><div class="src-line"><a name="a51"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;/**</span></div></li>
-<li><div class="src-line"><a name="a52"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter#free_result($set)</span></div></li>
-<li><div class="src-line"><a name="a53"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
-<li><div class="src-line"><a name="a54"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function</span>&nbsp;<span class="src-id">free_result</span><span class="src-sym">(</span><span class="src-var">$set</span><span class="src-sym">)</span>&nbsp;<span class="src-sym">{</span></span></div></li>
-<li><div class="src-line"><a name="a55"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id">oci_free_statment</span><span class="src-sym">(</span><span class="src-var">$set</span><span class="src-sym">)</span><span class="src-sym">;</span></span></div></li>
-<li><div class="src-line"><a name="a56"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></span></div></li>
-<li><div class="src-line"><a name="a57"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;</span></div></li>
-<li><div class="src-line"><a name="a58"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;/**</span></div></li>
-<li><div class="src-line"><a name="a59"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter#truth()</span></div></li>
-<li><div class="src-line"><a name="a60"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
-<li><div class="src-line"><a name="a61"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function</span>&nbsp;<span class="src-id">true_value</span><span class="src-sym">(</span><span class="src-sym">)</span>&nbsp;<span class="src-sym">{</span></span></div></li>
-<li><div class="src-line"><a name="a62"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return</span>&nbsp;<span class="src-str">&quot;1&quot;</span><span class="src-sym">;</span></span></div></li>
-<li><div class="src-line"><a name="a63"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></span></div></li>
-<li><div class="src-line"><a name="a64"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;</span></div></li>
-<li><div class="src-line"><a name="a65"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;/**</span></div></li>
-<li><div class="src-line"><a name="a66"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter#falsehood()</span></div></li>
-<li><div class="src-line"><a name="a67"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
-<li><div class="src-line"><a name="a68"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function</span>&nbsp;<span class="src-id">false_value</span><span class="src-sym">(</span><span class="src-sym">)</span>&nbsp;<span class="src-sym">{</span></span></div></li>
-<li><div class="src-line"><a name="a69"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return</span>&nbsp;<span class="src-str">&quot;0&quot;</span><span class="src-sym">;</span></span></div></li>
-<li><div class="src-line"><a name="a70"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></span></div></li>
-<li><div class="src-line"><a name="a71"></a></span><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a51"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;/**</font></div></li>
+<li><div class="src-line"><a name="a52"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter#free_result($set)</font></div></li>
+<li><div class="src-line"><a name="a53"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a54"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">function</font>&nbsp;free_result<strong>(</strong><strong>$set</strong><strong>)</strong>&nbsp;<strong>{</strong></font></div></li>
+<li><div class="src-line"><a name="a55"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oci_free_statment<strong>(</strong><strong>$set</strong><strong>)</strong><strong>;</strong></font></div></li>
+<li><div class="src-line"><a name="a56"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></font></div></li>
+<li><div class="src-line"><a name="a57"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a58"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;/**</font></div></li>
+<li><div class="src-line"><a name="a59"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter#truth()</font></div></li>
+<li><div class="src-line"><a name="a60"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a61"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">function</font>&nbsp;true_value<strong>(</strong><strong>)</strong>&nbsp;<strong>{</strong></font></div></li>
+<li><div class="src-line"><a name="a62"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font>&nbsp;<font color="#66cccc">&quot;1&quot;</font><strong>;</strong></font></div></li>
+<li><div class="src-line"><a name="a63"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></font></div></li>
+<li><div class="src-line"><a name="a64"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a65"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;/**</font></div></li>
+<li><div class="src-line"><a name="a66"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter#falsehood()</font></div></li>
+<li><div class="src-line"><a name="a67"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a68"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">function</font>&nbsp;false_value<strong>(</strong><strong>)</strong>&nbsp;<strong>{</strong></font></div></li>
+<li><div class="src-line"><a name="a69"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font>&nbsp;<font color="#66cccc">&quot;0&quot;</font><strong>;</strong></font></div></li>
+<li><div class="src-line"><a name="a70"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></font></div></li>
+<li><div class="src-line"><a name="a71"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
 </ol></div>
 </div>
-	<p class="notes" id="credit">
-		Documentation generated on Sun, 29 Nov 2009 15:40:15 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
-	</p>
-	</body>
+	<div id="credit">
+		<hr />
+		Documentation generated on Fri, 04 Dec 2009 10:29:57 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</div>
+</body>
 </html>

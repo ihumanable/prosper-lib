@@ -1,1191 +1,853 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-  <html xmlns="http://www.w3.org/1999/xhtml">
-		<head>
-			<!-- template designed by Marco Von Ballmoos -->
-			<title>Docs For Class Token</title>
-			<link rel="stylesheet" href="../media/stylesheet.css" />
-			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
-		</head>
-		<body>
-			<div class="page-body">			
-<h2 class="class-name">Class Token</h2>
-
-<a name="sec-description"></a>
-<div class="info-box">
-	<div class="info-box-title">Description</div>
-	<div class="nav-bar">
-					<span class="disabled">Description</span> |
-													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
-						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
-						
-											<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
-						
-			</div>
-	<div class="info-box-body">
-        		<!-- ========== Info from phpDoc block ========= -->
-<p class="short-description">This forward looking tokenizer is used to process SQL</p>
-<p class="description"><p>This is an internal class used by Query</p></p>
-		<p class="notes">
-			Located in <a class="field" href="_Token.php.html">/Token.php</a> (line <span class="field"><a href="../__filesource/fsource_Prosper__Token.php.html#a11">11</a></span>)
-		</p>
-		
-				
-		<pre></pre>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Docs For Class Token</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+  <script src="../media/lib/classTree.js"></script>
+<link id="webfx-tab-style-sheet" type="text/css" rel="stylesheet" href="../media/lib/tab.webfx.css" />
+<script type="text/javascript" src="../media/lib/tabpane.js"></script>
+  <script language="javascript" type="text/javascript" src="../media/lib/ua.js"></script>
+<script language="javascript" type="text/javascript">
+	var imgPlus = new Image();
+	var imgMinus = new Image();
+	imgPlus.src = "../media/images/plus.gif";
+	imgMinus.src = "../media/images/minus.gif";
 	
-			</div>
+	function showNode(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+				var oImg = document.layers["img" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+				var oImg = document.all["img" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+				var oImg = document.getElementById("img" + Node);
+        		break;
+        }
+		oImg.src = imgMinus.src;
+		oTable.style.display = "block";
+	}
+	
+	function hideNode(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+				var oImg = document.layers["img" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+				var oImg = document.all["img" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+				var oImg = document.getElementById("img" + Node);
+        		break;
+        }
+		oImg.src = imgPlus.src;
+		oTable.style.display = "none";
+	}
+	
+	function nodeIsVisible(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+        		break;
+        }
+		return (oTable && oTable.style.display == "block");
+	}
+	
+	function toggleNodeVisibility(Node){
+		if (nodeIsVisible(Node)){
+			hideNode(Node);
+		}else{
+			showNode(Node);
+		}
+	}
+</script>
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><!-- Start of Class Data -->
+<h2>
+	Class Token
+</h2> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a11">11</a></span>)
+<div class="tab-pane" id="tabPane1">
+<script type="text/javascript">
+tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
+</script>
+
+<div class="tab-page" id="Description">
+<h2 class="tab">Description</h2>
+<pre>
+</pre>
+<p>
+	<b><i>Located in File: <a href="_Token.php.html">/Token.php</a></i></b><br>
+</p>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>This forward looking tokenizer is used to process SQL</h5>
+<div class="desc"><p>This is an internal class used by Query</p></div>
+<ul>
+	</ul>
+<br /><hr />
 </div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "Description" ) );</script>
+<div class="tab-page" id="tabPage1">
 
-
-	<a name="sec-const-summary"></a>
-	<div class="info-box">
-		<div class="info-box-title">Class Constant Summary</span></div>
-		<div class="nav-bar">
-			<a href="#sec-description">Description</a> |
-						<span class="disabled">Constants</span> (<a href="#sec-consts">details</a>)
-												<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
-				 
-				|
-										| 
-									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
-							
-					</div>
-		<div class="info-box-body">
-			<div class="const-summary">
-								<div class="const-title">
-					<img src="../media/images/Constant.png" alt=" " />
-					<a href="#ARITHMETIC" title="details" class="const-name">ARITHMETIC</a> = 					<span class="var-type"> &quot;ARITHMETIC&quot;</span>
-
-				</div>
-								<div class="const-title">
-					<img src="../media/images/Constant.png" alt=" " />
-					<a href="#BOOLEAN" title="details" class="const-name">BOOLEAN</a> = 					<span class="var-type"> &quot;BOOLEAN&quot;</span>
-
-				</div>
-								<div class="const-title">
-					<img src="../media/images/Constant.png" alt=" " />
-					<a href="#CLOSE_PAREN" title="details" class="const-name">CLOSE_PAREN</a> = 					<span class="var-type"> &quot;CLOSE_PAREN&quot;</span>
-
-				</div>
-								<div class="const-title">
-					<img src="../media/images/Constant.png" alt=" " />
-					<a href="#COMMA" title="details" class="const-name">COMMA</a> = 					<span class="var-type"> &quot;COMMA&quot;</span>
-
-				</div>
-								<div class="const-title">
-					<img src="../media/images/Constant.png" alt=" " />
-					<a href="#COMPARISON" title="details" class="const-name">COMPARISON</a> = 					<span class="var-type"> &quot;COMPARISON&quot;</span>
-
-				</div>
-								<div class="const-title">
-					<img src="../media/images/Constant.png" alt=" " />
-					<a href="#CONCATENATE" title="details" class="const-name">CONCATENATE</a> = 					<span class="var-type"> &quot;CONCATENATE&quot;</span>
-
-				</div>
-								<div class="const-title">
-					<img src="../media/images/Constant.png" alt=" " />
-					<a href="#KEYWORD" title="details" class="const-name">KEYWORD</a> = 					<span class="var-type"> &quot;KEYWORD&quot;</span>
-
-				</div>
-								<div class="const-title">
-					<img src="../media/images/Constant.png" alt=" " />
-					<a href="#LITERAL" title="details" class="const-name">LITERAL</a> = 					<span class="var-type"> &quot;LITERAL&quot;</span>
-
-				</div>
-								<div class="const-title">
-					<img src="../media/images/Constant.png" alt=" " />
-					<a href="#LOGICAL_OP" title="details" class="const-name">LOGICAL_OP</a> = 					<span class="var-type"> &quot;LOGICAL_OP&quot;</span>
-
-				</div>
-								<div class="const-title">
-					<img src="../media/images/Constant.png" alt=" " />
-					<a href="#MODULUS" title="details" class="const-name">MODULUS</a> = 					<span class="var-type"> &quot;MODULUS&quot;</span>
-
-				</div>
-								<div class="const-title">
-					<img src="../media/images/Constant.png" alt=" " />
-					<a href="#NAMED_PARAM" title="details" class="const-name">NAMED_PARAM</a> = 					<span class="var-type"> &quot;NAMED_PARAM&quot;</span>
-
-				</div>
-								<div class="const-title">
-					<img src="../media/images/Constant.png" alt=" " />
-					<a href="#OPEN_PAREN" title="details" class="const-name">OPEN_PAREN</a> = 					<span class="var-type"> &quot;OPEN_PAREN&quot;</span>
-
-				</div>
-								<div class="const-title">
-					<img src="../media/images/Constant.png" alt=" " />
-					<a href="#PARAMETER" title="details" class="const-name">PARAMETER</a> = 					<span class="var-type"> &quot;PARAMETER&quot;</span>
-
-				</div>
-								<div class="const-title">
-					<img src="../media/images/Constant.png" alt=" " />
-					<a href="#SQL_ENTITY" title="details" class="const-name">SQL_ENTITY</a> = 					<span class="var-type"> &quot;SQL_ENTITY&quot;</span>
-
-				</div>
-							</div>
-		</div>
-	</div>
-
-	<a name="sec-var-summary"></a>
-	<div class="info-box">
-		<div class="info-box-title">Variable Summary</span></div>
-		<div class="nav-bar">
-			<a href="#sec-description">Description</a> |
-						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
-							| 
-									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
-							
-															<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
-							
-					</div>
-		<div class="info-box-body">
-			<div class="var-summary">
-												<div class="var-title">
-					static <span class="var-type">mixed</span>
-					<a href="#$allowed" title="details" class="var-name">$allowed</a>
-				</div>
-																<div class="var-title">
-					static <span class="var-type">mixed</span>
-					<a href="#$arithmetic" title="details" class="var-name">$arithmetic</a>
-				</div>
-																<div class="var-title">
-					static <span class="var-type">mixed</span>
-					<a href="#$boolean" title="details" class="var-name">$boolean</a>
-				</div>
-																<div class="var-title">
-					static <span class="var-type">mixed</span>
-					<a href="#$close_paren" title="details" class="var-name">$close_paren</a>
-				</div>
-																<div class="var-title">
-					static <span class="var-type">mixed</span>
-					<a href="#$comma" title="details" class="var-name">$comma</a>
-				</div>
-																<div class="var-title">
-					static <span class="var-type">mixed</span>
-					<a href="#$comparisons" title="details" class="var-name">$comparisons</a>
-				</div>
-																<div class="var-title">
-					static <span class="var-type">mixed</span>
-					<a href="#$concatenate" title="details" class="var-name">$concatenate</a>
-				</div>
-																<div class="var-title">
-					static <span class="var-type">mixed</span>
-					<a href="#$keywords" title="details" class="var-name">$keywords</a>
-				</div>
-																<div class="var-title">
-					static <span class="var-type">mixed</span>
-					<a href="#$like_op" title="details" class="var-name">$like_op</a>
-				</div>
-																<div class="var-title">
-					static <span class="var-type">mixed</span>
-					<a href="#$logical" title="details" class="var-name">$logical</a>
-				</div>
-																<div class="var-title">
-					static <span class="var-type">mixed</span>
-					<a href="#$named_param" title="details" class="var-name">$named_param</a>
-				</div>
-																<div class="var-title">
-					static <span class="var-type">mixed</span>
-					<a href="#$open_paren" title="details" class="var-name">$open_paren</a>
-				</div>
-																<div class="var-title">
-					static <span class="var-type">mixed</span>
-					<a href="#$parameter" title="details" class="var-name">$parameter</a>
-				</div>
-																<div class="var-title">
-					static <span class="var-type">mixed</span>
-					<a href="#$quote" title="details" class="var-name">$quote</a>
-				</div>
-																<div class="var-title">
-					static <span class="var-type">mixed</span>
-					<a href="#$whitespace" title="details" class="var-name">$whitespace</a>
-				</div>
-																																																																																																																																							</div>
-		</div>
-	</div>
-
-	<a name="sec-method-summary"></a>
-	<div class="info-box">
-		<div class="info-box-title">Method Summary</span></div>
-		<div class="nav-bar">
-			<a href="#sec-description">Description</a> |
-															<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
-							
-															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
-				 
-				|
-						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
-		</div>
-		<div class="info-box-body">			
-			<div class="method-summary">
-												<div class="method-definition">
-					static 						<span class="method-result">void</span>
-										<a href="#comparison_parse" title="details" class="method-name">comparison_parse</a>
-											(<span class="var-type"></span>&nbsp;<span class="var-name">&$source</span>)
-									</div>
-																<div class="method-definition">
-					static 						<span class="method-result">void</span>
-										<a href="#comparison_test" title="details" class="method-name">comparison_test</a>
-											(<span class="var-type"></span>&nbsp;<span class="var-name">$char</span>)
-									</div>
-																<div class="method-definition">
-					static 						<span class="method-result">void</span>
-										<a href="#concatenate_parse" title="details" class="method-name">concatenate_parse</a>
-											(<span class="var-type"></span>&nbsp;<span class="var-name">&$source</span>)
-									</div>
-																<div class="method-definition">
-					static 						<span class="method-result">void</span>
-										<a href="#concatenate_test" title="details" class="method-name">concatenate_test</a>
-											(<span class="var-type"></span>&nbsp;<span class="var-name">$char</span>)
-									</div>
-																<div class="method-definition">
-					static 						<span class="method-result">void</span>
-										<a href="#generic_parse" title="details" class="method-name">generic_parse</a>
-											(<span class="var-type"></span>&nbsp;<span class="var-name">$source</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$boundary_test</span>)
-									</div>
-																<div class="method-definition">
-					static 						<span class="method-result">void</span>
-										<a href="#literal_parse" title="details" class="method-name">literal_parse</a>
-											(<span class="var-type"></span>&nbsp;<span class="var-name">&$source</span>)
-									</div>
-																<div class="method-definition">
-					static 						<span class="method-result">void</span>
-										<a href="#literal_test" title="details" class="method-name">literal_test</a>
-											(<span class="var-type"></span>&nbsp;<span class="var-name">$char</span>)
-									</div>
-																<div class="method-definition">
-					static 						<span class="method-result">void</span>
-										<a href="#named_param_parse" title="details" class="method-name">named_param_parse</a>
-											(<span class="var-type"></span>&nbsp;<span class="var-name">&$source</span>)
-									</div>
-																<div class="method-definition">
-					static 						<span class="method-result">void</span>
-										<a href="#next" title="details" class="method-name">next</a>
-											(<span class="var-type"></span>&nbsp;<span class="var-name">&$source</span>)
-									</div>
-																<div class="method-definition">
-					static 						<span class="method-result">void</span>
-										<a href="#parse_char" title="details" class="method-name">parse_char</a>
-											(<span class="var-type"></span>&nbsp;<span class="var-name">&$source</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$type</span>)
-									</div>
-																<div class="method-definition">
-					static 						<span class="method-result">void</span>
-										<a href="#parse_token" title="details" class="method-name">parse_token</a>
-											(<span class="var-type"></span>&nbsp;<span class="var-name">&$source</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$position</span>)
-									</div>
-																<div class="method-definition">
-					static 						<span class="method-result">void</span>
-										<a href="#sql_entity_parse" title="details" class="method-name">sql_entity_parse</a>
-											(<span class="var-type"></span>&nbsp;<span class="var-name">&$source</span>)
-									</div>
-																<div class="method-definition">
-					static 						<span class="method-result">void</span>
-										<a href="#sql_entity_test" title="details" class="method-name">sql_entity_test</a>
-											(<span class="var-type"></span>&nbsp;<span class="var-name">$char</span>)
-									</div>
-								
-																																																																																																												</div>
-		</div>
-	</div>		
-
-	<a name="sec-vars"></a>
-	<div class="info-box">
-		<div class="info-box-title">Variables</div>
-		<div class="nav-bar">
-			<a href="#sec-description">Description</a> |
-										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
-						
-			
-												<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
-							
-										| 
-									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
-							
-					</div>
-		<div class="info-box-body">
-			<a name="var$allowed" id="$allowed"><!-- --></A>
-<div class="evenrow">
-
-	<div class="var-header">
-		<span class="var-title">
-			static <span class="var-type">mixed</span>
-			<span class="var-name">$allowed</span>
-			 = <span class="var-default">array('.', '_')</span>			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a38">38</a></span>)
-		</span>
-	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-	
-	
-		
-		
-
+<h2 class="tab">Class Variables</h2>
+<!-- ============ VARIABLE DETAIL =========== -->
+<strong>Summary:</strong><br />
+<div class="var-title">
+    static <span class="var-type">mixed</span>
+    <a href="#var$allowed" title="details" class="property"><strong>$allowed</strong></a>
 </div>
-<a name="var$arithmetic" id="$arithmetic"><!-- --></A>
-<div class="oddrow">
-
-	<div class="var-header">
-		<span class="var-title">
-			static <span class="var-type">mixed</span>
-			<span class="var-name">$arithmetic</span>
-			 = <span class="var-default">array('+', '-', '*', '/')</span>			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a40">40</a></span>)
-		</span>
-	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-	
-	
-		
-		
-
+<div class="var-title">
+    static <span class="var-type">mixed</span>
+    <a href="#var$arithmetic" title="details" class="property"><strong>$arithmetic</strong></a>
 </div>
-<a name="var$boolean" id="$boolean"><!-- --></A>
-<div class="evenrow">
-
-	<div class="var-header">
-		<span class="var-title">
-			static <span class="var-type">mixed</span>
-			<span class="var-name">$boolean</span>
-			 = <span class="var-default">array('true', 'false')</span>			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a41">41</a></span>)
-		</span>
-	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-	
-	
-		
-		
-
+<div class="var-title">
+    static <span class="var-type">mixed</span>
+    <a href="#var$boolean" title="details" class="property"><strong>$boolean</strong></a>
 </div>
-<a name="var$close_paren" id="$close_paren"><!-- --></A>
-<div class="oddrow">
-
-	<div class="var-header">
-		<span class="var-title">
-			static <span class="var-type">mixed</span>
-			<span class="var-name">$close_paren</span>
-			 = <span class="var-default"> ')'</span>			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a33">33</a></span>)
-		</span>
-	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-	
-	
-		
-		
-
+<div class="var-title">
+    static <span class="var-type">mixed</span>
+    <a href="#var$close_paren" title="details" class="property"><strong>$close_paren</strong></a>
 </div>
-<a name="var$comma" id="$comma"><!-- --></A>
-<div class="evenrow">
-
-	<div class="var-header">
-		<span class="var-title">
-			static <span class="var-type">mixed</span>
-			<span class="var-name">$comma</span>
-			 = <span class="var-default"> ','</span>			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a29">29</a></span>)
-		</span>
-	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-	
-	
-		
-		
-
+<div class="var-title">
+    static <span class="var-type">mixed</span>
+    <a href="#var$comma" title="details" class="property"><strong>$comma</strong></a>
 </div>
-<a name="var$comparisons" id="$comparisons"><!-- --></A>
-<div class="oddrow">
-
-	<div class="var-header">
-		<span class="var-title">
-			static <span class="var-type">mixed</span>
-			<span class="var-name">$comparisons</span>
-			 = <span class="var-default">array('&lt;', '&gt;', '=', '!')</span>			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a36">36</a></span>)
-		</span>
-	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-	
-	
-		
-		
-
+<div class="var-title">
+    static <span class="var-type">mixed</span>
+    <a href="#var$comparisons" title="details" class="property"><strong>$comparisons</strong></a>
 </div>
-<a name="var$concatenate" id="$concatenate"><!-- --></A>
-<div class="evenrow">
-
-	<div class="var-header">
-		<span class="var-title">
-			static <span class="var-type">mixed</span>
-			<span class="var-name">$concatenate</span>
-			 = <span class="var-default"> '|'</span>			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a34">34</a></span>)
-		</span>
-	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-	
-	
-		
-		
-
+<div class="var-title">
+    static <span class="var-type">mixed</span>
+    <a href="#var$concatenate" title="details" class="property"><strong>$concatenate</strong></a>
 </div>
-<a name="var$keywords" id="$keywords"><!-- --></A>
-<div class="oddrow">
-
-	<div class="var-header">
-		<span class="var-title">
-			static <span class="var-type">mixed</span>
-			<span class="var-name">$keywords</span>
-			 = <span class="var-default">array('in', 'between', 'mod')</span>			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a39">39</a></span>)
-		</span>
-	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-	
-	
-		
-		
-
+<div class="var-title">
+    static <span class="var-type">mixed</span>
+    <a href="#var$keywords" title="details" class="property"><strong>$keywords</strong></a>
 </div>
-<a name="var$like_op" id="$like_op"><!-- --></A>
-<div class="evenrow">
-
-	<div class="var-header">
-		<span class="var-title">
-			static <span class="var-type">mixed</span>
-			<span class="var-name">$like_op</span>
-			 = <span class="var-default"> 'like'</span>			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a35">35</a></span>)
-		</span>
-	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-	
-	
-		
-		
-
+<div class="var-title">
+    static <span class="var-type">mixed</span>
+    <a href="#var$like_op" title="details" class="property"><strong>$like_op</strong></a>
 </div>
-<a name="var$logical" id="$logical"><!-- --></A>
-<div class="oddrow">
-
-	<div class="var-header">
-		<span class="var-title">
-			static <span class="var-type">mixed</span>
-			<span class="var-name">$logical</span>
-			 = <span class="var-default">array('and', 'or', 'not')</span>			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a37">37</a></span>)
-		</span>
-	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-	
-	
-		
-		
-
+<div class="var-title">
+    static <span class="var-type">mixed</span>
+    <a href="#var$logical" title="details" class="property"><strong>$logical</strong></a>
 </div>
-<a name="var$named_param" id="$named_param"><!-- --></A>
-<div class="evenrow">
-
-	<div class="var-header">
-		<span class="var-title">
-			static <span class="var-type">mixed</span>
-			<span class="var-name">$named_param</span>
-			 = <span class="var-default"> ':'</span>			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a31">31</a></span>)
-		</span>
-	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-	
-	
-		
-		
-
+<div class="var-title">
+    static <span class="var-type">mixed</span>
+    <a href="#var$named_param" title="details" class="property"><strong>$named_param</strong></a>
 </div>
-<a name="var$open_paren" id="$open_paren"><!-- --></A>
-<div class="oddrow">
-
-	<div class="var-header">
-		<span class="var-title">
-			static <span class="var-type">mixed</span>
-			<span class="var-name">$open_paren</span>
-			 = <span class="var-default"> '('</span>			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a32">32</a></span>)
-		</span>
-	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-	
-	
-		
-		
-
+<div class="var-title">
+    static <span class="var-type">mixed</span>
+    <a href="#var$open_paren" title="details" class="property"><strong>$open_paren</strong></a>
 </div>
-<a name="var$parameter" id="$parameter"><!-- --></A>
-<div class="evenrow">
-
-	<div class="var-header">
-		<span class="var-title">
-			static <span class="var-type">mixed</span>
-			<span class="var-name">$parameter</span>
-			 = <span class="var-default"> '?'</span>			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a30">30</a></span>)
-		</span>
-	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-	
-	
-		
-		
-
+<div class="var-title">
+    static <span class="var-type">mixed</span>
+    <a href="#var$parameter" title="details" class="property"><strong>$parameter</strong></a>
 </div>
-<a name="var$quote" id="$quote"><!-- --></A>
-<div class="oddrow">
-
-	<div class="var-header">
-		<span class="var-title">
-			static <span class="var-type">mixed</span>
-			<span class="var-name">$quote</span>
-			 = <span class="var-default"> &quot;'&quot;</span>			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a28">28</a></span>)
-		</span>
-	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-	
-	
-		
-		
-
+<div class="var-title">
+    static <span class="var-type">mixed</span>
+    <a href="#var$quote" title="details" class="property"><strong>$quote</strong></a>
 </div>
-<a name="var$whitespace" id="$whitespace"><!-- --></A>
-<div class="evenrow">
-
-	<div class="var-header">
-		<span class="var-title">
-			static <span class="var-type">mixed</span>
-			<span class="var-name">$whitespace</span>
-			 = <span class="var-default"> ' '</span>			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a27">27</a></span>)
-		</span>
-	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-	
-	
-		
-		
-
+<div class="var-title">
+    static <span class="var-type">mixed</span>
+    <a href="#var$whitespace" title="details" class="property"><strong>$whitespace</strong></a>
 </div>
-						
-		</div>
-	</div>
-	
-	<a name="sec-methods"></a>
-	<div class="info-box">
-		<div class="info-box-title">Methods</div>
-		<div class="nav-bar">
-			<a href="#sec-description">Description</a> |
-															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
-																			<a href="#sec-const-summary">Constants</a> (<a href="#sec-consts">details</a>)
-							
-										<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
-						
-		</div>
-		<div class="info-box-body">
-			<A NAME='method_detail'></A>
-<a name="methodcomparison_parse" id="comparison_parse"><!-- --></a>
-<div class="oddrow">
-	
-	<div class="method-header">
-		<span class="method-title">static method comparison_parse</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a134">134</a></span>)
-	</div> 
-	
+<hr />
+<a name="var$allowed" id="var$allowed"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $allowed = array('.', '_')</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a38">38</a></span>)
+ </h4>
+<h4>Data type : mixed</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="var$arithmetic" id="var$arithmetic"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $arithmetic = array('+', '-', '*', '/')</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a40">40</a></span>)
+ </h4>
+<h4>Data type : mixed</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="var$boolean" id="var$boolean"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $boolean = array('true', 'false')</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a41">41</a></span>)
+ </h4>
+<h4>Data type : mixed</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="var$close_paren" id="var$close_paren"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $close_paren =  ')'</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a33">33</a></span>)
+ </h4>
+<h4>Data type : mixed</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="var$comma" id="var$comma"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $comma =  ','</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a29">29</a></span>)
+ </h4>
+<h4>Data type : mixed</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="var$comparisons" id="var$comparisons"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $comparisons = array('&lt;', '&gt;', '=', '!')</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a36">36</a></span>)
+ </h4>
+<h4>Data type : mixed</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="var$concatenate" id="var$concatenate"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $concatenate =  '|'</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a34">34</a></span>)
+ </h4>
+<h4>Data type : mixed</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="var$keywords" id="var$keywords"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $keywords = array('in', 'between', 'mod')</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a39">39</a></span>)
+ </h4>
+<h4>Data type : mixed</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="var$like_op" id="var$like_op"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $like_op =  'like'</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a35">35</a></span>)
+ </h4>
+<h4>Data type : mixed</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="var$logical" id="var$logical"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $logical = array('and', 'or', 'not')</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a37">37</a></span>)
+ </h4>
+<h4>Data type : mixed</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="var$named_param" id="var$named_param"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $named_param =  ':'</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a31">31</a></span>)
+ </h4>
+<h4>Data type : mixed</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="var$open_paren" id="var$open_paren"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $open_paren =  '('</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a32">32</a></span>)
+ </h4>
+<h4>Data type : mixed</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="var$parameter" id="var$parameter"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $parameter =  '?'</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a30">30</a></span>)
+ </h4>
+<h4>Data type : mixed</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="var$quote" id="var$quote"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $quote =  &quot;'&quot;</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a28">28</a></span>)
+ </h4>
+<h4>Data type : mixed</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="var$whitespace" id="var$whitespace"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $whitespace =  ' '</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a27">27</a></span>)
+ </h4>
+<h4>Data type : mixed</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage1" ) );</script>
+</div>
+<div class="tab-page" id="constantsTabpage">
+
+<h2 class="tab">Class Constants</h2>
+<!-- ============ VARIABLE DETAIL =========== -->
+<strong>Summary:</strong><br />
+<div class="const-title">
+    <a href="#constARITHMETIC" title="details" class="property"><strong>ARITHMETIC</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constBOOLEAN" title="details" class="property"><strong>BOOLEAN</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constCLOSE_PAREN" title="details" class="property"><strong>CLOSE_PAREN</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constCOMMA" title="details" class="property"><strong>COMMA</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constCOMPARISON" title="details" class="property"><strong>COMPARISON</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constCONCATENATE" title="details" class="property"><strong>CONCATENATE</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constKEYWORD" title="details" class="property"><strong>KEYWORD</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constLITERAL" title="details" class="property"><strong>LITERAL</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constLOGICAL_OP" title="details" class="property"><strong>LOGICAL_OP</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constMODULUS" title="details" class="property"><strong>MODULUS</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constNAMED_PARAM" title="details" class="property"><strong>NAMED_PARAM</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constOPEN_PAREN" title="details" class="property"><strong>OPEN_PAREN</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constPARAMETER" title="details" class="property"><strong>PARAMETER</strong></a>
+</div>
+<div class="const-title">
+    <a href="#constSQL_ENTITY" title="details" class="property"><strong>SQL_ENTITY</strong></a>
+</div>
+<hr />
+<a name="constARITHMETIC" id="constARITHMETIC"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">ARITHMETIC =  &quot;ARITHMETIC&quot;</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a22">22</a></span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constBOOLEAN" id="constBOOLEAN"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">BOOLEAN =  &quot;BOOLEAN&quot;</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a24">24</a></span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constCLOSE_PAREN" id="constCLOSE_PAREN"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">CLOSE_PAREN =  &quot;CLOSE_PAREN&quot;</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a16">16</a></span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constCOMMA" id="constCOMMA"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">COMMA =  &quot;COMMA&quot;</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a20">20</a></span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constCOMPARISON" id="constCOMPARISON"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">COMPARISON =  &quot;COMPARISON&quot;</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a14">14</a></span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constCONCATENATE" id="constCONCATENATE"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">CONCATENATE =  &quot;CONCATENATE&quot;</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a23">23</a></span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constKEYWORD" id="constKEYWORD"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">KEYWORD =  &quot;KEYWORD&quot;</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a21">21</a></span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constLITERAL" id="constLITERAL"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">LITERAL =  &quot;LITERAL&quot;</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a17">17</a></span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constLOGICAL_OP" id="constLOGICAL_OP"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">LOGICAL_OP =  &quot;LOGICAL_OP&quot;</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a13">13</a></span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constMODULUS" id="constMODULUS"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">MODULUS =  &quot;MODULUS&quot;</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a25">25</a></span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constNAMED_PARAM" id="constNAMED_PARAM"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">NAMED_PARAM =  &quot;NAMED_PARAM&quot;</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a19">19</a></span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constOPEN_PAREN" id="constOPEN_PAREN"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">OPEN_PAREN =  &quot;OPEN_PAREN&quot;</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a15">15</a></span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constPARAMETER" id="constPARAMETER"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">PARAMETER =  &quot;PARAMETER&quot;</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a18">18</a></span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<a name="constSQL_ENTITY" id="constSQL_ENTITY"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/Constant.gif" border="0" /> <strong class="property">SQL_ENTITY =  &quot;SQL_ENTITY&quot;</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a12">12</a></span>)
+ </h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+	</ul>
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "constantsTabpage" ) );</script>
+</div>
+<div class="tab-page" id="tabPage2">
+<h2 class="tab">Method Detail</h2>
+<!-- ============ METHOD DETAIL =========== -->
+<strong>Summary:</strong><br />
+<div class="method-summary">
+    <div class="method-definition">
+    static         <span class="method-result">void</span>
+        <a href="#methodcomparison_parse" title="details" class="method-name">comparison_parse</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">&$source</span>)
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">void</span>
+        <a href="#methodcomparison_test" title="details" class="method-name">comparison_test</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">$char</span>)
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">void</span>
+        <a href="#methodconcatenate_parse" title="details" class="method-name">concatenate_parse</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">&$source</span>)
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">void</span>
+        <a href="#methodconcatenate_test" title="details" class="method-name">concatenate_test</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">$char</span>)
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">void</span>
+        <a href="#methodgeneric_parse" title="details" class="method-name">generic_parse</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">$source</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$boundary_test</span>)
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">void</span>
+        <a href="#methodliteral_parse" title="details" class="method-name">literal_parse</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">&$source</span>)
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">void</span>
+        <a href="#methodliteral_test" title="details" class="method-name">literal_test</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">$char</span>)
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">void</span>
+        <a href="#methodnamed_param_parse" title="details" class="method-name">named_param_parse</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">&$source</span>)
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">void</span>
+        <a href="#methodnext" title="details" class="method-name">next</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">&$source</span>)
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">void</span>
+        <a href="#methodparse_char" title="details" class="method-name">parse_char</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">&$source</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$type</span>)
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">void</span>
+        <a href="#methodparse_token" title="details" class="method-name">parse_token</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">&$source</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$position</span>)
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">void</span>
+        <a href="#methodsql_entity_parse" title="details" class="method-name">sql_entity_parse</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">&$source</span>)
+        </div>
+    <div class="method-definition">
+    static         <span class="method-result">void</span>
+        <a href="#methodsql_entity_test" title="details" class="method-name">sql_entity_test</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">$char</span>)
+        </div>
+</div>
+<hr />
+<A NAME='method_detail'></A>
+
+
+<a name="methodcomparison_parse" id="methodcomparison_parse"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method comparison_parse</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a134">134</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>comparison_parse(
+
+&$source)</strong></h4>
+
 	<!-- ========== Info from phpDoc block ========= -->
-	
-	<div class="method-signature">
-	    static
-		<span class="method-result">void</span>
-		<span class="method-name">
-			comparison_parse
-		</span>
-					(<span class="var-type"></span>&nbsp;<span class="var-name">&$source</span>)
-			</div>
-	
-			<ul class="parameters">
-					<li>
-				<span class="var-type"></span>
-				<span class="var-name">&$source</span>			</li>
-				</ul>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong> &$source</strong>: </li>
+		</ul>
 		
-			
-	</div>
-<a name="methodcomparison_test" id="comparison_test"><!-- --></a>
-<div class="evenrow">
-	
-	<div class="method-header">
-		<span class="method-title">static method comparison_test</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a130">130</a></span>)
-	</div> 
-	
+	<h4>Info</h4>
+	<ul>
+		</ul>
+</div>
+<a name="methodcomparison_test" id="methodcomparison_test"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method comparison_test</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a130">130</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>comparison_test(
+
+$char)</strong></h4>
+
 	<!-- ========== Info from phpDoc block ========= -->
-	
-	<div class="method-signature">
-	    static
-		<span class="method-result">void</span>
-		<span class="method-name">
-			comparison_test
-		</span>
-					(<span class="var-type"></span>&nbsp;<span class="var-name">$char</span>)
-			</div>
-	
-			<ul class="parameters">
-					<li>
-				<span class="var-type"></span>
-				<span class="var-name">$char</span>			</li>
-				</ul>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong> $char</strong>: </li>
+		</ul>
 		
-			
-	</div>
-<a name="methodconcatenate_parse" id="concatenate_parse"><!-- --></a>
-<div class="oddrow">
-	
-	<div class="method-header">
-		<span class="method-title">static method concatenate_parse</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a160">160</a></span>)
-	</div> 
-	
+	<h4>Info</h4>
+	<ul>
+		</ul>
+</div>
+<a name="methodconcatenate_parse" id="methodconcatenate_parse"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method concatenate_parse</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a160">160</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>concatenate_parse(
+
+&$source)</strong></h4>
+
 	<!-- ========== Info from phpDoc block ========= -->
-	
-	<div class="method-signature">
-	    static
-		<span class="method-result">void</span>
-		<span class="method-name">
-			concatenate_parse
-		</span>
-					(<span class="var-type"></span>&nbsp;<span class="var-name">&$source</span>)
-			</div>
-	
-			<ul class="parameters">
-					<li>
-				<span class="var-type"></span>
-				<span class="var-name">&$source</span>			</li>
-				</ul>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong> &$source</strong>: </li>
+		</ul>
 		
-			
-	</div>
-<a name="methodconcatenate_test" id="concatenate_test"><!-- --></a>
-<div class="evenrow">
-	
-	<div class="method-header">
-		<span class="method-title">static method concatenate_test</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a156">156</a></span>)
-	</div> 
-	
+	<h4>Info</h4>
+	<ul>
+		</ul>
+</div>
+<a name="methodconcatenate_test" id="methodconcatenate_test"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method concatenate_test</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a156">156</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>concatenate_test(
+
+$char)</strong></h4>
+
 	<!-- ========== Info from phpDoc block ========= -->
-	
-	<div class="method-signature">
-	    static
-		<span class="method-result">void</span>
-		<span class="method-name">
-			concatenate_test
-		</span>
-					(<span class="var-type"></span>&nbsp;<span class="var-name">$char</span>)
-			</div>
-	
-			<ul class="parameters">
-					<li>
-				<span class="var-type"></span>
-				<span class="var-name">$char</span>			</li>
-				</ul>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong> $char</strong>: </li>
+		</ul>
 		
-			
-	</div>
-<a name="methodgeneric_parse" id="generic_parse"><!-- --></a>
-<div class="oddrow">
-	
-	<div class="method-header">
-		<span class="method-title">static method generic_parse</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a72">72</a></span>)
-	</div> 
-	
+	<h4>Info</h4>
+	<ul>
+		</ul>
+</div>
+<a name="methodgeneric_parse" id="methodgeneric_parse"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method generic_parse</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a72">72</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>generic_parse(
+
+$source, 
+$boundary_test)</strong></h4>
+
 	<!-- ========== Info from phpDoc block ========= -->
-	
-	<div class="method-signature">
-	    static
-		<span class="method-result">void</span>
-		<span class="method-name">
-			generic_parse
-		</span>
-					(<span class="var-type"></span>&nbsp;<span class="var-name">$source</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$boundary_test</span>)
-			</div>
-	
-			<ul class="parameters">
-					<li>
-				<span class="var-type"></span>
-				<span class="var-name">$source</span>			</li>
-					<li>
-				<span class="var-type"></span>
-				<span class="var-name">$boundary_test</span>			</li>
-				</ul>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong> $source</strong>: </li>
+			<li><strong> $boundary_test</strong>: </li>
+		</ul>
 		
-			
-	</div>
-<a name="methodliteral_parse" id="literal_parse"><!-- --></a>
-<div class="evenrow">
-	
-	<div class="method-header">
-		<span class="method-title">static method literal_parse</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a144">144</a></span>)
-	</div> 
-	
+	<h4>Info</h4>
+	<ul>
+		</ul>
+</div>
+<a name="methodliteral_parse" id="methodliteral_parse"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method literal_parse</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a144">144</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>literal_parse(
+
+&$source)</strong></h4>
+
 	<!-- ========== Info from phpDoc block ========= -->
-	
-	<div class="method-signature">
-	    static
-		<span class="method-result">void</span>
-		<span class="method-name">
-			literal_parse
-		</span>
-					(<span class="var-type"></span>&nbsp;<span class="var-name">&$source</span>)
-			</div>
-	
-			<ul class="parameters">
-					<li>
-				<span class="var-type"></span>
-				<span class="var-name">&$source</span>			</li>
-				</ul>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong> &$source</strong>: </li>
+		</ul>
 		
-			
-	</div>
-<a name="methodliteral_test" id="literal_test"><!-- --></a>
-<div class="oddrow">
-	
-	<div class="method-header">
-		<span class="method-title">static method literal_test</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a140">140</a></span>)
-	</div> 
-	
+	<h4>Info</h4>
+	<ul>
+		</ul>
+</div>
+<a name="methodliteral_test" id="methodliteral_test"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method literal_test</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a140">140</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>literal_test(
+
+$char)</strong></h4>
+
 	<!-- ========== Info from phpDoc block ========= -->
-	
-	<div class="method-signature">
-	    static
-		<span class="method-result">void</span>
-		<span class="method-name">
-			literal_test
-		</span>
-					(<span class="var-type"></span>&nbsp;<span class="var-name">$char</span>)
-			</div>
-	
-			<ul class="parameters">
-					<li>
-				<span class="var-type"></span>
-				<span class="var-name">$char</span>			</li>
-				</ul>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong> $char</strong>: </li>
+		</ul>
 		
-			
-	</div>
-<a name="methodnamed_param_parse" id="named_param_parse"><!-- --></a>
-<div class="evenrow">
-	
-	<div class="method-header">
-		<span class="method-title">static method named_param_parse</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a150">150</a></span>)
-	</div> 
-	
+	<h4>Info</h4>
+	<ul>
+		</ul>
+</div>
+<a name="methodnamed_param_parse" id="methodnamed_param_parse"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method named_param_parse</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a150">150</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>named_param_parse(
+
+&$source)</strong></h4>
+
 	<!-- ========== Info from phpDoc block ========= -->
-	
-	<div class="method-signature">
-	    static
-		<span class="method-result">void</span>
-		<span class="method-name">
-			named_param_parse
-		</span>
-					(<span class="var-type"></span>&nbsp;<span class="var-name">&$source</span>)
-			</div>
-	
-			<ul class="parameters">
-					<li>
-				<span class="var-type"></span>
-				<span class="var-name">&$source</span>			</li>
-				</ul>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong> &$source</strong>: </li>
+		</ul>
 		
-			
-	</div>
-<a name="methodnext" id="next"><!-- --></a>
-<div class="oddrow">
-	
-	<div class="method-header">
-		<span class="method-title">static method next</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a43">43</a></span>)
-	</div> 
-	
+	<h4>Info</h4>
+	<ul>
+		</ul>
+</div>
+<a name="methodnext" id="methodnext"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method next</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a43">43</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>next(
+
+&$source)</strong></h4>
+
 	<!-- ========== Info from phpDoc block ========= -->
-	
-	<div class="method-signature">
-	    static
-		<span class="method-result">void</span>
-		<span class="method-name">
-			next
-		</span>
-					(<span class="var-type"></span>&nbsp;<span class="var-name">&$source</span>)
-			</div>
-	
-			<ul class="parameters">
-					<li>
-				<span class="var-type"></span>
-				<span class="var-name">&$source</span>			</li>
-				</ul>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong> &$source</strong>: </li>
+		</ul>
 		
-			
-	</div>
-<a name="methodparse_char" id="parse_char"><!-- --></a>
-<div class="evenrow">
-	
-	<div class="method-header">
-		<span class="method-title">static method parse_char</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a93">93</a></span>)
-	</div> 
-	
+	<h4>Info</h4>
+	<ul>
+		</ul>
+</div>
+<a name="methodparse_char" id="methodparse_char"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method parse_char</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a93">93</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>parse_char(
+
+&$source, 
+$type)</strong></h4>
+
 	<!-- ========== Info from phpDoc block ========= -->
-	
-	<div class="method-signature">
-	    static
-		<span class="method-result">void</span>
-		<span class="method-name">
-			parse_char
-		</span>
-					(<span class="var-type"></span>&nbsp;<span class="var-name">&$source</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$type</span>)
-			</div>
-	
-			<ul class="parameters">
-					<li>
-				<span class="var-type"></span>
-				<span class="var-name">&$source</span>			</li>
-					<li>
-				<span class="var-type"></span>
-				<span class="var-name">$type</span>			</li>
-				</ul>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong> &$source</strong>: </li>
+			<li><strong> $type</strong>: </li>
+		</ul>
 		
-			
-	</div>
-<a name="methodparse_token" id="parse_token"><!-- --></a>
-<div class="oddrow">
-	
-	<div class="method-header">
-		<span class="method-title">static method parse_token</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a84">84</a></span>)
-	</div> 
-	
+	<h4>Info</h4>
+	<ul>
+		</ul>
+</div>
+<a name="methodparse_token" id="methodparse_token"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method parse_token</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a84">84</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>parse_token(
+
+&$source, 
+$position)</strong></h4>
+
 	<!-- ========== Info from phpDoc block ========= -->
-	
-	<div class="method-signature">
-	    static
-		<span class="method-result">void</span>
-		<span class="method-name">
-			parse_token
-		</span>
-					(<span class="var-type"></span>&nbsp;<span class="var-name">&$source</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$position</span>)
-			</div>
-	
-			<ul class="parameters">
-					<li>
-				<span class="var-type"></span>
-				<span class="var-name">&$source</span>			</li>
-					<li>
-				<span class="var-type"></span>
-				<span class="var-name">$position</span>			</li>
-				</ul>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong> &$source</strong>: </li>
+			<li><strong> $position</strong>: </li>
+		</ul>
 		
-			
-	</div>
-<a name="methodsql_entity_parse" id="sql_entity_parse"><!-- --></a>
-<div class="evenrow">
-	
-	<div class="method-header">
-		<span class="method-title">static method sql_entity_parse</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a106">106</a></span>)
-	</div> 
-	
+	<h4>Info</h4>
+	<ul>
+		</ul>
+</div>
+<a name="methodsql_entity_parse" id="methodsql_entity_parse"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method sql_entity_parse</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a106">106</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>sql_entity_parse(
+
+&$source)</strong></h4>
+
 	<!-- ========== Info from phpDoc block ========= -->
-	
-	<div class="method-signature">
-	    static
-		<span class="method-result">void</span>
-		<span class="method-name">
-			sql_entity_parse
-		</span>
-					(<span class="var-type"></span>&nbsp;<span class="var-name">&$source</span>)
-			</div>
-	
-			<ul class="parameters">
-					<li>
-				<span class="var-type"></span>
-				<span class="var-name">&$source</span>			</li>
-				</ul>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong> &$source</strong>: </li>
+		</ul>
 		
-			
-	</div>
-<a name="methodsql_entity_test" id="sql_entity_test"><!-- --></a>
-<div class="oddrow">
-	
-	<div class="method-header">
-		<span class="method-title">static method sql_entity_test</span> (line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a100">100</a></span>)
-	</div> 
-	
+	<h4>Info</h4>
+	<ul>
+		</ul>
+</div>
+<a name="methodsql_entity_test" id="methodsql_entity_test"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Static Method sql_entity_test</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__Token.php.html#a100">100</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>sql_entity_test(
+
+$char)</strong></h4>
+
 	<!-- ========== Info from phpDoc block ========= -->
-	
-	<div class="method-signature">
-	    static
-		<span class="method-result">void</span>
-		<span class="method-name">
-			sql_entity_test
-		</span>
-					(<span class="var-type"></span>&nbsp;<span class="var-name">$char</span>)
-			</div>
-	
-			<ul class="parameters">
-					<li>
-				<span class="var-type"></span>
-				<span class="var-name">$char</span>			</li>
-				</ul>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong> $char</strong>: </li>
+		</ul>
 		
-			
-	</div>
-
-						
-		</div>
-	</div>
-
-	<a name="sec-consts"></a>
-	<div class="info-box">
-		<div class="info-box-title">Class Constants</div>
-		<div class="nav-bar">
-			<a href="#sec-description">Description</a> |
-										<a href="#sec-var-summary">Constants</a> (<span class="disabled">details</span>)
-						
-			
-												<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
-														| 
-									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
-							
-					</div>
-		<div class="info-box-body">
-			<a name="constARITHMETIC" id="ARITHMETIC"><!-- --></A>
-<div class="evenrow">
-
-	<div class="const-header">
-		<img src="../media/images/Variable.png" />
-		<span class="const-title">
-			<span class="const-name">ARITHMETIC</span>
-			 = <span class="const-default"> &quot;ARITHMETIC&quot;</span>
-			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a22">22</a></span>)
-		</span>
-	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-	
-	
+	<h4>Info</h4>
+	<ul>
+		</ul>
 </div>
-<a name="constBOOLEAN" id="BOOLEAN"><!-- --></A>
-<div class="oddrow">
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage2" ) );</script></div>
+<div class="tab-page" id="iVars">
+<h2 class="tab">Inherited Variables</h2>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "iVars" ) );</script>
+<!-- =========== VAR INHERITED SUMMARY =========== -->
+<A NAME='var_inherited_summary'><!-- --></A>
+<h3>Inherited Class Variable Summary</h3>
 
-	<div class="const-header">
-		<img src="../media/images/Variable.png" />
-		<span class="const-title">
-			<span class="const-name">BOOLEAN</span>
-			 = <span class="const-default"> &quot;BOOLEAN&quot;</span>
-			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a24">24</a></span>)
-		</span>
 	</div>
+<div class="tab-page" id="iMethods">
+<h2 class="tab">Inherited Methods</h2>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "iMethods" ) );</script>
+<!-- =========== INHERITED METHOD SUMMARY =========== -->
+<A NAME='functions_inherited'><!-- --></A>
+<h3>Inherited Method Summary</h3>
 
-	<!-- ========== Info from phpDoc block ========= -->
-	
-	
+	</div>
 </div>
-<a name="constCLOSE_PAREN" id="CLOSE_PAREN"><!-- --></A>
-<div class="evenrow">
+<script type="text/javascript">
+//<![CDATA[
 
-	<div class="const-header">
-		<img src="../media/images/Variable.png" />
-		<span class="const-title">
-			<span class="const-name">CLOSE_PAREN</span>
-			 = <span class="const-default"> &quot;CLOSE_PAREN&quot;</span>
-			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a16">16</a></span>)
-		</span>
+setupAllTabs();
+
+//]]>
+</script>
+	<div id="credit">
+		<hr />
+		Documentation generated on Fri, 04 Dec 2009 10:30:01 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-	
-	
-</div>
-<a name="constCOMMA" id="COMMA"><!-- --></A>
-<div class="oddrow">
-
-	<div class="const-header">
-		<img src="../media/images/Variable.png" />
-		<span class="const-title">
-			<span class="const-name">COMMA</span>
-			 = <span class="const-default"> &quot;COMMA&quot;</span>
-			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a20">20</a></span>)
-		</span>
-	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-	
-	
-</div>
-<a name="constCOMPARISON" id="COMPARISON"><!-- --></A>
-<div class="evenrow">
-
-	<div class="const-header">
-		<img src="../media/images/Variable.png" />
-		<span class="const-title">
-			<span class="const-name">COMPARISON</span>
-			 = <span class="const-default"> &quot;COMPARISON&quot;</span>
-			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a14">14</a></span>)
-		</span>
-	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-	
-	
-</div>
-<a name="constCONCATENATE" id="CONCATENATE"><!-- --></A>
-<div class="oddrow">
-
-	<div class="const-header">
-		<img src="../media/images/Variable.png" />
-		<span class="const-title">
-			<span class="const-name">CONCATENATE</span>
-			 = <span class="const-default"> &quot;CONCATENATE&quot;</span>
-			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a23">23</a></span>)
-		</span>
-	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-	
-	
-</div>
-<a name="constKEYWORD" id="KEYWORD"><!-- --></A>
-<div class="evenrow">
-
-	<div class="const-header">
-		<img src="../media/images/Variable.png" />
-		<span class="const-title">
-			<span class="const-name">KEYWORD</span>
-			 = <span class="const-default"> &quot;KEYWORD&quot;</span>
-			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a21">21</a></span>)
-		</span>
-	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-	
-	
-</div>
-<a name="constLITERAL" id="LITERAL"><!-- --></A>
-<div class="oddrow">
-
-	<div class="const-header">
-		<img src="../media/images/Variable.png" />
-		<span class="const-title">
-			<span class="const-name">LITERAL</span>
-			 = <span class="const-default"> &quot;LITERAL&quot;</span>
-			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a17">17</a></span>)
-		</span>
-	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-	
-	
-</div>
-<a name="constLOGICAL_OP" id="LOGICAL_OP"><!-- --></A>
-<div class="evenrow">
-
-	<div class="const-header">
-		<img src="../media/images/Variable.png" />
-		<span class="const-title">
-			<span class="const-name">LOGICAL_OP</span>
-			 = <span class="const-default"> &quot;LOGICAL_OP&quot;</span>
-			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a13">13</a></span>)
-		</span>
-	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-	
-	
-</div>
-<a name="constMODULUS" id="MODULUS"><!-- --></A>
-<div class="oddrow">
-
-	<div class="const-header">
-		<img src="../media/images/Variable.png" />
-		<span class="const-title">
-			<span class="const-name">MODULUS</span>
-			 = <span class="const-default"> &quot;MODULUS&quot;</span>
-			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a25">25</a></span>)
-		</span>
-	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-	
-	
-</div>
-<a name="constNAMED_PARAM" id="NAMED_PARAM"><!-- --></A>
-<div class="evenrow">
-
-	<div class="const-header">
-		<img src="../media/images/Variable.png" />
-		<span class="const-title">
-			<span class="const-name">NAMED_PARAM</span>
-			 = <span class="const-default"> &quot;NAMED_PARAM&quot;</span>
-			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a19">19</a></span>)
-		</span>
-	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-	
-	
-</div>
-<a name="constOPEN_PAREN" id="OPEN_PAREN"><!-- --></A>
-<div class="oddrow">
-
-	<div class="const-header">
-		<img src="../media/images/Variable.png" />
-		<span class="const-title">
-			<span class="const-name">OPEN_PAREN</span>
-			 = <span class="const-default"> &quot;OPEN_PAREN&quot;</span>
-			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a15">15</a></span>)
-		</span>
-	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-	
-	
-</div>
-<a name="constPARAMETER" id="PARAMETER"><!-- --></A>
-<div class="evenrow">
-
-	<div class="const-header">
-		<img src="../media/images/Variable.png" />
-		<span class="const-title">
-			<span class="const-name">PARAMETER</span>
-			 = <span class="const-default"> &quot;PARAMETER&quot;</span>
-			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a18">18</a></span>)
-		</span>
-	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-	
-	
-</div>
-<a name="constSQL_ENTITY" id="SQL_ENTITY"><!-- --></A>
-<div class="oddrow">
-
-	<div class="const-header">
-		<img src="../media/images/Variable.png" />
-		<span class="const-title">
-			<span class="const-name">SQL_ENTITY</span>
-			 = <span class="const-default"> &quot;SQL_ENTITY&quot;</span>
-			(line <span class="line-number"><a href="../__filesource/fsource_Prosper__Token.php.html#a12">12</a></span>)
-		</span>
-	</div>
-
-	<!-- ========== Info from phpDoc block ========= -->
-	
-	
-</div>
-						
-		</div>
-	</div>
-
-	<p class="notes" id="credit">
-		Documentation generated on Sun, 29 Nov 2009 15:40:18 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
-	</p>
-	</div></body>
+</body>
 </html>
