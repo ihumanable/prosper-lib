@@ -188,6 +188,15 @@ abstract class BaseAdapter {
 	}
 	
 	/**
+	 * Retrieve table information from the current schema
+	 * @param array $filter [optional] Filter of table names to return
+	 * @return array Table data
+	 */          	
+	protected function tables($filter = null) {
+    
+  }
+	
+	/**
 	 * Return database specific timestamp from unix timestamp
 	 * Default implementation is the sensible MySQL Timestamp	 
 	 */	 	

@@ -63,4 +63,15 @@
     echo $result;
   }
   
+  /**
+   * Helper function to dump data out pretty printed and syntax highlighted
+   * @param mixed $target The target to print
+   * @param string $language [optional] Syntax brush to paint with, defaults to php
+   */           
+  function syntax_print($target, $language = "php") {
+    echo "<pre class=\"brush: $language\">";
+      print_r($target);
+    echo "</pre>";
+  }
+  
 ?>

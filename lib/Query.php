@@ -306,6 +306,19 @@ class Query {
     return self::db_mode() == SYBASE_MODE;
   }
   
+  //Reflection API
+  
+  /**
+   * Get an array of all the tables in the current schema
+   * Accepts optional table names to retrieve
+   * Result is structured as follows
+   * @params strings [optional] variadic table names
+   * @return array Table data
+   */        
+  static function tables() {
+    return self::$adapter->tables(get_func_args());
+  }
+  
   //Select Statement Functions
   
   /**
