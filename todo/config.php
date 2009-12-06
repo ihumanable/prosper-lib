@@ -10,6 +10,12 @@
   require_once 'utility.php';
   
   //Configure prosper to connect to the database
-  Prosper\Query::configure(Prosper\Query::MSSQL_MODE, 'sa', 'sa', 'HMB-PACKERS\SQLEXPRESS', 'test.dbo');
+  
+  //MS-SQL Sample
+    //Prosper\Query::configure(Prosper\Query::MSSQL_MODE, 'sa', 'sa', 'SERVER\SQLEXPRESS', 'test.dbo');
+  
+  //MySql Sample
+    //Prosper\Query::configure(Prosper\Query::MYSQL_MODE, 'root', 'xamppdevpwd', 'localhost', 'test');
+  
 
 ?>
