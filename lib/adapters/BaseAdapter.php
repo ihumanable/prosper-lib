@@ -195,6 +195,59 @@ abstract class BaseAdapter {
 	function tables($filter = null) {
     
   }
+  
+  /**
+   * Translates a platform specific type into a cross platform type
+   * The inverse of this function is the BaseAdapter::platform_type($type, $length) function   
+   * @param array $platform The platform specific type array from BaseAdapter::type_array($raw)
+   * @return array A cross platform type array created with BaseAdapter::type_array($raw)
+   * @see BaseAdapter::platform_type($type, $length)
+   * @see BaseAdapter::type_array($raw)      
+   */              	
+	function cross_type($platform) {
+    
+  }
+	
+	/**
+	 * Translates a cross platform type into the best possible platform type
+	 * The inverse of this function is the BaseAdapter::cross_type($type, $length) function
+	 * @param array $cross The cross platform type array from BaseAdapter::type_array($raw)
+	 * @return array A platform specific type created with BaseAdapter::type_array($raw)
+	 * @see BaseAdapter::platform_type($type, $length)
+	 * @see BaseAdapter::type_array($raw)   	 
+	 */                	
+	function platform_type($cross) {
+    
+  }
+	
+	/**
+	 * Translates a raw data representation to an array of components	
+	 * Example:
+	 * type_array('int(11)')   => array ( raw    => 'int(11)',
+	 *                                    type   => 'int'    ,
+	 *                                    length => 11        )
+	 *                                    	 
+	 * type_array('timestamp') => array ( raw    => 'timestamp', 
+	 *                                    type   => 'timestamp',
+	 *                                    length => null        )
+	 * @param string $raw The raw string with the length
+	 * @param string $split [optional] The character that indicates a length is coming up, defaults to '('	 
+	 * @return array A type array
+	 */                                                 	 
+	function type_array($raw, $split = '(') {
+    $result['raw'] = $raw;
+    
+    if(strpos($raw, $split) !== false) {
+      $parts = explode($split, $raw);
+      $result['type']   = $parts[0];
+      $result['length'] = substr($parts[1], 0, -1);
+    } else {
+      $result['type']   = $raw;
+      $result['length'] = null;
+    }
+    
+    return $result;
+  }
 	
 	/**
 	 * Return database specific timestamp from unix timestamp

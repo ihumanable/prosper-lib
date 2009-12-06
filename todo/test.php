@@ -1,8 +1,7 @@
 <?php
-namespace Prosper;
 
-require_once 'config.php';
+$connection = mssql_connect("HMB-PACKERS\SQLEXPRESS", "sa", "sa");
 
-echo Query::select()
-			->from('user')
-			->where("mod(age, mod(monkey, '2')) = 0");
+print_r($connection);
+
+?>

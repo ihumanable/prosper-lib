@@ -48,6 +48,7 @@ prosper
 		todo\config.php
 		todo\create.php
 		todo\delete.php
+		todo\diagnostic.php
 		todo\edit.php
 		todo\footer.php
 		todo\header.php
@@ -55,9 +56,17 @@ prosper
 		todo\utility.php
 [Open project files]
 0=readme.md
+1=..\..\..\projects\ihumanable\blog\wp-content\themes\zdark\styleswitcher.js
+2=..\..\..\projects\ihumanable\blog\wp-content\themes\zdark\nature.css
 [Selected Project Files]
 Main=
-Selected=readme.md
+Selected=..\..\..\projects\ihumanable\blog\wp-content\themes\zdark\nature.css
 [readme.md]
 TopLine=1
 Caret=1,1
+[..\..\..\projects\ihumanable\blog\wp-content\themes\zdark\styleswitcher.js]
+TopLine=1
+Caret=1,1
+[..\..\..\projects\ihumanable\blog\wp-content\themes\zdark\nature.css]
+TopLine=1
+Caret=20,7

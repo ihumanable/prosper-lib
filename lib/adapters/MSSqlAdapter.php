@@ -14,8 +14,15 @@ class MSSqlAdapter extends BaseAdapter {
    */
   function connect() {
     $this->connection = mssql_connect($this->hostname, $this->username, $this->password);
-    if($schema != "") {
-			mssql_select_db($this->schema, $this->connection);
+    if($this->schema != "") {
+      if(strpos($this->schema, '.') !== false) {
+        $parts = explode('.', $this->schema);
+        $schema = $parts[0];
+      } else {
+        $schema = $this->schema;
+      }
+      
+			mssql_select_db($schema, $this->connection);
 		}
 	}
 	
@@ -44,7 +51,7 @@ class MSSqlAdapter extends BaseAdapter {
 	 * @see BaseAdapter::insert_id($set) 
 	 */
 	function insert_id($set) {
-		$result = mssql_query("select SCOPE_IDENTITY AS last_insert_id", $this->connection());
+		$result = mssql_query("select SCOPE_IDENTITY() AS last_insert_id", $this->connection());
 		$arr = $this->fetch_assoc($result);
 		$retval = $arr['last_insert_id'];
 		mssql_free_result($result);

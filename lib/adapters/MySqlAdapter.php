@@ -72,10 +72,32 @@ class MySqlAdapter extends BaseAdapter {
     }
     
     foreach($filter as $table) {
-      $result[] = $this->execute("describe $table");
+      $data = $this->execute("describe $table");
+      foreach($data as $column) {
+        $name = $column['Field'];
+        
+        $platform_type = $this->type_array($column['Type']);
+        
+        $result[$table][$name]['type']           = $this->cross_type($platform_type);
+        $result[$table][$name]['platform_type']  = $platform_type;
+        $result[$table][$name]['null']           = ($column['Null'] == "YES");
+        $result[$table][$name]['pk']             = ($column['Key'] == "PRI");
+        $result[$table][$name]['default']        = $column['Default'];
+        $result[$table][$name]['auto_increment'] = ($column['Extra'] == 'auto_increment');
+      }
     }
-    
     return $result;
+  }
+	
+	/**
+	 * @see BaseAdapter::cross_type($platform)
+	 */   	
+	function cross_type($platform) {
+    return $platform;
+  }
+  
+  function platform_type($cross) {
+    return $cross;
   }
 	
 }

@@ -79,25 +79,6 @@ class Query {
   }
   
   /**
-   * Properly quotes a potential column, allowing for compound table.column format
-   * @param string $col column name, simple or compound
-   * @return string Properly quoted column
-   */
-  static function column($col) {
-    if(strpos($col, '.') === false) {
-      $column = self::quote($col);
-    } else {
-      $parts = explode('.', $col);
-      foreach($parts as $part) {
-        $safeparts[] = self::quote($part);
-      }
-      $column = implode('.', $safeparts);
-    }
-    
-    return $column;
-  }
-  
-  /**
    * Properly quotes and scopes a potential table.
    * @param string $table table name 
    * @return string Properly scoped and quoted tablename ex: Query::table('hello') => `schema`.`hello` (for mysql)
@@ -123,7 +104,15 @@ class Query {
    * @see BaseAdapter::quote($str)
    */	
   static function quote($str) {
-    return self::$adapter->quote($str);
+    if(strpos($str, '.') === false) {
+      return self::$adapter->quote($str);
+    } else {
+      $parts = explode('.', $str);
+      foreach($parts as $part) {
+        $safeparts[] = self::$adapter->quote($part);
+      }
+      return implode('.', $safeparts);
+    }
   }
   
   /**
@@ -335,10 +324,10 @@ class Query {
       foreach($args as $arg) {
         if(is_array($arg)) {
           foreach($arg as $key => $value) {
-            $parts[] = self::column($key) . self::alias($value);
+            $parts[] = self::quote($key) . self::alias($value);
           }
         } else {
-          $parts[] = self::column($arg);
+          $parts[] = self::quote($arg);
         }
       }
       $columns = implode(', ', $parts);
@@ -353,8 +342,8 @@ class Query {
    * @return Query instance for further chaining
    */
   function from($table, $alias = "") {
-    if($table_or_query instanceof Query) {
-      $this->sql .= " from (" . $table_or_query . ")" . self :: alias($alias);
+    if($table instanceof Query) {
+      $this->sql .= " from (" . $table . ")" . self :: alias($alias);
     } else {
       $this->sql .= " from " . self::table($table) . self::alias($alias);
     }
@@ -578,11 +567,11 @@ class Query {
     if(is_array($columns)) {
       $this->sql .= " order by ";
       foreach($columns as $key => $value) {
-        $cols[] = self::column($key) . " " . (strtolower($value) == "desc" ? "desc" : "asc");
+        $cols[] = self::quote($key) . " " . (strtolower($value) == "desc" ? "desc" : "asc");
       }
       $this->sql .= implode(', ', $cols);
     } else {
-      $this->sql .= " order by " . self::column($columns) . " " . (strtolower($dir) == "desc" ? "desc" : "asc");
+      $this->sql .= " order by " . self::quote($columns) . " " . (strtolower($dir) == "desc" ? "desc" : "asc");
     }
     return $this;
   }
