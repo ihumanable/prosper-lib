@@ -17,6 +17,7 @@ class Query {
   const UPDATE_STMT = "UPDATE_STMT";
   //SQL Modes
   const DB2_MODE       = "DB2Adapter";
+  const DBASE_MODE     = "DBaseAdapter";
   const FIREBIRD_MODE  = "FirebirdAdapter";
   const FRONTBASE_MODE = "FrontBaseAdapter";
   const INFORMIX_MODE  = "InformixAdapter";

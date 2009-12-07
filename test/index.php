@@ -3,6 +3,7 @@
   require_once 'config.php';
   
   $modes = array( Prosper\Query::DB2_MODE,
+                  Prosper\Query::DBASE_MODE,
                   Prosper\Query::FIREBIRD_MODE,
                   Prosper\Query::FRONTBASE_MODE,
                   Prosper\Query::INFORMIX_MODE,

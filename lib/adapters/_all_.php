@@ -8,6 +8,7 @@
   
   //Derived Platform Specific Adapters
   require_once 'DB2Adapter.php';
+  require_once 'DBaseAdapter.php';
   require_once 'FirebirdAdapter.php';
   require_once 'FrontBaseAdapter.php';
   require_once 'InformixAdapter.php';
