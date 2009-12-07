@@ -89,40 +89,26 @@ class MSSqlAdapter extends BaseAdapter {
 	 * @return string modified sql statement
 	 */
 	function limit($sql, $limit, $offset) {
-		if($offset == 0) {
-			$pos = strripos($sql, "select");
-			if($pos !== false) {
-				$pos += 6;
-				$sql = substr($sql, 0, $pos) . " top $limit " . substr($sql, $pos);
-			}
-		} else {
-			$orderpos = strripos($sql, "order by");
-			$pos = strripos($sql, "select");
-			
-			
-			if($orderpos === false) {
-				$dir = $opdir = "";
-			} else {
-				$order = substr($sql, $orderpos);
-				if(strpos($order, "desc") !== false) {
-					$order = substr($order, 0, strlen($order) - 4);
-					$dir = "$order desc";
-					$opdir = "$order asc";
-				} else {
-					$order = substr($order, 0, strlen($order) - 3);
-					$dir = "$order asc";
-					$opdir = "$order desc";
-				}
-			}
-					
-			$sql = substr($sql, 0, $pos) .
-				   "(select * from (" .
-						"select top $limit * from (" . 
-							"select top " . ($limit + $offset) . substr($sql, $pos + 6) . ")" . 
-						" $opdir)" .
-			       " $dir)"; 
-		}
-		return $sql;
+		$pos = strripos($sql, "select");
+    // TODO: Modify to use ORDER BY from $sql
+    if ($pos !== false) {
+      $pos += 6;
+      
+      $orderpos = strripos($sql, "order by");
+      
+      if ($orderpos === false) {
+        $order = "SELECT 1)) AS row, ";
+      } else {
+        // I think this accounts for multiple ORDER BY directions, but I could be wrong. It definitely needs tested.
+        $order = substr($sql, $orderpos);
+      }
+      
+      $sql = substr($sql, 0, $pos) . " ROW_NUMBER() OVER (ORDER BY (" . $order . substr($sql, $pos);
+    }
+    
+    $sql = "SELECT * FROM (" . $sql . ") WHERE row >= " . $offset . " AND row <= " . ($limit + $offset);
+    
+    return $sql;
 	}
 
 	/**
