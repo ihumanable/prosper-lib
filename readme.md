@@ -19,6 +19,7 @@ PHP 5.3+
 ## backends ##
 
 - DB2
+- DBase
 - Firebird / Interbase
 - FrontBase
 - Informix
