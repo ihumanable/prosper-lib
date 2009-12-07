@@ -39,7 +39,7 @@ class PostgreSqlAdapter extends BaseAdapter {
 			$parse = explode(')', $parse[1]);
 			$this->inserted_cols = explode(", ", $parse[0]);
 		}
-		return pg_query($this->connection, $sql);
+		return pg_query($this->connection(), $sql);
 	}
 	
 	/**
@@ -82,6 +82,13 @@ class PostgreSqlAdapter extends BaseAdapter {
 	function quote($str) {
 		return "\"$str\"";
 	}
+	
+	/**
+	 * @see BaseAdapter::escape($str)
+	 */   	
+	function escape($str) {
+    return "'" . pg_escape_string($this->connection(), $str) . "'"; 
+  }
 	
 }
 ?>

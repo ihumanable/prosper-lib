@@ -60,6 +60,13 @@ class SqliteAdapter extends BaseAdapter {
     }
   }
 
+  /**
+   * @see BaseAdapter::escape($str)
+   */     
+  function escape($str) {
+    return "'" . $this->connection()->escapeString($str) . "'";
+  }
+
 	/**
 	 * @see BaseAdapter::true_value()
 	 */

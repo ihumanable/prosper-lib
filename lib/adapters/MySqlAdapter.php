@@ -61,6 +61,13 @@ class MySqlAdapter extends BaseAdapter {
   }
   
   /**
+   * @see BaseAdapter::escape($str)
+   */     
+  function escape($str) {
+    return "'" . $this->connection()->escape_string($str) . "'"; 
+  }
+  
+  /**
    * @see BaseAdapter::tables($filter)
    */     
   function tables($filter) {

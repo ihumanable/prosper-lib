@@ -51,5 +51,11 @@ class IngresAdapter extends BaseAdapter {
 		ingres_free_result($set);
 	}
 	
+	/**
+	 * @see BaseAdapter::escape($str)
+	 */   	
+	function escape($str) {
+    return "'" . ingres_escape_string($this->connection(), $str) . "'";
+  }
 }
 ?>

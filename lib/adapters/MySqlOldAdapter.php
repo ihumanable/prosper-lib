@@ -61,6 +61,13 @@ class MySqlOldAdapter extends BaseAdapter {
     mysql_free_result($set);
   }
 	
+	/**
+	 * @see BaseAdapter::escape($str)
+	 */   	
+	function escape($str) {
+    return "'" . mysql_real_escape_string($str, $this->connection()) . "'";
+  }
+	
 }
 
 ?>

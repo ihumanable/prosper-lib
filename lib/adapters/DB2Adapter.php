@@ -59,6 +59,12 @@ class DB2Adapter extends BaseAdapter {
 		db2_free_stmt($set);
 	}
 	
+	/**
+	 * @see BaseAdapter::escape($str)
+	 */   	
+	function escape($str) {
+     return "'" . db2_escape_string($str) . "'";
+  }
 	
 }
 
