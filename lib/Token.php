@@ -17,6 +17,7 @@ class Token {
 	const LITERAL     = "LITERAL";
 	const PARAMETER   = "PARAMETER";
 	const NAMED_PARAM = "NAMED_PARAM";
+	const TYPED_PARAM = "TYPED_PARAM";
 	const COMMA       = "COMMA";
 	const KEYWORD     = "KEYWORD";
 	const ARITHMETIC  = "ARITHMETIC";
@@ -28,7 +29,8 @@ class Token {
 	static $quote = "'";
 	static $comma = ',';
 	static $parameter = '?';
-	static $named_param = ':';
+	static $named_param = ':';               
+	static $typed_param = '%';
 	static $open_paren = '(';
 	static $close_paren = ')';
 	static $concatenate = '|';
@@ -51,7 +53,9 @@ class Token {
 		} else if($sample == self::$quote) {
 			return self::literal_parse($source);
 		} else if($sample == self::$named_param) {
-			return self::named_param_parse($source);		
+			return self::named_param_parse($source);	
+    } else if($sample == self::$typed_param) {
+      return self::typed_param_parse($source);	
 		} else if($sample == self::$concatenate) {
 			return self::concatenate_parse($source);
 		} else if($sample == self::$parameter) {
@@ -152,6 +156,12 @@ class Token {
 		$result['token'] = self::parse_token($source, self::generic_parse($source, "sql_entity_test"));
 		return $result;
 	}
+
+  static function typed_param_parse(&$source) {
+    $result['type'] = self::TYPED_PARAM;
+    $result['token'] = self::parse_token($source, self::generic_parse($source, "sql_entity_test"));
+    return $result;
+  }
 
 	static function concatenate_test($char) {
 		return $char != self::$concatenate;
