@@ -4,8 +4,7 @@
   
   include_once 'header.php';
   
-  echo "<h2>Schema Information</h2>";
-  syntax_print(Query::tables());
+  Query::select()->from('todo')->where('title = ?', 'Matt')->execute();
   
   include_once 'footer.php';
   

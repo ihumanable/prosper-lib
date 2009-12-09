@@ -9,6 +9,9 @@ namespace Prosper;
  */
 class MySqlAdapter extends BaseAdapter implements IPreparable {
 	
+	private $bindings;
+	private $prepared = false; 
+	
 	/**
    * @see BaseAdapter::connect()
    */
@@ -27,7 +30,19 @@ class MySqlAdapter extends BaseAdapter implements IPreparable {
 	 * @see BaseAdapter::platform_execute($sql, $mode) 
 	 */
 	function platform_execute($sql, $mode) {
-		return $this->connection()->query($sql);
+		if($this->prepared) {
+      $stmt = $this->connection()->prepare($sql);
+      foreach($this->bindings as $binding) {
+        $type .= $binding['type'];
+        $values[] = &$binding['value'];
+      }
+      array_unshift($values, &$type);  //put the type string on the arguments
+      call_user_func_array(array($stmt, 'bind_param'), $values);
+      $stmt->execute();
+      return $stmt;
+    } else {
+      return $this->connection()->query($sql);
+    }
 	}
 	
 	/**
@@ -48,16 +63,47 @@ class MySqlAdapter extends BaseAdapter implements IPreparable {
 	 * @see BaseAdapter::fetch_assoc($set)
 	 */
 	function fetch_assoc($set) {
-		return $set->fetch_array(MYSQLI_ASSOC);
+		if($this->prepared) {
+      $meta = $set->result_metadata();
+      while($field = $meta->fetch_field()) {
+        $params[] = &$row[$field->name];    
+      }
+      call_user_func_array(array($set, 'bind_result'), $params);
+      
+      if($set->fetch()) {
+        foreach($row as $key => $value) {
+          $result[$key] = $value;
+        }
+        return $result;
+      } else {
+        return false;
+      }
+    } else {
+      return $set->fetch_array(MYSQLI_ASSOC);
+    }
 	}
 	
 	/**
 	 * @see BaseAdapter::free_result($set)
 	 */   	
 	function free_result($set) {
-    if($set instanceof mysqli_result) {
+    if(is_object($set)) {
       $set->close();
-    }
+    } 
+  }
+ 
+  /**
+   * @see BaseAdapter::true_value()
+   */      
+  function true_value() {
+    return 1;
+  }
+  
+  /**
+   * @see BaseAdapter::false_value()
+   */     
+  function false_value() {
+    return 0;
   }
   
   /**
@@ -71,8 +117,27 @@ class MySqlAdapter extends BaseAdapter implements IPreparable {
    * @see IPreparable::prepare($value)
    */     
   function prepare($value) {
-    echo "PREPARING!!";
-    return $this->connection()->escape_string($value);
+    $this->prepared = true;
+    
+    if(is_bool($value)) {
+      $binding['value'] = ($value ? $this->true_value() : $this->false_value());
+      $binding['type'] = 'i';  //Technically bools are ints
+    } else {
+      $binding['value'] = $value;
+      if(is_int($value)) {
+        $binding['type'] = 'i';  //Integer
+      } else if(is_double($value)) {
+        $binding['type'] = 'd';  //Double
+      } else if(is_string($value)) {
+        $binding['type'] = 's';  //String
+      } else {
+        $binding['type'] = 'b';  //Blob
+      }
+    }
+    
+    $this->bindings[] = $binding;
+    
+    return '?';
   }
   
   /**
@@ -111,6 +176,9 @@ class MySqlAdapter extends BaseAdapter implements IPreparable {
     return $platform;
   }
   
+  /**
+   * @see BaseAdapter::platform_type($cross)
+   */     
   function platform_type($cross) {
     return $cross;
   }
