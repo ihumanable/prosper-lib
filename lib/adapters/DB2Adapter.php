@@ -7,7 +7,10 @@ namespace Prosper;
 /**
  * DB2 Database Adapter
  */
-class DB2Adapter extends BaseAdapter {
+class DB2Adapter extends BaseAdapter implements IPreparable {
+
+  private $bindings;
+  private $prepared;
 
   /**
    * @see BaseAdapter::connect()
@@ -28,7 +31,13 @@ class DB2Adapter extends BaseAdapter {
 	 * @see BaseAdapter::platform_execute($sql, $mode) 
 	 */
 	function platform_execute($sql, $mode) {
-		return db2_prepare($this->connection(), $sql);
+		if($this->prepared) {
+		  $stmt = db2_prepare($this->connection(), $sql);
+		  db2_execute($stmt, $this->bindings);
+		  return $stmt;
+		} else {
+      return db2_exec($this->connection(), $sql);
+    }
 	}
 	
 	/**
@@ -66,6 +75,14 @@ class DB2Adapter extends BaseAdapter {
      return db2_escape_string($str);
   }
 	
+  /**
+   * @see IPreparable::prepare($value)
+   */              
+  function prepare($value) {
+    $this->prepared = true;
+    $this->bindings[] = $value;
+    return '?'; 
+  }        
 }
 
 ?>

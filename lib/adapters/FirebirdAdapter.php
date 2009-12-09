@@ -7,7 +7,10 @@ namespace Prosper;
 /**
  * Firebird (interbase) Database Adapter
  */
-class FirebirdAdapter extends BaseAdapter {
+class FirebirdAdapter extends BaseAdapter implements IPreparable {
+	
+  private $bindings;
+  private $prepared = false;
 	
 	/**
    * @see BaseAdapter::connect()
@@ -28,7 +31,11 @@ class FirebirdAdapter extends BaseAdapter {
 	 * @see BaseAdapter::platform_execute($sql, $mode) 
 	 */
 	function platform_execute($sql, $mode) {
-		return ibase_query($this->connection(), $sql);
+		if($this->prepared) {
+      array_unshift($this->bindings, ibase_prepare($this->connection(), $sql));
+      return call_user_func_array('ibase_execute', $this->bindings);       
+    }
+    return ibase_query($this->connection(), $sql);
 	}
 	
 	/**
@@ -51,6 +58,15 @@ class FirebirdAdapter extends BaseAdapter {
 	function free_result($set) {
 		ibase_free_result($set);	
 	}
+	
+	/**
+	 * @see IPreparable::prepare($value)
+	 */   	
+	function prepare($value) {
+    $this->prepared = true;
+    $this->bindings[] = $value;
+    return '?';
+  }
 	
 }
 ?>
