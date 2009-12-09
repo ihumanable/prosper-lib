@@ -9,8 +9,6 @@ namespace Prosper;
  */
 abstract class BaseAdapter {
   
-  static $preparable = false;
-  
   protected $connection;
   protected $username;
   protected $password;
@@ -83,15 +81,16 @@ abstract class BaseAdapter {
    * @return string escaped string or placeholder for prepared statement
    */
   function escape($str) {
-    if(static::$preparable) {
+    if($this instanceof IPreparable) {
       return $this->prepare($str);
     } else {
-      return "'" . this->addslashes($str) . "'";
+      return "'" . $this->addslashes($str) . "'";
     }
   }
   
   /**
-   * Wrapper for the adapters add slashes function, defaults to using php's addslashes built-in
+   * Wrapper for the adapters add slashes function, defaults to using php's 
+   * addslashes built-in
    * @param string $str string to add slashes too
    * @return string escaped string
    */           
@@ -100,8 +99,8 @@ abstract class BaseAdapter {
   }
   
   /**
-   * Since various databases support a wide variety of limit syntaxes the adapter
-   * is responsible for writing the limit syntax.
+   * Since various databases support a wide variety of limit syntaxes the 
+   * adapter is responsible for writing the limit syntax.
    * @param string $sql sql statment
    * @param int $limit how many to limit the result to
    * @param int $offset where to start at
