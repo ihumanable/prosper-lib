@@ -7,7 +7,7 @@ namespace Prosper;
 /**
  * MySql Database Adapter
  */
-class MySqlAdapter extends BaseAdapter {
+class MySqlAdapter extends BaseAdapter implements IPreparable {
 	
 	/**
    * @see BaseAdapter::connect()
@@ -65,6 +65,14 @@ class MySqlAdapter extends BaseAdapter {
    */     
   function addslashes($str) {
     return $this->connection()->escape_string($str); 
+  }
+  
+  /**
+   * @see IPreparable::prepare($value)
+   */     
+  function prepare($value) {
+    echo "PREPARING!!";
+    return $this->connection()->escape_string($value);
   }
   
   /**

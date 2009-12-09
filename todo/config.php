@@ -4,7 +4,6 @@
   
   //Require Prosper
   require_once PROSPER_PATH . 'adapters/_common_.php';
-  require_once PROSPER_PATH . 'Query.php';
   
   //Go and get the utility functions
   require_once 'utility.php';

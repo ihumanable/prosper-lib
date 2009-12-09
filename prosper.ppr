@@ -16,6 +16,7 @@ prosper
 	-lib
 		-adapters
 			lib\adapters\_all_.php
+			lib\adapters\_base_.php
 			lib\adapters\_common_.php
 			lib\adapters\BaseAdapter.php
 			lib\adapters\DB2Adapter.php
@@ -24,6 +25,7 @@ prosper
 			lib\adapters\FrontBaseAdapter.php
 			lib\adapters\InformixAdapter.php
 			lib\adapters\IngresAdapter.php
+			lib\adapters\IPreparable.php
 			lib\adapters\MaxDBAdapter.php
 			lib\adapters\MSqlAdapter.php
 			lib\adapters\MSSqlAdapter.php
