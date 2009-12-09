@@ -13,8 +13,8 @@ ProjectFilesOnly=0
 prosper
 	-doc
 		readme.md
-	-lib
-		-adapters
+	+lib
+		+adapters
 			lib\adapters\_all_.php
 			lib\adapters\_base_.php
 			lib\adapters\_common_.php
@@ -25,7 +25,6 @@ prosper
 			lib\adapters\FrontBaseAdapter.php
 			lib\adapters\InformixAdapter.php
 			lib\adapters\IngresAdapter.php
-			lib\adapters\IPreparable.php
 			lib\adapters\MaxDBAdapter.php
 			lib\adapters\MSqlAdapter.php
 			lib\adapters\MSSqlAdapter.php
@@ -35,6 +34,7 @@ prosper
 			lib\adapters\OvrimosAdapter.php
 			lib\adapters\ParadoxAdapter.php
 			lib\adapters\PostgreSqlAdapter.php
+			lib\adapters\PreparedAdapter.php
 			lib\adapters\SqliteAdapter.php
 			lib\adapters\SybaseAdapter.php
 		lib\Query.php
@@ -42,7 +42,7 @@ prosper
 	-test
 		test\config.php
 		test\index.php
-	-todo
+	+todo
 		-img
 			todo\img\create.png
 		-style
@@ -59,9 +59,13 @@ prosper
 		todo\utility.php
 [Open project files]
 0=readme.md
+1=lib\adapters\IngresAdapter.php
 [Selected Project Files]
 Main=
-Selected=readme.md
+Selected=lib\adapters\IngresAdapter.php
 [readme.md]
 TopLine=1
 Caret=1,1
+[lib\adapters\IngresAdapter.php]
+TopLine=1
+Caret=68,27
