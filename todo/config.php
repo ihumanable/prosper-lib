@@ -15,7 +15,7 @@
     //Prosper\Query::configure(Prosper\Query::MSSQL_MODE, 'sa', 'sa', 'LOCALHOST\SQLEXPRESS', 'test.dbo');
   
   //MySql Sample
-    //Prosper\Query::configure(Prosper\Query::MYSQL_MODE, 'root', 'xamppdevpwd', 'localhost', 'test');
+    Prosper\Query::configure(Prosper\Query::MYSQL_MODE, 'root', 'xamppdevpwd', 'localhost', 'test');
   
 
 ?>
