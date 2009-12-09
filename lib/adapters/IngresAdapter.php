@@ -7,7 +7,7 @@ namespace Prosper;
 /**
  * Ingres Database Adapter
  */
-class IngresAdapter extends BaseAdapter {
+class IngresAdapter extends BaseAdapter implements IPreparable {
 	
 	/**
    * @see BaseAdapter::connect()

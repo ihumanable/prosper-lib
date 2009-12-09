@@ -7,10 +7,9 @@ namespace Prosper;
 /**
  * MySql Database Adapter
  */
-class MySqlAdapter extends BaseAdapter implements IPreparable {
+class MySqlAdapter extends PreparedAdapter {
 	
-	private $bindings;
-	private $prepared = false; 
+	private $types = "";
 	
 	/**
    * @see BaseAdapter::connect()
@@ -27,25 +26,24 @@ class MySqlAdapter extends BaseAdapter implements IPreparable {
 	}
 	
 	/**
-	 * @see BaseAdapter::platform_execute($sql, $mode) 
+	 * @see PreparedAdapter::prepared_execute($sql, $mode) 
 	 */
-	function platform_execute($sql, $mode) {
-		if($this->prepared) {
-      $stmt = $this->connection()->prepare($sql);
-      foreach($this->bindings as $binding) {
-        $type .= $binding['type'];
-        $values[] = $binding['value'];
-      }
-      $arguments = array(&$type);
-      foreach($values as $k => $v) {
-        $arguments[] = &$values[$k];
-      }
-      call_user_func_array(array($stmt, 'bind_param'), $arguments);
-      $stmt->execute();
-      return $stmt;
-    } else {
-      return $this->connection()->query($sql);
+	function prepared_execute($sql, $mode) {
+    $stmt = $this->connection()->prepare($sql);
+    $arguments = array(&$this->types);    
+    foreach($this->bindings as $key => $binding) {  
+      $arguments[] = &$this->bindings[$key];
     }
+    call_user_func_array(array($stmt, 'bind_param'), $arguments);
+    $stmt->execute();
+    return $stmt;
+  }
+  
+  /**
+   * @see PreparedAdapter::standard_execute($sql, $mode)
+   */     
+  function standard_execute($sql, $mode) {
+    return $this->connection()->query($sql);
 	}
 	
 	/**
@@ -117,28 +115,19 @@ class MySqlAdapter extends BaseAdapter implements IPreparable {
   }
   
   /**
-   * @see IPreparable::prepare($value)
+   * @see PreparedAdapter::platform_prepare($value)
    */     
-  function prepare($value) {
-    $this->prepared = true;
+  function platform_prepare($value) {
     
-    if(is_bool($value)) {
-      $binding['value'] = ($value ? $this->true_value() : $this->false_value());
-      $binding['type'] = 'i';  //Technically bools are ints
+    if(is_bool($value) || is_int($value)) {
+      $this->types .= 'i';  //Technically bools are ints too
+    } else if(is_double($value)) {
+      $this->types .= 'd';  //Double
+    } else if(is_string($value)) {
+      $this->types .= 's';  //String
     } else {
-      $binding['value'] = $value;
-      if(is_int($value)) {
-        $binding['type'] = 'i';  //Integer
-      } else if(is_double($value)) {
-        $binding['type'] = 'd';  //Double
-      } else if(is_string($value)) {
-        $binding['type'] = 's';  //String
-      } else {
-        $binding['type'] = 'b';  //Blob
-      }
+      $this->types .= 'b';  //Blob
     }
-    
-    $this->bindings[] = $binding;
     
     return '?';
   }
