@@ -128,17 +128,6 @@ class Query {
   }
   
   /**
-   * Unescapes the given string using the approriate adapter's unescape function
-   * Used with values to be deserialized
-   * @param string $str the text to unescape
-   * @return string Properly unescaped text
-   * @see BaseAdapter::unescape($str)
-   */
-  static function unescape($str) {
-    return $str;
-  }
-  
-  /**
    * Removes the literal quotes from a string, if called on a non-literal simply returns string
    * @param string $str String to deliteral
    * @return String with quotes removed
