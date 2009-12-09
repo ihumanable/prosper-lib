@@ -61,10 +61,10 @@ class SqliteAdapter extends BaseAdapter {
   }
 
   /**
-   * @see BaseAdapter::escape($str)
+   * @see BaseAdapter::addslashes($str)
    */     
-  function escape($str) {
-    return "'" . $this->connection()->escapeString($str) . "'";
+  function addslashes($str) {
+    return $this->connection()->escapeString($str);
   }
 
 	/**

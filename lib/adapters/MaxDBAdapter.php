@@ -61,10 +61,10 @@ class MaxDBAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * @see BaseAdapter::escape($str)
+	 * @see BaseAdapter::addslashes($str)
 	 */   	
-	function escape($str) {
-    return "'" . $this->connection()->real_escape_string($str) . "'";
+	function addslashes($str) {
+    return $this->connection()->real_escape_string($str);
   }
 	
 }

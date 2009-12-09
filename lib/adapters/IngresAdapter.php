@@ -52,10 +52,10 @@ class IngresAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * @see BaseAdapter::escape($str)
+	 * @see BaseAdapter::addslashes($str)
 	 */   	
-	function escape($str) {
-    return "'" . ingres_escape_string($this->connection(), $str) . "'";
+	function addslashes($str) {
+    return ingres_escape_string($this->connection(), $str);
   }
 }
 ?>

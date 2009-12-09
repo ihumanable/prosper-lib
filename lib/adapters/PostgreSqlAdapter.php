@@ -84,10 +84,10 @@ class PostgreSqlAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * @see BaseAdapter::escape($str)
+	 * @see BaseAdapter::addslashes($str)
 	 */   	
-	function escape($str) {
-    return "'" . pg_escape_string($this->connection(), $str) . "'"; 
+	function addslashes($str) {
+    return pg_escape_string($this->connection(), $str); 
   }
 	
 }

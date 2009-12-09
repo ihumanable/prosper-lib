@@ -60,10 +60,10 @@ class DB2Adapter extends BaseAdapter {
 	}
 	
 	/**
-	 * @see BaseAdapter::escape($str)
+	 * @see BaseAdapter::addslashes($str)
 	 */   	
-	function escape($str) {
-     return "'" . db2_escape_string($str) . "'";
+	function addslashes($str) {
+     return db2_escape_string($str);
   }
 	
 }

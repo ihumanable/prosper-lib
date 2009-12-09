@@ -62,10 +62,10 @@ class MySqlOldAdapter extends BaseAdapter {
   }
 	
 	/**
-	 * @see BaseAdapter::escape($str)
+	 * @see BaseAdapter::addslashes($str)
 	 */   	
-	function escape($str) {
-    return "'" . mysql_real_escape_string($str, $this->connection()) . "'";
+	function addslashes($str) {
+    return mysql_real_escape_string($str, $this->connection());
   }
 	
 }

@@ -9,6 +9,8 @@ namespace Prosper;
  */
 abstract class BaseAdapter {
   
+  static $preparable = false;
+  
   protected $connection;
   protected $username;
   protected $password;
@@ -78,10 +80,23 @@ abstract class BaseAdapter {
   /**
    * Escapes a value, adds slashes and surrounds with single quotes
    * @param string $str string to escape
-   * @return escaped string
+   * @return string escaped string or placeholder for prepared statement
    */
   function escape($str) {
-    return "'" . addslashes($str) . "'";
+    if(static::$preparable) {
+      return $this->prepare($str);
+    } else {
+      return "'" . this->addslashes($str) . "'";
+    }
+  }
+  
+  /**
+   * Wrapper for the adapters add slashes function, defaults to using php's addslashes built-in
+   * @param string $str string to add slashes too
+   * @return string escaped string
+   */           
+  function addslashes($str) {
+    return addslashes($str);  
   }
   
   /**
