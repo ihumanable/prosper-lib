@@ -34,10 +34,13 @@ class MySqlAdapter extends BaseAdapter implements IPreparable {
       $stmt = $this->connection()->prepare($sql);
       foreach($this->bindings as $binding) {
         $type .= $binding['type'];
-        $values[] = &$binding['value'];
+        $values[] = $binding['value'];
       }
-      array_unshift($values, &$type);  //put the type string on the arguments
-      call_user_func_array(array($stmt, 'bind_param'), $values);
+      $arguments = array(&$type);
+      foreach($values as $k => $v) {
+        $arguments[] = &$values[$k];
+      }
+      call_user_func_array(array($stmt, 'bind_param'), $arguments);
       $stmt->execute();
       return $stmt;
     } else {
