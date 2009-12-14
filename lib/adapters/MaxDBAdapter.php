@@ -6,8 +6,11 @@ namespace Prosper;
 
 /**
  * MaxDB Database Adapter
+ * The MaxDB Vender Specific Database Extensino (VSDX) is a modified version of 
+ * the MySQLi VSDX, this adapter is experimental but uses identical methodology 
+ * as the well test MySqlAdapter   
  */
-class MaxDBAdapter extends BaseAdapter {
+class MaxDBAdapter extends PreparedAdapter {
 	
 	/**
    * @see BaseAdapter::connect()
@@ -24,10 +27,24 @@ class MaxDBAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * @see BaseAdapter::platform_execute($sql, $mode)
+	 * @see PreparedAdapter::prepared_execute($sql, $mode) 
 	 */
-	function platform_execute($sql, $mode) {
-		return $this->connection()->query($sql);
+	function prepared_execute($sql, $mode) {
+    $stmt = $this->connection()->prepare($sql);
+    $arguments = array(&$this->types);    
+    foreach($this->bindings as $key => $binding) {  
+      $arguments[] = &$this->bindings[$key];
+    }
+    call_user_func_array(array($stmt, 'bind_param'), $arguments);
+    $stmt->execute();
+    return $stmt;
+  }
+  
+  /**
+   * @see PreparedAdapter::standard_execute($sql, $mode)
+   */     
+  function standard_execute($sql, $mode) {
+    return $this->connection()->query($sql);
 	}
 	
 	/**
@@ -45,10 +62,27 @@ class MaxDBAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * @see BaseAdapter::fetch_assoc($set) 
+	 * @see BaseAdapter::fetch_assoc($set)
 	 */
 	function fetch_assoc($set) {
-		return $set->fetch_assoc();
+		if($this->prepared) {
+      $meta = $set->result_metadata();
+      while($field = $meta->fetch_field()) {
+        $params[] = &$row[$field->name];    
+      }
+      call_user_func_array(array($set, 'bind_result'), $params);
+      
+      if($set->fetch()) {
+        foreach($row as $key => $value) {
+          $result[$key] = $value;
+        }
+        return $result;
+      } else {
+        return false;
+      }
+    } else {
+      return $set->fetch_array(MYSQLI_ASSOC);
+    }
 	}
 	
 	/**
@@ -65,6 +99,24 @@ class MaxDBAdapter extends BaseAdapter {
 	 */   	
 	function addslashes($str) {
     return $this->connection()->real_escape_string($str);
+  }
+  
+  /**
+   * @see PreparedAdapter::platform_prepare($value)
+   */     
+  function platform_prepare($value) {
+    
+    if(is_bool($value) || is_int($value)) {
+      $this->types .= 'i';  //Technically bools are ints too
+    } else if(is_double($value)) {
+      $this->types .= 'd';  //Double
+    } else if(is_string($value)) {
+      $this->types .= 's';  //String
+    } else {
+      $this->types .= 'b';  //Blob
+    }
+    
+    return '?';
   }
 	
 }

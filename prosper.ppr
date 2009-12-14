@@ -60,12 +60,28 @@ prosper
 [Open project files]
 0=readme.md
 1=lib\adapters\IngresAdapter.php
+2=lib\adapters\MySqlAdapter.php
+3=lib\adapters\BaseAdapter.php
+4=lib\adapters\PreparedAdapter.php
+5=lib\adapters\MaxDBAdapter.php
 [Selected Project Files]
 Main=
-Selected=lib\adapters\IngresAdapter.php
+Selected=lib\adapters\MaxDBAdapter.php
 [readme.md]
 TopLine=1
 Caret=1,1
 [lib\adapters\IngresAdapter.php]
+TopLine=29
+Caret=34,44
+[lib\adapters\MySqlAdapter.php]
+TopLine=17
+Caret=2,28
+[lib\adapters\BaseAdapter.php]
+TopLine=215
+Caret=1,1
+[lib\adapters\PreparedAdapter.php]
+TopLine=45
+Caret=1,1
+[lib\adapters\MaxDBAdapter.php]
 TopLine=1
-Caret=68,27
+Caret=33,11

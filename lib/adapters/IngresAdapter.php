@@ -7,7 +7,7 @@ namespace Prosper;
 /**
  * Ingres Database Adapter
  */
-class IngresAdapter extends BaseAdapter {
+class IngresAdapter extends PreparedAdapter {
 	
 	/**
    * @see BaseAdapter::connect()
@@ -24,10 +24,17 @@ class IngresAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * @see BaseAdapter::platform_execute($sql, $mode)
+	 * @see PreparedAdapter::prepared_execute($sql, $mode)
 	 */
 	function platform_execute($sql, $mode) {
-		return ingres_query($this->connection(), $sql);
+		return ingres_query($this->connection(), $sql, $this->bindings);
+	}
+	
+	/**
+	 * @see PreparedAdapter::standard_execute($sql, $mode)
+	 */   	
+	function standard_execute($sql, $mode) {
+    return ingres_query($this->connection(), $sql);
 	}
 	
 	/**
