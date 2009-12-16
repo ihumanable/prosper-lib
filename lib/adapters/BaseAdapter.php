@@ -81,11 +81,7 @@ abstract class BaseAdapter {
    * @return string escaped string or placeholder for prepared statement
    */
   function escape($str) {
-    if($this instanceof PreparedAdapter) {
-      return $this->prepare($str);
-    } else {
-      return "'" . $this->addslashes($str) . "'";
-    }
+    return "'" . $this->addslashes($str) . "'";
   }
   
   /**

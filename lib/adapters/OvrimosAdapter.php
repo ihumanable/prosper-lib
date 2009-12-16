@@ -7,7 +7,7 @@ namespace Prosper;
 /**
  * Ovrimos Database Adapter
  */
-class OvrimosAdapter extends BaseAdapter {
+class OvrimosAdapter extends PreparedAdapter {
 	
 	/**
    * @see BaseAdapter::connect()
@@ -24,9 +24,17 @@ class OvrimosAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * @see BaseAdapter::platform_execute($sql, $mode)
+	 * @see PreparedAdapter::prepared_execute($sql, $mode)
+	 */   	
+	function prepared_execute($sql, $mode) {
+    $stmt = ovrimos_prepare($this->connection(), $sql);
+    return ovrimos_execute($stmt, $this->bindings);
+  }
+	
+	/**
+	 * @see PreparedAdapter::standard_execute($sql, $mode)
 	 */
-	function platform_execute($sql, $mode) {
+	function standard_execute($sql, $mode) {
 		return ovrimos_exec($this->connection(), $sql);
 	}
 	

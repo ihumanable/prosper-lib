@@ -7,7 +7,9 @@ namespace Prosper;
 /**
  * Oracle Database Adapter
  */
-class OracleAdapter extends BaseAdapter {
+class OracleAdapter extends PreparedAdapter {
+	
+	private $counter = 0;
 	
 	/**
    * @see BaseAdapter::connect()
@@ -25,9 +27,25 @@ class OracleAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * @see BaseAdapter::platform_execute($sql, $mode)
+	 * @see PreparedAdapter::prepared_execute($sql, $mode)
+	 */      	
+	function prepared_execute($sql, $mode) {
+    $stmt = oci_parse($this->connection(), $sql);
+    
+    $counter = 0;
+    foreach($this->bindings as $key => $binding) {
+      $counter++;
+      oci_bind_by_name($stmt, "arg$counter", $this->bindings[$key]);              
+    }
+    
+    oci_execute($stmt);
+    return $stmt;          
+  }
+	
+	/**
+	 * @see PreparedAdapter::standard_execute($sql, $mode)
 	 */
-	function platform_execute($sql, $mode) {
+	function standard_execute($sql, $mode) {
 		$stmt = oci_parse($this->connection(), $sql);
 		oci_execute($stmt);
 		return $stmt;
@@ -54,6 +72,14 @@ class OracleAdapter extends BaseAdapter {
 	function free_result($set) {
 		oci_free_statment($set);
 	}
+	
+	/**
+	 * @see PreparedAdapter::prepare($value)
+	 */   	
+	function prepare($value) {
+    $this->counter++;
+    return ":arg{$this->counter}";
+  }
 	
 	/**
 	 * @see BaseAdapter::truth()

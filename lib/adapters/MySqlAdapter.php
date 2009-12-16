@@ -115,9 +115,9 @@ class MySqlAdapter extends PreparedAdapter {
   }
   
   /**
-   * @see PreparedAdapter::platform_prepare($value)
+   * @see PreparedAdapter::prepare($value)
    */     
-  function platform_prepare($value) {
+  function prepare($value) {
     
     if(is_bool($value) || is_int($value)) {
       $this->types .= 'i';  //Technically bools are ints too

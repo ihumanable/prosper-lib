@@ -27,14 +27,14 @@ abstract class PreparedAdapter extends BaseAdapter {
    * @param mixed $value The value to bind
    * @return string query placeholder
    */          
-  function prepare($value) {
+  function escape($value) {
     if(is_bool($value)) {
       $this->bindings[] = ($value ? $this->true_value() : $this->false_value());
     } else {
       $this->bindings[] = $value;
     }
     $this->prepared = true;
-    return $this->platform_prepare($value);
+    return $this->prepare($value);
   }
   
   /**
@@ -43,7 +43,7 @@ abstract class PreparedAdapter extends BaseAdapter {
    * @param mixed $value The value being bound
    * @return string query placeholder, default implementation is '?'
    */              
-  function platform_prepare($value) {
+  function prepare($value) {
       return '?';
   }
   

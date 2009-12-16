@@ -7,9 +7,10 @@ namespace Prosper;
 /**
  * PostgreSql Database Adapter
  */
-class PostgreSqlAdapter extends BaseAdapter {
+class PostgreSqlAdapter extends PreparedAdapter {
 	
 	private $inserted_cols;
+	private $counter = 0;
 	
 	/**
    * @see BaseAdapter::connect()
@@ -30,15 +31,30 @@ class PostgreSqlAdapter extends BaseAdapter {
 	}
 	
 	/**
-	 * @see BaseAdapter::platform_execute($sql, $mode) 
-	 */
+	 * @see PreparedAdapter::platform_execute($sql, $mode)
+	 */            	
 	function platform_execute($sql, $mode) {
-		if($mode == Query::INSERT_STMT) {
+    if($mode == Query::INSERT_STMT) {
 			$sql .= " RETURNING *";
 			$parse = explode('(', $sql);
 			$parse = explode(')', $parse[1]);
 			$this->inserted_cols = explode(", ", $parse[0]);
 		}
+		parent::platform_execute($sql, $mode);
+  }
+	
+	/**
+	 * @see PreparedAdapter::prepared_execute($sql, $mode)
+	 */   	
+	function prepared_execute($sql, $mode) {
+    pg_prepare($this->connection(), "", $sql);
+    return pg_execute($this->connection(), "", $this->bindings);
+  } 
+	
+	/**
+	 * @see Prepared::standard_execute($sql, $mode) 
+	 */
+	function standard_execute($sql, $mode) {
 		return pg_query($this->connection(), $sql);
 	}
 	
@@ -68,6 +84,13 @@ class PostgreSqlAdapter extends BaseAdapter {
 		}
 		return -1;
 	}
+	
+	/**
+	 * @see PreparedAdapter::prepare($value)
+	 */   	
+	function prepare($value) {
+    return "\$$counter";
+  }
 	
 	/**
 	 * @see BaseAdapter::free_result($set) 
