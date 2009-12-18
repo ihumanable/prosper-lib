@@ -7,7 +7,5 @@
 	require_once 'BaseAdapter.php';
 	//Prepared Adapter for prepared statement supporting adapters
   require_once 'PreparedAdapter.php';    
-  //Query is the engine that is prosper
-  require_once '/../Query.php';
    
 ?>
