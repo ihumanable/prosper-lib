@@ -58,10 +58,14 @@ prosper
 		todo\index.php
 		todo\utility.php
 [Open project files]
-0=..\..\..\projects\billsplitter\UI-Sandbox\_template_.html
+0=readme.md
+1=..\pantsoffblogoff\readme.md
 [Selected Project Files]
 Main=
-Selected=..\..\..\projects\billsplitter\UI-Sandbox\_template_.html
-[..\..\..\projects\billsplitter\UI-Sandbox\_template_.html]
+Selected=..\pantsoffblogoff\readme.md
+[readme.md]
 TopLine=1
-Caret=41,9
+Caret=1,1
+[..\pantsoffblogoff\readme.md]
+TopLine=1
+Caret=27,3

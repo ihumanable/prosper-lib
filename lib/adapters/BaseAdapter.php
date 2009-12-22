@@ -107,6 +107,27 @@ abstract class BaseAdapter {
   }
   
   /**
+   * Begins a transaction, if the adapter doesn't support transactions, this is a no-op
+   */
+  function begin() {
+  	
+  }
+  
+  /**
+   * Commits a transaction, if the adapter doesn't support transactions, this is a no-op
+   */
+  function commit() {
+  	
+  }
+  
+  /**
+   * Rolls back a transaction, if the adapter doesn't support transactions, this is a no-op
+   */
+  function rollback() {
+  	
+  }
+  
+  /**
    * Executes a sql statement, the base implementation drives the query results using
    * several derivitive functions
    * @see BaseAdapter::platform_execute($sql)
