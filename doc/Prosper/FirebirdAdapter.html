@@ -101,7 +101,9 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
 <pre>
 <a href="../Prosper/BaseAdapter.html">BaseAdapter</a>
    |
-   --FirebirdAdapter</pre>
+   --<a href="../Prosper/PreparedAdapter.html">PreparedAdapter</a>
+      |
+      --FirebirdAdapter</pre>
 <p>
 	<b><i>Located in File: <a href="_adapters---FirebirdAdapter.php.html">/adapters/FirebirdAdapter.php</a></i></b><br>
 </p>
@@ -133,153 +135,11 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
 <!-- ============ METHOD DETAIL =========== -->
 <strong>Summary:</strong><br />
 <div class="method-summary">
-    <div class="method-definition">
-            <span class="method-result">void</span>
-        <a href="#methodaffected_rows" title="details" class="method-name">affected_rows</a>
-        (<span class="var-type"></span>&nbsp;<span class="var-name">$set</span>)
-        </div>
-    <div class="method-definition">
-            <span class="method-result">void</span>
-        <a href="#methodconnect" title="details" class="method-name">connect</a>
-        ()
-        </div>
-    <div class="method-definition">
-            <span class="method-result">void</span>
-        <a href="#methoddisconnect" title="details" class="method-name">disconnect</a>
-        ()
-        </div>
-    <div class="method-definition">
-            <span class="method-result">void</span>
-        <a href="#methodfetch_assoc" title="details" class="method-name">fetch_assoc</a>
-        (<span class="var-type"></span>&nbsp;<span class="var-name">$set</span>)
-        </div>
-    <div class="method-definition">
-            <span class="method-result">void</span>
-        <a href="#methodfree_result" title="details" class="method-name">free_result</a>
-        (<span class="var-type"></span>&nbsp;<span class="var-name">$set</span>)
-        </div>
-    <div class="method-definition">
-            <span class="method-result">void</span>
-        <a href="#methodplatform_execute" title="details" class="method-name">platform_execute</a>
-        (<span class="var-type"></span>&nbsp;<span class="var-name">$sql</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$mode</span>)
-        </div>
 </div>
 <hr />
 <A NAME='method_detail'></A>
 
 
-<a name="methodaffected_rows" id="methodaffected_rows"><!-- --></a>
-<div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method affected_rows</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersFirebirdAdapter.php.html#a37">37</a></span>)
- </h4> 
-<h4><i>void</i> <strong>affected_rows(
-
-$set)</strong></h4>
-
-<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodaffected_rows">BaseAdapter::affected_rows()</a> Get the number of affected rows for a platform specific result object</p>
-	<!-- ========== Info from phpDoc block ========= -->
-		<h4>Parameters</h4>
-	<ul>
-			<li><strong> $set</strong>: </li>
-		</ul>
-		
-	<h4>Info</h4>
-	<ul>
-			<li><strong>see</strong> - affected_rows($set)</li>
-		</ul>
-</div>
-<a name="methodconnect" id="methodconnect"><!-- --></a>
-<div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method connect</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersFirebirdAdapter.php.html#a15">15</a></span>)
- </h4> 
-<h4><i>void</i> <strong>connect(
-)</strong></h4>
-
-<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodconnect">BaseAdapter::connect()</a> Create a connection to the database backend</p>
-	<!-- ========== Info from phpDoc block ========= -->
-		
-	<h4>Info</h4>
-	<ul>
-			<li><strong>see</strong> - connect()</li>
-		</ul>
-</div>
-<a name="methoddisconnect" id="methoddisconnect"><!-- --></a>
-<div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method disconnect</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersFirebirdAdapter.php.html#a23">23</a></span>)
- </h4> 
-<h4><i>void</i> <strong>disconnect(
-)</strong></h4>
-
-<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methoddisconnect">BaseAdapter::disconnect()</a> Destroy the connection to the database backend</p>
-	<!-- ========== Info from phpDoc block ========= -->
-		
-	<h4>Info</h4>
-	<ul>
-			<li><strong>see</strong> - disconnect()</li>
-		</ul>
-</div>
-<a name="methodfetch_assoc" id="methodfetch_assoc"><!-- --></a>
-<div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method fetch_assoc</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersFirebirdAdapter.php.html#a44">44</a></span>)
- </h4> 
-<h4><i>void</i> <strong>fetch_assoc(
-
-$set)</strong></h4>
-
-<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodfetch_assoc">BaseAdapter::fetch_assoc()</a> Retrieve an associative array from a platform specific result set</p>
-	<!-- ========== Info from phpDoc block ========= -->
-		<h4>Parameters</h4>
-	<ul>
-			<li><strong> $set</strong>: </li>
-		</ul>
-		
-	<h4>Info</h4>
-	<ul>
-			<li><strong>see</strong> - fetch_assoc($set)</li>
-		</ul>
-</div>
-<a name="methodfree_result" id="methodfree_result"><!-- --></a>
-<div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method free_result</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersFirebirdAdapter.php.html#a51">51</a></span>)
- </h4> 
-<h4><i>void</i> <strong>free_result(
-
-$set)</strong></h4>
-
-<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodfree_result">BaseAdapter::free_result()</a> Do optional memory cleanup, not necessary but will allow for long running scripts</p>
-	<!-- ========== Info from phpDoc block ========= -->
-		<h4>Parameters</h4>
-	<ul>
-			<li><strong> $set</strong>: </li>
-		</ul>
-		
-	<h4>Info</h4>
-	<ul>
-			<li><strong>see</strong> - free_result($set)</li>
-		</ul>
-</div>
-<a name="methodplatform_execute" id="methodplatform_execute"><!-- --></a>
-<div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method platform_execute</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersFirebirdAdapter.php.html#a30">30</a></span>)
- </h4> 
-<h4><i>void</i> <strong>platform_execute(
-
-$sql, 
-$mode)</strong></h4>
-
-<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodplatform_execute">BaseAdapter::platform_execute()</a> Platform specific execution wrapper</p>
-	<!-- ========== Info from phpDoc block ========= -->
-		<h4>Parameters</h4>
-	<ul>
-			<li><strong> $sql</strong>: </li>
-			<li><strong> $mode</strong>: </li>
-		</ul>
-		
-	<h4>Info</h4>
-	<ul>
-			<li><strong>see</strong> - platform_execute($sql, $mode)</li>
-		</ul>
-</div>
 <script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage2" ) );</script></div>
 <div class="tab-page" id="iVars">
 <h2 class="tab">Inherited Variables</h2>
@@ -289,6 +149,14 @@ $mode)</strong></h4>
 <h3>Inherited Class Variable Summary</h3>
 
 		<!-- =========== Summary =========== -->
+	<h4>Inherited From Class <a href="../Prosper/PreparedAdapter.html">PreparedAdapter</a></h4>
+		<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /><strong class="property"> <a href="../Prosper/PreparedAdapter.html#var$bindings">PreparedAdapter::$bindings</a></strong> - 
+	</h4> 
+		<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /><strong class="property"> <a href="../Prosper/PreparedAdapter.html#var$prepared">PreparedAdapter::$prepared</a></strong> - 
+	</h4> 
+			<!-- =========== Summary =========== -->
 	<h4>Inherited From Class <a href="../Prosper/BaseAdapter.html">BaseAdapter</a></h4>
 		<h4>
 <img src="../media/images/PublicProperty.gif" border="0" /><strong class="property"> <a href="../Prosper/BaseAdapter.html#var$connection">BaseAdapter::$connection</a></strong> - 
@@ -314,13 +182,56 @@ $mode)</strong></h4>
 <h3>Inherited Method Summary</h3>
 
 		<!-- =========== Summary =========== -->
+	<h4>Inherited From Class <a href="../Prosper/PreparedAdapter.html">PreparedAdapter</a></h4>
+				<h4>
+<img src="../media/images/Constructor.gif" border="0" /><strong class="method"> <a href="../Prosper/PreparedAdapter.html#method__construct">PreparedAdapter::__construct()</a></strong> - Initializes the prepared statement adapter and then passes things off to BaseAdapter
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/PreparedAdapter.html#methodcleanup">PreparedAdapter::cleanup()</a></strong> - Cleans up any prepared state
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/PreparedAdapter.html#methodescape">PreparedAdapter::escape()</a></strong> - Binds a value to a prepared statement and returns the query placeholder
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/PreparedAdapter.html#methodplatform_execute">PreparedAdapter::platform_execute()</a></strong> - Override the Base behavior and dispatch to the correct function based off
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/PreparedAdapter.html#methodprepare">PreparedAdapter::prepare()</a></strong> - If any special processing is needed for the platform then this function
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/PreparedAdapter.html#methodprepared_execute">PreparedAdapter::prepared_execute()</a></strong> - Prepare and execute a statement for the given sql
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/PreparedAdapter.html#methodstandard_execute">PreparedAdapter::standard_execute()</a></strong> - Execute ad-hoc SQL
+		</h4> 
+
+				<br />
+		<!-- =========== Summary =========== -->
 	<h4>Inherited From Class <a href="../Prosper/BaseAdapter.html">BaseAdapter</a></h4>
 				<h4>
 <img src="../media/images/Constructor.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#method__construct">BaseAdapter::__construct()</a></strong> - Creates a new adapter instance
 		</h4> 
 
 				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodaddslashes">BaseAdapter::addslashes()</a></strong> - Wrapper for the adapters add slashes function, defaults to using php's
+		</h4> 
+
+				<h4>
 <img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodaffected_rows">BaseAdapter::affected_rows()</a></strong> - Get the number of affected rows for a platform specific result object
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodbegin">BaseAdapter::begin()</a></strong> - Begins a transaction, if the adapter doesn't support transactions, this is a no-op
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodcommit">BaseAdapter::commit()</a></strong> - Commits a transaction, if the adapter doesn't support transactions, this is a no-op
 		</h4> 
 
 				<h4>
@@ -332,7 +243,15 @@ $mode)</strong></h4>
 		</h4> 
 
 				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodcross_type">BaseAdapter::cross_type()</a></strong> - Translates a platform specific type into a cross platform type
+		</h4> 
+
+				<h4>
 <img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methoddisconnect">BaseAdapter::disconnect()</a></strong> - Destroy the connection to the database backend
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodend">BaseAdapter::end()</a></strong> - Turns transactions off, this function should be called by BaseAdapter::commit() and BaseAdapter::rollback()
 		</h4> 
 
 				<h4>
@@ -360,7 +279,7 @@ $mode)</strong></h4>
 		</h4> 
 
 				<h4>
-<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodlimit">BaseAdapter::limit()</a></strong> - Since various databases support a wide variety of limit syntaxes the adapter  is responsible for writing the limit syntax.
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodlimit">BaseAdapter::limit()</a></strong> - Since various databases support a wide variety of limit syntaxes the  adapter is responsible for writing the limit syntax.
 		</h4> 
 
 				<h4>
@@ -376,7 +295,15 @@ $mode)</strong></h4>
 		</h4> 
 
 				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodplatform_type">BaseAdapter::platform_type()</a></strong> - Translates a cross platform type into the best possible platform type
+		</h4> 
+
+				<h4>
 <img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodquote">BaseAdapter::quote()</a></strong> - Quotes a database object, uses the backtick by default
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodrollback">BaseAdapter::rollback()</a></strong> - Rolls back a transaction, if the adapter doesn't support transactions, this is a no-op
 		</h4> 
 
 				<h4>
@@ -392,7 +319,7 @@ $mode)</strong></h4>
 		</h4> 
 
 				<h4>
-<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodunescape">BaseAdapter::unescape()</a></strong> - Unescapes a value out of the database, strips slashes
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodtype_array">BaseAdapter::type_array()</a></strong> - Translates a raw data representation to an array of components
 		</h4> 
 
 				<h4>
@@ -411,7 +338,7 @@ setupAllTabs();
 </script>
 	<div id="credit">
 		<hr />
-		Documentation generated on Fri, 04 Dec 2009 10:29:55 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Tue, 22 Dec 2009 10:48:16 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</div>
 </body>
 </html>

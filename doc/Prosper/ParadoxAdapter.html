@@ -170,7 +170,7 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
 		
 	<h4>Info</h4>
 	<ul>
-			<li><strong>see</strong> - connect()</li>
+			<li><strong>see</strong> - <a href="../Prosper/BaseAdapter.html#methodconnect">BaseAdapter::connect()</a></li>
 		</ul>
 </div>
 <a name="methoddisconnect" id="methoddisconnect"><!-- --></a>
@@ -185,7 +185,7 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
 		
 	<h4>Info</h4>
 	<ul>
-			<li><strong>see</strong> - disconnect()</li>
+			<li><strong>see</strong> - <a href="../Prosper/BaseAdapter.html#methoddisconnect">BaseAdapter::disconnect()</a></li>
 		</ul>
 </div>
 <a name="methodfetch_assoc" id="methodfetch_assoc"><!-- --></a>
@@ -205,7 +205,7 @@ $set)</strong></h4>
 		
 	<h4>Info</h4>
 	<ul>
-			<li><strong>see</strong> - fetch_assoc($set)</li>
+			<li><strong>see</strong> - BaseAdapter::fetch_assoc($set)</li>
 		</ul>
 </div>
 <a name="methodplatform_execute" id="methodplatform_execute"><!-- --></a>
@@ -229,7 +229,7 @@ $mode)</strong></h4>
 		
 	<h4>Info</h4>
 	<ul>
-			<li><strong>see</strong> - platform_execute($sql, $mode)</li>
+			<li><strong>see</strong> - BaseAdapter::platform_execute($sql, $mode)</li>
 			<li><strong>see</strong> - native($sql)</li>
 		</ul>
 </div>
@@ -273,7 +273,19 @@ $mode)</strong></h4>
 		</h4> 
 
 				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodaddslashes">BaseAdapter::addslashes()</a></strong> - Wrapper for the adapters add slashes function, defaults to using php's
+		</h4> 
+
+				<h4>
 <img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodaffected_rows">BaseAdapter::affected_rows()</a></strong> - Get the number of affected rows for a platform specific result object
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodbegin">BaseAdapter::begin()</a></strong> - Begins a transaction, if the adapter doesn't support transactions, this is a no-op
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodcommit">BaseAdapter::commit()</a></strong> - Commits a transaction, if the adapter doesn't support transactions, this is a no-op
 		</h4> 
 
 				<h4>
@@ -285,7 +297,15 @@ $mode)</strong></h4>
 		</h4> 
 
 				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodcross_type">BaseAdapter::cross_type()</a></strong> - Translates a platform specific type into a cross platform type
+		</h4> 
+
+				<h4>
 <img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methoddisconnect">BaseAdapter::disconnect()</a></strong> - Destroy the connection to the database backend
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodend">BaseAdapter::end()</a></strong> - Turns transactions off, this function should be called by BaseAdapter::commit() and BaseAdapter::rollback()
 		</h4> 
 
 				<h4>
@@ -313,7 +333,7 @@ $mode)</strong></h4>
 		</h4> 
 
 				<h4>
-<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodlimit">BaseAdapter::limit()</a></strong> - Since various databases support a wide variety of limit syntaxes the adapter  is responsible for writing the limit syntax.
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodlimit">BaseAdapter::limit()</a></strong> - Since various databases support a wide variety of limit syntaxes the  adapter is responsible for writing the limit syntax.
 		</h4> 
 
 				<h4>
@@ -329,7 +349,15 @@ $mode)</strong></h4>
 		</h4> 
 
 				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodplatform_type">BaseAdapter::platform_type()</a></strong> - Translates a cross platform type into the best possible platform type
+		</h4> 
+
+				<h4>
 <img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodquote">BaseAdapter::quote()</a></strong> - Quotes a database object, uses the backtick by default
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodrollback">BaseAdapter::rollback()</a></strong> - Rolls back a transaction, if the adapter doesn't support transactions, this is a no-op
 		</h4> 
 
 				<h4>
@@ -345,7 +373,7 @@ $mode)</strong></h4>
 		</h4> 
 
 				<h4>
-<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodunescape">BaseAdapter::unescape()</a></strong> - Unescapes a value out of the database, strips slashes
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodtype_array">BaseAdapter::type_array()</a></strong> - Translates a raw data representation to an array of components
 		</h4> 
 
 				<h4>
@@ -364,7 +392,7 @@ setupAllTabs();
 </script>
 	<div id="credit">
 		<hr />
-		Documentation generated on Fri, 04 Dec 2009 10:29:58 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Tue, 22 Dec 2009 10:48:21 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</div>
 </body>
 </html>

@@ -22,48 +22,48 @@
 <li><div class="src-line"><a name="a10"></a><font color="blue">class&nbsp;</font><a href="../Prosper/InformixAdapter.html">InformixAdapter</a>&nbsp;<font color="blue">extends&nbsp;</font><a href="../Prosper/BaseAdapter.html">BaseAdapter</a>&nbsp;<strong>{</strong></div></li>
 <li><div class="src-line"><a name="a11"></a>&nbsp;&nbsp;</div></li>
 <li><div class="src-line"><a name="a12"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
-<li><div class="src-line"><a name="a13"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter#connect()</font></div></li>
+<li><div class="src-line"><a name="a13"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::connect()</font></div></li>
 <li><div class="src-line"><a name="a14"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
-<li><div class="src-line"><a name="a15"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/InformixAdapter.html#methodconnect">connect</a><strong>(</strong><strong>)&nbsp;</strong><strong>{&nbsp;&nbsp;&nbsp;&nbsp;</strong></div></li>
+<li><div class="src-line"><a name="a15"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/InformixAdapter.html#methodconnect">connect</a><strong>(</strong><strong>)&nbsp;</strong><strong>{&nbsp;&nbsp;</strong></div></li>
 <li><div class="src-line"><a name="a16"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$database&nbsp;</strong>=&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$schema">schema</a>&nbsp;.&nbsp;<font color="#66cccc">&quot;@&quot;&nbsp;</font>.&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$hostname">hostname</a><strong>;</strong></div></li>
-<li><div class="src-line"><a name="a17"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$connection">connection</a>&nbsp;=&nbsp;ifx_connect<strong>(</strong><strong>$database</strong><strong>,&nbsp;</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$username">username</a><strong>,&nbsp;</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$password">password</a><strong>)</strong><strong>;</strong></div></li>
-<li><div class="src-line"><a name="a18"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
-<li><div class="src-line"><a name="a19"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
-<li><div class="src-line"><a name="a20"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
-<li><div class="src-line"><a name="a21"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter#disconnect()</font></div></li>
-<li><div class="src-line"><a name="a22"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
-<li><div class="src-line"><a name="a23"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/InformixAdapter.html#methoddisconnect">disconnect</a><strong>(</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
-<li><div class="src-line"><a name="a24"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ifx_close<strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>))</strong><strong>;</strong></div></li>
-<li><div class="src-line"><a name="a25"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
-<li><div class="src-line"><a name="a26"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
-<li><div class="src-line"><a name="a27"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
-<li><div class="src-line"><a name="a28"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter#platform_execute($sql,&nbsp;$mode)</font></div></li>
-<li><div class="src-line"><a name="a29"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
-<li><div class="src-line"><a name="a30"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/InformixAdapter.html#methodplatform_execute">platform_execute</a><strong>(</strong><strong>$sql</strong><strong>,&nbsp;</strong><strong>$mode</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
-<li><div class="src-line"><a name="a31"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font>ifx_query<strong>(</strong><strong>$sql</strong><strong>,&nbsp;</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>))</strong><strong>;</strong></div></li>
-<li><div class="src-line"><a name="a32"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
-<li><div class="src-line"><a name="a33"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
-<li><div class="src-line"><a name="a34"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
-<li><div class="src-line"><a name="a35"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter#affected_rows($set)</font></div></li>
-<li><div class="src-line"><a name="a36"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
-<li><div class="src-line"><a name="a37"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/InformixAdapter.html#methodaffected_rows">affected_rows</a><strong>(</strong><strong>$set</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
-<li><div class="src-line"><a name="a38"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font>ifx_affected_rows<strong>(</strong><strong>$set</strong><strong>)</strong><strong>;</strong></div></li>
-<li><div class="src-line"><a name="a39"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
-<li><div class="src-line"><a name="a40"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
-<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
-<li><div class="src-line"><a name="a42"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter#fetch_assoc($set)</font></div></li>
-<li><div class="src-line"><a name="a43"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
-<li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/InformixAdapter.html#methodfetch_assoc">fetch_assoc</a><strong>(</strong><strong>$set</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
-<li><div class="src-line"><a name="a45"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font>ifx_fetch_Row<strong>(</strong><strong>$set</strong><strong>,&nbsp;</strong><font color="#66cccc">&quot;NEXT&quot;</font><strong>)</strong><strong>;</strong></div></li>
-<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
-<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
-<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
-<li><div class="src-line"><a name="a49"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter#free_result($set)</font></div></li>
-<li><div class="src-line"><a name="a50"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
-<li><div class="src-line"><a name="a51"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/InformixAdapter.html#methodfree_result">free_result</a><strong>(</strong><strong>$set</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
-<li><div class="src-line"><a name="a52"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ifx_free_result<strong>(</strong><strong>$set</strong><strong>)</strong><strong>;</strong></div></li>
-<li><div class="src-line"><a name="a53"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
-<li><div class="src-line"><a name="a54"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a17"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$connection">connection</a>&nbsp;=&nbsp;ifx_connect<strong>(</strong><strong>$database</strong><strong>,&nbsp;</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$username">username</a><strong>,&nbsp;</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$password">password</a><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a18"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a19"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a20"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a21"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::disconnect()</font></div></li>
+<li><div class="src-line"><a name="a22"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a23"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/InformixAdapter.html#methoddisconnect">disconnect</a><strong>(</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a24"></a>&nbsp;&nbsp;&nbsp;&nbsp;ifx_close<strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a25"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a26"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a27"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a28"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::platform_execute($sql,&nbsp;$mode)</font></div></li>
+<li><div class="src-line"><a name="a29"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a30"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/InformixAdapter.html#methodplatform_execute">platform_execute</a><strong>(</strong><strong>$sql</strong><strong>,&nbsp;</strong><strong>$mode</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a31"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font>ifx_query<strong>(</strong><strong>$sql</strong><strong>,&nbsp;</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a32"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a33"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a35"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::affected_rows($set)</font></div></li>
+<li><div class="src-line"><a name="a36"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/InformixAdapter.html#methodaffected_rows">affected_rows</a><strong>(</strong><strong>$set</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a38"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font>ifx_affected_rows<strong>(</strong><strong>$set</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a42"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::fetch_assoc($set)</font></div></li>
+<li><div class="src-line"><a name="a43"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/InformixAdapter.html#methodfetch_assoc">fetch_assoc</a><strong>(</strong><strong>$set</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font>ifx_fetch_Row<strong>(</strong><strong>$set</strong><strong>,&nbsp;</strong><font color="#66cccc">&quot;NEXT&quot;</font><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a49"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::free_result($set)</font></div></li>
+<li><div class="src-line"><a name="a50"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a51"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/InformixAdapter.html#methodfree_result">free_result</a><strong>(</strong><strong>$set</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a52"></a>&nbsp;&nbsp;&nbsp;&nbsp;ifx_free_result<strong>(</strong><strong>$set</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a53"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a54"></a>&nbsp;&nbsp;</div></li>
 <li><div class="src-line"><a name="a55"></a><strong>}&nbsp;</strong></div></li>
 <li><div class="src-line"><a name="a56"></a>&nbsp;</div></li>
 <li><div class="src-line"><a name="a57"></a><strong>?&gt;</strong></div></li>
@@ -71,7 +71,7 @@
 </div>
 	<div id="credit">
 		<hr />
-		Documentation generated on Fri, 04 Dec 2009 10:29:56 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Tue, 22 Dec 2009 10:48:17 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</div>
 </body>
 </html>

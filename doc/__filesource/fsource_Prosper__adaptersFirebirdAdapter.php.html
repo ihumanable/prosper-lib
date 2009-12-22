@@ -19,58 +19,103 @@
 <li><div class="src-line"><a name="a7"></a><font color="#009999">/**</font></div></li>
 <li><div class="src-line"><a name="a8"></a><font color="#009999">&nbsp;*&nbsp;Firebird&nbsp;(interbase)&nbsp;Database&nbsp;Adapter</font></div></li>
 <li><div class="src-line"><a name="a9"></a><font color="#009999">&nbsp;*/</font></div></li>
-<li><div class="src-line"><a name="a10"></a><font color="blue">class&nbsp;</font><a href="../Prosper/FirebirdAdapter.html">FirebirdAdapter</a>&nbsp;<font color="blue">extends&nbsp;</font><a href="../Prosper/BaseAdapter.html">BaseAdapter</a>&nbsp;<strong>{</strong></div></li>
-<li><div class="src-line"><a name="a11"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
-<li><div class="src-line"><a name="a12"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
-<li><div class="src-line"><a name="a13"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter#connect()</font></div></li>
-<li><div class="src-line"><a name="a14"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
-<li><div class="src-line"><a name="a15"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/FirebirdAdapter.html#methodconnect">connect</a><strong>(</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
-<li><div class="src-line"><a name="a16"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$database&nbsp;</strong>=&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$hostname">hostname</a>&nbsp;.&nbsp;<font color="#66cccc">&quot;:&quot;&nbsp;</font>.&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$schema">schema</a><strong>;</strong></div></li>
-<li><div class="src-line"><a name="a17"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$connection">connection</a>&nbsp;=&nbsp;ibase_connect<strong>(</strong><strong>$database</strong><strong>,&nbsp;</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$username">username</a><strong>,&nbsp;</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$password">password</a><strong>)</strong><strong>;</strong></div></li>
-<li><div class="src-line"><a name="a18"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
-<li><div class="src-line"><a name="a19"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
-<li><div class="src-line"><a name="a20"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
-<li><div class="src-line"><a name="a21"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter#disconnect()</font></div></li>
-<li><div class="src-line"><a name="a22"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
-<li><div class="src-line"><a name="a23"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/FirebirdAdapter.html#methoddisconnect">disconnect</a><strong>(</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
-<li><div class="src-line"><a name="a24"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ibase_close<strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>))</strong><strong>;</strong></div></li>
-<li><div class="src-line"><a name="a25"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
-<li><div class="src-line"><a name="a26"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
-<li><div class="src-line"><a name="a27"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
-<li><div class="src-line"><a name="a28"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter#platform_execute($sql,&nbsp;$mode)</font></div></li>
-<li><div class="src-line"><a name="a29"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
-<li><div class="src-line"><a name="a30"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/FirebirdAdapter.html#methodplatform_execute">platform_execute</a><strong>(</strong><strong>$sql</strong><strong>,&nbsp;</strong><strong>$mode</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
-<li><div class="src-line"><a name="a31"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font>ibase_query<strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>)</strong><strong>,&nbsp;</strong><strong>$sql</strong><strong>)</strong><strong>;</strong></div></li>
-<li><div class="src-line"><a name="a32"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
-<li><div class="src-line"><a name="a33"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
-<li><div class="src-line"><a name="a34"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
-<li><div class="src-line"><a name="a35"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter#affected_rows($set)</font></div></li>
-<li><div class="src-line"><a name="a36"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
-<li><div class="src-line"><a name="a37"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/FirebirdAdapter.html#methodaffected_rows">affected_rows</a><strong>(</strong><strong>$set</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
-<li><div class="src-line"><a name="a38"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font>ibase_affected_rows<strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a10"></a><font color="blue">class&nbsp;</font><a href="../Prosper/FirebirdAdapter.html">FirebirdAdapter</a>&nbsp;<font color="blue">extends&nbsp;</font><a href="../Prosper/PreparedAdapter.html">PreparedAdapter</a>&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a11"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a12"></a>&nbsp;&nbsp;<font color="blue">private&nbsp;</font><strong>$transaction&nbsp;</strong>=&nbsp;null</div></li>
+<li><div class="src-line"><a name="a13"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a14"></a>&nbsp;&nbsp;/**</div></li>
+<li><div class="src-line"><a name="a7"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a8"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::connect()</font></div></li>
+<li><div class="src-line"><a name="a16"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a17"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font>connect<strong>(</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a18"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$database&nbsp;</strong>=&nbsp;<strong>$this</strong><strong>-&gt;</strong>hostname&nbsp;.&nbsp;<font color="#66cccc">&quot;:&quot;&nbsp;</font>.&nbsp;<strong>$this</strong><strong>-&gt;</strong>schema<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a19"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a>&nbsp;=&nbsp;ibase_connect<strong>(</strong><strong>$database</strong><strong>,&nbsp;</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$username">username</a><strong>,&nbsp;</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$password">password</a><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a20"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a21"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a22"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a23"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::disconnect()</font></div></li>
+<li><div class="src-line"><a name="a24"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a25"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/BaseAdapter.html#methoddisconnect">disconnect</a><strong>(</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a26"></a>&nbsp;&nbsp;&nbsp;&nbsp;ibase_close<strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a27"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a28"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a29"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a30"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;Gets&nbsp;the&nbsp;appropriate&nbsp;link&nbsp;for&nbsp;prepare&nbsp;and&nbsp;query</font></div></li>
+<li><div class="src-line"><a name="a31"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@return&nbsp;</font></strong><em>Transaction&nbsp;</em><font color="#009999">if&nbsp;there&nbsp;is&nbsp;one,&nbsp;if&nbsp;not&nbsp;the&nbsp;result&nbsp;of&nbsp;connection</font></div></li>
+<li><div class="src-line"><a name="a32"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::connection()</font></div></li>
+<li><div class="src-line"><a name="a33"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;&nbsp;<font color="blue">private&nbsp;</font><font color="blue">function&nbsp;</font><a href="../Prosper/_adapters---FirebirdAdapter.php.html#functionlink">link</a><strong>(</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if</font><strong>(</strong><strong>$this</strong><strong>-&gt;</strong>transaction<strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a36"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><strong>$this</strong><strong>-&gt;</strong>transaction<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a38"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>)</strong><strong>;</strong></div></li>
 <li><div class="src-line"><a name="a39"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
-<li><div class="src-line"><a name="a40"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
-<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
-<li><div class="src-line"><a name="a42"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter#fetch_assoc($set)</font></div></li>
-<li><div class="src-line"><a name="a43"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
-<li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/FirebirdAdapter.html#methodfetch_assoc">fetch_assoc</a><strong>(</strong><strong>$set</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
-<li><div class="src-line"><a name="a45"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font>ibase_fetch_assoc<strong>(</strong><strong>$set</strong><strong>)</strong><strong>;</strong></div></li>
-<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
-<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
-<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
-<li><div class="src-line"><a name="a49"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter#free_result($set)</font></div></li>
-<li><div class="src-line"><a name="a50"></a><font color="#009999">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></div></li>
-<li><div class="src-line"><a name="a51"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/FirebirdAdapter.html#methodfree_result">free_result</a><strong>(</strong><strong>$set</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
-<li><div class="src-line"><a name="a52"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ibase_free_result<strong>(</strong><strong>$set</strong><strong>)</strong><strong>;&nbsp;&nbsp;&nbsp;&nbsp;</strong></div></li>
-<li><div class="src-line"><a name="a53"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
-<li><div class="src-line"><a name="a54"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
-<li><div class="src-line"><a name="a55"></a><strong>}</strong></div></li>
-<li><div class="src-line"><a name="a56"></a><strong>?&gt;</strong></div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a42"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a43"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::begin()</font></div></li>
+<li><div class="src-line"><a name="a44"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/BaseAdapter.html#methodbegin">begin</a><strong>(</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$this</strong><strong>-&gt;</strong>transaction&nbsp;=&nbsp;ibase_trans<strong>(&nbsp;</strong>IBASE_DEFAULT<strong>,&nbsp;</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>)&nbsp;)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a50"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::commit()</font></div></li>
+<li><div class="src-line"><a name="a51"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a52"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/BaseAdapter.html#methodcommit">commit</a><strong>(</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a53"></a>&nbsp;&nbsp;&nbsp;&nbsp;ibase_commit<strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/_adapters---FirebirdAdapter.php.html#functionlink">link</a><strong>(</strong><strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a54"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a55"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a56"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a57"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::rollback()</font></div></li>
+<li><div class="src-line"><a name="a58"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a59"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/BaseAdapter.html#methodrollback">rollback</a><strong>(</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;&nbsp;&nbsp;&nbsp;ibase_rollback<strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/_adapters---FirebirdAdapter.php.html#functionlink">link</a><strong>(</strong><strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a64"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;PreparedAdapter::prepared_execute($sql,&nbsp;$mode)</font></div></li>
+<li><div class="src-line"><a name="a65"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a66"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/PreparedAdapter.html#methodprepared_execute">prepared_execute</a><strong>(</strong><strong>$sql</strong><strong>,&nbsp;</strong><strong>$mode</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a67"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/array_unshift">array_unshift</a><strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/PreparedAdapter.html#var$bindings">bindings</a><strong>,&nbsp;</strong>ibase_prepare<strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/_adapters---FirebirdAdapter.php.html#functionlink">link</a><strong>(</strong><strong>)</strong><strong>,&nbsp;</strong><strong>$sql</strong><strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><a href="http://www.php.net/call_user_func_array">call_user_func_array</a><strong>(</strong><font color="#66cccc">'ibase_execute'</font><strong>,&nbsp;</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/PreparedAdapter.html#var$bindings">bindings</a><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a69"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a70"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a71"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a72"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;PreparedAdapter::standard_execute($sql,&nbsp;$mode)</font></div></li>
+<li><div class="src-line"><a name="a73"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a74"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/PreparedAdapter.html#methodstandard_execute">standard_execute</a><strong>(</strong><strong>$sql</strong><strong>,&nbsp;</strong><strong>$mode</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a75"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font>ibase_query<strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/_adapters---FirebirdAdapter.php.html#functionlink">link</a><strong>(</strong><strong>)</strong><strong>,&nbsp;</strong><strong>$sql</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a76"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a77"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a78"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a79"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::affected_rows($set)</font></div></li>
+<li><div class="src-line"><a name="a80"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a81"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/BaseAdapter.html#methodaffected_rows">affected_rows</a><strong>(</strong><strong>$set</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a82"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font>ibase_affected_rows<strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a83"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a84"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a85"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a86"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::fetch_assoc($set)</font></div></li>
+<li><div class="src-line"><a name="a87"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a88"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/BaseAdapter.html#methodfetch_assoc">fetch_assoc</a><strong>(</strong><strong>$set</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a89"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font>ibase_fetch_assoc<strong>(</strong><strong>$set</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a90"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a91"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a92"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a93"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::free_result($set)</font></div></li>
+<li><div class="src-line"><a name="a94"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a95"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/BaseAdapter.html#methodfree_result">free_result</a><strong>(</strong><strong>$set</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a96"></a>&nbsp;&nbsp;&nbsp;&nbsp;ibase_free_result<strong>(</strong><strong>$set</strong><strong>)</strong><strong>;&nbsp;&nbsp;</strong></div></li>
+<li><div class="src-line"><a name="a97"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a98"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a99"></a><strong>}</strong></div></li>
+<li><div class="src-line"><a name="a100"></a><strong>?&gt;</strong></div></li>
 </ol></div>
 </div>
 	<div id="credit">
 		<hr />
-		Documentation generated on Fri, 04 Dec 2009 10:29:55 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Tue, 22 Dec 2009 10:48:16 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</div>
 </body>
 </html>

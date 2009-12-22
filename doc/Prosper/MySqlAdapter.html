@@ -101,7 +101,9 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
 <pre>
 <a href="../Prosper/BaseAdapter.html">BaseAdapter</a>
    |
-   --MySqlAdapter</pre>
+   --<a href="../Prosper/PreparedAdapter.html">PreparedAdapter</a>
+      |
+      --MySqlAdapter</pre>
 <p>
 	<b><i>Located in File: <a href="_adapters---MySqlAdapter.php.html">/adapters/MySqlAdapter.php</a></i></b><br>
 </p>
@@ -135,8 +137,28 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
 <div class="method-summary">
     <div class="method-definition">
             <span class="method-result">void</span>
+        <a href="#methodaddslashes" title="details" class="method-name">addslashes</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">$str</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
         <a href="#methodaffected_rows" title="details" class="method-name">affected_rows</a>
         (<span class="var-type"></span>&nbsp;<span class="var-name">$set</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
+        <a href="#methodbegin" title="details" class="method-name">begin</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
+        <a href="#methodcleanup" title="details" class="method-name">cleanup</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
+        <a href="#methodcommit" title="details" class="method-name">commit</a>
+        ()
         </div>
     <div class="method-definition">
             <span class="method-result">void</span>
@@ -145,7 +167,22 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
         </div>
     <div class="method-definition">
             <span class="method-result">void</span>
+        <a href="#methodcross_type" title="details" class="method-name">cross_type</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">$platform</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
         <a href="#methoddisconnect" title="details" class="method-name">disconnect</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
+        <a href="#methodend" title="details" class="method-name">end</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
+        <a href="#methodfalse_value" title="details" class="method-name">false_value</a>
         ()
         </div>
     <div class="method-definition">
@@ -165,17 +202,67 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
         </div>
     <div class="method-definition">
             <span class="method-result">void</span>
-        <a href="#methodplatform_execute" title="details" class="method-name">platform_execute</a>
+        <a href="#methodplatform_type" title="details" class="method-name">platform_type</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">$cross</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
+        <a href="#methodprepare" title="details" class="method-name">prepare</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">$value</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
+        <a href="#methodprepared_execute" title="details" class="method-name">prepared_execute</a>
         (<span class="var-type"></span>&nbsp;<span class="var-name">$sql</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$mode</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
+        <a href="#methodrollback" title="details" class="method-name">rollback</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
+        <a href="#methodstandard_execute" title="details" class="method-name">standard_execute</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">$sql</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$mode</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
+        <a href="#methodtables" title="details" class="method-name">tables</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">$filter</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
+        <a href="#methodtrue_value" title="details" class="method-name">true_value</a>
+        ()
         </div>
 </div>
 <hr />
 <A NAME='method_detail'></A>
 
 
+<a name="methodaddslashes" id="methodaddslashes"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method addslashes</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a152">152</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>addslashes(
+
+$str)</strong></h4>
+
+<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodaddslashes">BaseAdapter::addslashes()</a> Wrapper for the adapters add slashes function, defaults to using php's</p>
+	<!-- ========== Info from phpDoc block ========= -->
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong> $str</strong>: </li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - BaseAdapter::addslashes($str)</li>
+		</ul>
+</div>
 <a name="methodaffected_rows" id="methodaffected_rows"><!-- --></a>
 <div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method affected_rows</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a36">36</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method affected_rows</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a82">82</a></span>)
  </h4> 
 <h4><i>void</i> <strong>affected_rows(
 
@@ -190,12 +277,58 @@ $set)</strong></h4>
 		
 	<h4>Info</h4>
 	<ul>
-			<li><strong>see</strong> - affected_rows($set)</li>
+			<li><strong>see</strong> - BaseAdapter::affected_rows($set)</li>
+		</ul>
+</div>
+<a name="methodbegin" id="methodbegin"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method begin</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a31">31</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>begin(
+)</strong></h4>
+
+<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodbegin">BaseAdapter::begin()</a> Begins a transaction, if the adapter doesn't support transactions, this is a no-op</p>
+	<!-- ========== Info from phpDoc block ========= -->
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - <a href="../Prosper/BaseAdapter.html#methodbegin">BaseAdapter::begin()</a></li>
+		</ul>
+</div>
+<a name="methodcleanup" id="methodcleanup"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method cleanup</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a130">130</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>cleanup(
+)</strong></h4>
+
+<p><strong>Overrides :</strong> <a href="../Prosper/PreparedAdapter.html#methodcleanup">PreparedAdapter::cleanup()</a> Cleans up any prepared state</p>
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Clean up needs to clear the type string, this isn't performed by default</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - <a href="../Prosper/PreparedAdapter.html#methodcleanup">PreparedAdapter::cleanup()</a></li>
+		</ul>
+</div>
+<a name="methodcommit" id="methodcommit"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method commit</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a38">38</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>commit(
+)</strong></h4>
+
+<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodcommit">BaseAdapter::commit()</a> Commits a transaction, if the adapter doesn't support transactions, this is a no-op</p>
+	<!-- ========== Info from phpDoc block ========= -->
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - <a href="../Prosper/BaseAdapter.html#methodcommit">BaseAdapter::commit()</a></li>
 		</ul>
 </div>
 <a name="methodconnect" id="methodconnect"><!-- --></a>
-<div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method connect</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a15">15</a></span>)
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method connect</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a17">17</a></span>)
  </h4> 
 <h4><i>void</i> <strong>connect(
 )</strong></h4>
@@ -205,12 +338,32 @@ $set)</strong></h4>
 		
 	<h4>Info</h4>
 	<ul>
-			<li><strong>see</strong> - connect()</li>
+			<li><strong>see</strong> - <a href="../Prosper/BaseAdapter.html#methodconnect">BaseAdapter::connect()</a></li>
+		</ul>
+</div>
+<a name="methodcross_type" id="methodcross_type"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method cross_type</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a205">205</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>cross_type(
+
+$platform)</strong></h4>
+
+<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodcross_type">BaseAdapter::cross_type()</a> Translates a platform specific type into a cross platform type</p>
+	<!-- ========== Info from phpDoc block ========= -->
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong> $platform</strong>: </li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - BaseAdapter::cross_type($platform)</li>
 		</ul>
 </div>
 <a name="methoddisconnect" id="methoddisconnect"><!-- --></a>
 <div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method disconnect</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a22">22</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method disconnect</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a24">24</a></span>)
  </h4> 
 <h4><i>void</i> <strong>disconnect(
 )</strong></h4>
@@ -220,12 +373,43 @@ $set)</strong></h4>
 		
 	<h4>Info</h4>
 	<ul>
-			<li><strong>see</strong> - disconnect()</li>
+			<li><strong>see</strong> - <a href="../Prosper/BaseAdapter.html#methoddisconnect">BaseAdapter::disconnect()</a></li>
+		</ul>
+</div>
+<a name="methodend" id="methodend"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method end</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a54">54</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>end(
+)</strong></h4>
+
+<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodend">BaseAdapter::end()</a> Turns transactions off, this function should be called by BaseAdapter::commit() and BaseAdapter::rollback()</p>
+	<!-- ========== Info from phpDoc block ========= -->
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - <a href="../Prosper/BaseAdapter.html#methodend">BaseAdapter::end()</a></li>
+			<li><strong>access</strong> - protected</li>
+		</ul>
+</div>
+<a name="methodfalse_value" id="methodfalse_value"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method false_value</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a145">145</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>false_value(
+)</strong></h4>
+
+<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodfalse_value">BaseAdapter::false_value()</a> Platform specific false value</p>
+	<!-- ========== Info from phpDoc block ========= -->
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - <a href="../Prosper/BaseAdapter.html#methodfalse_value">BaseAdapter::false_value()</a></li>
 		</ul>
 </div>
 <a name="methodfetch_assoc" id="methodfetch_assoc"><!-- --></a>
 <div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method fetch_assoc</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a50">50</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method fetch_assoc</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a96">96</a></span>)
  </h4> 
 <h4><i>void</i> <strong>fetch_assoc(
 
@@ -240,12 +424,12 @@ $set)</strong></h4>
 		
 	<h4>Info</h4>
 	<ul>
-			<li><strong>see</strong> - fetch_assoc($set)</li>
+			<li><strong>see</strong> - BaseAdapter::fetch_assoc($set)</li>
 		</ul>
 </div>
 <a name="methodfree_result" id="methodfree_result"><!-- --></a>
 <div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method free_result</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a57">57</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method free_result</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a120">120</a></span>)
  </h4> 
 <h4><i>void</i> <strong>free_result(
 
@@ -260,12 +444,12 @@ $set)</strong></h4>
 		
 	<h4>Info</h4>
 	<ul>
-			<li><strong>see</strong> - free_result($set)</li>
+			<li><strong>see</strong> - BaseAdapter::free_result($set)</li>
 		</ul>
 </div>
 <a name="methodinsert_id" id="methodinsert_id"><!-- --></a>
 <div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method insert_id</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a43">43</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method insert_id</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a89">89</a></span>)
  </h4> 
 <h4><i>void</i> <strong>insert_id(
 
@@ -280,19 +464,59 @@ $set)</strong></h4>
 		
 	<h4>Info</h4>
 	<ul>
-			<li><strong>see</strong> - insert_id($set)</li>
+			<li><strong>see</strong> - BaseAdapter::insert_id($set)</li>
 		</ul>
 </div>
-<a name="methodplatform_execute" id="methodplatform_execute"><!-- --></a>
+<a name="methodplatform_type" id="methodplatform_type"><!-- --></a>
 <div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method platform_execute</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a29">29</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method platform_type</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a212">212</a></span>)
  </h4> 
-<h4><i>void</i> <strong>platform_execute(
+<h4><i>void</i> <strong>platform_type(
+
+$cross)</strong></h4>
+
+<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodplatform_type">BaseAdapter::platform_type()</a> Translates a cross platform type into the best possible platform type</p>
+	<!-- ========== Info from phpDoc block ========= -->
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong> $cross</strong>: </li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - BaseAdapter::platform_type($cross)</li>
+		</ul>
+</div>
+<a name="methodprepare" id="methodprepare"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method prepare</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a159">159</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>prepare(
+
+$value)</strong></h4>
+
+<p><strong>Overrides :</strong> <a href="../Prosper/PreparedAdapter.html#methodprepare">PreparedAdapter::prepare()</a> If any special processing is needed for the platform then this function</p>
+	<!-- ========== Info from phpDoc block ========= -->
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong> $value</strong>: </li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - PreparedAdapter::prepare($value)</li>
+		</ul>
+</div>
+<a name="methodprepared_execute" id="methodprepared_execute"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method prepared_execute</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a61">61</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>prepared_execute(
 
 $sql, 
 $mode)</strong></h4>
 
-<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodplatform_execute">BaseAdapter::platform_execute()</a> Platform specific execution wrapper</p>
+<p><strong>Overrides :</strong> <a href="../Prosper/PreparedAdapter.html#methodprepared_execute">PreparedAdapter::prepared_execute()</a> Prepare and execute a statement for the given sql</p>
 	<!-- ========== Info from phpDoc block ========= -->
 		<h4>Parameters</h4>
 	<ul>
@@ -302,7 +526,79 @@ $mode)</strong></h4>
 		
 	<h4>Info</h4>
 	<ul>
-			<li><strong>see</strong> - platform_execute($sql, $mode)</li>
+			<li><strong>see</strong> - PreparedAdapter::prepared_execute($sql, $mode)</li>
+		</ul>
+</div>
+<a name="methodrollback" id="methodrollback"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method rollback</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a46">46</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>rollback(
+)</strong></h4>
+
+<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodrollback">BaseAdapter::rollback()</a> Rolls back a transaction, if the adapter doesn't support transactions, this is a no-op</p>
+	<!-- ========== Info from phpDoc block ========= -->
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - <a href="../Prosper/BaseAdapter.html#methodrollback">BaseAdapter::rollback()</a></li>
+		</ul>
+</div>
+<a name="methodstandard_execute" id="methodstandard_execute"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method standard_execute</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a75">75</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>standard_execute(
+
+$sql, 
+$mode)</strong></h4>
+
+<p><strong>Overrides :</strong> <a href="../Prosper/PreparedAdapter.html#methodstandard_execute">PreparedAdapter::standard_execute()</a> Execute ad-hoc SQL</p>
+	<!-- ========== Info from phpDoc block ========= -->
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong> $sql</strong>: </li>
+			<li><strong> $mode</strong>: </li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - PreparedAdapter::standard_execute($sql, $mode)</li>
+		</ul>
+</div>
+<a name="methodtables" id="methodtables"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method tables</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a176">176</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>tables(
+
+$filter)</strong></h4>
+
+<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodtables">BaseAdapter::tables()</a> Retrieve table information from the current schema</p>
+	<!-- ========== Info from phpDoc block ========= -->
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong> $filter</strong>: </li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - BaseAdapter::tables($filter)</li>
+		</ul>
+</div>
+<a name="methodtrue_value" id="methodtrue_value"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method true_value</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a138">138</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>true_value(
+)</strong></h4>
+
+<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodtrue_value">BaseAdapter::true_value()</a> Platform specific true value</p>
+	<!-- ========== Info from phpDoc block ========= -->
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - <a href="../Prosper/BaseAdapter.html#methodtrue_value">BaseAdapter::true_value()</a></li>
 		</ul>
 </div>
 <script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage2" ) );</script></div>
@@ -314,6 +610,14 @@ $mode)</strong></h4>
 <h3>Inherited Class Variable Summary</h3>
 
 		<!-- =========== Summary =========== -->
+	<h4>Inherited From Class <a href="../Prosper/PreparedAdapter.html">PreparedAdapter</a></h4>
+		<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /><strong class="property"> <a href="../Prosper/PreparedAdapter.html#var$bindings">PreparedAdapter::$bindings</a></strong> - 
+	</h4> 
+		<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /><strong class="property"> <a href="../Prosper/PreparedAdapter.html#var$prepared">PreparedAdapter::$prepared</a></strong> - 
+	</h4> 
+			<!-- =========== Summary =========== -->
 	<h4>Inherited From Class <a href="../Prosper/BaseAdapter.html">BaseAdapter</a></h4>
 		<h4>
 <img src="../media/images/PublicProperty.gif" border="0" /><strong class="property"> <a href="../Prosper/BaseAdapter.html#var$connection">BaseAdapter::$connection</a></strong> - 
@@ -339,13 +643,56 @@ $mode)</strong></h4>
 <h3>Inherited Method Summary</h3>
 
 		<!-- =========== Summary =========== -->
+	<h4>Inherited From Class <a href="../Prosper/PreparedAdapter.html">PreparedAdapter</a></h4>
+				<h4>
+<img src="../media/images/Constructor.gif" border="0" /><strong class="method"> <a href="../Prosper/PreparedAdapter.html#method__construct">PreparedAdapter::__construct()</a></strong> - Initializes the prepared statement adapter and then passes things off to BaseAdapter
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/PreparedAdapter.html#methodcleanup">PreparedAdapter::cleanup()</a></strong> - Cleans up any prepared state
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/PreparedAdapter.html#methodescape">PreparedAdapter::escape()</a></strong> - Binds a value to a prepared statement and returns the query placeholder
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/PreparedAdapter.html#methodplatform_execute">PreparedAdapter::platform_execute()</a></strong> - Override the Base behavior and dispatch to the correct function based off
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/PreparedAdapter.html#methodprepare">PreparedAdapter::prepare()</a></strong> - If any special processing is needed for the platform then this function
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/PreparedAdapter.html#methodprepared_execute">PreparedAdapter::prepared_execute()</a></strong> - Prepare and execute a statement for the given sql
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/PreparedAdapter.html#methodstandard_execute">PreparedAdapter::standard_execute()</a></strong> - Execute ad-hoc SQL
+		</h4> 
+
+				<br />
+		<!-- =========== Summary =========== -->
 	<h4>Inherited From Class <a href="../Prosper/BaseAdapter.html">BaseAdapter</a></h4>
 				<h4>
 <img src="../media/images/Constructor.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#method__construct">BaseAdapter::__construct()</a></strong> - Creates a new adapter instance
 		</h4> 
 
 				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodaddslashes">BaseAdapter::addslashes()</a></strong> - Wrapper for the adapters add slashes function, defaults to using php's
+		</h4> 
+
+				<h4>
 <img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodaffected_rows">BaseAdapter::affected_rows()</a></strong> - Get the number of affected rows for a platform specific result object
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodbegin">BaseAdapter::begin()</a></strong> - Begins a transaction, if the adapter doesn't support transactions, this is a no-op
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodcommit">BaseAdapter::commit()</a></strong> - Commits a transaction, if the adapter doesn't support transactions, this is a no-op
 		</h4> 
 
 				<h4>
@@ -357,7 +704,15 @@ $mode)</strong></h4>
 		</h4> 
 
 				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodcross_type">BaseAdapter::cross_type()</a></strong> - Translates a platform specific type into a cross platform type
+		</h4> 
+
+				<h4>
 <img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methoddisconnect">BaseAdapter::disconnect()</a></strong> - Destroy the connection to the database backend
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodend">BaseAdapter::end()</a></strong> - Turns transactions off, this function should be called by BaseAdapter::commit() and BaseAdapter::rollback()
 		</h4> 
 
 				<h4>
@@ -385,7 +740,7 @@ $mode)</strong></h4>
 		</h4> 
 
 				<h4>
-<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodlimit">BaseAdapter::limit()</a></strong> - Since various databases support a wide variety of limit syntaxes the adapter  is responsible for writing the limit syntax.
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodlimit">BaseAdapter::limit()</a></strong> - Since various databases support a wide variety of limit syntaxes the  adapter is responsible for writing the limit syntax.
 		</h4> 
 
 				<h4>
@@ -401,7 +756,15 @@ $mode)</strong></h4>
 		</h4> 
 
 				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodplatform_type">BaseAdapter::platform_type()</a></strong> - Translates a cross platform type into the best possible platform type
+		</h4> 
+
+				<h4>
 <img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodquote">BaseAdapter::quote()</a></strong> - Quotes a database object, uses the backtick by default
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodrollback">BaseAdapter::rollback()</a></strong> - Rolls back a transaction, if the adapter doesn't support transactions, this is a no-op
 		</h4> 
 
 				<h4>
@@ -417,7 +780,7 @@ $mode)</strong></h4>
 		</h4> 
 
 				<h4>
-<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodunescape">BaseAdapter::unescape()</a></strong> - Unescapes a value out of the database, strips slashes
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodtype_array">BaseAdapter::type_array()</a></strong> - Translates a raw data representation to an array of components
 		</h4> 
 
 				<h4>
@@ -436,7 +799,7 @@ setupAllTabs();
 </script>
 	<div id="credit">
 		<hr />
-		Documentation generated on Fri, 04 Dec 2009 10:29:57 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Tue, 22 Dec 2009 10:48:19 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</div>
 </body>
 </html>
