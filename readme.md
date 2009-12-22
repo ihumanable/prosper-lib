@@ -1,6 +1,6 @@
 # prosper #
 
-Version 0.6 - 2009.12.03
+Version 0.7 - 2009.12.22
 
 by Matt Nowack
 
@@ -86,6 +86,20 @@ Prosper was designed to allow the backend to be quickly and easily changed.  Let
  * Postgre - select * from "schema"."students" where "name" = 'Robert\'); DROP TABLE Students;--'
 
 This follows along the path of least surprise.  There are some surprises within prosper that can trace their roots to inconsistencies between rdbms' but the main goal has been to keep these to a minimum.
+
+### prepared statements ###
+
+With version 0.7 Prosper uses prepared statements for all adapters that support prepared statements.  Prepared statements are transparent to use, prosper will use prepared statements where available falling back to properly escaped string interpolation for adapters that don't support prepared statements.
+
+### explicit transactions ###
+
+With version 0.7 Prosper now supports explicit transaction management.  With the introduction of `begin()` `commit()` and `rollback()` prosper provides a finer tuned control over transaction management.  Some backends do not support transactions, the `begin()` `commit()` and `rollback()` functions are valid but do nothing on these platforms.  To check if a platform supports transactions you can use the `has_transactions()` function like so
+
+    if(Prosper\Query::has_transactions()) {
+      //Do transactional operation
+    } else {
+      //Do non-transactional operation
+    }
 
 ### opt out ###
 
@@ -277,20 +291,27 @@ That was simple.
 
 ## roadmap ##
 
-- v0.7
+- v0.8
     - Rewrite incorrect phpDoc to be phpDoc compliant
     - Write unit tests
     - Perform more real world testing for adapters
     - Improve official documentation
     - Perform load testing
-    - Add manual transaction management ( `begin()`, `rollback()`, `commit()` )
-    - Add schema reflection api
-    - Add table management api
+    - Finalize schema reflection api
+    - Finalize table management api
     - Possible modularization
     - Clean up Tokenizer
     
 ## changelog ##
 
+- 2009.12.22 - v0.7
+    - Added prepared statement support
+    - Added transaction management facilities
+    - Changed how the MS-SQL windowing function worked to support SQL Server 2005
+    - Improved escaping for string literal interpolation to use platform specific functions
+    - Added the DBase Adapter
+    - Cleaned up lots of phpDoc to be compliant
+    - Experimental schema reflection functionality in MySqlAdapter
 - 2009.12.03 - v0.6 
     - Changed the configuration system to take constants instead of string literals
     - Added support for the older mysql library in addition to the mysqli library

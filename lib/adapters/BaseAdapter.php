@@ -107,6 +107,14 @@ abstract class BaseAdapter {
   }
   
   /**
+   * Determine if an adapter supports transactions, defaults to false
+   * @return bool true if supports transactions, false otherwise
+   */
+  function has_transactions() {
+    return false;
+  }
+  
+  /**
    * Begins a transaction, if the adapter doesn't support transactions, this is a no-op
    */
   function begin() {

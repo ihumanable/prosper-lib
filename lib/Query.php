@@ -284,6 +284,10 @@ class Query {
     return self::db_mode() == SYBASE_MODE;
   }
   
+  static function has_transactions() {
+    return self::$adapter->has_transactions();
+  }
+  
   //Reflection API
   
   /**

@@ -40,6 +40,13 @@ class FirebirdAdapter extends PreparedAdapter {
   }
   
   /**
+   * @see BaseAdapter::has_transactions()
+   */     
+  function has_transactions() {
+    return true;
+  }
+  
+  /**
    * @see BaseAdapter::begin()
    */
   function begin() {
