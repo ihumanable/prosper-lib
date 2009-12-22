@@ -8,26 +8,26 @@ namespace Prosper;
  * DBase Database Adapter
  */
 class DBaseAdapter extends BaseAdapter {
-	
-	/**
+  
+  /**
    * @see BaseAdapter::connect()
    */
-	function connect() {
-		$this->connection = dbase_open($this->username, 2);
-	}
-	
-	/**
-	 * @see BaseAdapter::disconnect()
-	 */
-	function disconnect() {
-	 dbase_close($this->connection());
-	}
-	
-	/**
-	 * @see BaseAdapter::platform_execute($sql, $mode)
-	 */
-	function platform_execute($sql, $mode) {
-		switch($mode) {
+  function connect() {
+    $this->connection = dbase_open($this->username, 2);
+  }
+  
+  /**
+   * @see BaseAdapter::disconnect()
+   */
+  function disconnect() {
+   dbase_close($this->connection());
+  }
+  
+  /**
+   * @see BaseAdapter::platform_execute($sql, $mode)
+   */
+  function platform_execute($sql, $mode) {
+    switch($mode) {
       case Query::DELETE_STMT:
         dbase_delete_record($this->connection(), $sql);
         dbase_pack($this->connection());
@@ -44,35 +44,35 @@ class DBaseAdapter extends BaseAdapter {
         dbase_replace_record($this->connection(), $data, $row);
         break;
     }
-	} 
-	
-	/**
-	 * @see BaseAdapter::affected_rows($set) 
-	 */
-	function affected_rows($set) {
-		return 1;
-	}
-	
-	/**
-	 * @see BaseAdapter::fetch_assoc($set) 
-	 */
-	function fetch_assoc($set) {
-		return $set;
-	}
+  } 
+  
+  /**
+   * @see BaseAdapter::affected_rows($set) 
+   */
+  function affected_rows($set) {
+    return 1;
+  }
+  
+  /**
+   * @see BaseAdapter::fetch_assoc($set) 
+   */
+  function fetch_assoc($set) {
+    return $set;
+  }
 
-	/**
-	 * @see BaseAdapter::true_value()
-	 */
-	function true_value() {
-		return "T";
-	}
-	
-	/**
-	 * @see BaseAdapter::false_value()
-	 */
-	function false_value() {
-		return "F";
-	}
-	
+  /**
+   * @see BaseAdapter::true_value()
+   */
+  function true_value() {
+    return "T";
+  }
+  
+  /**
+   * @see BaseAdapter::false_value()
+   */
+  function false_value() {
+    return "F";
+  }
+  
 }
 ?>

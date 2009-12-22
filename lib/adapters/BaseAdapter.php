@@ -110,21 +110,32 @@ abstract class BaseAdapter {
    * Begins a transaction, if the adapter doesn't support transactions, this is a no-op
    */
   function begin() {
-  	
+    
   }
   
   /**
    * Commits a transaction, if the adapter doesn't support transactions, this is a no-op
    */
   function commit() {
-  	
+    
   }
   
   /**
    * Rolls back a transaction, if the adapter doesn't support transactions, this is a no-op
    */
   function rollback() {
-  	
+    
+  }
+  
+  /**
+   * Turns transactions off, this function should be called by BaseAdapter::commit() and BaseAdapter::rollback()
+   * If the adapter doesn't support transactions, this is a no-op
+   * @see BaseAdapter::begin()
+   * @see BaseAdapeter::commit()
+   * @see BaseAdapter::rollback()
+   */ 
+   protected function end() {
+    
   }
   
   /**

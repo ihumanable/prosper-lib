@@ -8,27 +8,57 @@ namespace Prosper;
  * MySql Database Adapter
  */
 class MySqlAdapter extends PreparedAdapter {
-	
-	private $types = "";
-	
-	/**
+  
+  private $types = "";
+  
+  /**
    * @see BaseAdapter::connect()
    */
-	function connect() {
-		$this->connection = new \mysqli($this->hostname, $this->username, $this->password, $this->schema);
-	}
-	
-	/**
-	 * @see BaseAdapter::disconnect()
-	 */
-	function disconnect() {
-		$this->connection()->close();
-	}
-	
-	/**
-	 * @see PreparedAdapter::prepared_execute($sql, $mode) 
-	 */
-	function prepared_execute($sql, $mode) {
+  function connect() {
+    $this->connection = new \mysqli($this->hostname, $this->username, $this->password, $this->schema);
+  }
+  
+  /**
+   * @see BaseAdapter::disconnect()
+   */
+  function disconnect() {
+    $this->connection()->close();
+  }
+  
+  /**
+   * @see BaseAdapter::begin()
+   */   	
+  function begin() {
+    $this->connection()->autocommit(false);
+  }
+  
+  /**
+   * @see BaseAdapter::commit()
+   */     
+  function commit() {
+    $this->connection()->commit();
+    $this->end();
+  }
+  
+  /**
+   * @see BaseAdapter::rollback()
+   */     	
+  function rollback() {
+    $this->connection()->rollback();
+    $this->end();
+  }
+  
+  /**
+   * @see BaseAdapter::end()
+   */     
+  protected function end() {
+    $this->connection()->autocommit(true);
+  }
+  
+  /**
+   * @see PreparedAdapter::prepared_execute($sql, $mode) 
+   */
+  function prepared_execute($sql, $mode) {
     $stmt = $this->connection()->prepare($sql);
     $arguments = array(&$this->types);    
     foreach($this->bindings as $key => $binding) {  
@@ -44,27 +74,27 @@ class MySqlAdapter extends PreparedAdapter {
    */     
   function standard_execute($sql, $mode) {
     return $this->connection()->query($sql);
-	}
-	
-	/**
-	 * @see BaseAdapter::affected_rows($set) 
-	 */
-	function affected_rows($set) {
-		return $this->connection()->affected_rows;
-	}
-	
-	/**
-	 * @see BaseAdapter::insert_id($set)
-	 */
-	function insert_id($set) {
-		return $this->connection()->insert_id;
-	}
-	
-	/**
-	 * @see BaseAdapter::fetch_assoc($set)
-	 */
-	function fetch_assoc($set) {
-		if($this->prepared) {
+  }
+  
+  /**
+   * @see BaseAdapter::affected_rows($set) 
+   */
+  function affected_rows($set) {
+    return $this->connection()->affected_rows;
+  }
+  
+  /**
+   * @see BaseAdapter::insert_id($set)
+   */
+  function insert_id($set) {
+    return $this->connection()->insert_id;
+  }
+  
+  /**
+   * @see BaseAdapter::fetch_assoc($set)
+   */
+  function fetch_assoc($set) {
+    if($this->prepared) {
       $meta = $set->result_metadata();
       while($field = $meta->fetch_field()) {
         $params[] = &$row[$field->name];    
@@ -82,12 +112,12 @@ class MySqlAdapter extends PreparedAdapter {
     } else {
       return $set->fetch_array(MYSQLI_ASSOC);
     }
-	}
-	
-	/**
-	 * @see BaseAdapter::free_result($set)
-	 */   	
-	function free_result($set) {
+  }
+  
+  /**
+   * @see BaseAdapter::free_result($set)
+   */   	
+  function free_result($set) {
     if(is_object($set)) {
       $set->close();
     } 
@@ -168,11 +198,11 @@ class MySqlAdapter extends PreparedAdapter {
     }
     return $result;
   }
-	
-	/**
-	 * @see BaseAdapter::cross_type($platform)
-	 */   	
-	function cross_type($platform) {
+  
+  /**
+   * @see BaseAdapter::cross_type($platform)
+   */   	
+  function cross_type($platform) {
     return $platform;
   }
   
@@ -182,7 +212,7 @@ class MySqlAdapter extends PreparedAdapter {
   function platform_type($cross) {
     return $cross;
   }
-	
+  
 }
 
 ?>
