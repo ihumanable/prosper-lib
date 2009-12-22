@@ -288,6 +288,31 @@ class Query {
     return self::$adapter->has_transactions();
   }
   
+  //Transaction API
+  
+  /**
+   * Begin a database transaction
+   */
+  static function begin() {
+    self::$adapter->begin();
+  }
+  
+  /**
+   * Commit the open transaction
+   */
+  static function commit() {
+    self::$adapter->commit();
+    self::$adapter->end();
+  }
+  
+  /**
+   * Rollback the open transaction
+   */
+  static function rollback() {
+    self::$adapter->rollback();
+    self::$adapter->end();
+  }
+  
   //Reflection API
   
   /**

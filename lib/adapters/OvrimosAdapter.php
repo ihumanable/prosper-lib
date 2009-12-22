@@ -31,18 +31,10 @@ class OvrimosAdapter extends PreparedAdapter {
   }
   
   /**
-   * @see BaseAdapter::begin()
-   */
-  function begin() {
-    
-  }
-  
-  /**
    * @see BaseAdapter::commit()
    */
   function commit() {
     ovrimos_commit($this->connection());
-    $this->end();
   }
   
   /**
@@ -50,14 +42,6 @@ class OvrimosAdapter extends PreparedAdapter {
    */
   function rollback() {
     ovrimos_rollback($this->connection());
-    $this->end();
-  }
-  
-  /**
-   * @see BaseAdapter::end()
-   */     
-  protected function end() {
-    
   }
   
   /**

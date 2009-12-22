@@ -45,7 +45,6 @@ class IngresAdapter extends PreparedAdapter {
    */
   function commit() {
     ingres_commit($this->connection());
-    $this->end();
   }
   
   /**
@@ -53,13 +52,12 @@ class IngresAdapter extends PreparedAdapter {
    */
   function rollback() {
     ingres_rollback($this->connection());
-    $this->end();
   }
   
   /**
    * @see BaseAdapter::end()
    */     
-  protected function end() {
+  function end() {
     if(!ingres_autocommit_state($this->connection())) {
       //Turn on autocommit, the user has completed explicit transaction
       ingres_autocommit($this->connection());

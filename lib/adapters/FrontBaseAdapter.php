@@ -45,7 +45,6 @@ class FrontBaseAdapter extends BaseAdapter {
    */
   function commit() {
     fbsql_commit($this->connection());
-    $this->end();
   }
   
   /**
@@ -53,13 +52,12 @@ class FrontBaseAdapter extends BaseAdapter {
    */
   function rollback() {
     fbsql_rollback($this->connection());
-    $this->end();
   }
   
   /**
    * @see BaseAdapter::end()
    */     
-  protected function end() {
+  function end() {
     fbsql_autocommit($this->connectiono(), true);
   }
   

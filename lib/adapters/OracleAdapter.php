@@ -46,7 +46,6 @@ class OracleAdapter extends PreparedAdapter {
    */
   function commit() {
     oci_commit($this->connection());
-    $this->end();
   }
   
   /**
@@ -54,13 +53,12 @@ class OracleAdapter extends PreparedAdapter {
    */
   function rollback() {
     oci_rollback($this->connection());
-    $this->end();
   }
   
   /**
    * @see BaseAdapter::end()
    */     
-  protected function end() {
+  function end() {
     $this->transaction = OCI_COMMIT_ON_SUCCESS;
   }
   

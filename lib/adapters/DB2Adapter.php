@@ -43,7 +43,6 @@ class DB2Adapter extends PreparedAdapter {
    */
   function commit() {
     db2_commit($this->connection());
-    $this->end();
   }
   
   /**
@@ -51,13 +50,12 @@ class DB2Adapter extends PreparedAdapter {
    */
   function rollback() {
     db2_rollback($this->connection());
-    $this->end();
   }
   
   /**
    * @see BaseAdapter::end()
    */
-  protected function end() {
+  function end() {
     db2_autocommit($this->connection(), DB2_AUTOCOMMIT_ON);
   }
   

@@ -136,13 +136,13 @@ abstract class BaseAdapter {
   }
   
   /**
-   * Turns transactions off, this function should be called by BaseAdapter::commit() and BaseAdapter::rollback()
+   * Turns transactions off
    * If the adapter doesn't support transactions, this is a no-op
    * @see BaseAdapter::begin()
    * @see BaseAdapeter::commit()
    * @see BaseAdapter::rollback()
    */ 
-   protected function end() {
+   function end() {
     
   }
   

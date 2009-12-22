@@ -44,7 +44,6 @@ class MySqlAdapter extends PreparedAdapter {
    */     
   function commit() {
     $this->connection()->commit();
-    $this->end();
   }
   
   /**
@@ -52,13 +51,12 @@ class MySqlAdapter extends PreparedAdapter {
    */     	
   function rollback() {
     $this->connection()->rollback();
-    $this->end();
   }
   
   /**
    * @see BaseAdapter::end()
    */     
-  protected function end() {
+  function end() {
     $this->connection()->autocommit(true);
   }
   
