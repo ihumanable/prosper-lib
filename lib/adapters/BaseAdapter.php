@@ -160,6 +160,7 @@ abstract class BaseAdapter {
         $result = $this->affected_rows($set);
         break;
     }
+    $this->cleanup();
     return $result;
   }
   
@@ -206,6 +207,13 @@ abstract class BaseAdapter {
    * @return nothing
    */
   function free_result($set) {
+    
+  }
+  
+  /**
+   * Perform any necessary cleanup, used after execution
+   */
+  function cleanup() {
     
   }
   

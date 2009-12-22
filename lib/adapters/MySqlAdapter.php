@@ -92,6 +92,15 @@ class MySqlAdapter extends PreparedAdapter {
       $set->close();
     } 
   }
+  
+  /**
+   * Clean up needs to clear the type string, this isn't performed by default
+   * @see PreparedAdapter::cleanup()
+   */
+  function cleanup() {
+    parent::cleanup();
+    $this->types = "";
+  }
  
   /**
    * @see BaseAdapter::true_value()
@@ -118,7 +127,6 @@ class MySqlAdapter extends PreparedAdapter {
    * @see PreparedAdapter::prepare($value)
    */     
   function prepare($value) {
-    
     if(is_bool($value) || is_int($value)) {
       $this->types .= 'i';  //Technically bools are ints too
     } else if(is_double($value)) {

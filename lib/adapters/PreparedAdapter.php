@@ -10,8 +10,8 @@ namespace Prosper;
  * prepared statements
  */  
 abstract class PreparedAdapter extends BaseAdapter {
-  protected $prepared;
-  protected $bindings;
+  public $prepared;
+  public $bindings;
   
   /**
    * Initializes the prepared statement adapter and then passes things off to BaseAdapter  
@@ -80,6 +80,14 @@ abstract class PreparedAdapter extends BaseAdapter {
   
   }
   
+  /**
+   * Cleans up any prepared state
+   * @see BaseAdapter::cleanup()
+   */
+  function cleanup() {
+    $this->prepared = false;
+    $this->bindings = array();
+  }
 }
 
 ?>

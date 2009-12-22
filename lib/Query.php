@@ -773,9 +773,14 @@ class Query {
    * @return mixed the same result set as Query::execute()
    */
   function verbose() {
-    echo '<pre class="brush: sql">' . $this->sql . "</pre>";
+    echo '<pre class="brush: sql">SQL : <br />' . $this->sql . "</pre>";
+    if(self::$adapter->prepared) {
+      echo '<pre class="brush: php">BINDINGS : <br />'; 
+        print_r(self::$adapter->bindings);
+      echo '</pre>';
+    }
     $result = $this->execute();
-    echo '<pre class="brush: php">';
+    echo '<pre class="brush: php">RESULT : <br />';
       print_r($result);
     echo "</pre>";
     return $result;
