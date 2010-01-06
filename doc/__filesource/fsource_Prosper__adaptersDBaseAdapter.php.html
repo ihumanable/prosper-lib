@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>File Source for DBaseAdapter.php</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><h1 align="center">Source for file DBaseAdapter.php</h1>
+<p>Documentation is available at <a href="../Prosper/_adapters---DBaseAdapter.php.html">DBaseAdapter.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><strong>&lt;?php</strong></div></li>
+<li><div class="src-line"><a name="a2"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a3"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@package</font></strong><font color="#009999">&nbsp;Prosper</font></div></li>
+<li><div class="src-line"><a name="a4"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a5"></a>namespace&nbsp;Prosper<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a6"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a7"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a8"></a><font color="#009999">&nbsp;*&nbsp;DBase&nbsp;Database&nbsp;Adapter</font></div></li>
+<li><div class="src-line"><a name="a9"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a10"></a><font color="blue">class&nbsp;</font><a href="../Prosper/DBaseAdapter.html">DBaseAdapter</a>&nbsp;<font color="blue">extends&nbsp;</font><a href="../Prosper/BaseAdapter.html">BaseAdapter</a>&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a11"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a12"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a13"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::connect()</font></div></li>
+<li><div class="src-line"><a name="a14"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a15"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/DBaseAdapter.html#methodconnect">connect</a><strong>(</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a16"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$connection">connection</a>&nbsp;=&nbsp;dbase_open<strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$username">username</a><strong>,&nbsp;</strong>2<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a17"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a18"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a19"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a20"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::disconnect()</font></div></li>
+<li><div class="src-line"><a name="a21"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a22"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/DBaseAdapter.html#methoddisconnect">disconnect</a><strong>(</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a23"></a>&nbsp;&nbsp;&nbsp;dbase_close<strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a24"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a25"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a26"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a27"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::platform_execute($sql,&nbsp;$mode)</font></div></li>
+<li><div class="src-line"><a name="a28"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a29"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/DBaseAdapter.html#methodplatform_execute">platform_execute</a><strong>(</strong><strong>$sql</strong><strong>,&nbsp;</strong><strong>$mode</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a30"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">switch</font><strong>(</strong><strong>$mode</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a31"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<a href="../Prosper/Query.html">Query</a><strong>::</strong>DELETE_STMT:</div></li>
+<li><div class="src-line"><a name="a32"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dbase_delete_record<strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>)</strong><strong>,&nbsp;</strong><strong>$sql</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a33"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dbase_pack<strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<a href="../Prosper/Query.html">Query</a><strong>::</strong>INSERT_STMT:</div></li>
+<li><div class="src-line"><a name="a36"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dbase_add_record<strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>)</strong><strong>,&nbsp;</strong><strong>$sql</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a38"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<a href="../Prosper/Query.html">Query</a><strong>::</strong>SELECT_STMT:</div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font>dbase_get_record_with_names<strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>)</strong><strong>,&nbsp;</strong><strong>$sql</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;<a href="../Prosper/Query.html">Query</a><strong>::</strong>UPDATE_STMT:</div></li>
+<li><div class="src-line"><a name="a42"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$data&nbsp;</strong>=&nbsp;<strong>$sql</strong><strong>[</strong><font color="#66cccc">'data'</font><strong>]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a43"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$row&nbsp;</strong>=&nbsp;<strong>$sql</strong><strong>[</strong><font color="#66cccc">'row'</font><strong>]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dbase_replace_record<strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>)</strong><strong>,&nbsp;</strong><strong>$data</strong><strong>,&nbsp;</strong><strong>$row</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;<strong>}&nbsp;</strong></div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a50"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::affected_rows($set)</font></div></li>
+<li><div class="src-line"><a name="a51"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a52"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/DBaseAdapter.html#methodaffected_rows">affected_rows</a><strong>(</strong><strong>$set</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a53"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font>1<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a54"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a55"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a56"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a57"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::fetch_assoc($set)</font></div></li>
+<li><div class="src-line"><a name="a58"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a59"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/DBaseAdapter.html#methodfetch_assoc">fetch_assoc</a><strong>(</strong><strong>$set</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><strong>$set</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a64"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::true_value()</font></div></li>
+<li><div class="src-line"><a name="a65"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a66"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/DBaseAdapter.html#methodtrue_value">true_value</a><strong>(</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a67"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><font color="#66cccc">&quot;T&quot;</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a69"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a70"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a71"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::false_value()</font></div></li>
+<li><div class="src-line"><a name="a72"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a73"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/DBaseAdapter.html#methodfalse_value">false_value</a><strong>(</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a74"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><font color="#66cccc">&quot;F&quot;</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a75"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a76"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a77"></a><strong>}</strong></div></li>
+<li><div class="src-line"><a name="a78"></a><strong>?&gt;</strong></div></li>
+</ol></div>
+</div>
+	<div id="credit">
+		<hr />
+		Documentation generated on Tue, 22 Dec 2009 10:48:16 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</div>
+</body>
+</html>

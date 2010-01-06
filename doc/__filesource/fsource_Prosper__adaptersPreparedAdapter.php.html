@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>File Source for PreparedAdapter.php</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><h1 align="center">Source for file PreparedAdapter.php</h1>
+<p>Documentation is available at <a href="../Prosper/_adapters---PreparedAdapter.php.html">PreparedAdapter.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><strong>&lt;?php</strong></div></li>
+<li><div class="src-line"><a name="a2"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a3"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a4"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@package</font></strong><font color="#009999">&nbsp;Prosper</font></div></li>
+<li><div class="src-line"><a name="a5"></a><font color="#009999">&nbsp;*/&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a6"></a>namespace&nbsp;Prosper<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a7"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a8"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a9"></a><font color="#009999">&nbsp;*&nbsp;The&nbsp;PreparedAdapter&nbsp;class&nbsp;should&nbsp;be&nbsp;extended&nbsp;by&nbsp;any&nbsp;adapter&nbsp;that&nbsp;supports</font></div></li>
+<li><div class="src-line"><a name="a10"></a><font color="#009999">&nbsp;*&nbsp;prepared&nbsp;statements</font></div></li>
+<li><div class="src-line"><a name="a11"></a><font color="#009999">&nbsp;*/&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a12"></a><font color="blue">abstract&nbsp;</font><font color="blue">class&nbsp;</font><a href="../Prosper/PreparedAdapter.html">PreparedAdapter</a>&nbsp;<font color="blue">extends&nbsp;</font><a href="../Prosper/BaseAdapter.html">BaseAdapter</a>&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a13"></a>&nbsp;&nbsp;<font color="blue">public&nbsp;</font><a href="../Prosper/PreparedAdapter.html#var$prepared">$prepared</a><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a14"></a>&nbsp;&nbsp;<font color="blue">public&nbsp;</font><a href="../Prosper/PreparedAdapter.html#var$bindings">$bindings</a><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a15"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a16"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a17"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;Initializes&nbsp;the&nbsp;prepared&nbsp;statement&nbsp;adapter&nbsp;and&nbsp;then&nbsp;passes&nbsp;things&nbsp;off&nbsp;to&nbsp;BaseAdapter</font></div></li>
+<li><div class="src-line"><a name="a18"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::__construct($username,&nbsp;$password,&nbsp;$hostname,&nbsp;$schema,&nbsp;$lazy&nbsp;=&nbsp;true)</font></div></li>
+<li><div class="src-line"><a name="a19"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a20"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/PreparedAdapter.html#method__construct">__construct</a><strong>(</strong><strong>$username</strong><strong>,&nbsp;</strong><strong>$password</strong><strong>,&nbsp;</strong><strong>$hostname</strong><strong>,&nbsp;</strong><strong>$schema</strong><strong>,&nbsp;</strong><strong>$lazy&nbsp;</strong>=&nbsp;true<strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a21"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/PreparedAdapter.html#var$prepared">prepared</a>&nbsp;=&nbsp;false<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a22"></a>&nbsp;&nbsp;&nbsp;&nbsp;parent<strong>::</strong><a href="../Prosper/BaseAdapter.html#method__construct">__construct</a><strong>(</strong><strong>$username</strong><strong>,&nbsp;</strong><strong>$password</strong><strong>,&nbsp;</strong><strong>$hostname</strong><strong>,&nbsp;</strong><strong>$schema</strong><strong>,&nbsp;</strong><strong>$lazy</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a23"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a24"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a25"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a26"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;Binds&nbsp;a&nbsp;value&nbsp;to&nbsp;a&nbsp;prepared&nbsp;statement&nbsp;and&nbsp;returns&nbsp;the&nbsp;query&nbsp;placeholder</font></div></li>
+<li><div class="src-line"><a name="a27"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>mixed&nbsp;</em><strong>$value&nbsp;</strong><font color="#009999">The&nbsp;value&nbsp;to&nbsp;bind</font></div></li>
+<li><div class="src-line"><a name="a28"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@return&nbsp;</font></strong><em>string&nbsp;</em><font color="#009999">query&nbsp;placeholder</font></div></li>
+<li><div class="src-line"><a name="a29"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a30"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/PreparedAdapter.html#methodescape">escape</a><strong>(</strong><strong>$value</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a31"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if</font><strong>(</strong><a href="http://www.php.net/is_bool">is_bool</a><strong>(</strong><strong>$value</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a32"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/PreparedAdapter.html#var$bindings">bindings</a><strong>[</strong><strong>]&nbsp;</strong>=&nbsp;<strong>(</strong><strong>$value&nbsp;</strong>?&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodtrue_value">true_value</a><strong>(</strong><strong>)&nbsp;</strong>:&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodfalse_value">false_value</a><strong>(</strong><strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a33"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/PreparedAdapter.html#var$bindings">bindings</a><strong>[</strong><strong>]&nbsp;</strong>=&nbsp;<strong>$value</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a36"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/PreparedAdapter.html#var$prepared">prepared</a>&nbsp;=&nbsp;true<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/PreparedAdapter.html#methodprepare">prepare</a><strong>(</strong><strong>$value</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a38"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a41"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;If&nbsp;any&nbsp;special&nbsp;processing&nbsp;is&nbsp;needed&nbsp;for&nbsp;the&nbsp;platform&nbsp;then&nbsp;this&nbsp;function</font></div></li>
+<li><div class="src-line"><a name="a42"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;should&nbsp;be&nbsp;overriden</font></div></li>
+<li><div class="src-line"><a name="a43"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>mixed&nbsp;</em><strong>$value&nbsp;</strong><font color="#009999">The&nbsp;value&nbsp;being&nbsp;bound</font></div></li>
+<li><div class="src-line"><a name="a44"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@return&nbsp;</font></strong><em>string&nbsp;</em><font color="#009999">query&nbsp;placeholder,&nbsp;default&nbsp;implementation&nbsp;is&nbsp;'?'</font></div></li>
+<li><div class="src-line"><a name="a45"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/PreparedAdapter.html#methodprepare">prepare</a><strong>(</strong><strong>$value</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><font color="#66cccc">'?'</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a50"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a51"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;Override&nbsp;the&nbsp;Base&nbsp;behavior&nbsp;and&nbsp;dispatch&nbsp;to&nbsp;the&nbsp;correct&nbsp;function&nbsp;based&nbsp;off</font></div></li>
+<li><div class="src-line"><a name="a52"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;of&nbsp;whether&nbsp;or&nbsp;not&nbsp;we&nbsp;are&nbsp;functioning&nbsp;on&nbsp;a&nbsp;prepared&nbsp;statement</font></div></li>
+<li><div class="src-line"><a name="a53"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::platform_execute($sql,&nbsp;$mode)</font></div></li>
+<li><div class="src-line"><a name="a54"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a55"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/PreparedAdapter.html#methodplatform_execute">platform_execute</a><strong>(</strong><strong>$sql</strong><strong>,&nbsp;</strong><strong>$mode</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a56"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if</font><strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/PreparedAdapter.html#var$prepared">prepared</a><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a57"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/PreparedAdapter.html#methodprepared_execute">prepared_execute</a><strong>(</strong><strong>$sql</strong><strong>,&nbsp;</strong><strong>$mode</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a58"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a59"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/PreparedAdapter.html#methodstandard_execute">standard_execute</a><strong>(</strong><strong>$sql</strong><strong>,&nbsp;</strong><strong>$mode</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a64"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;Prepare&nbsp;and&nbsp;execute&nbsp;a&nbsp;statement&nbsp;for&nbsp;the&nbsp;given&nbsp;sql</font></div></li>
+<li><div class="src-line"><a name="a65"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>string&nbsp;</em><strong>$sql&nbsp;</strong><font color="#009999">SQL&nbsp;to&nbsp;execute</font></div></li>
+<li><div class="src-line"><a name="a66"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>string&nbsp;</em><strong>$mode&nbsp;</strong><font color="#009999">Query&nbsp;type</font></div></li>
+<li><div class="src-line"><a name="a67"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@return&nbsp;</font></strong><em>mixed&nbsp;</em><font color="#009999">Platform&nbsp;specific&nbsp;result&nbsp;set&nbsp;for&nbsp;prepared&nbsp;statements</font></div></li>
+<li><div class="src-line"><a name="a68"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a69"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/PreparedAdapter.html#methodprepared_execute">prepared_execute</a><strong>(</strong><strong>$sql</strong><strong>,&nbsp;</strong><strong>$mode</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a70"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a71"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a72"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a73"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a74"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;Execute&nbsp;ad-hoc&nbsp;SQL</font></div></li>
+<li><div class="src-line"><a name="a75"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>string&nbsp;</em><strong>$sql&nbsp;</strong><font color="#009999">SQL&nbsp;to&nbsp;execute</font></div></li>
+<li><div class="src-line"><a name="a76"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>string&nbsp;</em><strong>$mode&nbsp;</strong><font color="#009999">Query&nbsp;type</font></div></li>
+<li><div class="src-line"><a name="a77"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@return&nbsp;</font></strong><em>mixed&nbsp;</em><font color="#009999">Platform&nbsp;specific&nbsp;result&nbsp;set</font></div></li>
+<li><div class="src-line"><a name="a78"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a79"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/PreparedAdapter.html#methodstandard_execute">standard_execute</a><strong>(</strong><strong>$sql</strong><strong>,&nbsp;</strong><strong>$mode</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a80"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a81"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a82"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a83"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a84"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;Cleans&nbsp;up&nbsp;any&nbsp;prepared&nbsp;state</font></div></li>
+<li><div class="src-line"><a name="a85"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::cleanup()</font></div></li>
+<li><div class="src-line"><a name="a86"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a87"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/PreparedAdapter.html#methodcleanup">cleanup</a><strong>(</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a88"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/PreparedAdapter.html#var$prepared">prepared</a>&nbsp;=&nbsp;false<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a89"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/PreparedAdapter.html#var$bindings">bindings</a>&nbsp;=&nbsp;array<strong>(</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a90"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a91"></a><strong>}</strong></div></li>
+<li><div class="src-line"><a name="a92"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a93"></a><strong>?&gt;</strong></div></li>
+</ol></div>
+</div>
+	<div id="credit">
+		<hr />
+		Documentation generated on Tue, 22 Dec 2009 10:48:22 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</div>
+</body>
+</html>

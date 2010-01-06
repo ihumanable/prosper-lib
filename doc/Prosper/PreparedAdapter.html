@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Docs For Class PreparedAdapter</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+  <script src="../media/lib/classTree.js"></script>
+<link id="webfx-tab-style-sheet" type="text/css" rel="stylesheet" href="../media/lib/tab.webfx.css" />
+<script type="text/javascript" src="../media/lib/tabpane.js"></script>
+  <script language="javascript" type="text/javascript" src="../media/lib/ua.js"></script>
+<script language="javascript" type="text/javascript">
+	var imgPlus = new Image();
+	var imgMinus = new Image();
+	imgPlus.src = "../media/images/plus.gif";
+	imgMinus.src = "../media/images/minus.gif";
+	
+	function showNode(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+				var oImg = document.layers["img" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+				var oImg = document.all["img" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+				var oImg = document.getElementById("img" + Node);
+        		break;
+        }
+		oImg.src = imgMinus.src;
+		oTable.style.display = "block";
+	}
+	
+	function hideNode(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+				var oImg = document.layers["img" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+				var oImg = document.all["img" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+				var oImg = document.getElementById("img" + Node);
+        		break;
+        }
+		oImg.src = imgPlus.src;
+		oTable.style.display = "none";
+	}
+	
+	function nodeIsVisible(Node){
+        switch(navigator.family){
+        	case 'nn4':
+        		// Nav 4.x code fork...
+				var oTable = document.layers["span" + Node];
+        		break;
+        	case 'ie4':
+        		// IE 4/5 code fork...
+				var oTable = document.all["span" + Node];
+        		break;
+        	case 'gecko':
+        		// Standards Compliant code fork...
+				var oTable = document.getElementById("span" + Node);
+        		break;
+        }
+		return (oTable && oTable.style.display == "block");
+	}
+	
+	function toggleNodeVisibility(Node){
+		if (nodeIsVisible(Node)){
+			hideNode(Node);
+		}else{
+			showNode(Node);
+		}
+	}
+</script>
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><!-- Start of Class Data -->
+<h2>
+	Class PreparedAdapter
+</h2> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersPreparedAdapter.php.html#a12">12</a></span>)
+<div class="tab-pane" id="tabPane1">
+<script type="text/javascript">
+tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
+</script>
+
+<div class="tab-page" id="Description">
+<h2 class="tab">Description</h2>
+<pre>
+<a href="../Prosper/BaseAdapter.html">BaseAdapter</a>
+   |
+   --PreparedAdapter</pre>
+<p>
+	<b><i>Located in File: <a href="_adapters---PreparedAdapter.php.html">/adapters/PreparedAdapter.php</a></i></b><br>
+</p>
+<!-- ========== Info from phpDoc block ========= -->
+<h5>The PreparedAdapter class should be extended by any adapter that supports</h5>
+<div class="desc"><p>prepared statements</p></div>
+<ul>
+		<li><strong>abstract:</strong> - </li>
+	</ul>
+<br /><hr />
+<span class="type">Classes extended from PreparedAdapter:</span>
+ 		<dl>
+	<dt><a href="../Prosper/DB2Adapter.html">DB2Adapter</a></dt>
+		<dd>DB2 Database Adapter</dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/FirebirdAdapter.html">FirebirdAdapter</a></dt>
+		<dd>Firebird (interbase) Database Adapter</dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/IngresAdapter.html">IngresAdapter</a></dt>
+		<dd>Ingres Database Adapter</dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/MaxDBAdapter.html">MaxDBAdapter</a></dt>
+		<dd>MaxDB Database Adapter</dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/MySqlAdapter.html">MySqlAdapter</a></dt>
+		<dd>MySql Database Adapter</dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/OracleAdapter.html">OracleAdapter</a></dt>
+		<dd>Oracle Database Adapter</dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/OvrimosAdapter.html">OvrimosAdapter</a></dt>
+		<dd>Ovrimos Database Adapter</dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/PostgreSqlAdapter.html">PostgreSqlAdapter</a></dt>
+		<dd>PostgreSql Database Adapter</dd>
+	</dl>
+	</p>
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "Description" ) );</script>
+<div class="tab-page" id="tabPage1">
+
+<h2 class="tab">Class Variables</h2>
+<!-- ============ VARIABLE DETAIL =========== -->
+<strong>Summary:</strong><br />
+<div class="var-title">
+    <span class="var-type">mixed</span>
+    <a href="#var$bindings" title="details" class="property"><strong>$bindings</strong></a>
+</div>
+<div class="var-title">
+    <span class="var-type">mixed</span>
+    <a href="#var$prepared" title="details" class="property"><strong>$prepared</strong></a>
+</div>
+<hr />
+<a name="var$bindings" id="var$bindings"><!-- --></A>
+<div style="background='#ffffff'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$bindings</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersPreparedAdapter.php.html#a14">14</a></span>)
+ </h4>
+<h4>Data type : mixed</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+		<li><strong>access:</strong> - public</li>
+	</ul>
+</div>
+<a name="var$prepared" id="var$prepared"><!-- --></A>
+<div style="background='#eeeeee'">
+<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$prepared</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersPreparedAdapter.php.html#a13">13</a></span>)
+ </h4>
+<h4>Data type : mixed</h4>
+<!-- ========== Info from phpDoc block ========= -->
+<ul>
+		<li><strong>access:</strong> - public</li>
+	</ul>
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage1" ) );</script>
+</div>
+<div class="tab-page" id="constantsTabpage">
+
+<h2 class="tab">Class Constants</h2>
+<!-- ============ VARIABLE DETAIL =========== -->
+<strong>Summary:</strong><br />
+<hr />
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "constantsTabpage" ) );</script>
+</div>
+<div class="tab-page" id="tabPage2">
+<h2 class="tab">Method Detail</h2>
+<!-- ============ METHOD DETAIL =========== -->
+<strong>Summary:</strong><br />
+<div class="method-summary">
+    <div class="method-definition">
+            <span class="method-result">PreparedAdapter</span>
+        <a href="#method__construct" title="details" class="method-name">__construct</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">$username</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$password</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$hostname</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$schema</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$lazy</span> = <span class="var-default">true</span>])
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
+        <a href="#methodcleanup" title="details" class="method-name">cleanup</a>
+        ()
+        </div>
+    <div class="method-definition">
+            <span class="method-result">string</span>
+        <a href="#methodescape" title="details" class="method-name">escape</a>
+        (<span class="var-type">mixed</span>&nbsp;<span class="var-name">$value</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
+        <a href="#methodplatform_execute" title="details" class="method-name">platform_execute</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">$sql</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$mode</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">string</span>
+        <a href="#methodprepare" title="details" class="method-name">prepare</a>
+        (<span class="var-type">mixed</span>&nbsp;<span class="var-name">$value</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">mixed</span>
+        <a href="#methodprepared_execute" title="details" class="method-name">prepared_execute</a>
+        (<span class="var-type">string</span>&nbsp;<span class="var-name">$sql</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$mode</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">mixed</span>
+        <a href="#methodstandard_execute" title="details" class="method-name">standard_execute</a>
+        (<span class="var-type">string</span>&nbsp;<span class="var-name">$sql</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$mode</span>)
+        </div>
+</div>
+<hr />
+<A NAME='method_detail'></A>
+
+
+<a name="method__construct" id="method__construct"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/Constructor.gif" border="0" /> <strong class="method">Constructor __construct</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersPreparedAdapter.php.html#a20">20</a></span>)
+ </h4> 
+<h4><i>PreparedAdapter</i> <strong>__construct(
+
+$username, 
+$password, 
+$hostname, 
+$schema, [
+$lazy = true])</strong></h4>
+
+<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#method__construct">BaseAdapter::__construct()</a> Creates a new adapter instance</p>
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Initializes the prepared statement adapter and then passes things off to BaseAdapter</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong> $username</strong>: </li>
+			<li><strong> $password</strong>: </li>
+			<li><strong> $hostname</strong>: </li>
+			<li><strong> $schema</strong>: </li>
+			<li><strong> $lazy</strong>: </li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - BaseAdapter::__construct($username, <a href="../Prosper/BaseAdapter.html#var$password">BaseAdapter::$password</a>, <a href="../Prosper/BaseAdapter.html#var$hostname">BaseAdapter::$hostname</a>, <a href="../Prosper/BaseAdapter.html#var$schema">BaseAdapter::$schema</a>, $lazy = true)</li>
+		</ul>
+</div>
+<a name="methodcleanup" id="methodcleanup"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method cleanup</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersPreparedAdapter.php.html#a87">87</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>cleanup(
+)</strong></h4>
+	<p>Overridden in child classes as:<br />
+		<dl>
+	<dt><a href="../Prosper/MySqlAdapter.html#methodcleanup">MySqlAdapter::cleanup()</a></dt>
+		<dd>Clean up needs to clear the type string, this isn't performed by default</dd>
+	</dl>
+	</p>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Cleans up any prepared state</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - BaseAdapter::cleanup()</li>
+		</ul>
+</div>
+<a name="methodescape" id="methodescape"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method escape</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersPreparedAdapter.php.html#a30">30</a></span>)
+ </h4> 
+<h4><i>string</i> <strong>escape(
+mixed
+$value)</strong></h4>
+
+<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodescape">BaseAdapter::escape()</a> Escapes a value, adds slashes and surrounds with single quotes</p>
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Binds a value to a prepared statement and returns the query placeholder</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>mixed $value</strong>: The value to bind</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - query placeholder</li>
+		</ul>
+</div>
+<a name="methodplatform_execute" id="methodplatform_execute"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method platform_execute</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersPreparedAdapter.php.html#a55">55</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>platform_execute(
+
+$sql, 
+$mode)</strong></h4>
+	<p>Overridden in child classes as:<br />
+		<dl>
+	<dt><a href="../Prosper/IngresAdapter.html#methodplatform_execute">IngresAdapter::platform_execute()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/PostgreSqlAdapter.html#methodplatform_execute">PostgreSqlAdapter::platform_execute()</a></dt>
+		<dd></dd>
+	</dl>
+	</p>
+
+<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodplatform_execute">BaseAdapter::platform_execute()</a> Platform specific execution wrapper</p>
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Override the Base behavior and dispatch to the correct function based off</h5>
+<div class="desc"><p>of whether or not we are functioning on a prepared statement</p></div>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong> $sql</strong>: </li>
+			<li><strong> $mode</strong>: </li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - BaseAdapter::platform_execute($sql, $mode)</li>
+		</ul>
+</div>
+<a name="methodprepare" id="methodprepare"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method prepare</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersPreparedAdapter.php.html#a46">46</a></span>)
+ </h4> 
+<h4><i>string</i> <strong>prepare(
+mixed
+$value)</strong></h4>
+	<p>Overridden in child classes as:<br />
+		<dl>
+	<dt><a href="../Prosper/MySqlAdapter.html#methodprepare">MySqlAdapter::prepare()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/OracleAdapter.html#methodprepare">OracleAdapter::prepare()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/PostgreSqlAdapter.html#methodprepare">PostgreSqlAdapter::prepare()</a></dt>
+		<dd></dd>
+	</dl>
+	</p>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>If any special processing is needed for the platform then this function</h5>
+<div class="desc"><p>should be overriden</p></div>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>mixed $value</strong>: The value being bound</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - query placeholder, default implementation is '?'</li>
+		</ul>
+</div>
+<a name="methodprepared_execute" id="methodprepared_execute"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method prepared_execute</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersPreparedAdapter.php.html#a69">69</a></span>)
+ </h4> 
+<h4><i>mixed</i> <strong>prepared_execute(
+string
+$sql, string
+$mode)</strong></h4>
+	<p>Overridden in child classes as:<br />
+		<dl>
+	<dt><a href="../Prosper/DB2Adapter.html#methodprepared_execute">DB2Adapter::prepared_execute()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/MaxDBAdapter.html#methodprepared_execute">MaxDBAdapter::prepared_execute()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/MySqlAdapter.html#methodprepared_execute">MySqlAdapter::prepared_execute()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/OracleAdapter.html#methodprepared_execute">OracleAdapter::prepared_execute()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/OvrimosAdapter.html#methodprepared_execute">OvrimosAdapter::prepared_execute()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/PostgreSqlAdapter.html#methodprepared_execute">PostgreSqlAdapter::prepared_execute()</a></dt>
+		<dd></dd>
+	</dl>
+	</p>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Prepare and execute a statement for the given sql</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $sql</strong>: SQL to execute</li>
+			<li><strong>string $mode</strong>: Query type</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - Platform specific result set for prepared statements</li>
+		</ul>
+</div>
+<a name="methodstandard_execute" id="methodstandard_execute"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method standard_execute</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersPreparedAdapter.php.html#a79">79</a></span>)
+ </h4> 
+<h4><i>mixed</i> <strong>standard_execute(
+string
+$sql, string
+$mode)</strong></h4>
+	<p>Overridden in child classes as:<br />
+		<dl>
+	<dt><a href="../Prosper/DB2Adapter.html#methodstandard_execute">DB2Adapter::standard_execute()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/IngresAdapter.html#methodstandard_execute">IngresAdapter::standard_execute()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/MaxDBAdapter.html#methodstandard_execute">MaxDBAdapter::standard_execute()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/MySqlAdapter.html#methodstandard_execute">MySqlAdapter::standard_execute()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/OracleAdapter.html#methodstandard_execute">OracleAdapter::standard_execute()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/OvrimosAdapter.html#methodstandard_execute">OvrimosAdapter::standard_execute()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/PostgreSqlAdapter.html#methodstandard_execute">PostgreSqlAdapter::standard_execute()</a></dt>
+		<dd></dd>
+	</dl>
+	</p>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Execute ad-hoc SQL</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>string $sql</strong>: SQL to execute</li>
+			<li><strong>string $mode</strong>: Query type</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - Platform specific result set</li>
+		</ul>
+</div>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage2" ) );</script></div>
+<div class="tab-page" id="iVars">
+<h2 class="tab">Inherited Variables</h2>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "iVars" ) );</script>
+<!-- =========== VAR INHERITED SUMMARY =========== -->
+<A NAME='var_inherited_summary'><!-- --></A>
+<h3>Inherited Class Variable Summary</h3>
+
+		<!-- =========== Summary =========== -->
+	<h4>Inherited From Class <a href="../Prosper/BaseAdapter.html">BaseAdapter</a></h4>
+		<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /><strong class="property"> <a href="../Prosper/BaseAdapter.html#var$connection">BaseAdapter::$connection</a></strong> - 
+	</h4> 
+		<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /><strong class="property"> <a href="../Prosper/BaseAdapter.html#var$hostname">BaseAdapter::$hostname</a></strong> - 
+	</h4> 
+		<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /><strong class="property"> <a href="../Prosper/BaseAdapter.html#var$password">BaseAdapter::$password</a></strong> - 
+	</h4> 
+		<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /><strong class="property"> <a href="../Prosper/BaseAdapter.html#var$schema">BaseAdapter::$schema</a></strong> - 
+	</h4> 
+		<h4>
+<img src="../media/images/PublicProperty.gif" border="0" /><strong class="property"> <a href="../Prosper/BaseAdapter.html#var$username">BaseAdapter::$username</a></strong> - 
+	</h4> 
+		</div>
+<div class="tab-page" id="iMethods">
+<h2 class="tab">Inherited Methods</h2>
+<script type="text/javascript">tp1.addTabPage( document.getElementById( "iMethods" ) );</script>
+<!-- =========== INHERITED METHOD SUMMARY =========== -->
+<A NAME='functions_inherited'><!-- --></A>
+<h3>Inherited Method Summary</h3>
+
+		<!-- =========== Summary =========== -->
+	<h4>Inherited From Class <a href="../Prosper/BaseAdapter.html">BaseAdapter</a></h4>
+				<h4>
+<img src="../media/images/Constructor.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#method__construct">BaseAdapter::__construct()</a></strong> - Creates a new adapter instance
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodaddslashes">BaseAdapter::addslashes()</a></strong> - Wrapper for the adapters add slashes function, defaults to using php's
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodaffected_rows">BaseAdapter::affected_rows()</a></strong> - Get the number of affected rows for a platform specific result object
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodbegin">BaseAdapter::begin()</a></strong> - Begins a transaction, if the adapter doesn't support transactions, this is a no-op
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodcommit">BaseAdapter::commit()</a></strong> - Commits a transaction, if the adapter doesn't support transactions, this is a no-op
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodconnect">BaseAdapter::connect()</a></strong> - Create a connection to the database backend
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodconnection">BaseAdapter::connection()</a></strong> - Get the connection, lazy loads connection if necessary
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodcross_type">BaseAdapter::cross_type()</a></strong> - Translates a platform specific type into a cross platform type
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methoddisconnect">BaseAdapter::disconnect()</a></strong> - Destroy the connection to the database backend
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodend">BaseAdapter::end()</a></strong> - Turns transactions off, this function should be called by BaseAdapter::commit() and BaseAdapter::rollback()
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodescape">BaseAdapter::escape()</a></strong> - Escapes a value, adds slashes and surrounds with single quotes
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodexecute">BaseAdapter::execute()</a></strong> - Executes a sql statement, the base implementation drives the query results using
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodfalse_value">BaseAdapter::false_value()</a></strong> - Platform specific false value
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodfetch_assoc">BaseAdapter::fetch_assoc()</a></strong> - Retrieve an associative array from a platform specific result set
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodfree_result">BaseAdapter::free_result()</a></strong> - Do optional memory cleanup, not necessary but will allow for long running scripts
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodinsert_id">BaseAdapter::insert_id()</a></strong> - Retrieve the last insert id for a statement
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodlimit">BaseAdapter::limit()</a></strong> - Since various databases support a wide variety of limit syntaxes the  adapter is responsible for writing the limit syntax.
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodmktime">BaseAdapter::mktime()</a></strong> - Return unix timestamp from database specific timestamp
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodmodulus">BaseAdapter::modulus()</a></strong> - Platform specific modulus function
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodplatform_execute">BaseAdapter::platform_execute()</a></strong> - Platform specific execution wrapper
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodplatform_type">BaseAdapter::platform_type()</a></strong> - Translates a cross platform type into the best possible platform type
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodquote">BaseAdapter::quote()</a></strong> - Quotes a database object, uses the backtick by default
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodrollback">BaseAdapter::rollback()</a></strong> - Rolls back a transaction, if the adapter doesn't support transactions, this is a no-op
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodtables">BaseAdapter::tables()</a></strong> - Retrieve table information from the current schema
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodtimestamp">BaseAdapter::timestamp()</a></strong> - Return database specific timestamp from unix timestamp
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodtrue_value">BaseAdapter::true_value()</a></strong> - Platform specific true value
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodtype_array">BaseAdapter::type_array()</a></strong> - Translates a raw data representation to an array of components
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#method__destruct">BaseAdapter::__destruct()</a></strong> - Destroys an adapter instance
+		</h4> 
+
+				<br />
+	</div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+
+setupAllTabs();
+
+//]]>
+</script>
+	<div id="credit">
+		<hr />
+		Documentation generated on Tue, 22 Dec 2009 10:48:22 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</div>
+</body>
+</html>
