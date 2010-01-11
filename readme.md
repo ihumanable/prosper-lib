@@ -26,7 +26,8 @@ PHP 5.3+
 - Ingres
 - MaxDB
 - MSql
-- Microsoft SQL Server
+- Microsoft SQL Server (through the built-in VSDX)
+- Microsoft SQL Server (through Microsoft's Native Extension)
 - MySQL (through the use of mysql)
 - MySQL (through the use of mysqli)
 - Ovrimos File Database

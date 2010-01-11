@@ -16,23 +16,24 @@ class Query {
   const SELECT_STMT = "SELECT_STMT";
   const UPDATE_STMT = "UPDATE_STMT";
   //SQL Modes
-  const DB2_MODE       = "DB2Adapter";
-  const DBASE_MODE     = "DBaseAdapter";
-  const FIREBIRD_MODE  = "FirebirdAdapter";
-  const FRONTBASE_MODE = "FrontBaseAdapter";
-  const INFORMIX_MODE  = "InformixAdapter";
-  const INGRES_MODE    = "IngresAdapter";
-  const MAXDB_MODE     = "MaxDBAdapter";
-  const MSQL_MODE      = "MSqlAdapter";
-  const MSSQL_MODE     = "MSSqlAdapter";
-  const MYSQL_MODE     = "MySqlAdapter";
-  const MYSQL_OLD_MODE = "MySqlOldAdapter";
-  const ORACLE_MODE    = "OracleAdapter";
-  const OVRIMOS_MODE   = "OvrimosAdapter";
-  const PARADOX_MODE   = "ParadoxAdapter";
-  const POSTGRE_MODE   = "PostgreSqlAdapter";
-  const SQLITE_MODE    = "SqliteAdapter";
-  const SYBASE_MODE    = "SybaseAdapter";
+  const DB2_MODE          = "DB2Adapter";
+  const DBASE_MODE        = "DBaseAdapter";
+  const FIREBIRD_MODE     = "FirebirdAdapter";
+  const FRONTBASE_MODE    = "FrontBaseAdapter";
+  const INFORMIX_MODE     = "InformixAdapter";
+  const INGRES_MODE       = "IngresAdapter";
+  const MAXDB_MODE        = "MaxDBAdapter";
+  const MSQL_MODE         = "MSqlAdapter";
+  const MSSQL_MODE        = "MSSqlAdapter";
+  const MSSQL_NATIVE_MODE = "MSSqlNativeAdapter";
+  const MYSQL_MODE        = "MySqlAdapter";
+  const MYSQL_OLD_MODE    = "MySqlOldAdapter";
+  const ORACLE_MODE       = "OracleAdapter";
+  const OVRIMOS_MODE      = "OvrimosAdapter";
+  const PARADOX_MODE      = "ParadoxAdapter";
+  const POSTGRE_MODE      = "PostgreSqlAdapter";
+  const SQLITE_MODE       = "SqliteAdapter";
+  const SYBASE_MODE       = "SybaseAdapter";
   //Loading Modes
   const LAZY_LOADING   = true;
   const EAGER_LOADING  = false;
@@ -218,6 +219,14 @@ class Query {
    */
   static function is_mssql() {
     return self::db_mode() == MSSQL_MODE;
+  }
+  
+  /**
+   * Convenience function to check if the configuration is MSSql Native
+   * @return boolean true if configured for MSSql Native, false otherwise
+   */        
+  static function is_mssql_native() {
+    return self::db_mode() == MSSQL_NATIVE_MODE;
   }
   
   /**
