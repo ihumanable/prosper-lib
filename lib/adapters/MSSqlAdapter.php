@@ -80,6 +80,13 @@ class MSSqlAdapter extends BaseAdapter {
   }  
   
   /**
+   * @see BaseAdapter::addslashes($str)
+   */     
+  function addslashes($str) {
+    return str_replace("'", "''", $str);
+  }
+  
+  /**
    * Microsoft T-SQL sucks and can't easily do limit offset like every other 
    * reasonable rdbms, this creates a complex windowing function to do something
    * that everyone else has built-in.

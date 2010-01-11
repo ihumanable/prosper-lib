@@ -9,7 +9,7 @@ namespace Prosper;
  */
 class FirebirdAdapter extends PreparedAdapter {
   
-  private $transaction = null
+  private $transaction = null;
   
   /**
    * @see BaseAdapter::connect()

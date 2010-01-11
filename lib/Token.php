@@ -44,7 +44,7 @@ class Token {
 	
 	static function next(&$source) {
 		$source = ltrim($source);
-		$sample = $source[0];
+		$sample = (strlen($source) > 0) ? $source[0] : '';
 		
 		if(ctype_alnum($sample) || in_array($sample, self::$allowed)) {
 			return self::sql_entity_parse($source);

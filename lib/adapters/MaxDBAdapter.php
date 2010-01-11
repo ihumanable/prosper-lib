@@ -58,7 +58,7 @@ class MaxDBAdapter extends PreparedAdapter {
    * @see BaseAdapter::end()
    */     
   function end() {
-    $this->connection()->autocommit(true;)
+    $this->connection()->autocommit(true);
   }
   
   /**
