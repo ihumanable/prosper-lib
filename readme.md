@@ -6,7 +6,7 @@ by Matt Nowack
 
 <ihumanable@gmail.com>
 
-<http://ihumanable.com/blog/prosper/>
+<http://prosper-lib.com>
 
 ## intro ##
 
