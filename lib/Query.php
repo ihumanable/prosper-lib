@@ -40,9 +40,14 @@ class Query {
   
   private $mode;
   private $sql;
-  private static $adapter;
+  private $adapter;
+  private static $username;
+  private static $password;
+  private static $hostname;
   private static $schema;
+  private static $loading;
   private static $db_mode;
+  private static $adapter_class;
   
   /**
    * Private constructor used by factory methods
@@ -52,6 +57,8 @@ class Query {
   private function __construct($sql = "", $mode = "") {
     $this->sql = $sql;
     $this->mode = $mode;
+    $adapter = self::$adapter_class;
+    $this->adapter = new $adapter(self::$username, self::$password, self::$hostname, self::$schema, self::$loading)
   }
   
   /**
@@ -62,11 +69,19 @@ class Query {
    * @param string $hostname [optional] Database hostname	 
    * @param string $schema [optional] Default schema to apply to queries	 
    */
-  static function configure($db_mode = MYSQL_MODE, $username = "", $password = "", $hostname = "", $schema = "", $loading = LAZY_LOADING) {
-    $adapter = "Prosper\\$db_mode";
+  static function configure($db_mode = MYSQL_MODE, 
+                            $username = '', 
+                            $password = '', 
+                            $hostname = '', 
+                            $schema = '', 
+                            $loading = LAZY_LOADING) {
+    self::$adapter_class = 'Prosper\\' . $db_mode;
     self::$db_mode = $db_mode;
-    self::$adapter = new $adapter($username, $password, $hostname, $schema, $loading);
-    self::$schema = ($schema == "" ? "" : self::quote($schema));
+    self::$username = $username;
+    self::$password = $password;
+    self::$hostname = $hostname;
+    self::$schema = $schema; 
+    self::$loading = $loading;
   } 
   
   //Common formatting functions
@@ -74,19 +89,19 @@ class Query {
   /**
    * Creates an alias string if alias is not empty
    * @param string $alias alias to create 
-   * @return string template is " as self::quote($alias)"
+   * @return string template is " as {$this->quote($alias)}"
    */
-  static function alias($alias) {
-    return ($alias == "" ? "" : " as " . self::quote($alias));
+  function alias($alias) {
+    return ($alias == '' ? '' : ' as ' . $this->quote($alias));
   }
   
   /**
    * Properly quotes and scopes a potential table.
    * @param string $table table name 
-   * @return string Properly scoped and quoted tablename ex: Query::table('hello') => `schema`.`hello` (for mysql)
+   * @return string Properly scoped and quoted tablename ex: $this->table('hello') => `schema`.`hello` (for mysql)
    */
-  static function table($table) {
-    return self::schema('.') . self::quote($table);
+  function table($table) {
+    return $this->schema('.') . $this->quote($table);
   }
   
   /**
@@ -94,8 +109,8 @@ class Query {
    * @param string $append [optional] If the schema exists this text will be appended, most useful for appending a dot (.)
    * @return string Schema with an optional suffix 
    */
-  static function schema($append = "") {
-    return (self::$schema == "" ? "" : self::$schema . $append);
+  function schema($append = '') {
+    return (self::$schema == '' ? '' : $this->quote(self::$schema) . $append);
   }
   
   /**
@@ -105,13 +120,13 @@ class Query {
    * @return Properly quoted text
    * @see BaseAdapter::quote($str)
    */	
-  static function quote($str) {
+  function quote($str) {
     if(strpos($str, '.') === false) {
-      return self::$adapter->quote($str);
+      return $this->adapter->quote($str);
     } else {
       $parts = explode('.', $str);
       foreach($parts as $part) {
-        $safeparts[] = self::$adapter->quote($part);
+        $safeparts[] = $this->adapter->quote($part);
       }
       return implode('.', $safeparts);
     }
@@ -124,8 +139,8 @@ class Query {
    * @return string Properly escaped text
    * @see BaseAdapter::escape($str)
    */
-  static function escape($str) {
-    return self::$adapter->escape(self::deliteral($str)); 
+  function escape($str) {
+    return $this->adapter->escape(self::deliteral($str)); 
   }
   
   /**
@@ -134,7 +149,7 @@ class Query {
    * @return String with quotes removed
    */
   static function deliteral($str) {
-    return (self::is_literal($str) ? substr($str, 1, strlen($str) - 2) : $str);
+    return (self::is_literal($str) ? substr($str, 1, -1) : $str);
   }
   
   //Common testing functions
@@ -145,7 +160,7 @@ class Query {
    * @return boolean true if literal, false otherwise
    */
   static function is_literal($str) {
-    return ($str[0] == "'" && $str[strlen($str) - 1] == "'");
+    return ($str[0] == '\'' && $str[strlen($str) - 1] == '\'');
   }
   
   /**
@@ -293,8 +308,8 @@ class Query {
     return self::db_mode() == SYBASE_MODE;
   }
   
-  static function has_transactions() {
-    return self::$adapter->has_transactions();
+  function has_transactions() {
+    return $this->adapter->has_transactions();
   }
   
   //Transaction API
@@ -302,24 +317,24 @@ class Query {
   /**
    * Begin a database transaction
    */
-  static function begin() {
-    self::$adapter->begin();
+  function begin() {
+    $this->adapter->begin();
   }
   
   /**
    * Commit the open transaction
    */
-  static function commit() {
-    self::$adapter->commit();
-    self::$adapter->end();
+  function commit() {
+    $this->adapter->commit();
+    $this->adapter->end();
   }
   
   /**
    * Rollback the open transaction
    */
-  static function rollback() {
-    self::$adapter->rollback();
-    self::$adapter->end();
+  function rollback() {
+    $this->adapter->rollback();
+    $this->adapter->end();
   }
   
   //Reflection API
@@ -331,8 +346,8 @@ class Query {
    * @params varargs [optional] table names to retrieve
    * @return array Table data
    */        
-  static function tables() {
-    return self::$adapter->tables(func_get_args());
+  function tables() {
+    return $this->adapter->tables(func_get_args());
   }
   
   //Select Statement Functions
@@ -352,15 +367,15 @@ class Query {
       foreach($args as $arg) {
         if(is_array($arg)) {
           foreach($arg as $key => $value) {
-            $parts[] = self::quote($key) . self::alias($value);
+            $parts[] = $this->quote($key) . $this->alias($value);
           }
         } else {
-          $parts[] = self::quote($arg);
+          $parts[] = $this->quote($arg);
         }
       }
       $columns = implode(', ', $parts);
     }
-    return new Query("select $columns", self::SELECT_STMT);
+    return new Query('select ' . $columns, self::SELECT_STMT);
   }
   
   /**
@@ -369,11 +384,11 @@ class Query {
    * @param string $alias [optional] alias
    * @return Query instance for further chaining
    */
-  function from($table, $alias = "") {
+  function from($table, $alias = '') {
     if($table instanceof Query) {
-      $this->sql .= " from (" . $table . ")" . self :: alias($alias);
+      $this->sql .= ' from (' . $table . ')' . $this->alias($alias);
     } else {
-      $this->sql .= " from " . self::table($table) . self::alias($alias);
+      $this->sql .= ' from ' . $this->table($table) . $this->alias($alias);
     }
     return $this;
   }
@@ -385,8 +400,8 @@ class Query {
    * @param object $alias [optional] alias
    * @return Query instance for further chaining
    */
-  function left($table, $alias = "") {
-    return $this->specified_join($table, $alias, "left join");
+  function left($table, $alias = '') {
+    return $this->specified_join($table, $alias, 'left join');
   }
   
   /**
@@ -396,8 +411,8 @@ class Query {
    * @param object $alias [optional] alias
    * @return Query instance for further chaining
    */
-  function inner($table, $alias = "") {
-    return $this->specified_join($table, $alias, "inner join");
+  function inner($table, $alias = '') {
+    return $this->specified_join($table, $alias, 'inner join');
   }
   
   /**
@@ -407,8 +422,8 @@ class Query {
    * @param object $alias [optional] alias
    * @return Query instance for further chaining
    */
-  function outer($table, $alias = "") {
-    return $this->specified_join($table, $alias, "outer join");
+  function outer($table, $alias = '') {
+    return $this->specified_join($table, $alias, 'outer join');
   }
   
   /**
@@ -418,7 +433,7 @@ class Query {
    * @param string $alias [optional] alias
    * @return Query instance for further chaining
    */
-  function join($table, $alias = "") {
+  function join($table, $alias = '') {
     return $this->specified_join($table, $alias);
   }
   
@@ -430,8 +445,8 @@ class Query {
    * @param string $type [optional] join clause
    * @return Query instance for further chaining
    */
-  function specified_join($table, $alias = "", $type= "join") {
-    $this->sql .= " $type " . self::table($table) . self::alias($alias);
+  function specified_join($table, $alias = '', $type= 'join') {
+    $this->sql .= " $type " . $this->table($table) . $this->alias($alias);
     return $this;
   }
   
@@ -444,7 +459,7 @@ class Query {
     if(func_num_args() > 0) {
       $this->sql .= ' group by ';
       foreach(func_get_args() as $arg) {
-        $cols[] = self::quote($arg);
+        $cols[] = $this->quote($arg);
       }
       $this->sql .= implode(', ', $cols);
     }
@@ -501,7 +516,7 @@ class Query {
    * @see Query::having($clause)
    */
   function conditional($predicate, $clause, $args) {
-    $result = " $predicate";
+    $result = ' ' . $predicate;
     $named = $args[count($args) - 1];	
     while($token = Token::next($clause)) {
       $result .= $this->process_token($clause, $token, $args, $named);
@@ -521,28 +536,28 @@ class Query {
   function process_token(&$clause, $token, &$args, $named) {
     switch($token['type']) {
       case Token::BOOLEAN:
-        return " " . (strtolower($token['token']) == 'true' ? self::true_value() : self::false_value());
+        return ' ' . (strtolower($token['token']) == 'true' ? $this->true_value() : $this->false_value());
         break;
       case Token::LITERAL:
-        return " " . self::escape($token['token']);
+        return ' ' . $this->escape($token['token']);
         break;
       case Token::MODULUS:
         $func_args = $this->parse_func_args($clause, $args, $named);
         if(count($func_args) == 2) {
-          return self::modulus($func_args[0], $func_args[1]);
+          return $this->modulus($func_args[0], $func_args[1]);
         }
         break;
       case Token::NAMED_PARAM:
-        return self::parameterize($named[substr($token['token'], 1)]);
+        return $this->parameterize($named[substr($token['token'], 1)]);
         break;
       case Token::PARAMETER:
-        return self::parameterize(array_shift($args));
+        return $this->parameterize(array_shift($args));
         break;
       case Token::SQL_ENTITY:
-        return " " . self::quote($token['token']);
+        return ' ' . $this->quote($token['token']);
         break;
       default:
-        return " " . $token['token'];
+        return ' ' . $token['token'];
         break;
     }
   }
@@ -554,11 +569,11 @@ class Query {
    */
   function parameterize($value) {
     if(is_array($value)) {
-      return " " . implode(', ', array_map(array(__CLASS__, "escape"), $value));
+      return ' ' . implode(', ', array_map(array($this, 'escape'), $value));
     } else if($value instanceof Query) {
-      return " $value";
+      return ' ' . $value;
     } else {
-      return " " . self::escape($value);
+      return ' ' . $this->escape($value);
     }
   }
   
@@ -573,7 +588,7 @@ class Query {
     $token = Token::next($clause);	
     if($token['type'] == Token::OPEN_PAREN) {
       $depth = 1;
-      $temp = "";
+      $temp = '';
       while($depth > 0) {
         $token = Token::next($clause);
         switch($token['type']) {
@@ -591,7 +606,7 @@ class Query {
           case Token::COMMA:
             if($depth == 1) {
               $result[] = $temp;
-              $temp = "";
+              $temp = '';
             }
             break;
           default:
@@ -613,7 +628,7 @@ class Query {
    * @return Query instance for further chaining
    */
   function limit($limit, $offset = 0) {
-    $this->sql = self::$adapter->limit($this->sql, $limit, $offset);
+    $this->sql = $this->adapter->limit($this->sql, $limit, $offset);
     return $this;
   }
   
@@ -623,15 +638,15 @@ class Query {
    * @param string $dir [optional] if $columns is a string, "asc" for ascending ordering "desc" for descending, defaults to "asc" 
    * @return Query instance for further chaining
    */
-  function order($columns, $dir = "asc") {
+  function order($columns, $dir = 'asc') {
     if(is_array($columns)) {
-      $this->sql .= " order by ";
+      $this->sql .= ' order by ';
       foreach($columns as $key => $value) {
-        $cols[] = self::quote($key) . " " . (strtolower($value) == "desc" ? "desc" : "asc");
+        $cols[] = $this->quote($key) . ' ' . (strtolower($value) == 'desc' ? 'desc' : 'asc');
       }
       $this->sql .= implode(', ', $cols);
     } else {
-      $this->sql .= " order by " . self::quote($columns) . " " . (strtolower($dir) == "desc" ? "desc" : "asc");
+      $this->sql .= ' order by ' . this->quote($columns) . ' ' . (strtolower($dir) == 'desc' ? 'desc' : 'asc');
     }
     return $this;
   }
@@ -643,7 +658,7 @@ class Query {
    * @return Query Insert Statement Query Object
    */
   static function insert() {
-    return new Query("insert", self::INSERT_STMT);
+    return new Query('insert', self::INSERT_STMT);
   }
   
   /**
@@ -652,7 +667,7 @@ class Query {
    * @return Query instance for further chaining
    */
   function into($table) {
-    $this->sql .= ' into ' . self::table($table);
+    $this->sql .= ' into ' . $this->table($table);
     return $this;
   }
   
@@ -677,14 +692,14 @@ class Query {
       $values = array_pop($filters);      //Remove $values
       foreach($filters as $filter) {
         if(array_key_exists($filter, $values)) {
-          $cols[] = self::quote($filter);
-          $vals[] = self::escape($values[$filter]);
+          $cols[] = $this->quote($filter);
+          $vals[] = $this->escape($values[$filter]);
         }
       }
     } else {
       foreach($values as $key => $value) {
-        $cols[] = self::quote($key);
-        $vals[] = self::escape($value);
+        $cols[] = $this->quote($key);
+        $vals[] = $this->escape($value);
       }
     }
     
@@ -702,7 +717,9 @@ class Query {
    * @return Query Update Statement Query Object
    */
   static function update($table) {
-    return new Query("update " . self::table($table), self::UPDATE_STMT);
+    $query = new Query('update ', self::UPDATE_STMT);
+    $query->sql .= $this->table($table)
+    return $query;
   }
   
   /**
@@ -736,7 +753,7 @@ class Query {
     $this->sql .= ' set ';
     if(is_array($arr)) {
       foreach($arr as $key => $value) {
-        $entries[] = self::quote($key) . "=" . self::escape($value);
+        $entries[] = $this->quote($key) . '=' . $this->escape($value);
       }
       $this->sql .= implode(', ', $entries);
     }
@@ -750,7 +767,7 @@ class Query {
    * @return Query Delete Statement Query Object
    */
   static function delete() {
-    return new Query("delete", self::DELETE_STMT);
+    return new Query('delete', self::DELETE_STMT);
   }
   
   //Utility Functions
@@ -770,17 +787,17 @@ class Query {
    * The inverse of this function is Query::mktime($timestamp)
    * ie. 
    *  $unix = mktime();
-   *  $db_time = Query::timestamp($unix);
-   *  $unix === Query::mktime($db_time);
+   *  $db_time = $this->timestamp($unix);
+   *  $unix === $this->mktime($db_time);
    * @param int timestamp [optional] unix timestamp to translate, defaults to current time
    * @return string database timestamp string
    * @see Query::mktime($timestamp)   
    */
-  static function timestamp($timestamp = null) {
+  function timestamp($timestamp = null) {
     if($timestamp === null) {
       $timestamp = mktime();
     }
-    return self::$adapter->timestamp($timestamp);
+    return $this->adapter->timestamp($timestamp);
   }
   
   /**
@@ -788,30 +805,30 @@ class Query {
    * The inverse of this function is Query::timestamp($timestamp)
    * ie.
    *  $db_time = $row['timestamp'];
-   *  $unix = Query::mktime($db_time);
-   *  $db_time === Query::timestamp($unix);
+   *  $unix = $this->mktime($db_time);
+   *  $db_time === $this->timestamp($unix);
    * @param string timestamp database timestamp
    * @return int unix timestamp	 	 
    * @see Query::timestamp($timestamp)   
    */
-  static function mktime($timestamp) {
-    return self::$adapter->mktime($timestamp);
+  function mktime($timestamp) {
+    return $this->adapter->mktime($timestamp);
   }
   
   /**
    * Get the platform specific true value
    * @return mixed Boolean True Value ex: 1 or TRUE
    */
-  static function true_value() {
-    return self::$adapter->true_value();
+  function true_value() {
+    return $this->adapter->true_value();
   }
   
   /**
    * Get the platform specific false value
    * @return mixed Boolean False Value ex: 0 or FALSE
    */
-  static function false_value() {
-    return self::$adapter->false_value();
+  function false_value() {
+    return $this->adapter->false_value();
   }
   
   /**
@@ -820,8 +837,8 @@ class Query {
    * @param string $rhs right hand side snippet
    * @return string modulus snippet
    */
-  static function modulus($lhs, $rhs) {
-    return self::$adapter->modulus($lhs, $rhs);
+  function modulus($lhs, $rhs) {
+    return $this->adapter->modulus($lhs, $rhs);
   }
   
   //System Functions
@@ -835,7 +852,7 @@ class Query {
    * @return mixed execution result	 	 
    */
   function execute() {
-    return self::$adapter->execute($this->sql, $this->mode);
+    return $this->adapter->execute($this->sql, $this->mode);
   }
   
   /**
@@ -844,9 +861,9 @@ class Query {
    */
   function verbose() {
     echo '<pre class="brush: sql">SQL : <br />' . $this->sql . "</pre>";
-    if(self::$adapter->prepared) {
+    if($this->adapter->prepared) {
       echo '<pre class="brush: php">BINDINGS : <br />'; 
-        print_r(self::$adapter->bindings);
+        print_r($this->adapter->bindings);
       echo '</pre>';
     }
     $result = $this->execute();
