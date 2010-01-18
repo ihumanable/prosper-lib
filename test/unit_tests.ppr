@@ -1,0 +1,34 @@
+[Config]
+Compilator.SaveAll=0
+Compilator.Capture=0
+Compilator.HideOutput=0
+Compilator.LogType=0
+DefaultCPIndex=0
+LogtoEnd=1
+DontOpen=0
+AbsolutePath=0
+FileFormat=0
+ProjectFilesOnly=0
+[Project tree]
+unit_tests
+	+root
+		+mysql
+			mysql\mysql_suite.php
+			mysql\select_tests.php
+		suite.php
+[Open project files]
+0=suite.php
+1=mysql\mysql_suite.php
+2=mysql\select_tests.php
+[Selected Project Files]
+Main=
+Selected=mysql\select_tests.php
+[suite.php]
+TopLine=1
+Caret=39,15
+[mysql\mysql_suite.php]
+TopLine=1
+Caret=53,10
+[mysql\select_tests.php]
+TopLine=1
+Caret=13,32

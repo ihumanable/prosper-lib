@@ -58,7 +58,7 @@ class Query {
     $this->sql = $sql;
     $this->mode = $mode;
     $adapter = self::$adapter_class;
-    $this->adapter = new $adapter(self::$username, self::$password, self::$hostname, self::$schema, self::$loading)
+    $this->adapter = new $adapter(self::$username, self::$password, self::$hostname, self::$schema, self::$loading);
   }
   
   /**
@@ -646,7 +646,7 @@ class Query {
       }
       $this->sql .= implode(', ', $cols);
     } else {
-      $this->sql .= ' order by ' . this->quote($columns) . ' ' . (strtolower($dir) == 'desc' ? 'desc' : 'asc');
+      $this->sql .= ' order by ' . $this->quote($columns) . ' ' . (strtolower($dir) == 'desc' ? 'desc' : 'asc');
     }
     return $this;
   }
@@ -718,7 +718,7 @@ class Query {
    */
   static function update($table) {
     $query = new Query('update ', self::UPDATE_STMT);
-    $query->sql .= $this->table($table)
+    $query->sql .= $this->table($table);
     return $query;
   }
   
@@ -874,11 +874,35 @@ class Query {
   }
   
   /**
+   * Read-only access to the contained sql statement
+   * @return string internal sql statement
+   */        
+  function sql() {
+    return $this->sql;
+  }
+  
+  /**
+   * Read-only access to the contained bindings for a prepared statement
+   * This function guarantees that an array will be returned, if there are no 
+   * bindings or the adapter is not a PreparedAdapter, it will return an empty
+   * array
+   * @return array The current state of the bindings for a prepared statement
+   */                
+  function bindings() {
+    if($this->adapter instanceof PreparedAdapter) {
+      return (is_array($this->adapter->bindings) ? $this->adapter->bindings : array());
+    } else {
+      return array();
+    }
+    
+  }
+  
+  /**
    * Automagic toString method, simply prints wrapped sql statement
    * @return string internal sql statement
    */
   function __toString() {
-    return $this->sql;
+    return $this->sql();
   }
   
 }

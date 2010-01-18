@@ -28,6 +28,7 @@ prosper
 			lib\adapters\MaxDBAdapter.php
 			lib\adapters\MSqlAdapter.php
 			lib\adapters\MSSqlAdapter.php
+			lib\adapters\MSSqlNativeAdapter.php
 			lib\adapters\MySqlAdapter.php
 			lib\adapters\MySqlOldAdapter.php
 			lib\adapters\OracleAdapter.php
@@ -58,10 +59,5 @@ prosper
 		todo\index.php
 		todo\utility.php
 [Open project files]
-0=readme.md
 [Selected Project Files]
 Main=
-Selected=readme.md
-[readme.md]
-TopLine=1
-Caret=24,9
