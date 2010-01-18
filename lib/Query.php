@@ -436,6 +436,35 @@ class Query {
   }
   
   /**
+   * Chained function for describing a grouping
+   * @param varargs $columns Columns to group on
+   * @return Query instance for further chaining
+   */
+  function group() {
+    if(func_num_args() > 0) {
+      $this->sql .= ' group by ';
+      foreach(func_get_args() as $arg) {
+        $cols[] = self::quote($arg);
+      }
+      $this->sql .= implode(', ', $cols);
+    }
+    return $this;
+  }
+  
+  /**
+    * Chained function for describing the having clause
+    * @param object $clause see below
+    * @param varargs [optional] values to use for parameterization
+    * @return Query instance for further chaining
+    * @see Query::conditional($clause) for implementation details.
+    */
+   function having($clause) {
+     $args = func_get_args();
+     array_shift($args);
+     return $this->conditional('having', $clause, $args);
+   }
+  
+  /**
    * Chained function for describing the on clause
    * @param object $clause see below
    * @param varargs [optional] values to use for parameterization
@@ -462,11 +491,14 @@ class Query {
   }
   
   /**
-   * Used by Query::where and Query::on to parse conditional strings, 
+   * Used by Query::where, Query::on, and Query::having to parse conditional strings, 
    * interpolating parameters, quoting, escaping, and cross-platform 
    * replacements where needed
    * @param string $predicate result predicate, i.e. 'where' or 'on'
    * @param string $clause conditional clause	 	 	 	 
+   * @see Query::where($clause)
+   * @see Query::on($clause)
+   * @see Query::having($clause)
    */
   function conditional($predicate, $clause, $args) {
     $result = " $predicate";
