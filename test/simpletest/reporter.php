@@ -74,11 +74,17 @@ class HtmlReporter extends SimpleReporter {
      *    @return string            CSS code as text.
      *    @access protected
      */
-    function _getCss() {
-        return ".fail { background-color: inherit; color: red; }" .
-                ".pass { background-color: inherit; color: green; }" .
-                ".skip { background-color: inherit; color: orange; }" .
-                " pre { background-color: lightgray; color: inherit; }";
+    function _getCSS() {
+      return "html { font-family: sans-serif } " .
+             "body { margin-left: 200px; margin-right: 200px } " .
+             ".pass { background: #D2E0E6; color: #528CE0; padding: 5px; margin-bottom: 1px; font-weight: bold }" .
+             ".pass span { color: #000000; } " .
+             ".fail { background: #EE5757; color: #000000; padding: 5px; margin-bottom: 1px; font-weight: bold }" .
+             ".fail span { color: #880000; } " .
+             ".fail div.message { color: #000000; padding-left: 10px }" .
+             ".fail span.location { font-size: small; color: #000000; }" .
+             ".skip { background: #000000; color: white; padding: 5px; margin-bottom: 1px; font-weight: bold }" .
+             " pre { background-color: lightgray; color: inherit; }";
     }
 
     /**
@@ -101,6 +107,13 @@ class HtmlReporter extends SimpleReporter {
         print "</body>\n</html>\n";
     }
 
+    function paintPass($message) {
+      parent::paintPass($message);
+      print "<div class=\"pass\"><span>Pass</span>: ";
+      $breadcrumb = $this->getTestList();
+      print array_pop($breadcrumb) . "</div>";
+    }
+
     /**
      *    Paints the test failure with a breadcrumbs
      *    trail of the nesting test suites below the
@@ -110,12 +123,14 @@ class HtmlReporter extends SimpleReporter {
      *    @access public
      */
     function paintFail($message) {
-        parent::paintFail($message);
-        print "<span class=\"fail\">Fail</span>: ";
-        $breadcrumb = $this->getTestList();
-        array_shift($breadcrumb);
-        print implode(" -&gt; ", $breadcrumb);
-        print " -&gt; " . $this->_htmlEntities($message) . "<br />\n";
+      parent::paintFail($message);
+      print "<div class=\"fail\"><span>Fail</span>: ";
+      $breadcrumb = $this->getTestList();
+      $parts = explode(' at ', $message);
+      $location = substr(array_pop($parts), 1, -1);
+      $message = implode(' at ', $parts);
+      print array_pop($breadcrumb) . " <span class=\"location\">(" . $this->_htmlEntities($location) . ")</span><br />";
+      print "<div class=\"message\">" . $this->_htmlEntities($message) . "</div></div>\n";
     }
 
     /**
@@ -188,12 +203,11 @@ class HtmlReporter extends SimpleReporter {
  * This class is used by Prosper to pretty-print the html results.
  */ 
 class PrettyReporter extends HtmlReporter {
-  function paintPass($message) {
-    parent::paintPass($message);
-    print "<span class=\"pass\">Pass</span>: ";
-    $breadcrumb = $this->getTestList();
-    print array_pop($breadcrumb) . "<br />";
-  }
+  
+  
+  
+  
+  
 }
 
 /**

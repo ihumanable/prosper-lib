@@ -120,7 +120,7 @@ class DefaultReporter extends SimpleReporterDecorator {
             }
         } else {
             $reporter = &new SelectiveReporter(
-                    new PrettyReporter(),
+                    SimpleTest::preferred('HtmlReporter'),
                     @$_GET['c'],
                     @$_GET['t']);
             if (@$_GET['skips'] == 'no' || @$_GET['show-skips'] == 'no') {
