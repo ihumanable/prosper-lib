@@ -4,7 +4,7 @@
   class SelectTests extends UnitTestCase {
     
     function SelectTests() {
-      $this->UnitTestCase('Select Statements');
+      $this->UnitTestCase('MySQL - Select Statements');
     }
     
     function setUp() {

@@ -8,6 +8,8 @@ class MathTests extends TestSuite {
   function MathTests() {
     $this->TestSuite('MySql Tests');
     $this->addFile(MYSQL_ROOT . 'select_tests.php');
+    $this->addFile(MYSQL_ROOT . 'insert_tests.php');
+    $this->addFile(MYSQL_ROOT . 'update_tests.php');
   }
 
 }

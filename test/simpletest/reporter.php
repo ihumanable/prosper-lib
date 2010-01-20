@@ -20,6 +20,9 @@ require_once(dirname(__FILE__) . '/scorer.php');
  */
 class HtmlReporter extends SimpleReporter {
     var $_character_set;
+    var $last_pass = 0;
+    var $last_fail = 0;
+    var $last_excs = 0;
 
     /**
      *    Does nothing yet. The first output will
@@ -40,16 +43,17 @@ class HtmlReporter extends SimpleReporter {
      */
     function paintHeader($test_name) {
         $this->sendNoCacheHeaders();
-        print "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">";
-        print "<html>\n<head>\n<title>$test_name</title>\n";
-        print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=" .
-                $this->_character_set . "\">\n";
-        print "<style type=\"text/css\">\n";
-        print $this->_getCss() . "\n";
-        print "</style>\n";
-        print "</head>\n<body>\n";
-        print "<h1>$test_name</h1>\n";
-        flush();
+        echo "<!DOCTYPE HTML>\n";
+        echo "<html>\n";
+        echo "\t<head>\n";
+        echo "\t\t<title>$test_name</title>\n";
+        echo "\t\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=\"{$this->_character_set}\">\n";
+        echo "\t\t<style type=\"text/css\">\n";
+        echo $this->_getCss();
+        echo "\t\t</style>\n";
+        echo "\t</head>\n";
+        echo "\t<body>\n";
+        echo "\t\t<h1>Prosper</h1>\n";
     }
 
     /**
@@ -75,108 +79,128 @@ class HtmlReporter extends SimpleReporter {
      *    @access protected
      */
     function _getCSS() {
-      return "html { font-family: sans-serif } " .
-             "body { margin-left: 200px; margin-right: 200px } " .
-             ".pass { background: #D2E0E6; color: #528CE0; padding: 5px; margin-bottom: 1px; font-weight: bold }" .
-             ".pass span { color: #000000; } " .
-             ".fail { background: #EE5757; color: #000000; padding: 5px; margin-bottom: 1px; font-weight: bold }" .
-             ".fail span { color: #880000; } " .
-             ".fail div.message { color: #000000; padding-left: 10px }" .
-             ".fail span.location { font-size: small; color: #000000; }" .
-             ".skip { background: #000000; color: white; padding: 5px; margin-bottom: 1px; font-weight: bold }" .
-             " pre { background-color: lightgray; color: inherit; }";
+      $tabs = "\t\t\t";
+      return "$tabs html { font-family: sans-serif } \n" .
+             "$tabs body { margin-left: 200px; margin-right: 200px; background: #D7D7D7 } \n" .
+             "$tabs h1 { background: #000000; color: #FFFFFF; padding: 10px; margin: 0px; -moz-border-radius-topleft: 10px; -moz-border-radius-topright: 10px; } \n" .
+             "$tabs pre { background-color: lightgray; color: inherit; } \n" .
+             "$tabs .case { border-bottom: 1px solid #000000; padding-left: 10px; padding-right: 10px; padding-top: 5px; padding-bottom: 5px;} \n" . 
+             "$tabs .case span.case-label { font-weight: bold } \n" .
+             "$tabs .case div { margin-left: 20px; margin-right: 20px; } \n" .
+             "$tabs .pass { background: #D2E0E6; color: #528CE0; padding: 5px; margin-bottom: 1px; font-weight: bold } \n" .
+             "$tabs .pass span { color: #000000; } \n" .
+             "$tabs .fail { background: #EE5757; color: #000000; padding: 5px; margin-bottom: 1px; font-weight: bold } \n" .
+             "$tabs .fail span { color: #000000; } \n" .
+             "$tabs .fail div.message { color: #000000; padding-left: 10px } \n" .
+             "$tabs .fail span.location { font-size: small; color: #000000; } \n" .
+             "$tabs .skip { background: #000000; color: white; padding: 5px; margin-bottom: 1px; font-weight: bold } \n" .
+             "$tabs .footer { color: black; padding: 10px; -moz-border-radius-bottomleft: 10px; -moz-border-radius-bottomright: 10px; } \n";
+             
     }
-
+  
+    function paintCaseStart($name) {
+      parent::paintCaseStart($name);
+      echo "\t\t<div id=\"case_{$this->getTestCaseProgress()}\" class=\"case\">\n";
+      echo "\t\t\t<span class=\"case-label\">$name</span>\n";
+      
+    }
+    
+    function paintCaseEnd($name) {
+      $pass = ($this->getPassCount() - $this->last_pass);
+      $fail = ($this->getFailCount() - $this->last_fail); 
+      $exception = ($this->getExceptionCount() - $this->last_excs);
+      
+      $color = ($fail + $exception > 0) ? '#FF0000' : '#528CE0';
+      $javascript = "<script type=\"text/javascript\">document.getElementById('case_{$this->getTestCaseProgress()}').style['backgroundColor'] = '$color'</script>";
+      
+      parent::paintCaseEnd($name);
+      echo "\t\t\t<span><strong>" . $this->getTestCaseProgress() . "/" . $this->getTestCaseCount() . "</strong>: ";
+      echo "<strong>" . $pass . "</strong> passed | ";
+      echo "<strong>" . $fail . "</strong> failed | ";
+      echo "<strong>" . $exception . "</strong> exceptions</span>\n";
+      echo $javascript;
+      echo "\t\t</div>\n";
+      $this->last_pass = $this->getPassCount();
+      $this->last_fail = $this->getFailCount();
+      $this->last_excs = $this->getExceptionCount();
+      $this->section++;
+    }
+    
+  
     /**
-     *    Paints the end of the test with a summary of
-     *    the passes and failures.
-     *    @param string $test_name        Name class of test.
-     *    @access public
-     */
-    function paintFooter($test_name) {
-        $colour = ($this->getFailCount() + $this->getExceptionCount() > 0 ? "red" : "green");
-        print "<div style=\"";
-        print "padding: 8px; margin-top: 1em; background-color: $colour; color: white;";
-        print "\">";
-        print $this->getTestCaseProgress() . "/" . $this->getTestCaseCount();
-        print " test cases complete:\n";
-        print "<strong>" . $this->getPassCount() . "</strong> passes, ";
-        print "<strong>" . $this->getFailCount() . "</strong> fails and ";
-        print "<strong>" . $this->getExceptionCount() . "</strong> exceptions.";
-        print "</div>\n";
-        print "</body>\n</html>\n";
-    }
-
-    function paintPass($message) {
-      parent::paintPass($message);
-      print "<div class=\"pass\"><span>Pass</span>: ";
-      $breadcrumb = $this->getTestList();
-      print array_pop($breadcrumb) . "</div>";
-    }
-
-    /**
-     *    Paints the test failure with a breadcrumbs
-     *    trail of the nesting test suites below the
-     *    top level test.
-     *    @param string $message    Failure message displayed in
-     *                              the context of the other tests.
-     *    @access public
-     */
-    function paintFail($message) {
-      parent::paintFail($message);
-      print "<div class=\"fail\"><span>Fail</span>: ";
-      $breadcrumb = $this->getTestList();
+     * Helper method to display the message nicely
+     * @param string $message Message to display
+     * @param string $css CSS class to display with
+     * @param string $label Label to display
+     * @return null                    
+     */         
+    function displayMessage($message, $css, $label) { 
       $parts = explode(' at ', $message);
       $location = substr(array_pop($parts), 1, -1);
       $message = implode(' at ', $parts);
-      print array_pop($breadcrumb) . " <span class=\"location\">(" . $this->_htmlEntities($location) . ")</span><br />";
-      print "<div class=\"message\">" . $this->_htmlEntities($message) . "</div></div>\n";
+      
+      echo "\t\t<div class=\"$css\">\n";
+      echo "\t\t\t<span>$label</span>: " . array_pop($this->getTestList()) . " <span class=\"location\">(" . $this->_htmlEntities($location) . ")</span><br />\n";
+      echo "\t\t\t<div class=\"message\">" . $this->_htmlEntities($message) . "</div>\n";
+      echo "\t\t</div>\n";
     }
 
     /**
-     *    Paints a PHP error.
-     *    @param string $message        Message is ignored.
-     *    @access public
+     * Display a passing test
+     * @param string $message Message to display
+     * @return null          
+     */         
+    function paintPass($message) {
+      parent::paintPass($message);
+      echo "\t\t<div class=\"pass\"><span>Pass</span>: " . array_pop($this->getTestList()) . "</div>\n";
+    }
+
+    /**
+     * Display a failing test
+     * @param string $message Message to display
+     * @return null
+     * @see HtmlReporter::displayMessage($message, $css, $label)               
      */
+    function paintFail($message) {
+      parent::paintFail($message);
+      $this->displayMessage($message, 'fail', 'Fail');
+    }
+    
+    /**
+     * Display an Error
+     * @param string $message Message to display
+     * @return null
+     * @see HtmlReporter::displayMessage($message, $css, $label)
+     */                        
     function paintError($message) {
         parent::paintError($message);
-        print "<span class=\"fail\">Exception</span>: ";
-        $breadcrumb = $this->getTestList();
-        array_shift($breadcrumb);
-        print implode(" -&gt; ", $breadcrumb);
-        print " -&gt; <strong>" . $this->_htmlEntities($message) . "</strong><br />\n";
+        $this->displayMessage($message, 'fail', 'Error');
     }
 
     /**
-     *    Paints a PHP exception.
-     *    @param Exception $exception        Exception to display.
-     *    @access public
+     * Display an Exception
+     * @param object $exception Exception to display
+     * @return null
+     * @see HtmlReporter::displayMessage($message, $css, $label)                    
      */
     function paintException($exception) {
         parent::paintException($exception);
-        print "<span class=\"fail\">Exception</span>: ";
-        $breadcrumb = $this->getTestList();
-        array_shift($breadcrumb);
-        print implode(" -&gt; ", $breadcrumb);
         $message = 'Unexpected exception of type [' . get_class($exception) .
                 '] with message ['. $exception->getMessage() .
                 '] in ['. $exception->getFile() .
                 ' line ' . $exception->getLine() . ']';
-        print " -&gt; <strong>" . $this->_htmlEntities($message) . "</strong><br />\n";
+        $this->displayMessage($message, 'fail', 'Exception');
     }
     
     /**
-     *    Prints the message for skipping tests.
-     *    @param string $message    Text of skip condition.
-     *    @access public
+     * Display a skipped test
+     * @param string $message Message to display
+     * @return null
+     * @see HtmlReporter::displayMessage($message, $css, $label)          
      */
     function paintSkip($message) {
         parent::paintSkip($message);
-        print "<span class=\"skip\">Skipped</span>: ";
-        $breadcrumb = $this->getTestList();
-        array_shift($breadcrumb);
-        print implode(" -&gt; ", $breadcrumb);
-        print " -&gt; " . $this->_htmlEntities($message) . "<br />\n";
+        $this->displayMessage($message, 'skip', 'Skipped');
     }
 
     /**
@@ -185,7 +209,25 @@ class HtmlReporter extends SimpleReporter {
      *    @access public
      */
     function paintFormattedMessage($message) {
-        print '<pre>' . $this->_htmlEntities($message) . '</pre>';
+        echo '<pre>' . $this->_htmlEntities($message) . '</pre>';
+    }
+    
+    /**
+     *    Paints the end of the test with a summary of
+     *    the passes and failures.
+     *    @param string $test_name        Name class of test.
+     *    @access public
+     */
+    function paintFooter($test_name) {
+        $color = ($this->getFailCount() + $this->getExceptionCount() > 0 ? "#FF0000" : "#528CE0");
+        echo "\t\t<div class=\"footer\" style=\"background: $color;\">\n";
+        echo "\t\t\t<strong>Summary</strong>: ";
+        echo "<strong>" . $this->getPassCount() . "</strong> passed | ";
+        echo "<strong>" . $this->getFailCount() . "</strong> failed | ";
+        echo "<strong>" . $this->getExceptionCount() . "</strong> exceptions.\n";
+        echo "\t\t</div>\n";
+        echo "\t</body>\n";
+        echo "</html>\n";
     }
 
     /**
@@ -197,17 +239,6 @@ class HtmlReporter extends SimpleReporter {
     function _htmlEntities($message) {
         return htmlentities($message, ENT_COMPAT, $this->_character_set);
     }
-}
-
-/**
- * This class is used by Prosper to pretty-print the html results.
- */ 
-class PrettyReporter extends HtmlReporter {
-  
-  
-  
-  
-  
 }
 
 /**

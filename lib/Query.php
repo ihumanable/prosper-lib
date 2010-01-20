@@ -718,7 +718,7 @@ class Query {
    */
   static function update($table) {
     $query = new Query('update ', self::UPDATE_STMT);
-    $query->sql .= $this->table($table);
+    $query->sql .= $query->table($table);
     return $query;
   }
   
