@@ -55,8 +55,8 @@ class HtmlReporter extends SimpleReporter {
         echo "\t</head>\n";
         echo "\t<body>\n";
         echo "\t\t<h1>$name [ ";
-        echo "<span id=\"fail-message\">test failed</span>";
-        echo "<span id=\"pass-message\">all tests passed</span>";
+        echo "<span id=\"fail-message\"></span>";
+        echo "<span id=\"pass-message\"></span>";
         echo " ]</h1>\n";
     }
 
@@ -228,12 +228,14 @@ class HtmlReporter extends SimpleReporter {
         $fail = ($this->getFailCount() + $this->getExceptionCount() > 0); 
         $color = ($fail ? "#FF0000" : "#528CE0");
         $elem = ($fail ? "fail-message" : "pass-message");
+        $count = ($fail ? $this->getFailCount() : $this->getPassCount());
+        $message = $count . ($count == 1 ? ' test' : ' tests') . ($fail ? ' failed' : ' passed'); 
         echo "\t\t<div class=\"footer\" style=\"color: $color;\">\n";
         echo "\t\t\t<strong>Summary</strong>: ";
         echo "<strong>" . $this->getPassCount() . "</strong> passed | ";
         echo "<strong>" . $this->getFailCount() . "</strong> failed | ";
         echo "<strong>" . $this->getExceptionCount() . "</strong> exceptions.\n";
-        echo "<script type=\"text/javascript\">document.getElementById('$elem').style.display = 'inline'</script>";
+        echo "<script type=\"text/javascript\">var m = document.getElementById('$elem'); m.innerHTML = '$message'; m.style.display = 'inline'</script>";
         echo "\t\t</div>\n";
         echo "\t</body>\n";
         echo "</html>\n";

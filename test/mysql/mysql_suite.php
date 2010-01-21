@@ -10,6 +10,7 @@ class MySqlSuite extends TestSuite {
     $this->addFile(MYSQL_ROOT . 'select_tests.php');
     $this->addFile(MYSQL_ROOT . 'insert_tests.php');
     $this->addFile(MYSQL_ROOT . 'update_tests.php');
+    $this->addFile(MYSQL_ROOT . 'delete_tests.php');
   }
 
 }

@@ -756,7 +756,7 @@ class Query {
     $this->sql .= ' set ';
     if(is_array($arr)) {
       foreach($arr as $key => $value) {
-        $entries[] = $this->quote($key) . '=' . $this->escape($value);
+        $entries[] = $this->quote($key) . ' = ' . $this->escape($value);
       }
       $this->sql .= implode(', ', $entries);
     }
