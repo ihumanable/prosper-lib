@@ -87,13 +87,13 @@ class HtmlReporter extends SimpleReporter {
              "$tabs .case { border-bottom: 1px solid #000000; padding-left: 10px; padding-right: 10px; padding-top: 5px; padding-bottom: 5px;} \n" . 
              "$tabs .case span.case-label { font-weight: bold } \n" .
              "$tabs .case div { margin-left: 20px; margin-right: 20px; } \n" .
-             "$tabs .pass { background: #D2E0E6; color: #528CE0; padding: 5px; margin-bottom: 1px; font-weight: bold } \n" .
+             "$tabs .pass { background: #D2E0E6; color: #528CE0; padding: 5px; margin-bottom: 1px; font-weight: bold; -moz-border-radius: 10px } \n" .
              "$tabs .pass span { color: #000000; } \n" .
-             "$tabs .fail { background: #EE5757; color: #000000; padding: 5px; margin-bottom: 1px; font-weight: bold } \n" .
+             "$tabs .fail { background: #EE5757; color: #000000; padding: 5px; margin-bottom: 1px; font-weight: bold; -moz-border-radius: 10px } \n" .
              "$tabs .fail span { color: #000000; } \n" .
              "$tabs .fail div.message { color: #000000; padding-left: 10px } \n" .
              "$tabs .fail span.location { font-size: small; color: #000000; } \n" .
-             "$tabs .skip { background: #000000; color: white; padding: 5px; margin-bottom: 1px; font-weight: bold } \n" .
+             "$tabs .skip { background: #000000; color: white; padding: 5px; margin-bottom: 1px; font-weight: bold; -moz-border-radius: 10px } \n" .
              "$tabs .footer { color: black; padding: 10px; -moz-border-radius-bottomleft: 10px; -moz-border-radius-bottomright: 10px; } \n";
              
     }

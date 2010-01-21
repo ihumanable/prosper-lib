@@ -27,6 +27,11 @@
         $this->assertEqual($query->sql(), 'select `foo`, `bar`, `baz`');
       }
       
+      function test_select_columns_alias() {
+        $query = Query::select(array('foo' => 'f', 'bar' => 'b', 'baz' => 'z'));
+        $this->assertEqual($query->sql(), 'select `foo` as `f`, `bar` as `b`, `baz` as `z`');
+      }
+      
       function test_select_from() {
         $query = Query::select()->from('foo');
         $this->assertEqual($query->sql(), 'select * from `unittest`.`foo`');
@@ -174,6 +179,89 @@
       $this->assertEqual($query->sql(), 'select * from `unittest`.`foo` left join `unittest`.`bar`');
     }
     
+    function test_select_outer_join() {
+      $query = Query::select()->from('foo')->outer('bar');
+      $this->assertEqual($query->sql(), 'select * from `unittest`.`foo` outer join `unittest`.`bar`');
+    }
+    
+    function test_select_inner_join() {
+      $query = Query::select()->from('foo')->inner('bar');
+      $this->assertEqual($query->sql(), 'select * from `unittest`.`foo` inner join `unittest`.`bar`');
+    }
+    
+    function test_select_specified_join() {
+      $query = Query::select()->from('foo')->specified_join('bar', '', 'specified join');
+      $this->assertEqual($query->sql(), 'select * from `unittest`.`foo` specified join `unittest`.`bar`');
+    }
+    
+    function test_select_specified_join_alias() {
+      $query = Query::select()->from('foo')->specified_join('bar', 'b', 'specified join');
+      $this->assertEqual($query->sql(), 'select * from `unittest`.`foo` specified join `unittest`.`bar` as `b`');
+    }
+    
+    /* ---------- */
+    
+    
+    
+    /* Group and having */
+    
+    function test_select_group() {
+      $query = Query::select()->from('foo')->group('bar');
+      $this->assertEqual($query->sql(), 'select * from `unittest`.`foo` group by `bar`');
+    }
+    
+    function test_select_group_having_sql() {
+      $query = Query::select()->from('foo')->group('bar')->having('baz = ?', 1);
+      $this->assertEqual($query->sql(), 'select * from `unittest`.`foo` group by `bar` having `baz` = ?');
+    }
+    
+    function test_select_group_having_bindings() {
+      $query = Query::select()->from('foo')->group('bar')->having('baz = ?', 1);
+      $this->assertEqual($query->bindings(), array(1));
+    }
+    
+    /* ---------- */
+    
+    
+    /* Limits and Offsets */
+    
+    function test_select_limit() {
+      $query = Query::select()->from('foo')->limit(10);
+      $this->assertEqual($query->sql(), 'select * from `unittest`.`foo` limit 10');
+    }
+    
+    function test_select_limit_offset() {
+      $query = Query::select()->from('foo')->limit(10, 10);
+      $this->assertEqual($query->sql(), 'select * from `unittest`.`foo` limit 10 offset 10');
+    }
+    
+    /* ---------- */
+    
+    
+    
+    /* Order By */
+    
+    function test_select_order() {
+      $query = Query::select()->from('foo')->order('bar');
+      $this->assertEqual($query->sql(), 'select * from `unittest`.`foo` order by `bar` asc');
+    }
+    
+    function test_select_order_desc() {
+      $query = Query::select()->from('foo')->order('bar', 'desc');
+      $this->assertEqual($query->sql(), 'select * from `unittest`.`foo` order by `bar` desc');
+    }
+    
+    function test_select_order_nonsense() {
+      $query = Query::select()->from('foo')->order('bar', 'monkey');  //Should default to 'asc' if invalid
+      $this->assertEqual($query->sql(), 'select * from `unittest`.`foo` order by `bar` asc');
+    }
+    
+    function test_select_order_mulitple() {
+      $query = Query::select()->from('foo')->order(array('bar' => 'asc', 'baz' => 'desc'));
+      $this->assertEqual($query->sql(), 'select * from `unittest`.`foo` order by `bar` asc, `baz` desc');
+    }
+    
+    /* ---------- */
     
   }
 
