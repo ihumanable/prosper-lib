@@ -17,25 +17,25 @@
     
     /* Basic Tests */
     
-      function test_select() {
-        $query = Query::select();
-        $this->assertEqual($query->sql(), 'select *');
-      }
-      
-      function test_select_columns() {
-        $query = Query::select('foo', 'bar', 'baz');
-        $this->assertEqual($query->sql(), 'select `foo`, `bar`, `baz`');
-      }
-      
-      function test_select_columns_alias() {
-        $query = Query::select(array('foo' => 'f', 'bar' => 'b', 'baz' => 'z'));
-        $this->assertEqual($query->sql(), 'select `foo` as `f`, `bar` as `b`, `baz` as `z`');
-      }
-      
-      function test_select_from() {
-        $query = Query::select()->from('foo');
-        $this->assertEqual($query->sql(), 'select * from `unittest`.`foo`');
-      }
+    function test_select() {
+      $query = Query::select();
+      $this->assertEqual($query->sql(), 'select *');
+    }
+    
+    function test_select_columns() {
+      $query = Query::select('foo', 'bar', 'baz');
+      $this->assertEqual($query->sql(), 'select `foo`, `bar`, `baz`');
+    }
+    
+    function test_select_columns_alias() {
+      $query = Query::select(array('foo' => 'f', 'bar' => 'b', 'baz' => 'z'));
+      $this->assertEqual($query->sql(), 'select `foo` as `f`, `bar` as `b`, `baz` as `z`');
+    }
+    
+    function test_select_from() {
+      $query = Query::select()->from('foo');
+      $this->assertEqual($query->sql(), 'select * from `unittest`.`foo`');
+    }
     
     /* ---------- */
     

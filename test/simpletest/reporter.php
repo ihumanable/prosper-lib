@@ -53,7 +53,10 @@ class HtmlReporter extends SimpleReporter {
         echo "\t\t</style>\n";
         echo "\t</head>\n";
         echo "\t<body>\n";
-        echo "\t\t<h1>Prosper</h1>\n";
+        echo "\t\t<h1>Prosper [ ";
+        echo "<span id=\"fail-message\">Test Failed!</span>";
+        echo "<span id=\"pass-message\">All Tests Passed!</span>";
+        echo " ]</h1>\n";
     }
 
     /**
@@ -84,6 +87,8 @@ class HtmlReporter extends SimpleReporter {
              "$tabs body { margin-left: 200px; margin-right: 200px; background: #D7D7D7 } \n" .
              "$tabs h1 { background: #000000; color: #FFFFFF; padding: 10px; margin: 0px; -moz-border-radius-topleft: 10px; -moz-border-radius-topright: 10px; } \n" .
              "$tabs pre { background-color: lightgray; color: inherit; } \n" .
+             "$tabs #fail-message { display:none; font-weight: bold; color: #FF0000; } \n" . 
+             "$tabs #pass-message { display:none; font-weight: bold; color: #528CE0; } \n" .
              "$tabs .case { border-bottom: 1px solid #000000; padding-left: 10px; padding-right: 10px; padding-top: 5px; padding-bottom: 5px;} \n" . 
              "$tabs .case span.case-label { font-weight: bold } \n" .
              "$tabs .case div { margin-left: 20px; margin-right: 20px; } \n" .
@@ -94,7 +99,7 @@ class HtmlReporter extends SimpleReporter {
              "$tabs .fail div.message { color: #000000; padding-left: 10px } \n" .
              "$tabs .fail span.location { font-size: small; color: #000000; } \n" .
              "$tabs .skip { background: #000000; color: white; padding: 5px; margin-bottom: 1px; font-weight: bold; -moz-border-radius: 10px } \n" .
-             "$tabs .footer { color: black; padding: 10px; -moz-border-radius-bottomleft: 10px; -moz-border-radius-bottomright: 10px; } \n";
+             "$tabs .footer { background: black; padding: 10px; -moz-border-radius-bottomleft: 10px; -moz-border-radius-bottomright: 10px; } \n";
              
     }
   
@@ -219,12 +224,15 @@ class HtmlReporter extends SimpleReporter {
      *    @access public
      */
     function paintFooter($test_name) {
-        $color = ($this->getFailCount() + $this->getExceptionCount() > 0 ? "#FF0000" : "#528CE0");
-        echo "\t\t<div class=\"footer\" style=\"background: $color;\">\n";
+        $fail = ($this->getFailCount() + $this->getExceptionCount() > 0); 
+        $color = ($fail ? "#FF0000" : "#528CE0");
+        $elem = ($fail ? "fail-message" : "pass-message");
+        echo "\t\t<div class=\"footer\" style=\"color: $color;\">\n";
         echo "\t\t\t<strong>Summary</strong>: ";
         echo "<strong>" . $this->getPassCount() . "</strong> passed | ";
         echo "<strong>" . $this->getFailCount() . "</strong> failed | ";
         echo "<strong>" . $this->getExceptionCount() . "</strong> exceptions.\n";
+        echo "<script type=\"text/javascript\">document.getElementById('$elem').style.display = 'inline'</script>";
         echo "\t\t</div>\n";
         echo "\t</body>\n";
         echo "</html>\n";
