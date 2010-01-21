@@ -11,7 +11,7 @@ define('ROOT', implode('/', $parts) . '/');
 class AllTests extends TestSuite {
 
   function AllTests() {
-    $this->TestSuite('All Tests');
+    $this->TestSuite('Prosper');
     $this->addFile(ROOT . 'mysql/mysql_suite.php');
   }
 

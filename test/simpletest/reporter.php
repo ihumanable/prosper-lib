@@ -43,19 +43,20 @@ class HtmlReporter extends SimpleReporter {
      */
     function paintHeader($test_name) {
         $this->sendNoCacheHeaders();
+        list($name, $extension) = explode('.', $test_name);
         echo "<!DOCTYPE HTML>\n";
         echo "<html>\n";
         echo "\t<head>\n";
-        echo "\t\t<title>$test_name</title>\n";
+        echo "\t\t<title>$name</title>\n";
         echo "\t\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=\"{$this->_character_set}\">\n";
         echo "\t\t<style type=\"text/css\">\n";
         echo $this->_getCss();
         echo "\t\t</style>\n";
         echo "\t</head>\n";
         echo "\t<body>\n";
-        echo "\t\t<h1>Prosper [ ";
-        echo "<span id=\"fail-message\">Test Failed!</span>";
-        echo "<span id=\"pass-message\">All Tests Passed!</span>";
+        echo "\t\t<h1>$name [ ";
+        echo "<span id=\"fail-message\">test failed</span>";
+        echo "<span id=\"pass-message\">all tests passed</span>";
         echo " ]</h1>\n";
     }
 
