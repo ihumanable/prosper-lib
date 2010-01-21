@@ -360,6 +360,8 @@ class Query {
    * @return Query Select Statement Query Object
    */
   static function select() {
+    $query = new Query('select ', self::SELECT_STMT);
+    
     if(func_num_args() == 0) {
       $columns = "*";
     } else {
@@ -367,15 +369,16 @@ class Query {
       foreach($args as $arg) {
         if(is_array($arg)) {
           foreach($arg as $key => $value) {
-            $parts[] = $this->quote($key) . $this->alias($value);
+            $parts[] = $query->quote($key) . $query->alias($value);
           }
         } else {
-          $parts[] = $this->quote($arg);
+          $parts[] = $query->quote($arg);
         }
       }
       $columns = implode(', ', $parts);
     }
-    return new Query('select ' . $columns, self::SELECT_STMT);
+    $query->sql .= $columns;
+    return $query;
   }
   
   /**
