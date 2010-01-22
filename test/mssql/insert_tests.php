@@ -1,14 +1,14 @@
 <?php
   use Prosper\Query;
   
-  class MySqlInsertTests extends UnitTestCase {
+  class MSSqlInsertTests extends UnitTestCase {
     
-    function MySqlInsertTests() {
-      $this->UnitTestCase('MySQL - Insert Statements');
+    function MSSqlInsertTests() {
+      $this->UnitTestCase('MSSQL - Insert Statements');
     }
     
     function setUp() {
-      Query::configure(Query::MYSQL_MODE, 'unittest', 'unittest', 'localhost', 'unittest');
+      Query::configure(Query::MSSQL_MODE, 'unittest', 'unittest', 'localhost', 'unittest');
     }
     
     function tearDown() {
@@ -22,7 +22,7 @@
     
     function test_insert_into() {
       $query = Query::insert()->into('foo');
-      $this->assertEqual($query->sql(), 'insert into `unittest`.`foo`');
+      $this->assertEqual($query->sql(), 'insert into [unittest].[foo]');
     }
     
     function insert_into_values_array() {
@@ -31,7 +31,7 @@
     
     function test_insert_into_values_array_sql() {
       $query = $this->insert_into_values_array();
-      $this->assertEqual($query->sql(), 'insert into `unittest`.`foo` (`bar`, `baz`) values (?, ?)');
+      $this->assertEqual($query->sql(), 'insert into [unittest].[foo] ([bar], [baz]) values (?, ?)');
     }
     
     function test_insert_into_values_array_bindings() {
@@ -41,7 +41,7 @@
     
     function test_insert_into_values_array_where_sql() {
       $query = $this->insert_into_values_array()->where('zap = ?', 3);
-      $this->assertEqual($query->sql(), 'insert into `unittest`.`foo` (`bar`, `baz`) values (?, ?) where `zap` = ?');
+      $this->assertEqual($query->sql(), 'insert into [unittest].[foo] ([bar], [baz]) values (?, ?) where [zap] = ?');
     }
 
     function test_insert_into_values_array_where_bindings() {
@@ -55,7 +55,7 @@
     
     function test_insert_into_values_sugar_sql() {
       $query = $this->insert_into_values_sugar();
-      $this->assertEqual($query->sql(), 'insert into `unittest`.`foo` (`bar`, `baz`) values (?, ?)');
+      $this->assertEqual($query->sql(), 'insert into [unittest].[foo] ([bar], [baz]) values (?, ?)');
     }
     
     function test_insert_into_values_sugar_bindings() {
@@ -65,7 +65,7 @@
     
     function test_insert_into_values_sugar_where_sql() {
       $query = $this->insert_into_values_sugar()->where('zap = ?', 3);
-      $this->assertEqual($query->sql(), 'insert into `unittest`.`foo` (`bar`, `baz`) values (?, ?) where `zap` = ?');
+      $this->assertEqual($query->sql(), 'insert into [unittest].[foo] ([bar], [baz]) values (?, ?) where [zap] = ?');
     }
     
     function test_insert_into_values_sugar_where_bindings() {

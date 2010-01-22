@@ -1,14 +1,14 @@
 <?php
   use Prosper\Query;
   
-  class MySqlUpdateTests extends UnitTestCase {
+  class MSSqlUpdateTests extends UnitTestCase {
     
-    function MySqlUpdateTests() {
-      $this->UnitTestCase('MySQL - Update Statements');
+    function MSSqlUpdateTests() {
+      $this->UnitTestCase('MSSQL - Update Statements');
     }
     
     function setUp() {
-      Query::configure(Query::MYSQL_MODE, 'unittest', 'unittest', 'localhost', 'unittest');
+      Query::configure(Query::MSSQL_MODE, 'unittest', 'unittest', 'localhost', 'unittest');
     }
     
     function tearDown() {
@@ -17,7 +17,7 @@
     
     function test_update() {
       $query = Query::update('foo');
-      $this->assertEqual($query->sql(), 'update `unittest`.`foo`');
+      $this->assertEqual($query->sql(), 'update [unittest].[foo]');
     }
 
     function update_set_values_array() {
@@ -26,7 +26,7 @@
     
     function test_update_set_values_array_sql() {
       $query = $this->update_set_values_array();
-      $this->assertEqual($query->sql(), 'update `unittest`.`foo` set `bar` = ?, `baz` = ?');
+      $this->assertEqual($query->sql(), 'update [unittest].[foo] set [bar] = ?, [baz] = ?');
     }
     
     function test_update_set_values_array_bindings() {
@@ -36,7 +36,7 @@
     
     function test_update_set_values_array_where_sql() {
       $query = $this->update_set_values_array()->where('zap = ?', 3);
-      $this->assertEqual($query->sql(), 'update `unittest`.`foo` set `bar` = ?, `baz` = ? where `zap` = ?');
+      $this->assertEqual($query->sql(), 'update [unittest].[foo] set [bar] = ?, [baz] = ? where [zap] = ?');
     }
 
     function test_update_set_values_array_where_bindings() {
@@ -50,7 +50,7 @@
     
     function test_update_set_values_sugar_sql() {
       $query = $this->update_set_values_sugar();
-      $this->assertEqual($query->sql(), 'update `unittest`.`foo` set `bar` = ?, `baz` = ?');
+      $this->assertEqual($query->sql(), 'update [unittest].[foo] set [bar] = ?, [baz] = ?');
     }
     
     function test_update_set_values_sugar_bindings() {
@@ -60,7 +60,7 @@
     
     function test_update_set_values_sugar_where_sql() {
       $query = $this->update_set_values_sugar()->where('zap = ?', 3);
-      $this->assertEqual($query->sql(), 'update `unittest`.`foo` set `bar` = ?, `baz` = ? where `zap` = ?');
+      $this->assertEqual($query->sql(), 'update [unittest].[foo] set [bar] = ?, [baz] = ? where [zap] = ?');
     }
     
     function test_update_set_values_sugar_where_bindings() {

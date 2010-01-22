@@ -13,6 +13,7 @@ class AllTests extends TestSuite {
   function AllTests() {
     $this->TestSuite('Prosper');
     $this->addFile(ROOT . 'mysql/mysql_suite.php');
+    $this->addFile(ROOT . 'mssql/mssql_suite.php');
   }
 
 }

@@ -1,9 +1,9 @@
 <?php
   use Prosper\Query;
   
-  class DeleteTests extends UnitTestCase {
+  class MySqlDeleteTests extends UnitTestCase {
     
-    function DeleteTests() {
+    function MySqlDeleteTests() {
       $this->UnitTestCase('MySQL - Delete Statements');
     }
     
