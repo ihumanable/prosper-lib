@@ -13,8 +13,8 @@ ProjectFilesOnly=0
 prosper
 	+doc
 		readme.md
-	+lib
-		+adapters
+	-lib
+		-adapters
 			lib\adapters\_all_.php
 			lib\adapters\_base_.php
 			lib\adapters\_common_.php
@@ -41,8 +41,151 @@ prosper
 		lib\Query.php
 		lib\Token.php
 	-test
-		test\config.php
-		test\index.php
+		-mssql
+			test\mssql\delete_tests.php
+			test\mssql\insert_tests.php
+			test\mssql\mssql_suite.php
+			test\mssql\select_tests.php
+			test\mssql\update_tests.php
+		-mysql
+			test\mysql\delete_tests.php
+			test\mysql\insert_tests.php
+			test\mysql\mysql_suite.php
+			test\mysql\select_tests.php
+			test\mysql\update_tests.php
+		-simpletest
+			-docs
+				-en
+					test\simpletest\docs\en\authentication_documentation.html
+					test\simpletest\docs\en\browser_documentation.html
+					test\simpletest\docs\en\docs.css
+					test\simpletest\docs\en\expectation_documentation.html
+					test\simpletest\docs\en\form_testing_documentation.html
+					test\simpletest\docs\en\group_test_documentation.html
+					test\simpletest\docs\en\index.html
+					test\simpletest\docs\en\mock_objects_documentation.html
+					test\simpletest\docs\en\overview.html
+					test\simpletest\docs\en\partial_mocks_documentation.html
+					test\simpletest\docs\en\reporter_documentation.html
+					test\simpletest\docs\en\unit_test_documentation.html
+					test\simpletest\docs\en\web_tester_documentation.html
+				-fr
+					test\simpletest\docs\fr\authentication_documentation.html
+					test\simpletest\docs\fr\browser_documentation.html
+					test\simpletest\docs\fr\docs.css
+					test\simpletest\docs\fr\expectation_documentation.html
+					test\simpletest\docs\fr\form_testing_documentation.html
+					test\simpletest\docs\fr\group_test_documentation.html
+					test\simpletest\docs\fr\index.html
+					test\simpletest\docs\fr\mock_objects_documentation.html
+					test\simpletest\docs\fr\overview.html
+					test\simpletest\docs\fr\partial_mocks_documentation.html
+					test\simpletest\docs\fr\reporter_documentation.html
+					test\simpletest\docs\fr\server_stubs_documentation.html
+					test\simpletest\docs\fr\unit_test_documentation.html
+					test\simpletest\docs\fr\web_tester_documentation.html
+			-extensions
+				-testdox
+					test\simpletest\extensions\testdox\test.php
+				test\simpletest\extensions\pear_test_case.php
+				test\simpletest\extensions\phpunit_test_case.php
+				test\simpletest\extensions\testdox.php
+			-test
+				-support
+					-collector
+						test\simpletest\test\support\collector\collectable.1
+						test\simpletest\test\support\collector\collectable.2
+					test\simpletest\test\support\empty_test_file.php
+					test\simpletest\test\support\latin1_sample
+					test\simpletest\test\support\spl_examples.php
+					test\simpletest\test\support\supplementary_upload_sample.txt
+					test\simpletest\test\support\test1.php
+					test\simpletest\test\support\upload_sample.txt
+				test\simpletest\test\acceptance_test.php
+				test\simpletest\test\adapter_test.php
+				test\simpletest\test\all_tests.php
+				test\simpletest\test\authentication_test.php
+				test\simpletest\test\autorun_test.php
+				test\simpletest\test\bad_test_suite.php
+				test\simpletest\test\browser_test.php
+				test\simpletest\test\collector_test.php
+				test\simpletest\test\command_line_test.php
+				test\simpletest\test\compatibility_test.php
+				test\simpletest\test\cookies_test.php
+				test\simpletest\test\detached_test.php
+				test\simpletest\test\dumper_test.php
+				test\simpletest\test\eclipse_test.php
+				test\simpletest\test\encoding_test.php
+				test\simpletest\test\errors_test.php
+				test\simpletest\test\exceptions_test.php
+				test\simpletest\test\expectation_test.php
+				test\simpletest\test\form_test.php
+				test\simpletest\test\frames_test.php
+				test\simpletest\test\http_test.php
+				test\simpletest\test\interfaces_test.php
+				test\simpletest\test\live_test.php
+				test\simpletest\test\mock_objects_test.php
+				test\simpletest\test\page_test.php
+				test\simpletest\test\parse_error_test.php
+				test\simpletest\test\parser_test.php
+				test\simpletest\test\reflection_php4_test.php
+				test\simpletest\test\reflection_php5_test.php
+				test\simpletest\test\remote_test.php
+				test\simpletest\test\shell_test.php
+				test\simpletest\test\shell_tester_test.php
+				test\simpletest\test\simpletest_test.php
+				test\simpletest\test\socket_test.php
+				test\simpletest\test\tag_test.php
+				test\simpletest\test\test_with_parse_error.php
+				test\simpletest\test\unit_tester_test.php
+				test\simpletest\test\unit_tests.php
+				test\simpletest\test\url_test.php
+				test\simpletest\test\user_agent_test.php
+				test\simpletest\test\visual_test.php
+				test\simpletest\test\web_tester_test.php
+				test\simpletest\test\xml_test.php
+			test\simpletest\authentication.php
+			test\simpletest\autorun.php
+			test\simpletest\browser.php
+			test\simpletest\collector.php
+			test\simpletest\compatibility.php
+			test\simpletest\cookies.php
+			test\simpletest\default_reporter.php
+			test\simpletest\detached.php
+			test\simpletest\dumper.php
+			test\simpletest\eclipse.php
+			test\simpletest\encoding.php
+			test\simpletest\errors.php
+			test\simpletest\exceptions.php
+			test\simpletest\expectation.php
+			test\simpletest\form.php
+			test\simpletest\frames.php
+			test\simpletest\HELP_MY_TESTS_DONT_WORK_ANYMORE
+			test\simpletest\http.php
+			test\simpletest\invoker.php
+			test\simpletest\LICENSE
+			test\simpletest\mock_objects.php
+			test\simpletest\page.php
+			test\simpletest\parser.php
+			test\simpletest\README
+			test\simpletest\reflection_php4.php
+			test\simpletest\reflection_php5.php
+			test\simpletest\remote.php
+			test\simpletest\reporter.php
+			test\simpletest\scorer.php
+			test\simpletest\selector.php
+			test\simpletest\shell_tester.php
+			test\simpletest\simpletest.php
+			test\simpletest\socket.php
+			test\simpletest\tag.php
+			test\simpletest\test_case.php
+			test\simpletest\unit_tester.php
+			test\simpletest\url.php
+			test\simpletest\user_agent.php
+			test\simpletest\VERSION
+			test\simpletest\web_tester.php
+			test\simpletest\xml.php
+		test\prosper.php
 	-todo
 		-img
 			todo\img\create.png
@@ -59,5 +202,10 @@ prosper
 		todo\index.php
 		todo\utility.php
 [Open project files]
+0=readme.md
 [Selected Project Files]
 Main=
+Selected=readme.md
+[readme.md]
+TopLine=1
+Caret=1,1
