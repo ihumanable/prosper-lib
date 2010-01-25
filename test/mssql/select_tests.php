@@ -15,6 +15,14 @@
     
     }
     
+    function safe_value() {
+      return '1';
+    }
+    
+    function danger_value() {
+      return "' DROP TABLES --";
+    }
+    
     /* Basic Tests */
     
     function test_select() {
@@ -39,56 +47,41 @@
     
     /* ---------- */
     
-    
+  
     
     /* Single where clauses */
     
-    function select_where_naive_single() {
-      $x = 1;
-      $query = Query::select()->from('foo')->where("x = '$x'");
-      return $query;
-    }
-    
-    function select_where_anonymous_single() {
-      $x = 1;
+    function select_where_anonymous_single($x) {
       $query = Query::select()->from('foo')->where('x = ?', $x);
       return $query;
     }
     
-    function select_where_named_single() {
-      return Query::select()->from('foo')->where('x = :x', array('x' => 1));
+    function select_where_named_single($x) {
+      return Query::select()->from('foo')->where('x = :x', array('x' => $x));
     }
     
-    function assert_where_single($query) {
-      $this->assertEqual($query->sql(), 'select * from [unittest].[foo] where [x] = ?');
+    function assert_single_safe($query) {
+      $this->assertEqual($query->sql(), "select * from [unittest].[foo] where [x] = '1'");
     }
     
-    function assert_bindings_single($query) {
-      $this->assertEqual($query->bindings(), array(1));
+    function assert_single_danger($query) {
+      $this->assertEqual($query->sql(), "select * from [unittest].[foo] where [x] = ''' DROP TABLES --'");
     }
     
-    function test_select_where_naive_single_sql() {
-      $this->assert_where_single($this->select_where_naive_single());
+    function test_select_where_anonymous_single_safe() {
+      $this->assert_single_safe($this->select_where_anonymous_single($this->safe_value()));
     }
     
-    function test_select_where_naive_single_bindings() {
-      $this->assert_bindings_single($this->select_where_naive_single());
+    function test_select_where_anonymous_single_danger() {
+      $this->assert_single_danger($this->select_where_anonymous_single($this->danger_value()));
     }
     
-    function test_select_where_anonymous_single_sql() {
-      $this->assert_where_single($this->select_where_anonymous_single());
+    function test_select_where_named_single_safe() {
+      $this->assert_single_safe($this->select_where_named_single($this->safe_value()));
     }
     
-    function test_select_where_anonymous_single_bindings() {
-      $this->assert_bindings_single($this->select_where_anonymous_single());
-    }
-    
-    function test_select_where_named_single_sql() {
-      $this->assert_where_single($this->select_where_named_single());
-    }
-    
-    function test_select_where_named_single_bindings() {
-      $this->assert_bindings_single($this->select_where_named_single());
+    function test_select_where_named_single_danger() {
+      $this->assert_single_danger($this->select_where_named_single($this->danger_value()));
     }
     
     /* ---------- */
@@ -96,56 +89,39 @@
     
     /* Mulitple where clauses */
      
-    function select_where_naive_multiple() {
-      $x = 1;
-      $y = 2;
-      $z = 3;
-      $query = Query::select()->from('foo')->where("x = '$x' and y = '$y' and z = '$z'");
-      return $query;
-    }
-    
-    function select_where_anonymous_multiple() {
-      $x = 1;
+    function select_where_anonymous_multiple($x) {
       $y = 2;
       $z = 3;
       $query = Query::select()->from('foo')->where('x = ? and y = ? and z = ?', $x, $y, $z);
       return $query;
     }
     
-    function select_where_named_multiple() {
-      return Query::select()->from('foo')->where('x = :x and y = :y and z = :z', array('x' => 1, 'y' => 2, 'z' => 3));
+    function select_where_named_multiple($x) {
+      return Query::select()->from('foo')->where('x = :x and y = :y and z = :z', array('x' => $x, 'y' => 2, 'z' => 3));
     }
     
-    function assert_where_multiple($query) {
-      $this->assertEqual($query->sql(), 'select * from [unittest].[foo] where [x] = ? and [y] = ? and [z] = ?');
+    function assert_multiple_safe($query) {
+      $this->assertEqual($query->sql(), "select * from [unittest].[foo] where [x] = '1' and [y] = '2' and [z] = '3'");
     }
     
-    function assert_bindings_multiple($query) {
-      $this->assertEqual($query->bindings(), array(1, 2, 3));
+    function assert_multiple_danger($query) {
+      $this->assertEqual($query->sql(), "select * from [unittest].[foo] where [x] = ''' DROP TABLES --' and [y] = '2' and [z] = '3'");
     }
     
-    function test_select_where_naive_multiple_sql() {
-      $this->assert_where_multiple($this->select_where_naive_multiple());
+    function test_select_where_anonymous_multiple_safe() {
+      $this->assert_multiple_safe($this->select_where_anonymous_multiple($this->safe_value()));
     }
     
-    function test_select_where_naive_multiple_bindings() {
-      $this->assert_bindings_multiple($this->select_where_naive_multiple());
+    function test_select_where_anonymous_multiple_danger() {
+      $this->assert_multiple_danger($this->select_where_anonymous_multiple($this->danger_value()));
     }
     
-    function test_select_where_anonymous_multiple_sql() {
-      $this->assert_where_multiple($this->select_where_anonymous_multiple());
+    function test_select_where_named_multiple_safe() {
+      $this->assert_multiple_safe($this->select_where_named_multiple($this->safe_value()));
     }
     
-    function test_select_where_anonymous_multiple_bindings() {
-      $this->assert_bindings_multiple($this->select_where_anonymous_multiple());
-    }
-    
-    function test_select_where_named_multiple_sql() {
-      $this->assert_where_multiple($this->select_where_named_multiple());
-    }
-    
-    function test_select_where_named_multiple_bindings() {
-      $this->assert_bindings_multiple($this->select_where_named_multiple());
+    function test_select_where_named_multiple_danger() {
+      $this->assert_multiple_danger($this->select_where_named_multiple($this->danger_value()));
     }
     
     /* ---------- */
@@ -210,14 +186,14 @@
       $this->assertEqual($query->sql(), 'select * from [unittest].[foo] group by [bar]');
     }
     
-    function test_select_group_having_sql() {
-      $query = Query::select()->from('foo')->group('bar')->having('baz = ?', 1);
-      $this->assertEqual($query->sql(), 'select * from [unittest].[foo] group by [bar] having [baz] = ?');
+    function test_select_group_having_safe() {
+      $query = Query::select()->from('foo')->group('bar')->having('baz = ?', $this->safe_value());
+      $this->assertEqual($query->sql(), "select * from [unittest].[foo] group by [bar] having [baz] = '1'");
     }
     
-    function test_select_group_having_bindings() {
-      $query = Query::select()->from('foo')->group('bar')->having('baz = ?', 1);
-      $this->assertEqual($query->bindings(), array(1));
+    function test_select_group_having_danger() {
+      $query = Query::select()->from('foo')->group('bar')->having('baz = ?', $this->danger_value());
+      $this->assertEqual($query->sql(), "select * from [unittest].[foo] group by [bar] having [baz] = ''' DROP TABLES --'");
     }
     
     /* ---------- */

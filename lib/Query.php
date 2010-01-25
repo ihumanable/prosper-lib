@@ -541,7 +541,7 @@ class Query {
       case Token::BOOLEAN:
         return ' ' . (strtolower($token['token']) == 'true' ? $this->true_value() : $this->false_value());
         break;
-      case Token::LITERAL:
+      case Token::LITERAL: 
         return ' ' . $this->escape($token['token']);
         break;
       case Token::MODULUS:

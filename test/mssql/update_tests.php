@@ -15,57 +15,65 @@
     
     }
     
+    function safe_value() {
+      return 1;
+    }
+    
+    function danger_value() {
+      return "' DROP TABLES --";
+    }
+    
     function test_update() {
       $query = Query::update('foo');
       $this->assertEqual($query->sql(), 'update [unittest].[foo]');
     }
 
-    function update_set_values_array() {
-      return Query::update('foo')->set( array( 'bar' => 1, 'baz' => 2));
+    function update_set_values_array($bar) {
+      return Query::update('foo')->set( array( 'bar' => $bar, 'baz' => 2));
     }
     
-    function test_update_set_values_array_sql() {
-      $query = $this->update_set_values_array();
-      $this->assertEqual($query->sql(), 'update [unittest].[foo] set [bar] = ?, [baz] = ?');
+    function test_update_set_values_array_safe() {
+      $query = $this->update_set_values_array($this->safe_value());
+      $this->assertEqual($query->sql(), "update [unittest].[foo] set [bar] = '1', [baz] = '2'");
     }
     
-    function test_update_set_values_array_bindings() {
-      $query = $this->update_set_values_array();
-      $this->assertEqual($query->bindings(), array(1, 2));
+    function test_update_set_values_array_danger() {
+      $query = $this->update_set_values_array($this->danger_value());
+      $this->assertEqual($query->sql(), "update [unittest].[foo] set [bar] = ''' DROP TABLES --', [baz] = '2'");
     }
     
-    function test_update_set_values_array_where_sql() {
-      $query = $this->update_set_values_array()->where('zap = ?', 3);
-      $this->assertEqual($query->sql(), 'update [unittest].[foo] set [bar] = ?, [baz] = ? where [zap] = ?');
+    function test_update_set_values_array_where_safe() {
+      $query = $this->update_set_values_array($this->safe_value())->where('zap = ?', $this->safe_value());
+      $this->assertEqual($query->sql(), "update [unittest].[foo] set [bar] = '1', [baz] = '2' where [zap] = '1'");
     }
 
-    function test_update_set_values_array_where_bindings() {
-      $query = $this->update_set_values_array()->where('zap = ?', 3);
-      $this->assertEqual($query->bindings(), array(1, 2, 3));
+    function test_update_set_values_array_where_danger() {
+      $query = $this->update_set_values_array($this->danger_value())->where('zap = ?', $this->danger_value());
+      $this->assertEqual($query->sql(), "update [unittest].[foo] set [bar] = ''' DROP TABLES --', [baz] = '2' where [zap] = ''' DROP TABLES --'");
     }
 
-    function update_set_values_sugar() {
-      return Query::update('foo')->set('bar', 'baz', array('bar' => 1, 'baz' => 2));
+    function update_set_values_sugar($bar) {
+      return Query::update('foo')->set('bar', 'baz', array('bar' => $bar, 'baz' => 2));
     }
     
-    function test_update_set_values_sugar_sql() {
-      $query = $this->update_set_values_sugar();
-      $this->assertEqual($query->sql(), 'update [unittest].[foo] set [bar] = ?, [baz] = ?');
+    function test_update_set_values_sugar_safe() {
+      $query = $this->update_set_values_sugar($this->safe_value());
+      $this->assertEqual($query->sql(), "update [unittest].[foo] set [bar] = '1', [baz] = '2'");
     }
     
-    function test_update_set_values_sugar_bindings() {
-      $query = $this->update_set_values_sugar();
-      $this->assertEqual($query->bindings(), array(1, 2));
+    function test_update_set_values_sugar_danger() {
+      $query = $this->update_set_values_sugar($this->danger_value());
+      $this->assertEqual($query->sql(), "update [unittest].[foo] set [bar] = ''' DROP TABLES --', [baz] = '2'");
     }
     
-    function test_update_set_values_sugar_where_sql() {
-      $query = $this->update_set_values_sugar()->where('zap = ?', 3);
-      $this->assertEqual($query->sql(), 'update [unittest].[foo] set [bar] = ?, [baz] = ? where [zap] = ?');
+    function test_update_set_values_sugar_where_safe() {
+      $query = $this->update_set_values_sugar($this->safe_value())->where('zap = ?', $this->safe_value());
+      $this->assertEqual($query->sql(), "update [unittest].[foo] set [bar] = '1', [baz] = '2' where [zap] = '1'");
     }
-    
-    function test_update_set_values_sugar_where_bindings() {
-      $query = $this->update_set_values_sugar()->where('zap = ?', 3);
-      $this->assertEqual($query->bindings(), array(1, 2, 3));
+
+    function test_update_set_values_sugar_where_danger() {
+      $query = $this->update_set_values_sugar($this->danger_value())->where('zap = ?', $this->danger_value());
+      $this->assertEqual($query->sql(), "update [unittest].[foo] set [bar] = ''' DROP TABLES --', [baz] = '2' where [zap] = ''' DROP TABLES --'");
     }
     
     

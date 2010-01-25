@@ -101,19 +101,25 @@ class MSSqlAdapter extends BaseAdapter {
     if ($pos !== false) {
       $pos += 6;
       
-      $orderpos = strripos($sql, "order by");
-      
-      if ($orderpos === false) {
-        $order = "SELECT 1)) AS row, ";
+      if($offset) {
+        
+        $orderpos = strripos($sql, "order by");
+        
+        if ($orderpos === false) {
+          $order = "SELECT 1)) AS row, ";
+        } else {
+          // I think this accounts for multiple ORDER BY directions, but I could be wrong. It definitely needs tested.
+          $order = substr($sql, $orderpos);
+        }
+        
+        $sql = substr($sql, 0, $pos) . " ROW_NUMBER() OVER (ORDER BY (" . $order . substr($sql, $pos);
+        $sql = "SELECT * FROM (" . $sql . ") WHERE row >= " . $offset . " AND row <= " . ($limit + $offset);  
       } else {
-        // I think this accounts for multiple ORDER BY directions, but I could be wrong. It definitely needs tested.
-        $order = substr($sql, $orderpos);
+        $sql = substr($sql, 0, $pos) . " top $limit " . substr($sql, $pos + 1);
       }
       
-      $sql = substr($sql, 0, $pos) . " ROW_NUMBER() OVER (ORDER BY (" . $order . substr($sql, $pos);
     }
     
-    $sql = "SELECT * FROM (" . $sql . ") WHERE row >= " . $offset . " AND row <= " . ($limit + $offset);
     
     return $sql;
   }
