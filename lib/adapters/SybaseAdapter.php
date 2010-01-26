@@ -55,4 +55,12 @@ class SybaseAdapter extends BaseAdapter {
     sybase_free_result($set);
   }
   
+  /**
+   * @see BaseAdapter::addslashes($str)
+   */     
+  function addslashes($str) {
+    return str_replace("'", "''", $str);
+  }
+  
+  
 }
