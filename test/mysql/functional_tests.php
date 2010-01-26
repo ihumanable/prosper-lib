@@ -129,6 +129,25 @@
       $this->assertEqual($result, array($this->record));
     }
     
+    function test_concurrent() {
+      $different = $this->record;
+      $different['bar'] = 5;
+
+      $this->populateRow($different);
+      $this->populateRow($this->record);
+      
+      $q1 = Query::update('foo')->set(array('baz' => 10));
+      $q2 = Query::update('foo')->set(array('baz' => 20));
+      
+      $q1->where('bar = ?', 1)->execute();
+      $q2->where('bar = ?', 5)->execute();
+      
+      $result = Query::select()->from('foo')->order('bar')->execute();
+      
+      $this->assertEqual($result, array( array( 'bar' => 1, 'baz' => 10, 'zap' => 3 ),
+                                         array( 'bar' => 5, 'baz' => 20, 'zap' => 3 ) ));      
+    }
+    
   }
 
 ?>
