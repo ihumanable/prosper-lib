@@ -13,7 +13,7 @@ class IngresAdapter extends PreparedAdapter {
    * @see BaseAdapter::connect()
    */
   function connect() {
-    $this->connection = ingres_connect($this->hostname, $this->username, $this->password);
+    return ingres_connect($this->hostname, $this->username, $this->password);
   }
   
   /**

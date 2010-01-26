@@ -13,7 +13,7 @@ class MSSqlAdapter extends BaseAdapter {
    * @see BaseAdapter::connect()
    */
   function connect() {
-    $this->connection = mssql_connect($this->hostname, $this->username, $this->password);
+    $connection = mssql_connect($this->hostname, $this->username, $this->password);
     if($this->schema != "") {
       if(strpos($this->schema, '.') !== false) {
         $parts = explode('.', $this->schema);
@@ -22,8 +22,9 @@ class MSSqlAdapter extends BaseAdapter {
         $schema = $this->schema;
       }
       
-      mssql_select_db($schema, $this->connection);
+      mssql_select_db($schema, $connection);
     }
+    return $connection;
   }
   
   /**

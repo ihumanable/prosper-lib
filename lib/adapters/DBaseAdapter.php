@@ -13,7 +13,7 @@ class DBaseAdapter extends BaseAdapter {
    * @see BaseAdapter::connect()
    */
   function connect() {
-    $this->connection = dbase_open($this->username, 2);
+    return dbase_open($this->username, 2);
   }
   
   /**

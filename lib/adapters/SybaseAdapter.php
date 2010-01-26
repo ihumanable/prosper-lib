@@ -13,10 +13,11 @@ class SybaseAdapter extends BaseAdapter {
    * @see BaseAdapter::connect()
    */
   function connect() {
-    $this->connection = sybase_connect($this->hostname, $this->username, $this->password);
+    $connection = sybase_connect($this->hostname, $this->username, $this->password);
     if($this->schema != "") {
-      sybase_select_db($this->schema, $this->connection);
+      sybase_select_db($this->schema, $connection);
     }
+    return $connection
   }
   
   /**

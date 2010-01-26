@@ -13,7 +13,7 @@ class SqliteAdapter extends BaseAdapter {
    * @see BaseAdapter::connect()
    */
   function connect() {
-    $this->connection = new \SQLite3($this->username);
+    return new \SQLite3($this->username);
   }
   
   /**

@@ -13,10 +13,11 @@ class FrontBaseAdapter extends BaseAdapter {
    * @see BaseAdapter::connect()
    */
   function connect() {
-    $this->connection = fbsql_connect($this->hostname, $this->username, $this->password);
+    $connection = fbsql_connect($this->hostname, $this->username, $this->password);
     if($this->schema != "") {
-      fbsql_select_db($this->schema, $this->connection);
+      fbsql_select_db($this->schema, $connection);
     }
+    return $connection
   }
   
   /**

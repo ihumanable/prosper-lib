@@ -308,8 +308,9 @@ class Query {
     return self::db_mode() == SYBASE_MODE;
   }
   
-  function has_transactions() {
-    return $this->adapter->has_transactions();
+  static function has_transactions() {
+    $q = new Query();
+    return $q->adapter->has_transactions();
   }
   
   //Transaction API
@@ -317,24 +318,27 @@ class Query {
   /**
    * Begin a database transaction
    */
-  function begin() {
-    $this->adapter->begin();
+  static function begin() {
+    $q = new Query();
+    $q->adapter->begin();
   }
   
   /**
    * Commit the open transaction
    */
-  function commit() {
-    $this->adapter->commit();
-    $this->adapter->end();
+  static function commit() {
+    $q = new Query();
+    $q->adapter->commit();
+    $q->adapter->end();
   }
   
   /**
    * Rollback the open transaction
    */
-  function rollback() {
-    $this->adapter->rollback();
-    $this->adapter->end();
+  static function rollback() {
+    $q = new Query();
+    $q->adapter->rollback();
+    $q->adapter->end();
   }
   
   //Reflection API

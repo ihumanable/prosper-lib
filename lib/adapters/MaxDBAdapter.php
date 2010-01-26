@@ -16,7 +16,7 @@ class MaxDBAdapter extends PreparedAdapter {
    * @see BaseAdapter::connect()
    */
   function connect() {
-    $this->connection = new maxdb($this->hostname, $this->username, $this->password, $this->schema);
+    return new maxdb($this->hostname, $this->username, $this->password, $this->schema);
   }
   
   /**

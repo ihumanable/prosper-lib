@@ -16,8 +16,9 @@ class ParadoxAdapter extends BaseAdapter {
    */
   function connect() {
     $this->file_handle = fopen($this->username, "rw");
-    $this->connection = new paradox_db();
-    $this->connection->open_fp($this->file_handle);
+    $connection = new paradox_db();
+    $connection->open_fp($this->file_handle);
+    return $connection;
   }
   
   /**

@@ -17,7 +17,7 @@ class OracleAdapter extends PreparedAdapter {
    */
   function connect() {
     $conn = "//{$this->hostname}" . ($this->schema != "" ? "/{$this->schema}" : "");
-    $this->connection = oci_connect($this->username, $this->password, $conn);
+    return oci_connect($this->username, $this->password, $conn);
   }
   
   /**

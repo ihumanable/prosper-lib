@@ -13,10 +13,11 @@ class MSqlAdapter extends BaseAdapter {
    * @see BaseAdapter::connect()
    */
   function connect() {
-    $this->connection = msql_connect($this->hostname, $this->username, $this->password);
+    $connection = msql_connect($this->hostname, $this->username, $this->password);
     if($this->schema != "") {
-      msql_select_db($this->schema, $this->connection);
+      msql_select_db($this->schema, $connection);
     }
+    return $connection
   }
   
   /**

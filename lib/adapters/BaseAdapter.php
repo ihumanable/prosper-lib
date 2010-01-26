@@ -9,7 +9,7 @@ namespace Prosper;
  */
 abstract class BaseAdapter {
   
-  protected $connection;
+  static protected $connection;
   protected $username;
   protected $password;
   protected $hostname;
@@ -25,14 +25,13 @@ abstract class BaseAdapter {
    * @return New Adapter Instance
    */
   function __construct($username, $password, $hostname, $schema, $lazy = true) {
-    $this->connection = null;
     $this->username = $username;
     $this->password = $password;
     $this->hostname = $hostname;
     $this->schema = $schema;
     
     if(!$lazy) {
-      $this->connect();
+      $this->connection();
     }
   }
   
@@ -40,9 +39,7 @@ abstract class BaseAdapter {
    * Destroys an adapter instance
    */
   function __destruct() {
-    if($this->connection) {
-      $this->disconnect();
-    }
+    //TODO: Figure out if we should close the connection here, I don't think so
   }
   
   /**
@@ -50,10 +47,10 @@ abstract class BaseAdapter {
    * @return mixed $connection The connection to the database
    */
   function connection() {
-    if($this->connection == null) {
-      $this->connect();
+    if(self::$connection == null) {
+      self::$connection = $this->connect();
     }
-    return $this->connection;
+    return self::$connection;
   }
   
   /**
@@ -168,6 +165,7 @@ abstract class BaseAdapter {
         $result = $this->insert_id($set);
         break;
       case Query::SELECT_STMT:
+        $result = array();
         if($set) {
           while($row = $this->fetch_assoc($set)) {
             $result[] = $row;

@@ -13,7 +13,7 @@ class OvrimosAdapter extends PreparedAdapter {
    * @see BaseAdapter::connect()
    */
   function connect() {
-    $this->connection = ovrimos_connect($this->hostname, $this->schema, $this->username, $this->password);
+    return ovrimos_connect($this->hostname, $this->schema, $this->username, $this->password);
   }
   
   /**

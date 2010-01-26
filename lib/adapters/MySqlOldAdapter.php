@@ -13,10 +13,11 @@ class MySqlOldAdapter extends BaseAdapter {
    * @see BaseAdapter::connect()
    */
   function connect() {
-    $this->connection = mysql_connect($this->hostname, $this->username, $this->password);
+    $connection = mysql_connect($this->hostname, $this->username, $this->password);
     if($this->schema != "") {
-      mysql_select_db($this->schema, $this->connection);
+      mysql_select_db($this->schema, $connection);
     }
+    return $connection
   }
   
   /**

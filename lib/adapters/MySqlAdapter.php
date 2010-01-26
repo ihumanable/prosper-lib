@@ -15,7 +15,7 @@ class MySqlAdapter extends PreparedAdapter {
    * @see BaseAdapter::connect()
    */
   function connect() {
-    $this->connection = new \mysqli($this->hostname, $this->username, $this->password, $this->schema);
+    return new \mysqli($this->hostname, $this->username, $this->password, $this->schema);
   }
   
   /**
@@ -49,7 +49,7 @@ class MySqlAdapter extends PreparedAdapter {
   /**
    * @see BaseAdapter::rollback()
    */     	
-  function rollback() {
+  function rollback() {          
     $this->connection()->rollback();
   }
   
@@ -70,7 +70,7 @@ class MySqlAdapter extends PreparedAdapter {
       $arguments[] = &$this->bindings[$key];
     }
     call_user_func_array(array($stmt, 'bind_param'), $arguments);
-    $stmt->execute();
+    $stmt->execute();  
     return $stmt;
   }
   

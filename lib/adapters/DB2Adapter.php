@@ -14,7 +14,7 @@ class DB2Adapter extends PreparedAdapter {
    */
   function connect() {
     $conn = "DRIVER={IBM DB2 ODBC DRIVER};DATABASE={$this->schema};HOSTNAME={$this->hostname};PORT=50000;PROTOCOL=TCPIP;UID={$this->username};PWD={$this->password}";
-    $this->connection = db2_connect($conn);
+    return db2_connect($conn);
   }
   
   /**

@@ -25,7 +25,7 @@ class MSSqlNativeAdapter extends PreparedAdapter {
       $info["Database"] = $schema;
     }
     
-    $this->connection = sqlsrv_connect($this->hostname, $info);
+    return sqlsrv_connect($this->hostname, $info);
   }
   
   /**

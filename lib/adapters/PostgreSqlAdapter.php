@@ -20,7 +20,7 @@ class PostgreSqlAdapter extends PreparedAdapter {
             ($this->schema   == "" ? "" : "dbname={$this->schema} ") .
         ($this->username == "" ? "" : "user={$this->username} ") .
         ($this->password == "" ? "" : "password={$this->password}");
-    $this->connection = pg_connect($conn);
+    return pg_connect($conn);
   }
   
   /**

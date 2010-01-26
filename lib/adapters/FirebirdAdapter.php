@@ -16,7 +16,7 @@ class FirebirdAdapter extends PreparedAdapter {
    */
   function connect() {
     $database = $this->hostname . ":" . $this->schema;
-    $this->connection = ibase_connect($database, $this->username, $this->password);
+    return ibase_connect($database, $this->username, $this->password);
   }
   
   /**
