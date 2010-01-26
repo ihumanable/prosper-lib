@@ -1,26 +1,11 @@
 <?php
+  require_once 'base_test.php';
   use Prosper\Query;
   
-  class MSSqlSelectTests extends UnitTestCase {
+  class MSSqlSelectTests extends MSSqlBase {
     
     function MSSqlSelectTests() {
-      $this->UnitTestCase('MSSQL - Select Statements');
-    }
-    
-    function setUp() {
-      Query::configure(Query::MSSQL_MODE, 'unittest', 'unittest', 'localhost', 'unittest');
-    }
-    
-    function tearDown() {
-    
-    }
-    
-    function safe_value() {
-      return '1';
-    }
-    
-    function danger_value() {
-      return "' DROP TABLES --";
+      $this->MSSqlBase('Select Statements');
     }
     
     /* Basic Tests */
@@ -61,27 +46,27 @@
     }
     
     function assert_single_safe($query) {
-      $this->assertEqual($query->sql(), "select * from [unittest].[foo] where [x] = '1'");
+      $this->assertEqual($query->sql(), "select * from [unittest].[foo] where [x] = '$this->safe_result'");
     }
     
     function assert_single_danger($query) {
-      $this->assertEqual($query->sql(), "select * from [unittest].[foo] where [x] = ''' DROP TABLES --'");
+      $this->assertEqual($query->sql(), "select * from [unittest].[foo] where [x] = '$this->danger_result'");
     }
     
     function test_select_where_anonymous_single_safe() {
-      $this->assert_single_safe($this->select_where_anonymous_single($this->safe_value()));
+      $this->assert_single_safe($this->select_where_anonymous_single($this->safe));
     }
     
     function test_select_where_anonymous_single_danger() {
-      $this->assert_single_danger($this->select_where_anonymous_single($this->danger_value()));
+      $this->assert_single_danger($this->select_where_anonymous_single($this->danger));
     }
     
     function test_select_where_named_single_safe() {
-      $this->assert_single_safe($this->select_where_named_single($this->safe_value()));
+      $this->assert_single_safe($this->select_where_named_single($this->safe));
     }
     
     function test_select_where_named_single_danger() {
-      $this->assert_single_danger($this->select_where_named_single($this->danger_value()));
+      $this->assert_single_danger($this->select_where_named_single($this->danger));
     }
     
     /* ---------- */
@@ -101,27 +86,27 @@
     }
     
     function assert_multiple_safe($query) {
-      $this->assertEqual($query->sql(), "select * from [unittest].[foo] where [x] = '1' and [y] = '2' and [z] = '3'");
+      $this->assertEqual($query->sql(), "select * from [unittest].[foo] where [x] = '$this->safe_result' and [y] = '2' and [z] = '3'");
     }
     
     function assert_multiple_danger($query) {
-      $this->assertEqual($query->sql(), "select * from [unittest].[foo] where [x] = ''' DROP TABLES --' and [y] = '2' and [z] = '3'");
+      $this->assertEqual($query->sql(), "select * from [unittest].[foo] where [x] = '$this->danger_result' and [y] = '2' and [z] = '3'");
     }
     
     function test_select_where_anonymous_multiple_safe() {
-      $this->assert_multiple_safe($this->select_where_anonymous_multiple($this->safe_value()));
+      $this->assert_multiple_safe($this->select_where_anonymous_multiple($this->safe));
     }
     
     function test_select_where_anonymous_multiple_danger() {
-      $this->assert_multiple_danger($this->select_where_anonymous_multiple($this->danger_value()));
+      $this->assert_multiple_danger($this->select_where_anonymous_multiple($this->danger));
     }
     
     function test_select_where_named_multiple_safe() {
-      $this->assert_multiple_safe($this->select_where_named_multiple($this->safe_value()));
+      $this->assert_multiple_safe($this->select_where_named_multiple($this->safe));
     }
     
     function test_select_where_named_multiple_danger() {
-      $this->assert_multiple_danger($this->select_where_named_multiple($this->danger_value()));
+      $this->assert_multiple_danger($this->select_where_named_multiple($this->danger));
     }
     
     /* ---------- */
@@ -187,13 +172,13 @@
     }
     
     function test_select_group_having_safe() {
-      $query = Query::select()->from('foo')->group('bar')->having('baz = ?', $this->safe_value());
-      $this->assertEqual($query->sql(), "select * from [unittest].[foo] group by [bar] having [baz] = '1'");
+      $query = Query::select()->from('foo')->group('bar')->having('baz = ?', $this->safe);
+      $this->assertEqual($query->sql(), "select * from [unittest].[foo] group by [bar] having [baz] = '$this->safe_result'");
     }
     
     function test_select_group_having_danger() {
-      $query = Query::select()->from('foo')->group('bar')->having('baz = ?', $this->danger_value());
-      $this->assertEqual($query->sql(), "select * from [unittest].[foo] group by [bar] having [baz] = ''' DROP TABLES --'");
+      $query = Query::select()->from('foo')->group('bar')->having('baz = ?', $this->danger);
+      $this->assertEqual($query->sql(), "select * from [unittest].[foo] group by [bar] having [baz] = '$this->danger_result'");
     }
     
     /* ---------- */

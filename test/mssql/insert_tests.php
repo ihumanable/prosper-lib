@@ -1,26 +1,11 @@
 <?php
+  require_once 'base_test.php';
   use Prosper\Query;
   
-  class MSSqlInsertTests extends UnitTestCase {
+  class MSSqlInsertTests extends MSSqlBase {
     
     function MSSqlInsertTests() {
-      $this->UnitTestCase('MSSQL - Insert Statements');
-    }
-    
-    function setUp() {
-      Query::configure(Query::MSSQL_MODE, 'unittest', 'unittest', 'localhost', 'unittest');
-    }
-    
-    function tearDown() {
-    
-    }
-    
-    function safe_value() {
-      return 1;
-    }
-    
-    function danger_value() {
-      return "' DROP TABLES --";
+      $this->MSSqlBase('Insert Statements');
     }
     
     function test_insert() {
@@ -38,23 +23,23 @@
     }
     
     function test_insert_into_values_array_safe() {
-      $query = $this->insert_into_values_array($this->safe_value());
-      $this->assertEqual($query->sql(), "insert into [unittest].[foo] ([bar], [baz]) values ('1', '2')");
+      $query = $this->insert_into_values_array($this->safe);
+      $this->assertEqual($query->sql(), "insert into [unittest].[foo] ([bar], [baz]) values ('$this->safe_result', '2')");
     }
     
     function test_insert_into_values_array_danger() {
-      $query = $this->insert_into_values_array($this->danger_value());
-      $this->assertEqual($query->sql(), "insert into [unittest].[foo] ([bar], [baz]) values (''' DROP TABLES --', '2')");
+      $query = $this->insert_into_values_array($this->danger);
+      $this->assertEqual($query->sql(), "insert into [unittest].[foo] ([bar], [baz]) values ('$this->danger_result', '2')");
     }
     
     function test_insert_into_values_array_where_safe() {
-      $query = $this->insert_into_values_array($this->safe_value())->where('zap = ?', $this->safe_value());
-      $this->assertEqual($query->sql(), "insert into [unittest].[foo] ([bar], [baz]) values ('1', '2') where [zap] = '1'");
+      $query = $this->insert_into_values_array($this->safe)->where('zap = ?', $this->safe);
+      $this->assertEqual($query->sql(), "insert into [unittest].[foo] ([bar], [baz]) values ('$this->safe_result', '2') where [zap] = '$this->safe_result'");
     }
 
     function test_insert_into_values_array_where_danger() {
-      $query = $this->insert_into_values_array($this->danger_value())->where('zap = ?', $this->danger_value());
-      $this->assertEqual($query->sql(), "insert into [unittest].[foo] ([bar], [baz]) values (''' DROP TABLES --', '2') where [zap] = ''' DROP TABLES --'");
+      $query = $this->insert_into_values_array($this->danger)->where('zap = ?', $this->danger);
+      $this->assertEqual($query->sql(), "insert into [unittest].[foo] ([bar], [baz]) values ('$this->danger_result', '2') where [zap] = '$this->danger_result'");
     }
 
     function insert_into_values_sugar($bar) {
@@ -62,23 +47,23 @@
     }
     
     function test_insert_into_values_sugar_safe() {
-      $query = $this->insert_into_values_sugar($this->safe_value());
-      $this->assertEqual($query->sql(), "insert into [unittest].[foo] ([bar], [baz]) values ('1', '2')");
+      $query = $this->insert_into_values_sugar($this->safe);
+      $this->assertEqual($query->sql(), "insert into [unittest].[foo] ([bar], [baz]) values ('$this->safe_result', '2')");
     }
     
     function test_insert_into_values_sugar_danger() {
-      $query = $this->insert_into_values_sugar($this->danger_value());
-      $this->assertEqual($query->sql(), "insert into [unittest].[foo] ([bar], [baz]) values (''' DROP TABLES --', '2')"); 
+      $query = $this->insert_into_values_sugar($this->danger);
+      $this->assertEqual($query->sql(), "insert into [unittest].[foo] ([bar], [baz]) values ('$this->danger_result', '2')"); 
     }
     
     function test_insert_into_values_sugar_where_safe() {
-      $query = $this->insert_into_values_sugar($this->safe_value())->where('zap = ?', $this->safe_value());
-      $this->assertEqual($query->sql(), "insert into [unittest].[foo] ([bar], [baz]) values ('1', '2') where [zap] = '1'");
+      $query = $this->insert_into_values_sugar($this->safe)->where('zap = ?', $this->safe);
+      $this->assertEqual($query->sql(), "insert into [unittest].[foo] ([bar], [baz]) values ('$this->safe_result', '2') where [zap] = '$this->safe_result'");
     }
     
     function test_insert_into_values_sugar_where_danger() {
-      $query = $this->insert_into_values_sugar($this->danger_value())->where('zap = ?', $this->danger_value());
-      $this->assertEqual($query->sql(), "insert into [unittest].[foo] ([bar], [baz]) values (''' DROP TABLES --', '2') where [zap] = ''' DROP TABLES --'");
+      $query = $this->insert_into_values_sugar($this->danger)->where('zap = ?', $this->danger);
+      $this->assertEqual($query->sql(), "insert into [unittest].[foo] ([bar], [baz]) values ('$this->danger_result', '2') where [zap] = '$this->danger_result'");
     }
     
   }
