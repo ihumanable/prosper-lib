@@ -818,24 +818,27 @@ class Query {
    * @return int unix timestamp	 	 
    * @see Query::timestamp($timestamp)   
    */
-  function mktime($timestamp) {
-    return $this->adapter->mktime($timestamp);
+  static function mktime($timestamp) {
+    $q = new Query();
+    return $q->adapter->mktime($timestamp);
   }
   
   /**
    * Get the platform specific true value
    * @return mixed Boolean True Value ex: 1 or TRUE
    */
-  function true_value() {
-    return $this->adapter->true_value();
+  static function true_value() {
+    $q = new Query();
+    return $q->adapter->true_value();
   }
   
   /**
    * Get the platform specific false value
    * @return mixed Boolean False Value ex: 0 or FALSE
    */
-  function false_value() {
-    return $this->adapter->false_value();
+  static function false_value() {
+    $q = new Query();
+    return $q->adapter->false_value();
   }
   
   /**
