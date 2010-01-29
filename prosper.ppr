@@ -13,7 +13,7 @@ ProjectFilesOnly=0
 prosper
 	+doc
 		readme.md
-	-lib
+	+lib
 		-adapters
 			lib\adapters\_all_.php
 			lib\adapters\_base_.php
@@ -40,19 +40,21 @@ prosper
 			lib\adapters\SybaseAdapter.php
 		lib\Query.php
 		lib\Token.php
-	-test
+	+test
 		-mssql
+			test\mssql\base_test.php
 			test\mssql\delete_tests.php
 			test\mssql\insert_tests.php
-			test\mssql\mssql_suite.php
 			test\mssql\select_tests.php
+			test\mssql\suite.php
 			test\mssql\update_tests.php
 		-mysql
 			test\mysql\delete_tests.php
 			test\mysql\insert_tests.php
-			test\mysql\mysql_suite.php
 			test\mysql\select_tests.php
+			test\mysql\suite.php
 			test\mysql\update_tests.php
+			test\mysql\functional_tests.php
 		-simpletest
 			-docs
 				-en
@@ -186,7 +188,7 @@ prosper
 			test\simpletest\web_tester.php
 			test\simpletest\xml.php
 		test\prosper.php
-	-todo
+	+todo
 		-img
 			todo\img\create.png
 		-style
@@ -202,10 +204,50 @@ prosper
 		todo\index.php
 		todo\utility.php
 [Open project files]
-0=readme.md
+0=test\mysql\functional_tests.php
+1=todo\config.php
+2=todo\create.php
+3=todo\delete.php
+4=todo\diagnostic.php
+5=todo\edit.php
+6=todo\footer.php
+7=todo\header.php
+8=todo\index.php
+9=todo\utility.php
+10=lib\Query.php
 [Selected Project Files]
 Main=
-Selected=readme.md
-[readme.md]
+Selected=lib\Query.php
+[test\mysql\functional_tests.php]
+TopLine=107
+Caret=90,148
+[todo\config.php]
 TopLine=1
 Caret=1,1
+[todo\create.php]
+TopLine=1
+Caret=1,1
+[todo\delete.php]
+TopLine=1
+Caret=1,1
+[todo\diagnostic.php]
+TopLine=1
+Caret=1,1
+[todo\edit.php]
+TopLine=1
+Caret=1,1
+[todo\footer.php]
+TopLine=1
+Caret=1,1
+[todo\header.php]
+TopLine=1
+Caret=1,1
+[todo\index.php]
+TopLine=1
+Caret=47,37
+[todo\utility.php]
+TopLine=1
+Caret=1,1
+[lib\Query.php]
+TopLine=794
+Caret=14,826

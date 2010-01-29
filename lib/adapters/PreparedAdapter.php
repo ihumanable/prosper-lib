@@ -81,6 +81,18 @@ abstract class PreparedAdapter extends BaseAdapter {
   }
   
   /**
+   * Used to rebind a statement
+   * @param array bindings to rebind with
+   * @return nothing      
+   */     
+  function rebind($bindings) {
+    $this->cleanup();
+    foreach($bindings as $binding) {
+      $this->escape($binding);
+    }    
+  }
+  
+  /**
    * Cleans up any prepared state
    * @see BaseAdapter::cleanup()
    */

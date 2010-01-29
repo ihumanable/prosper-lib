@@ -884,6 +884,20 @@ class Query {
   }
   
   /**
+   * Used to rebind a statement, only works with prepared adapters, no-op otherwise
+   * @param varargs Bindings to rebind with or associative array
+   * @return nothing      
+   */    
+  function rebind($bindings) {
+    if(func_num_args() > 1) {
+      $bindings = func_get_args();
+    } else if (!is_array($bindings)) {
+      $bindings = array($bindings);
+    }
+    $this->adapter->rebind($bindings);
+  }
+  
+  /**
    * Read-only access to the contained sql statement
    * @return string internal sql statement
    */        

@@ -200,6 +200,15 @@ abstract class BaseAdapter {
   }
   
   /**
+   * Used to rebind the query
+   * @params array Array of new bindings
+   * @return nothing
+   */           
+  function rebind($bindings) {
+  
+  }
+  
+  /**
    * Retrieve the last insert id for a statement
    * @param mixed $set Platform specific result set
    * @return int inserted id
@@ -327,7 +336,7 @@ abstract class BaseAdapter {
    * @return string modulus snippet
    */
   function modulus($lhs, $rhs) {
-    return " ($lhs % $rhs ) ";
+    return " ($lhs % $rhs) ";
   }
 }
 ?>

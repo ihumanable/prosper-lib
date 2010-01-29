@@ -3,7 +3,7 @@
   
   class MySqlFunctionalTests extends UnitTestCase {
     
-    private $record = array('bar' => 1, 'baz' => 2, 'zap' => 3);
+    private $record = array('bar' => 1, 'baz' => 2, 'zap' => 3);   
     
     function MySqlFunctionalTests() {
       $this->UnitTestCase('MySQL - Functional Test');
@@ -146,6 +146,45 @@
       
       $this->assertEqual($result, array( array( 'bar' => 1, 'baz' => 10, 'zap' => 3 ),
                                          array( 'bar' => 5, 'baz' => 20, 'zap' => 3 ) ));      
+    }
+    
+    function test_repeatable() {
+      $this->populateRow($this->record);
+      
+      $query = Query::select()->from('foo');
+      
+      $result1 = $query->execute();
+      $result2 = $query->execute();
+      
+      $this->assertEqual($result1, $result2);
+    }
+    
+    function test_repeatable_prepared() {
+      $this->populateRow($this->record);
+      $different = $this->record;
+      $different['bar'] = 5;
+      $this->populateRow($different);
+      
+      $query = Query::select()->from('foo')->where('bar = ?', 5);
+      
+      $result1 = $query->execute();
+      $result2 = $query->execute();
+      
+      $this->assertEqual($result1, $result2);
+    }
+    
+    function test_rebinding() {
+      $this->populateRow($this->record);
+      
+      $query = Query::select()->from('foo')->where('bar = ?', 5);
+      
+      $result1 = $query->execute();
+      
+      $query->rebind(1);
+      $result2 = $query->execute();
+      
+      $this->assertEqual($result1, array());
+      $this->assertEqual($result2, array($this->record));
     }
     
   }
