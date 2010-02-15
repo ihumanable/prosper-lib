@@ -14,7 +14,7 @@ prosper
 	+doc
 		readme.md
 	+lib
-		-adapters
+		+adapters
 			lib\adapters\_all_.php
 			lib\adapters\_base_.php
 			lib\adapters\_common_.php
@@ -48,7 +48,7 @@ prosper
 			test\mssql\select_tests.php
 			test\mssql\suite.php
 			test\mssql\update_tests.php
-		-mysql
+		+mysql
 			test\mysql\delete_tests.php
 			test\mysql\insert_tests.php
 			test\mysql\select_tests.php
@@ -204,50 +204,10 @@ prosper
 		todo\index.php
 		todo\utility.php
 [Open project files]
-0=test\mysql\functional_tests.php
-1=todo\config.php
-2=todo\create.php
-3=todo\delete.php
-4=todo\diagnostic.php
-5=todo\edit.php
-6=todo\footer.php
-7=todo\header.php
-8=todo\index.php
-9=todo\utility.php
-10=lib\Query.php
+0=New1.txt
 [Selected Project Files]
 Main=
-Selected=lib\Query.php
-[test\mysql\functional_tests.php]
-TopLine=107
-Caret=90,148
-[todo\config.php]
+Selected=New1.txt
+[New1.txt]
 TopLine=1
 Caret=1,1
-[todo\create.php]
-TopLine=1
-Caret=1,1
-[todo\delete.php]
-TopLine=1
-Caret=1,1
-[todo\diagnostic.php]
-TopLine=1
-Caret=1,1
-[todo\edit.php]
-TopLine=1
-Caret=1,1
-[todo\footer.php]
-TopLine=1
-Caret=1,1
-[todo\header.php]
-TopLine=1
-Caret=1,1
-[todo\index.php]
-TopLine=1
-Caret=47,37
-[todo\utility.php]
-TopLine=1
-Caret=1,1
-[lib\Query.php]
-TopLine=794
-Caret=14,826

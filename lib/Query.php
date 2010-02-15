@@ -9,7 +9,7 @@ require_once 'Token.php';
 /**
  * The Query Class that drives Prosper
  */
-class Query {
+class Query implements \IteratorAggregate {
   //Statement Types
   const DELETE_STMT = "DELETE_STMT";
   const INSERT_STMT = "INSERT_STMT";
@@ -41,6 +41,7 @@ class Query {
   private $mode;
   private $sql;
   private $adapter;
+  private $result = null;
   private static $username;
   private static $password;
   private static $hostname;
@@ -853,6 +854,10 @@ class Query {
   
   //System Functions
   
+  function getIterator() {
+    return new \ArrayIterator($this->execute());
+  }
+  
   /**
    * Executes the sql statement and returns the proper result
    * SELECT returns a result array
@@ -862,7 +867,8 @@ class Query {
    * @return mixed execution result	 	 
    */
   function execute() {
-    return $this->adapter->execute($this->sql, $this->mode);
+    $this->result = $this->adapter->execute($this->sql, $this->mode);
+    return $this->result;
   }
   
   /**

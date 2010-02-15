@@ -187,6 +187,18 @@
       $this->assertEqual($result2, array($this->record));
     }
     
+    function test_iterable() {
+      $this->populateRow($this->record);
+      $this->populateRow($this->record);
+      $this->populateRow($this->record);
+      
+      $query = Query::select()->from('foo');
+      
+      foreach($query as $row) {
+        $this->assertEqual($row, $this->record); 
+      }
+    }
+    
   }
 
 ?>
