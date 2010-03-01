@@ -56,7 +56,7 @@
 <li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
 <li><div class="src-line"><a name="a45"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">static&nbsp;</font><font color="blue">function&nbsp;</font><a href="../Prosper/Token.html#methodnext">next</a><strong>(</strong><strong>&amp;</strong><strong>$source</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
 <li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$source&nbsp;</strong>=&nbsp;<a href="http://www.php.net/ltrim">ltrim</a><strong>(</strong><strong>$source</strong><strong>)</strong><strong>;</strong></div></li>
-<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$sample&nbsp;</strong>=&nbsp;<strong>$source</strong><strong>[</strong>0<strong>]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$sample&nbsp;</strong>=&nbsp;<strong>(</strong><a href="http://www.php.net/strlen">strlen</a><strong>(</strong><strong>$source</strong><strong>)&nbsp;</strong>&gt;&nbsp;0<strong>)&nbsp;</strong>?&nbsp;<strong>$source</strong><strong>[</strong>0<strong>]&nbsp;</strong>:&nbsp;<font color="#66cccc">''</font><strong>;</strong></div></li>
 <li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
 <li><div class="src-line"><a name="a49"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if</font><strong>(</strong><a href="http://www.php.net/ctype_alnum">ctype_alnum</a><strong>(</strong><strong>$sample</strong><strong>)&nbsp;</strong>||&nbsp;<a href="http://www.php.net/in_array">in_array</a><strong>(</strong><strong>$sample</strong><strong>,&nbsp;</strong>self<strong>::</strong><strong>$allowed</strong><strong>))&nbsp;</strong><strong>{</strong></div></li>
 <li><div class="src-line"><a name="a50"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font>self<strong>::</strong>sql_entity_parse<strong>(</strong><strong>$source</strong><strong>)</strong><strong>;</strong></div></li>
@@ -193,7 +193,7 @@
 </div>
 	<div id="credit">
 		<hr />
-		Documentation generated on Tue, 22 Dec 2009 10:48:25 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Mon, 01 Mar 2010 14:56:27 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</div>
 </body>
 </html>

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>File Source for MSSqlNativeAdapter.php</title>
+  <link rel="stylesheet" href="../media/stylesheet.css" />
+<!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
+<body bgcolor="#ffffff" ><h1 align="center">Source for file MSSqlNativeAdapter.php</h1>
+<p>Documentation is available at <a href="../Prosper/_adapters---MSSqlNativeAdapter.php.html">MSSqlNativeAdapter.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><strong>&lt;?php</strong></div></li>
+<li><div class="src-line"><a name="a2"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a3"></a><font color="#009999">&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@package</font></strong><font color="#009999">&nbsp;Prosper</font></div></li>
+<li><div class="src-line"><a name="a4"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a5"></a>namespace&nbsp;Prosper<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a6"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a7"></a><font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a8"></a><font color="#009999">&nbsp;*&nbsp;Microsoft&nbsp;SQL&nbsp;Server&nbsp;Database&nbsp;Adapter</font></div></li>
+<li><div class="src-line"><a name="a9"></a><font color="#009999">&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a10"></a><font color="blue">class&nbsp;</font><a href="../Prosper/MSSqlNativeAdapter.html">MSSqlNativeAdapter</a>&nbsp;<font color="blue">extends&nbsp;</font><a href="../Prosper/PreparedAdapter.html">PreparedAdapter</a>&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a11"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a12"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a13"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::connect()</font></div></li>
+<li><div class="src-line"><a name="a14"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a15"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/MSSqlNativeAdapter.html#methodconnect">connect</a><strong>(</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a16"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a17"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$info&nbsp;</strong>=&nbsp;array&nbsp;<strong>(&nbsp;</strong><font color="#66cccc">&quot;UID&quot;&nbsp;</font>=&gt;&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$username">username</a><strong>,&nbsp;</strong><font color="#66cccc">&quot;PWD&quot;&nbsp;</font>=&gt;&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$password">password</a>&nbsp;<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a18"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if</font><strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$schema">schema</a>&nbsp;!=&nbsp;<font color="#66cccc">&quot;&quot;</font><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a19"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if</font><strong>(</strong><a href="http://www.php.net/strpos">strpos</a><strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$schema">schema</a><strong>,&nbsp;</strong><font color="#66cccc">'.'</font><strong>)&nbsp;</strong>!==&nbsp;false<strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a20"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$parts&nbsp;</strong>=&nbsp;<a href="http://www.php.net/explode">explode</a><strong>(</strong><font color="#66cccc">'.'</font><strong>,&nbsp;</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$schema">schema</a><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a21"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$schema&nbsp;</strong>=&nbsp;<strong>$parts</strong><strong>[</strong>0<strong>]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a22"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a23"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$schema&nbsp;</strong>=&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$schema">schema</a><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a24"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a25"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$info</strong><strong>[</strong><font color="#66cccc">&quot;Database&quot;</font><strong>]&nbsp;</strong>=&nbsp;<strong>$schema</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a26"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a27"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a28"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font>sqlsrv_connect<strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$hostname">hostname</a><strong>,&nbsp;</strong><strong>$info</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a29"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a30"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a31"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a32"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::disconnect()</font></div></li>
+<li><div class="src-line"><a name="a33"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/MSSqlNativeAdapter.html#methoddisconnect">disconnect</a><strong>(</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;&nbsp;&nbsp;&nbsp;sqlsrv_close<strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a36"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a38"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a39"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::has_transactions()</font></div></li>
+<li><div class="src-line"><a name="a40"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/MSSqlNativeAdapter.html#methodhas_transactions">has_transactions</a><strong>(</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a42"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font>true<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a43"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a46"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::begin()</font></div></li>
+<li><div class="src-line"><a name="a47"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/MSSqlNativeAdapter.html#methodbegin">begin</a><strong>(</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;&nbsp;&nbsp;&nbsp;sqlsrv_begin_transation<strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a50"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a51"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a52"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a53"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::commit()</font></div></li>
+<li><div class="src-line"><a name="a54"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a55"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/MSSqlNativeAdapter.html#methodcommit">commit</a><strong>(</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a56"></a>&nbsp;&nbsp;&nbsp;&nbsp;sqlsrv_commit<strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a57"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a58"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a59"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a60"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::rollback()</font></div></li>
+<li><div class="src-line"><a name="a61"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/MSSqlNativeAdapter.html#methodrollback">rollback</a><strong>(</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;&nbsp;&nbsp;&nbsp;sqlsrv_rollback<strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a64"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a65"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a66"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a67"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;PreparedAdapter::prepared_execute($sql,&nbsp;$mode)</font></div></li>
+<li><div class="src-line"><a name="a68"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a69"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/MSSqlNativeAdapter.html#methodprepared_execute">prepared_execute</a><strong>(</strong><strong>$sql</strong><strong>,&nbsp;</strong><strong>$mode</strong><strong>)&nbsp;</strong><strong>{&nbsp;&nbsp;&nbsp;&nbsp;</strong></div></li>
+<li><div class="src-line"><a name="a70"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">foreach</font><strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/PreparedAdapter.html#var$bindings">bindings</a>&nbsp;as&nbsp;<strong>$key&nbsp;</strong>=&gt;&nbsp;<strong>$binding</strong><strong>)&nbsp;</strong><strong>{&nbsp;&nbsp;</strong></div></li>
+<li><div class="src-line"><a name="a71"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$arguments</strong><strong>[</strong><strong>]&nbsp;</strong>=&nbsp;<strong>&amp;</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/PreparedAdapter.html#var$bindings">bindings</a><strong>[</strong><strong>$key</strong><strong>]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a72"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a73"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$stmt&nbsp;</strong>=&nbsp;sqlsrv_prepare<strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>)</strong><strong>,&nbsp;</strong><strong>$sql</strong><strong>,&nbsp;</strong><strong>$arguments</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a74"></a>&nbsp;&nbsp;&nbsp;&nbsp;sqlsrv_execute<strong>(</strong><strong>$stmt</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a75"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><strong>$stmt</strong><strong>;&nbsp;</strong></div></li>
+<li><div class="src-line"><a name="a76"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a77"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a78"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a79"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;PreparedAdapter::standard_execute($sql,&nbsp;$mode)</font></div></li>
+<li><div class="src-line"><a name="a80"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a81"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/MSSqlNativeAdapter.html#methodstandard_execute">standard_execute</a><strong>(</strong><strong>$sql</strong><strong>,&nbsp;</strong><strong>$mode</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a82"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font>sqlsrv_query<strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>)</strong><strong>,&nbsp;</strong><strong>$sql</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a83"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a84"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a85"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a86"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::affected_rows($set)</font></div></li>
+<li><div class="src-line"><a name="a87"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a88"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/MSSqlNativeAdapter.html#methodaffected_rows">affected_rows</a><strong>(</strong><strong>$set</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a89"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font>sqlsrv_rows_affected<strong>(</strong><strong>$set</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a90"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a91"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a92"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a93"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::insert_id($set)</font></div></li>
+<li><div class="src-line"><a name="a94"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a95"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/MSSqlNativeAdapter.html#methodinsert_id">insert_id</a><strong>(</strong><strong>$set</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a96"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$result&nbsp;</strong>=&nbsp;sqlsrv_query<strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>)</strong><strong>,&nbsp;</strong><font color="#66cccc">&quot;select&nbsp;SCOPE_IDENTITY()&nbsp;AS&nbsp;last_insert_id&quot;</font><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a97"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$arr&nbsp;</strong>=&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/MSSqlNativeAdapter.html#methodfetch_assoc">fetch_assoc</a><strong>(</strong><strong>$result</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a98"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$retval&nbsp;</strong>=&nbsp;<strong>$arr</strong><strong>[</strong><font color="#66cccc">'last_insert_id'</font><strong>]</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a99"></a>&nbsp;&nbsp;&nbsp;&nbsp;sqlsrv_free_stmt<strong>(</strong><strong>$result</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a100"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><strong>$retval</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a101"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a102"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a103"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a104"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::fetch_assoc($set)</font></div></li>
+<li><div class="src-line"><a name="a105"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a106"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/MSSqlNativeAdapter.html#methodfetch_assoc">fetch_assoc</a><strong>(</strong><strong>$set</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a107"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font>sqlsrv_fetch_array<strong>(</strong><strong>$set</strong><strong>,&nbsp;</strong>SQLSRV_FETCH_ASSOC<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a108"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a109"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a110"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a111"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::free_result($set)</font></div></li>
+<li><div class="src-line"><a name="a112"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a113"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/MSSqlNativeAdapter.html#methodfree_result">free_result</a><strong>(</strong><strong>$set</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a114"></a>&nbsp;&nbsp;&nbsp;&nbsp;sqlsrv_free_stmt<strong>(</strong><strong>$set</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a115"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a116"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a117"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a118"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::query($str)</font></div></li>
+<li><div class="src-line"><a name="a119"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a120"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/MSSqlNativeAdapter.html#methodquote">quote</a><strong>(</strong><strong>$str</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a121"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><font color="#66cccc">&quot;</font><font color="#66cccc">[<strong>$str</strong>]</font><font color="#66cccc">&quot;</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a122"></a>&nbsp;&nbsp;<strong>}&nbsp;&nbsp;</strong></div></li>
+<li><div class="src-line"><a name="a123"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a124"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a125"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::addslashes($str)</font></div></li>
+<li><div class="src-line"><a name="a126"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a127"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/MSSqlNativeAdapter.html#methodaddslashes">addslashes</a><strong>(</strong><strong>$str</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a128"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><a href="http://www.php.net/str_replace">str_replace</a><strong>(</strong><font color="#66cccc">&quot;'&quot;</font><strong>,&nbsp;</strong><font color="#66cccc">&quot;''&quot;</font><strong>,&nbsp;</strong><strong>$str</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a129"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a130"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a131"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a132"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;Microsoft&nbsp;T-SQL&nbsp;sucks&nbsp;and&nbsp;can't&nbsp;easily&nbsp;do&nbsp;limit&nbsp;offset&nbsp;like&nbsp;every&nbsp;other</font></div></li>
+<li><div class="src-line"><a name="a133"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;reasonable&nbsp;rdbms,&nbsp;this&nbsp;creates&nbsp;a&nbsp;complex&nbsp;windowing&nbsp;function&nbsp;to&nbsp;do&nbsp;something</font></div></li>
+<li><div class="src-line"><a name="a134"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;that&nbsp;everyone&nbsp;else&nbsp;has&nbsp;built-in.</font></div></li>
+<li><div class="src-line"><a name="a135"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>string&nbsp;</em><strong>$sql&nbsp;</strong><font color="#009999">sql&nbsp;statement</font></div></li>
+<li><div class="src-line"><a name="a136"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>int&nbsp;</em><strong>$limit&nbsp;</strong><font color="#009999">how&nbsp;many&nbsp;records&nbsp;to&nbsp;return</font></div></li>
+<li><div class="src-line"><a name="a137"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>int&nbsp;</em><strong>$offset&nbsp;</strong><font color="#009999">where&nbsp;to&nbsp;start&nbsp;returning</font></div></li>
+<li><div class="src-line"><a name="a138"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@return&nbsp;</font></strong><em>string&nbsp;</em><font color="#009999">modified&nbsp;sql&nbsp;statement</font></div></li>
+<li><div class="src-line"><a name="a139"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a140"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/MSSqlNativeAdapter.html#methodlimit">limit</a><strong>(</strong><strong>$sql</strong><strong>,&nbsp;</strong><strong>$limit</strong><strong>,&nbsp;</strong><strong>$offset</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a141"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$pos&nbsp;</strong>=&nbsp;<a href="http://www.php.net/strripos">strripos</a><strong>(</strong><strong>$sql</strong><strong>,&nbsp;</strong><font color="#66cccc">&quot;select&quot;</font><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a142"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;TODO:&nbsp;Modify&nbsp;to&nbsp;use&nbsp;ORDER&nbsp;BY&nbsp;from&nbsp;$sql</font></div></li>
+<li><div class="src-line"><a name="a143"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>$pos&nbsp;</strong>!==&nbsp;false<strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a144"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$pos&nbsp;</strong>+=&nbsp;6<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a145"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a146"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$orderpos&nbsp;</strong>=&nbsp;<a href="http://www.php.net/strripos">strripos</a><strong>(</strong><strong>$sql</strong><strong>,&nbsp;</strong><font color="#66cccc">&quot;order&nbsp;by&quot;</font><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a147"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a148"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">if&nbsp;</font><strong>(</strong><strong>$orderpos&nbsp;</strong>===&nbsp;false<strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a149"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$order&nbsp;</strong>=&nbsp;<font color="#66cccc">&quot;SELECT&nbsp;1))&nbsp;AS&nbsp;row,&nbsp;&quot;</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a150"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;</strong>else&nbsp;<strong>{</strong></div></li>
+<li><div class="src-line"><a name="a151"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="green">//&nbsp;I&nbsp;think&nbsp;this&nbsp;accounts&nbsp;for&nbsp;multiple&nbsp;ORDER&nbsp;BY&nbsp;directions,&nbsp;but&nbsp;I&nbsp;could&nbsp;be&nbsp;wrong.&nbsp;It&nbsp;definitely&nbsp;needs&nbsp;tested.</font></div></li>
+<li><div class="src-line"><a name="a152"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$order&nbsp;</strong>=&nbsp;<a href="http://www.php.net/substr">substr</a><strong>(</strong><strong>$sql</strong><strong>,&nbsp;</strong><strong>$orderpos</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a153"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a154"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a155"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$sql&nbsp;</strong>=&nbsp;<a href="http://www.php.net/substr">substr</a><strong>(</strong><strong>$sql</strong><strong>,&nbsp;</strong>0<strong>,&nbsp;</strong><strong>$pos</strong><strong>)&nbsp;</strong>.&nbsp;<font color="#66cccc">&quot;&nbsp;ROW_NUMBER()&nbsp;OVER&nbsp;(ORDER&nbsp;BY&nbsp;(&quot;&nbsp;</font>.&nbsp;<strong>$order&nbsp;</strong>.&nbsp;<a href="http://www.php.net/substr">substr</a><strong>(</strong><strong>$sql</strong><strong>,&nbsp;</strong><strong>$pos</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a156"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a157"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a158"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$sql&nbsp;</strong>=&nbsp;<font color="#66cccc">&quot;SELECT&nbsp;*&nbsp;FROM&nbsp;(&quot;&nbsp;</font>.&nbsp;<strong>$sql&nbsp;</strong>.&nbsp;<font color="#66cccc">&quot;)&nbsp;WHERE&nbsp;row&nbsp;&gt;=&nbsp;&quot;&nbsp;</font>.&nbsp;<strong>$offset&nbsp;</strong>.&nbsp;<font color="#66cccc">&quot;&nbsp;AND&nbsp;row&nbsp;&lt;=&nbsp;&quot;&nbsp;</font>.&nbsp;<strong>(</strong><strong>$limit&nbsp;</strong>+&nbsp;<strong>$offset</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a159"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a160"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><strong>$sql</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a161"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a162"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a163"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a164"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::true_value()</font></div></li>
+<li><div class="src-line"><a name="a165"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a166"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/MSSqlNativeAdapter.html#methodtrue_value">true_value</a><strong>(</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a167"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><font color="#66cccc">&quot;1&quot;</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a168"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a169"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a170"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a171"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::false_value()</font></div></li>
+<li><div class="src-line"><a name="a172"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a173"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/MSSqlNativeAdapter.html#methodfalse_value">false_value</a><strong>(</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a174"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><font color="#66cccc">&quot;0&quot;</font><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a175"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a176"></a><strong>}</strong></div></li>
+<li><div class="src-line"><a name="a177"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a178"></a><strong>?&gt;</strong></div></li>
+</ol></div>
+</div>
+	<div id="credit">
+		<hr />
+		Documentation generated on Mon, 01 Mar 2010 14:56:21 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</div>
+</body>
+</html>

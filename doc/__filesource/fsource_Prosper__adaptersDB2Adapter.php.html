@@ -26,8 +26,8 @@
 <li><div class="src-line"><a name="a14"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
 <li><div class="src-line"><a name="a15"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/DB2Adapter.html#methodconnect">connect</a><strong>(</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
 <li><div class="src-line"><a name="a16"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$conn&nbsp;</strong>=&nbsp;<font color="#66cccc">&quot;</font><font color="#66cccc">DRIVER={IBM&nbsp;DB2&nbsp;ODBC&nbsp;DRIVER};DATABASE={<strong>$this</strong></font><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$schema">schema</a><strong>}</strong>;HOSTNAME={<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$hostname">hostname</a><strong>}</strong>;PORT=50000;PROTOCOL=TCPIP;UID={<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$username">username</a><strong>}</strong>;PWD={<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$password">password</a><strong>}</font><font color="#66cccc"></strong><font color="#66cccc">"</font><strong>;</strong></font></div></li>
-<li><div class="src-line"><a name="a17"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;<strong>$this</strong></font><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$connection">connection</a>&nbsp;=&nbsp;db2_connect<strong>(</strong><strong>$conn</strong><strong>)</strong><strong>;</strong></div></li>
-<li><div class="src-line"><a name="a18"></a>&nbsp;&nbsp;</font><font color="#66cccc"><strong>}</strong></font></div></li>
+<li><div class="src-line"><a name="a17"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font>&nbsp;db2_connect<strong>(</strong><strong>$conn</strong><strong>)</strong><strong>;</strong></font></div></li>
+<li><div class="src-line"><a name="a18"></a></font><font color="#66cccc">&nbsp;&nbsp;<strong>}</strong></font></div></li>
 <li><div class="src-line"><a name="a19"></a></font><font color="#66cccc">&nbsp;&nbsp;</font></div></li>
 <li><div class="src-line"><a name="a20"></a></font><font color="#66cccc">&nbsp;&nbsp;/**</font></div></li>
 <li><div class="src-line"><a name="a21"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter::disconnect()</font></div></li>
@@ -37,93 +37,98 @@
 <li><div class="src-line"><a name="a25"></a>&nbsp;&nbsp;</font><font color="#66cccc"><strong>}</strong></font></div></li>
 <li><div class="src-line"><a name="a26"></a></font><font color="#66cccc">&nbsp;&nbsp;</font></div></li>
 <li><div class="src-line"><a name="a27"></a></font><font color="#66cccc">&nbsp;&nbsp;/**</font></div></li>
-<li><div class="src-line"><a name="a28"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter::begin()</font></div></li>
-<li><div class="src-line"><a name="a29"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*/</font></div></li>
-<li><div class="src-line"><a name="a30"></a></font><font color="#66cccc">&nbsp;&nbsp;<font color="blue">function</font>&nbsp;begin<strong>(</strong><strong>)</strong>&nbsp;<strong>{</strong></font></div></li>
-<li><div class="src-line"><a name="a31"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;db2_autocommit<strong>(</strong><strong>$this</strong></font><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>)</strong><strong>,&nbsp;</strong>DB2_AUTOCOMMIT_OFF<strong>)</strong><strong>;</strong></div></li>
-<li><div class="src-line"><a name="a32"></a>&nbsp;&nbsp;</font><font color="#66cccc"><strong>}</strong></font></div></li>
+<li><div class="src-line"><a name="a28"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter::has_transactions()</font></div></li>
+<li><div class="src-line"><a name="a29"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a30"></a></font><font color="#66cccc">&nbsp;&nbsp;<font color="blue">function</font>&nbsp;has_transactions<strong>(</strong><strong>)</strong>&nbsp;<strong>{</strong></font></div></li>
+<li><div class="src-line"><a name="a31"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font>&nbsp;true<strong>;</strong></font></div></li>
+<li><div class="src-line"><a name="a32"></a></font><font color="#66cccc">&nbsp;&nbsp;<strong>}</strong></font></div></li>
 <li><div class="src-line"><a name="a33"></a></font><font color="#66cccc">&nbsp;&nbsp;</font></div></li>
 <li><div class="src-line"><a name="a34"></a></font><font color="#66cccc">&nbsp;&nbsp;/**</font></div></li>
-<li><div class="src-line"><a name="a35"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter::commit()</font></div></li>
+<li><div class="src-line"><a name="a35"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter::begin()</font></div></li>
 <li><div class="src-line"><a name="a36"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*/</font></div></li>
-<li><div class="src-line"><a name="a37"></a></font><font color="#66cccc">&nbsp;&nbsp;<font color="blue">function</font>&nbsp;commit<strong>(</strong><strong>)</strong>&nbsp;<strong>{</strong></font></div></li>
-<li><div class="src-line"><a name="a38"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;db2_commit<strong>(</strong><strong>$this</strong></font><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>))</strong><strong>;</strong></div></li>
-<li><div class="src-line"><a name="a39"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/DB2Adapter.html#methodend">end</a><strong>(</strong><strong>)</strong><strong>;</strong></div></li>
-<li><div class="src-line"><a name="a40"></a>&nbsp;&nbsp;</font><font color="#66cccc"><strong>}</strong></font></div></li>
-<li><div class="src-line"><a name="a41"></a></font><font color="#66cccc">&nbsp;&nbsp;</font></div></li>
-<li><div class="src-line"><a name="a42"></a></font><font color="#66cccc">&nbsp;&nbsp;/**</font></div></li>
-<li><div class="src-line"><a name="a43"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter::rollback()</font></div></li>
-<li><div class="src-line"><a name="a44"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*/</font></div></li>
-<li><div class="src-line"><a name="a45"></a></font><font color="#66cccc">&nbsp;&nbsp;<font color="blue">function</font>&nbsp;rollback<strong>(</strong><strong>)</strong>&nbsp;<strong>{</strong></font></div></li>
-<li><div class="src-line"><a name="a46"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;db2_rollback<strong>(</strong><strong>$this</strong></font><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>))</strong><strong>;</strong></div></li>
-<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/DB2Adapter.html#methodend">end</a><strong>(</strong><strong>)</strong><strong>;</strong></div></li>
-<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;</font><font color="#66cccc"><strong>}</strong></font></div></li>
-<li><div class="src-line"><a name="a49"></a></font><font color="#66cccc">&nbsp;&nbsp;</font></div></li>
-<li><div class="src-line"><a name="a50"></a></font><font color="#66cccc">&nbsp;&nbsp;/**</font></div></li>
-<li><div class="src-line"><a name="a51"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter::end()</font></div></li>
-<li><div class="src-line"><a name="a52"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*/</font></div></li>
-<li><div class="src-line"><a name="a53"></a></font><font color="#66cccc">&nbsp;&nbsp;<font color="blue">protected</font>&nbsp;<font color="blue">function</font>&nbsp;end<strong>(</strong><strong>)</strong>&nbsp;<strong>{</strong></font></div></li>
-<li><div class="src-line"><a name="a54"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;db2_autocommit<strong>(</strong><strong>$this</strong></font><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>)</strong><strong>,&nbsp;</strong>DB2_AUTOCOMMIT_ON<strong>)</strong><strong>;</strong></div></li>
-<li><div class="src-line"><a name="a55"></a>&nbsp;&nbsp;</font><font color="#66cccc"><strong>}</strong></font></div></li>
-<li><div class="src-line"><a name="a56"></a></font><font color="#66cccc">&nbsp;&nbsp;</font></div></li>
-<li><div class="src-line"><a name="a57"></a></font><font color="#66cccc">&nbsp;&nbsp;/**</font></div></li>
-<li><div class="src-line"><a name="a58"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;PreparedAdapter::prepared_execute($sql,&nbsp;$mode)&nbsp;</font></div></li>
-<li><div class="src-line"><a name="a59"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*/</font></div></li>
-<li><div class="src-line"><a name="a60"></a></font><font color="#66cccc">&nbsp;&nbsp;<font color="blue">function</font>&nbsp;prepared_execute<strong>(</strong><strong>$sql</strong><strong>,</strong>&nbsp;<strong>$mode</strong><strong>)</strong>&nbsp;<strong>{</strong></font></div></li>
-<li><div class="src-line"><a name="a61"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;<strong>$stmt</strong>&nbsp;=&nbsp;db2_prepare<strong>(</strong><strong>$this</strong></font><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>)</strong><strong>,&nbsp;</strong><strong>$sql</strong><strong>)</strong><strong>;</strong></div></li>
-<li><div class="src-line"><a name="a62"></a>&nbsp;&nbsp;&nbsp;&nbsp;db2_execute<strong>(</strong><strong>$stmt</strong><strong>,&nbsp;</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/PreparedAdapter.html#var$bindings">bindings</a><strong>)</strong><strong>;</strong></div></li>
-<li><div class="src-line"><a name="a63"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><strong>$stmt</strong><strong>;</strong></div></li>
-<li><div class="src-line"><a name="a64"></a>&nbsp;&nbsp;</font><font color="#66cccc"><strong>}</strong></font></div></li>
-<li><div class="src-line"><a name="a65"></a></font><font color="#66cccc">&nbsp;&nbsp;</font></div></li>
-<li><div class="src-line"><a name="a66"></a></font><font color="#66cccc">&nbsp;&nbsp;/**</font></div></li>
-<li><div class="src-line"><a name="a67"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;PreparedAdapter::standard_execute($sql,&nbsp;$mode)</font></div></li>
-<li><div class="src-line"><a name="a68"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
-<li><div class="src-line"><a name="a69"></a></font><font color="#66cccc">&nbsp;&nbsp;<font color="blue">function</font>&nbsp;standard_execute<strong>(</strong><strong>$sql</strong><strong>,</strong>&nbsp;<strong>$mode</strong><strong>)</strong>&nbsp;<strong>{</strong></font></div></li>
-<li><div class="src-line"><a name="a70"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font>&nbsp;db2_exec<strong>(</strong><strong>$this</strong></font><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>)</strong><strong>,&nbsp;</strong><strong>$sql</strong><strong>)</strong><strong>;</strong></div></li>
-<li><div class="src-line"><a name="a71"></a>&nbsp;&nbsp;</font><font color="#66cccc"><strong>}</strong></font></div></li>
-<li><div class="src-line"><a name="a72"></a></font><font color="#66cccc">&nbsp;&nbsp;</font></div></li>
-<li><div class="src-line"><a name="a73"></a></font><font color="#66cccc">&nbsp;&nbsp;/**</font></div></li>
-<li><div class="src-line"><a name="a74"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter::affected_rows($set)&nbsp;</font></div></li>
-<li><div class="src-line"><a name="a75"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*/</font></div></li>
-<li><div class="src-line"><a name="a76"></a></font><font color="#66cccc">&nbsp;&nbsp;<font color="blue">function</font>&nbsp;affected_rows<strong>(</strong><strong>$set</strong><strong>)</strong>&nbsp;<strong>{</strong></font></div></li>
-<li><div class="src-line"><a name="a77"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font>&nbsp;db2_num_rows<strong>(</strong><strong>$set</strong><strong>)</strong><strong>;</strong></font></div></li>
-<li><div class="src-line"><a name="a78"></a></font><font color="#66cccc">&nbsp;&nbsp;<strong>}</strong></font></div></li>
-<li><div class="src-line"><a name="a79"></a></font><font color="#66cccc">&nbsp;&nbsp;</font></div></li>
-<li><div class="src-line"><a name="a80"></a></font><font color="#66cccc">&nbsp;&nbsp;/**</font></div></li>
-<li><div class="src-line"><a name="a81"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter::insert_id($set)&nbsp;</font></div></li>
-<li><div class="src-line"><a name="a82"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*/</font></div></li>
-<li><div class="src-line"><a name="a83"></a></font><font color="#66cccc">&nbsp;&nbsp;<font color="blue">function</font>&nbsp;insert_id<strong>(</strong><strong>$set</strong><strong>)</strong>&nbsp;<strong>{</strong></font></div></li>
-<li><div class="src-line"><a name="a84"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font>&nbsp;db2_last_insert_id<strong>(</strong><strong>$this</strong></font><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>))</strong><strong>;</strong></div></li>
-<li><div class="src-line"><a name="a85"></a>&nbsp;&nbsp;</font><font color="#66cccc"><strong>}</strong></font></div></li>
-<li><div class="src-line"><a name="a86"></a></font><font color="#66cccc">&nbsp;&nbsp;</font></div></li>
-<li><div class="src-line"><a name="a87"></a></font><font color="#66cccc">&nbsp;&nbsp;/**</font></div></li>
-<li><div class="src-line"><a name="a88"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter::fetch_assoc($set)</font></div></li>
-<li><div class="src-line"><a name="a89"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*/</font></div></li>
-<li><div class="src-line"><a name="a90"></a></font><font color="#66cccc">&nbsp;&nbsp;<font color="blue">function</font>&nbsp;fetch_assoc<strong>(</strong><strong>$set</strong><strong>)</strong>&nbsp;<strong>{</strong></font></div></li>
-<li><div class="src-line"><a name="a91"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font>&nbsp;db2_fetch_assoc<strong>(</strong><strong>$set</strong><strong>)</strong><strong>;</strong></font></div></li>
-<li><div class="src-line"><a name="a92"></a></font><font color="#66cccc">&nbsp;&nbsp;<strong>}</strong></font></div></li>
-<li><div class="src-line"><a name="a93"></a></font><font color="#66cccc">&nbsp;&nbsp;</font></div></li>
-<li><div class="src-line"><a name="a94"></a></font><font color="#66cccc">&nbsp;&nbsp;/**</font></div></li>
-<li><div class="src-line"><a name="a95"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter::free_result($set)&nbsp;</font></div></li>
-<li><div class="src-line"><a name="a96"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*/</font></div></li>
-<li><div class="src-line"><a name="a97"></a></font><font color="#66cccc">&nbsp;&nbsp;<font color="blue">function</font>&nbsp;free_result<strong>(</strong><strong>$set</strong><strong>)</strong>&nbsp;<strong>{</strong></font></div></li>
-<li><div class="src-line"><a name="a98"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;db2_free_stmt<strong>(</strong><strong>$set</strong><strong>)</strong><strong>;</strong></font></div></li>
-<li><div class="src-line"><a name="a99"></a></font><font color="#66cccc">&nbsp;&nbsp;<strong>}</strong></font></div></li>
-<li><div class="src-line"><a name="a100"></a></font><font color="#66cccc">&nbsp;&nbsp;</font></div></li>
-<li><div class="src-line"><a name="a101"></a></font><font color="#66cccc">&nbsp;&nbsp;/**</font></div></li>
-<li><div class="src-line"><a name="a102"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter::addslashes($str)</font></div></li>
-<li><div class="src-line"><a name="a103"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
-<li><div class="src-line"><a name="a104"></a></font><font color="#66cccc">&nbsp;&nbsp;<font color="blue">function</font>&nbsp;addslashes<strong>(</strong><strong>$str</strong><strong>)</strong>&nbsp;<strong>{</strong></font></div></li>
-<li><div class="src-line"><a name="a105"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font>&nbsp;db2_escape_string<strong>(</strong><strong>$str</strong><strong>)</strong><strong>;</strong></font></div></li>
-<li><div class="src-line"><a name="a106"></a></font><font color="#66cccc">&nbsp;&nbsp;<strong>}</strong></font></div></li>
-<li><div class="src-line"><a name="a107"></a></font><font color="#66cccc">&nbsp;&nbsp;</font></div></li>
-<li><div class="src-line"><a name="a108"></a></font><font color="#66cccc"><strong>}</strong></font></div></li>
-<li><div class="src-line"><a name="a109"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a37"></a></font><font color="#66cccc">&nbsp;&nbsp;<font color="blue">function</font>&nbsp;begin<strong>(</strong><strong>)</strong>&nbsp;<strong>{</strong></font></div></li>
+<li><div class="src-line"><a name="a38"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;db2_autocommit<strong>(</strong><strong>$this</strong></font><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>)</strong><strong>,&nbsp;</strong>DB2_AUTOCOMMIT_OFF<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;&nbsp;</font><font color="#66cccc"><strong>}</strong></font></div></li>
+<li><div class="src-line"><a name="a40"></a></font><font color="#66cccc">&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a41"></a></font><font color="#66cccc">&nbsp;&nbsp;/**</font></div></li>
+<li><div class="src-line"><a name="a42"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter::commit()</font></div></li>
+<li><div class="src-line"><a name="a43"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a44"></a></font><font color="#66cccc">&nbsp;&nbsp;<font color="blue">function</font>&nbsp;commit<strong>(</strong><strong>)</strong>&nbsp;<strong>{</strong></font></div></li>
+<li><div class="src-line"><a name="a45"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;db2_commit<strong>(</strong><strong>$this</strong></font><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;</font><font color="#66cccc"><strong>}</strong></font></div></li>
+<li><div class="src-line"><a name="a47"></a></font><font color="#66cccc">&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a48"></a></font><font color="#66cccc">&nbsp;&nbsp;/**</font></div></li>
+<li><div class="src-line"><a name="a49"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter::rollback()</font></div></li>
+<li><div class="src-line"><a name="a50"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a51"></a></font><font color="#66cccc">&nbsp;&nbsp;<font color="blue">function</font>&nbsp;rollback<strong>(</strong><strong>)</strong>&nbsp;<strong>{</strong></font></div></li>
+<li><div class="src-line"><a name="a52"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;db2_rollback<strong>(</strong><strong>$this</strong></font><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a53"></a>&nbsp;&nbsp;</font><font color="#66cccc"><strong>}</strong></font></div></li>
+<li><div class="src-line"><a name="a54"></a></font><font color="#66cccc">&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a55"></a></font><font color="#66cccc">&nbsp;&nbsp;/**</font></div></li>
+<li><div class="src-line"><a name="a56"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter::end()</font></div></li>
+<li><div class="src-line"><a name="a57"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a58"></a></font><font color="#66cccc">&nbsp;&nbsp;<font color="blue">function</font>&nbsp;end<strong>(</strong><strong>)</strong>&nbsp;<strong>{</strong></font></div></li>
+<li><div class="src-line"><a name="a59"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;db2_autocommit<strong>(</strong><strong>$this</strong></font><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>)</strong><strong>,&nbsp;</strong>DB2_AUTOCOMMIT_ON<strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;&nbsp;</font><font color="#66cccc"><strong>}</strong></font></div></li>
+<li><div class="src-line"><a name="a61"></a></font><font color="#66cccc">&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a62"></a></font><font color="#66cccc">&nbsp;&nbsp;/**</font></div></li>
+<li><div class="src-line"><a name="a63"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;PreparedAdapter::prepared_execute($sql,&nbsp;$mode)&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a64"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a65"></a></font><font color="#66cccc">&nbsp;&nbsp;<font color="blue">function</font>&nbsp;prepared_execute<strong>(</strong><strong>$sql</strong><strong>,</strong>&nbsp;<strong>$mode</strong><strong>)</strong>&nbsp;<strong>{</strong></font></div></li>
+<li><div class="src-line"><a name="a66"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;<strong>$stmt</strong>&nbsp;=&nbsp;db2_prepare<strong>(</strong><strong>$this</strong></font><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>)</strong><strong>,&nbsp;</strong><strong>$sql</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a67"></a>&nbsp;&nbsp;&nbsp;&nbsp;db2_execute<strong>(</strong><strong>$stmt</strong><strong>,&nbsp;</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/PreparedAdapter.html#var$bindings">bindings</a><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font><strong>$stmt</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a69"></a>&nbsp;&nbsp;</font><font color="#66cccc"><strong>}</strong></font></div></li>
+<li><div class="src-line"><a name="a70"></a></font><font color="#66cccc">&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a71"></a></font><font color="#66cccc">&nbsp;&nbsp;/**</font></div></li>
+<li><div class="src-line"><a name="a72"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;PreparedAdapter::standard_execute($sql,&nbsp;$mode)</font></div></li>
+<li><div class="src-line"><a name="a73"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a74"></a></font><font color="#66cccc">&nbsp;&nbsp;<font color="blue">function</font>&nbsp;standard_execute<strong>(</strong><strong>$sql</strong><strong>,</strong>&nbsp;<strong>$mode</strong><strong>)</strong>&nbsp;<strong>{</strong></font></div></li>
+<li><div class="src-line"><a name="a75"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font>&nbsp;db2_exec<strong>(</strong><strong>$this</strong></font><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>)</strong><strong>,&nbsp;</strong><strong>$sql</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a76"></a>&nbsp;&nbsp;</font><font color="#66cccc"><strong>}</strong></font></div></li>
+<li><div class="src-line"><a name="a77"></a></font><font color="#66cccc">&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a78"></a></font><font color="#66cccc">&nbsp;&nbsp;/**</font></div></li>
+<li><div class="src-line"><a name="a79"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter::affected_rows($set)&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a80"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a81"></a></font><font color="#66cccc">&nbsp;&nbsp;<font color="blue">function</font>&nbsp;affected_rows<strong>(</strong><strong>$set</strong><strong>)</strong>&nbsp;<strong>{</strong></font></div></li>
+<li><div class="src-line"><a name="a82"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font>&nbsp;db2_num_rows<strong>(</strong><strong>$set</strong><strong>)</strong><strong>;</strong></font></div></li>
+<li><div class="src-line"><a name="a83"></a></font><font color="#66cccc">&nbsp;&nbsp;<strong>}</strong></font></div></li>
+<li><div class="src-line"><a name="a84"></a></font><font color="#66cccc">&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a85"></a></font><font color="#66cccc">&nbsp;&nbsp;/**</font></div></li>
+<li><div class="src-line"><a name="a86"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter::insert_id($set)&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a87"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a88"></a></font><font color="#66cccc">&nbsp;&nbsp;<font color="blue">function</font>&nbsp;insert_id<strong>(</strong><strong>$set</strong><strong>)</strong>&nbsp;<strong>{</strong></font></div></li>
+<li><div class="src-line"><a name="a89"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font>&nbsp;db2_last_insert_id<strong>(</strong><strong>$this</strong></font><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#methodconnection">connection</a><strong>(</strong><strong>))</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a90"></a>&nbsp;&nbsp;</font><font color="#66cccc"><strong>}</strong></font></div></li>
+<li><div class="src-line"><a name="a91"></a></font><font color="#66cccc">&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a92"></a></font><font color="#66cccc">&nbsp;&nbsp;/**</font></div></li>
+<li><div class="src-line"><a name="a93"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter::fetch_assoc($set)</font></div></li>
+<li><div class="src-line"><a name="a94"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a95"></a></font><font color="#66cccc">&nbsp;&nbsp;<font color="blue">function</font>&nbsp;fetch_assoc<strong>(</strong><strong>$set</strong><strong>)</strong>&nbsp;<strong>{</strong></font></div></li>
+<li><div class="src-line"><a name="a96"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font>&nbsp;db2_fetch_assoc<strong>(</strong><strong>$set</strong><strong>)</strong><strong>;</strong></font></div></li>
+<li><div class="src-line"><a name="a97"></a></font><font color="#66cccc">&nbsp;&nbsp;<strong>}</strong></font></div></li>
+<li><div class="src-line"><a name="a98"></a></font><font color="#66cccc">&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a99"></a></font><font color="#66cccc">&nbsp;&nbsp;/**</font></div></li>
+<li><div class="src-line"><a name="a100"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter::free_result($set)&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a101"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a102"></a></font><font color="#66cccc">&nbsp;&nbsp;<font color="blue">function</font>&nbsp;free_result<strong>(</strong><strong>$set</strong><strong>)</strong>&nbsp;<strong>{</strong></font></div></li>
+<li><div class="src-line"><a name="a103"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;db2_free_stmt<strong>(</strong><strong>$set</strong><strong>)</strong><strong>;</strong></font></div></li>
+<li><div class="src-line"><a name="a104"></a></font><font color="#66cccc">&nbsp;&nbsp;<strong>}</strong></font></div></li>
+<li><div class="src-line"><a name="a105"></a></font><font color="#66cccc">&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a106"></a></font><font color="#66cccc">&nbsp;&nbsp;/**</font></div></li>
+<li><div class="src-line"><a name="a107"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*&nbsp;@see&nbsp;BaseAdapter::addslashes($str)</font></div></li>
+<li><div class="src-line"><a name="a108"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;*/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a109"></a></font><font color="#66cccc">&nbsp;&nbsp;<font color="blue">function</font>&nbsp;addslashes<strong>(</strong><strong>$str</strong><strong>)</strong>&nbsp;<strong>{</strong></font></div></li>
+<li><div class="src-line"><a name="a110"></a></font><font color="#66cccc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return</font>&nbsp;db2_escape_string<strong>(</strong><strong>$str</strong><strong>)</strong><strong>;</strong></font></div></li>
+<li><div class="src-line"><a name="a111"></a></font><font color="#66cccc">&nbsp;&nbsp;<strong>}</strong></font></div></li>
+<li><div class="src-line"><a name="a112"></a></font><font color="#66cccc">&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a113"></a></font><font color="#66cccc"><strong>}</strong></font></div></li>
+<li><div class="src-line"><a name="a114"></a>&nbsp;</div></li>
 </ol></div>
 </div>
 	<div id="credit">
 		<hr />
-		Documentation generated on Tue, 22 Dec 2009 10:48:15 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Mon, 01 Mar 2010 14:56:17 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</div>
 </body>
 </html>

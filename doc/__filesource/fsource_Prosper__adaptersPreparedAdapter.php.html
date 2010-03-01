@@ -93,21 +93,33 @@
 <li><div class="src-line"><a name="a81"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
 <li><div class="src-line"><a name="a82"></a>&nbsp;&nbsp;</div></li>
 <li><div class="src-line"><a name="a83"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
-<li><div class="src-line"><a name="a84"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;Cleans&nbsp;up&nbsp;any&nbsp;prepared&nbsp;state</font></div></li>
-<li><div class="src-line"><a name="a85"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::cleanup()</font></div></li>
-<li><div class="src-line"><a name="a86"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
-<li><div class="src-line"><a name="a87"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/PreparedAdapter.html#methodcleanup">cleanup</a><strong>(</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
-<li><div class="src-line"><a name="a88"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/PreparedAdapter.html#var$prepared">prepared</a>&nbsp;=&nbsp;false<strong>;</strong></div></li>
-<li><div class="src-line"><a name="a89"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/PreparedAdapter.html#var$bindings">bindings</a>&nbsp;=&nbsp;array<strong>(</strong><strong>)</strong><strong>;</strong></div></li>
-<li><div class="src-line"><a name="a90"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
-<li><div class="src-line"><a name="a91"></a><strong>}</strong></div></li>
-<li><div class="src-line"><a name="a92"></a>&nbsp;</div></li>
-<li><div class="src-line"><a name="a93"></a><strong>?&gt;</strong></div></li>
+<li><div class="src-line"><a name="a84"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;Used&nbsp;to&nbsp;rebind&nbsp;a&nbsp;statement</font></div></li>
+<li><div class="src-line"><a name="a85"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@param&nbsp;</font></strong><em>array&nbsp;</em><font color="#009999">bindings&nbsp;to&nbsp;rebind&nbsp;with</font></div></li>
+<li><div class="src-line"><a name="a86"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@return&nbsp;</font></strong><em>nothing&nbsp;</em></div></li>
+<li><div class="src-line"><a name="a87"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></div></li>
+<li><div class="src-line"><a name="a88"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/PreparedAdapter.html#methodrebind">rebind</a><strong>(</strong><strong>$bindings</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a89"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/PreparedAdapter.html#methodcleanup">cleanup</a><strong>(</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a90"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">foreach</font><strong>(</strong><strong>$bindings&nbsp;</strong>as&nbsp;<strong>$binding</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a91"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/PreparedAdapter.html#methodescape">escape</a><strong>(</strong><strong>$binding</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a92"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>}&nbsp;&nbsp;&nbsp;&nbsp;</strong></div></li>
+<li><div class="src-line"><a name="a93"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a94"></a>&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a95"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
+<li><div class="src-line"><a name="a96"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;Cleans&nbsp;up&nbsp;any&nbsp;prepared&nbsp;state</font></div></li>
+<li><div class="src-line"><a name="a97"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::cleanup()</font></div></li>
+<li><div class="src-line"><a name="a98"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
+<li><div class="src-line"><a name="a99"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/PreparedAdapter.html#methodcleanup">cleanup</a><strong>(</strong><strong>)&nbsp;</strong><strong>{</strong></div></li>
+<li><div class="src-line"><a name="a100"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/PreparedAdapter.html#var$prepared">prepared</a>&nbsp;=&nbsp;false<strong>;</strong></div></li>
+<li><div class="src-line"><a name="a101"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/PreparedAdapter.html#var$bindings">bindings</a>&nbsp;=&nbsp;array<strong>(</strong><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a102"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
+<li><div class="src-line"><a name="a103"></a><strong>}</strong></div></li>
+<li><div class="src-line"><a name="a104"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a105"></a><strong>?&gt;</strong></div></li>
 </ol></div>
 </div>
 	<div id="credit">
 		<hr />
-		Documentation generated on Tue, 22 Dec 2009 10:48:22 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Mon, 01 Mar 2010 14:56:23 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</div>
 </body>
 </html>

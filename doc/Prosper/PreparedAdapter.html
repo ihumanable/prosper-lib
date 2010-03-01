@@ -130,6 +130,10 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
 		<dd>MaxDB Database Adapter</dd>
 	</dl>
 		<dl>
+	<dt><a href="../Prosper/MSSqlNativeAdapter.html">MSSqlNativeAdapter</a></dt>
+		<dd>Microsoft SQL Server Database Adapter</dd>
+	</dl>
+		<dl>
 	<dt><a href="../Prosper/MySqlAdapter.html">MySqlAdapter</a></dt>
 		<dd>MySql Database Adapter</dd>
 	</dl>
@@ -230,6 +234,11 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
         (<span class="var-type">string</span>&nbsp;<span class="var-name">$sql</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$mode</span>)
         </div>
     <div class="method-definition">
+            <span class="method-result">nothing</span>
+        <a href="#methodrebind" title="details" class="method-name">rebind</a>
+        (<span class="var-type">array</span>&nbsp;<span class="var-name">$bindings</span>)
+        </div>
+    <div class="method-definition">
             <span class="method-result">mixed</span>
         <a href="#methodstandard_execute" title="details" class="method-name">standard_execute</a>
         (<span class="var-type">string</span>&nbsp;<span class="var-name">$sql</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$mode</span>)
@@ -270,7 +279,7 @@ $lazy = true])</strong></h4>
 </div>
 <a name="methodcleanup" id="methodcleanup"><!-- --></a>
 <div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method cleanup</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersPreparedAdapter.php.html#a87">87</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method cleanup</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersPreparedAdapter.php.html#a99">99</a></span>)
  </h4> 
 <h4><i>void</i> <strong>cleanup(
 )</strong></h4>
@@ -393,7 +402,15 @@ $mode)</strong></h4>
 		<dd></dd>
 	</dl>
 		<dl>
+	<dt><a href="../Prosper/FirebirdAdapter.html#methodprepared_execute">FirebirdAdapter::prepared_execute()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
 	<dt><a href="../Prosper/MaxDBAdapter.html#methodprepared_execute">MaxDBAdapter::prepared_execute()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/MSSqlNativeAdapter.html#methodprepared_execute">MSSqlNativeAdapter::prepared_execute()</a></dt>
 		<dd></dd>
 	</dl>
 		<dl>
@@ -427,8 +444,28 @@ $mode)</strong></h4>
 			<li><strong>return</strong> - Platform specific result set for prepared statements</li>
 		</ul>
 </div>
-<a name="methodstandard_execute" id="methodstandard_execute"><!-- --></a>
+<a name="methodrebind" id="methodrebind"><!-- --></a>
 <div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method rebind</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersPreparedAdapter.php.html#a88">88</a></span>)
+ </h4> 
+<h4><i>nothing</i> <strong>rebind(
+array
+$bindings)</strong></h4>
+
+<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodrebind">BaseAdapter::rebind()</a> Used to rebind the query</p>
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Used to rebind a statement</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong>array $bindings</strong>: bindings to rebind with</li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+		</ul>
+</div>
+<a name="methodstandard_execute" id="methodstandard_execute"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
 <img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method standard_execute</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersPreparedAdapter.php.html#a79">79</a></span>)
  </h4> 
 <h4><i>mixed</i> <strong>standard_execute(
@@ -441,11 +478,19 @@ $mode)</strong></h4>
 		<dd></dd>
 	</dl>
 		<dl>
+	<dt><a href="../Prosper/FirebirdAdapter.html#methodstandard_execute">FirebirdAdapter::standard_execute()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
 	<dt><a href="../Prosper/IngresAdapter.html#methodstandard_execute">IngresAdapter::standard_execute()</a></dt>
 		<dd></dd>
 	</dl>
 		<dl>
 	<dt><a href="../Prosper/MaxDBAdapter.html#methodstandard_execute">MaxDBAdapter::standard_execute()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/MSSqlNativeAdapter.html#methodstandard_execute">MSSqlNativeAdapter::standard_execute()</a></dt>
 		<dd></dd>
 	</dl>
 		<dl>
@@ -551,7 +596,7 @@ $mode)</strong></h4>
 		</h4> 
 
 				<h4>
-<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodend">BaseAdapter::end()</a></strong> - Turns transactions off, this function should be called by BaseAdapter::commit() and BaseAdapter::rollback()
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodend">BaseAdapter::end()</a></strong> - Turns transactions off
 		</h4> 
 
 				<h4>
@@ -572,6 +617,10 @@ $mode)</strong></h4>
 
 				<h4>
 <img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodfree_result">BaseAdapter::free_result()</a></strong> - Do optional memory cleanup, not necessary but will allow for long running scripts
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodhas_transactions">BaseAdapter::has_transactions()</a></strong> - Determine if an adapter supports transactions, defaults to false
 		</h4> 
 
 				<h4>
@@ -600,6 +649,10 @@ $mode)</strong></h4>
 
 				<h4>
 <img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodquote">BaseAdapter::quote()</a></strong> - Quotes a database object, uses the backtick by default
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodrebind">BaseAdapter::rebind()</a></strong> - Used to rebind the query
 		</h4> 
 
 				<h4>
@@ -638,7 +691,7 @@ setupAllTabs();
 </script>
 	<div id="credit">
 		<hr />
-		Documentation generated on Tue, 22 Dec 2009 10:48:22 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Mon, 01 Mar 2010 14:56:23 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</div>
 </body>
 </html>

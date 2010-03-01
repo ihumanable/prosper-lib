@@ -159,7 +159,7 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
 <!-- ============ VARIABLE DETAIL =========== -->
 <strong>Summary:</strong><br />
 <div class="var-title">
-    <span class="var-type">mixed</span>
+    static <span class="var-type">mixed</span>
     <a href="#var$connection" title="details" class="property"><strong>$connection</strong></a>
 </div>
 <div class="var-title">
@@ -182,7 +182,7 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
 <a name="var$connection" id="var$connection"><!-- --></A>
 <div style="background='#ffffff'">
 <h4>
-<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">$connection</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a12">12</a></span>)
+<img src="../media/images/PublicProperty.gif" border="0" /> <strong class="property">static $connection</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a12">12</a></span>)
  </h4>
 <h4>Data type : mixed</h4>
 <!-- ========== Info from phpDoc block ========= -->
@@ -330,6 +330,11 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
         (<span class="var-type">mixed</span>&nbsp;<span class="var-name">$set</span>)
         </div>
     <div class="method-definition">
+            <span class="method-result">bool</span>
+        <a href="#methodhas_transactions" title="details" class="method-name">has_transactions</a>
+        ()
+        </div>
+    <div class="method-definition">
             <span class="method-result">int</span>
         <a href="#methodinsert_id" title="details" class="method-name">insert_id</a>
         (<span class="var-type">mixed</span>&nbsp;<span class="var-name">$set</span>)
@@ -363,6 +368,11 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
             <span class="method-result">quoted</span>
         <a href="#methodquote" title="details" class="method-name">quote</a>
         (<span class="var-type">string</span>&nbsp;<span class="var-name">$str</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">nothing</span>
+        <a href="#methodrebind" title="details" class="method-name">rebind</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">$bindings</span>)
         </div>
     <div class="method-definition">
             <span class="method-result">void</span>
@@ -430,7 +440,7 @@ $lazy = true])</strong></h4>
 </div>
 <a name="method__destruct" id="method__destruct"><!-- --></a>
 <div style="background='#ffffff'"><h4>
-<img src="../media/images/Destructor.gif" border="0" /> <strong class="method">Destructor __destruct</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a42">42</a></span>)
+<img src="../media/images/Destructor.gif" border="0" /> <strong class="method">Destructor __destruct</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a41">41</a></span>)
  </h4> 
 <h4><i>void</i> <strong>__destruct(
 )</strong></h4>
@@ -444,12 +454,16 @@ $lazy = true])</strong></h4>
 </div>
 <a name="methodaddslashes" id="methodaddslashes"><!-- --></a>
 <div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method addslashes</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a93">93</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method addslashes</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a90">90</a></span>)
  </h4> 
 <h4><i>string</i> <strong>addslashes(
 string
 $str)</strong></h4>
 	<p>Overridden in child classes as:<br />
+		<dl>
+	<dt><a href="../Prosper/MSSqlAdapter.html#methodaddslashes">MSSqlAdapter::addslashes()</a></dt>
+		<dd></dd>
+	</dl>
 		<dl>
 	<dt><a href="../Prosper/MySqlOldAdapter.html#methodaddslashes">MySqlOldAdapter::addslashes()</a></dt>
 		<dd></dd>
@@ -467,6 +481,10 @@ $str)</strong></h4>
 		<dd></dd>
 	</dl>
 		<dl>
+	<dt><a href="../Prosper/MSSqlNativeAdapter.html#methodaddslashes">MSSqlNativeAdapter::addslashes()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
 	<dt><a href="../Prosper/MySqlAdapter.html#methodaddslashes">MySqlAdapter::addslashes()</a></dt>
 		<dd></dd>
 	</dl>
@@ -476,6 +494,10 @@ $str)</strong></h4>
 	</dl>
 		<dl>
 	<dt><a href="../Prosper/SqliteAdapter.html#methodaddslashes">SqliteAdapter::addslashes()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/SybaseAdapter.html#methodaddslashes">SybaseAdapter::addslashes()</a></dt>
 		<dd></dd>
 	</dl>
 	</p>
@@ -495,7 +517,7 @@ $str)</strong></h4>
 </div>
 <a name="methodaffected_rows" id="methodaffected_rows"><!-- --></a>
 <div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method affected_rows</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a192">192</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method affected_rows</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a198">198</a></span>)
  </h4> 
 <h4><i>int</i> <strong>affected_rows(
 mixed
@@ -530,11 +552,19 @@ $set)</strong></h4>
 		<dd></dd>
 	</dl>
 		<dl>
+	<dt><a href="../Prosper/FirebirdAdapter.html#methodaffected_rows">FirebirdAdapter::affected_rows()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
 	<dt><a href="../Prosper/IngresAdapter.html#methodaffected_rows">IngresAdapter::affected_rows()</a></dt>
 		<dd></dd>
 	</dl>
 		<dl>
 	<dt><a href="../Prosper/MaxDBAdapter.html#methodaffected_rows">MaxDBAdapter::affected_rows()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/MSSqlNativeAdapter.html#methodaffected_rows">MSSqlNativeAdapter::affected_rows()</a></dt>
 		<dd></dd>
 	</dl>
 		<dl>
@@ -577,7 +607,7 @@ $set)</strong></h4>
 </div>
 <a name="methodbegin" id="methodbegin"><!-- --></a>
 <div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method begin</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a112">112</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method begin</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a117">117</a></span>)
  </h4> 
 <h4><i>void</i> <strong>begin(
 )</strong></h4>
@@ -591,6 +621,10 @@ $set)</strong></h4>
 		<dd></dd>
 	</dl>
 		<dl>
+	<dt><a href="../Prosper/FirebirdAdapter.html#methodbegin">FirebirdAdapter::begin()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
 	<dt><a href="../Prosper/IngresAdapter.html#methodbegin">IngresAdapter::begin()</a></dt>
 		<dd></dd>
 	</dl>
@@ -599,15 +633,15 @@ $set)</strong></h4>
 		<dd></dd>
 	</dl>
 		<dl>
+	<dt><a href="../Prosper/MSSqlNativeAdapter.html#methodbegin">MSSqlNativeAdapter::begin()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
 	<dt><a href="../Prosper/MySqlAdapter.html#methodbegin">MySqlAdapter::begin()</a></dt>
 		<dd></dd>
 	</dl>
 		<dl>
 	<dt><a href="../Prosper/OracleAdapter.html#methodbegin">OracleAdapter::begin()</a></dt>
-		<dd></dd>
-	</dl>
-		<dl>
-	<dt><a href="../Prosper/OvrimosAdapter.html#methodbegin">OvrimosAdapter::begin()</a></dt>
 		<dd></dd>
 	</dl>
 	</p>
@@ -621,7 +655,7 @@ $set)</strong></h4>
 </div>
 <a name="methodcommit" id="methodcommit"><!-- --></a>
 <div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method commit</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a119">119</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method commit</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a124">124</a></span>)
  </h4> 
 <h4><i>void</i> <strong>commit(
 )</strong></h4>
@@ -635,11 +669,19 @@ $set)</strong></h4>
 		<dd></dd>
 	</dl>
 		<dl>
+	<dt><a href="../Prosper/FirebirdAdapter.html#methodcommit">FirebirdAdapter::commit()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
 	<dt><a href="../Prosper/IngresAdapter.html#methodcommit">IngresAdapter::commit()</a></dt>
 		<dd></dd>
 	</dl>
 		<dl>
 	<dt><a href="../Prosper/MaxDBAdapter.html#methodcommit">MaxDBAdapter::commit()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/MSSqlNativeAdapter.html#methodcommit">MSSqlNativeAdapter::commit()</a></dt>
 		<dd></dd>
 	</dl>
 		<dl>
@@ -665,7 +707,7 @@ $set)</strong></h4>
 </div>
 <a name="methodconnect" id="methodconnect"><!-- --></a>
 <div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method connect</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a62">62</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method connect</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a59">59</a></span>)
  </h4> 
 <h4><i>void</i> <strong>connect(
 )</strong></h4>
@@ -703,11 +745,19 @@ $set)</strong></h4>
 		<dd></dd>
 	</dl>
 		<dl>
+	<dt><a href="../Prosper/FirebirdAdapter.html#methodconnect">FirebirdAdapter::connect()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
 	<dt><a href="../Prosper/IngresAdapter.html#methodconnect">IngresAdapter::connect()</a></dt>
 		<dd></dd>
 	</dl>
 		<dl>
 	<dt><a href="../Prosper/MaxDBAdapter.html#methodconnect">MaxDBAdapter::connect()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/MSSqlNativeAdapter.html#methodconnect">MSSqlNativeAdapter::connect()</a></dt>
 		<dd></dd>
 	</dl>
 		<dl>
@@ -746,7 +796,7 @@ $set)</strong></h4>
 </div>
 <a name="methodconnection" id="methodconnection"><!-- --></a>
 <div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method connection</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a52">52</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method connection</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a49">49</a></span>)
  </h4> 
 <h4><i>mixed</i> <strong>connection(
 )</strong></h4>
@@ -761,7 +811,7 @@ $set)</strong></h4>
 </div>
 <a name="methodcross_type" id="methodcross_type"><!-- --></a>
 <div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method cross_type</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a240">240</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method cross_type</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a255">255</a></span>)
  </h4> 
 <h4><i>array</i> <strong>cross_type(
 array
@@ -790,7 +840,7 @@ $platform)</strong></h4>
 </div>
 <a name="methoddisconnect" id="methoddisconnect"><!-- --></a>
 <div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method disconnect</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a67">67</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method disconnect</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a64">64</a></span>)
  </h4> 
 <h4><i>void</i> <strong>disconnect(
 )</strong></h4>
@@ -828,11 +878,19 @@ $platform)</strong></h4>
 		<dd></dd>
 	</dl>
 		<dl>
+	<dt><a href="../Prosper/FirebirdAdapter.html#methoddisconnect">FirebirdAdapter::disconnect()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
 	<dt><a href="../Prosper/IngresAdapter.html#methoddisconnect">IngresAdapter::disconnect()</a></dt>
 		<dd></dd>
 	</dl>
 		<dl>
 	<dt><a href="../Prosper/MaxDBAdapter.html#methoddisconnect">MaxDBAdapter::disconnect()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/MSSqlNativeAdapter.html#methoddisconnect">MSSqlNativeAdapter::disconnect()</a></dt>
 		<dd></dd>
 	</dl>
 		<dl>
@@ -871,7 +929,7 @@ $platform)</strong></h4>
 </div>
 <a name="methodend" id="methodend"><!-- --></a>
 <div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method end</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a137">137</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method end</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a142">142</a></span>)
  </h4> 
 <h4><i>void</i> <strong>end(
 )</strong></h4>
@@ -900,14 +958,10 @@ $platform)</strong></h4>
 	<dt><a href="../Prosper/OracleAdapter.html#methodend">OracleAdapter::end()</a></dt>
 		<dd></dd>
 	</dl>
-		<dl>
-	<dt><a href="../Prosper/OvrimosAdapter.html#methodend">OvrimosAdapter::end()</a></dt>
-		<dd></dd>
-	</dl>
 	</p>
 
 	<!-- ========== Info from phpDoc block ========= -->
-<h5>Turns transactions off, this function should be called by BaseAdapter::commit() and BaseAdapter::rollback()</h5>
+<h5>Turns transactions off</h5>
 <div class="desc"><p>If the adapter doesn't support transactions, this is a no-op</p></div>
 		
 	<h4>Info</h4>
@@ -915,12 +969,11 @@ $platform)</strong></h4>
 			<li><strong>see</strong> - <a href="../Prosper/BaseAdapter.html#methodrollback">BaseAdapter::rollback()</a></li>
 			<li><strong>see</strong> - BaseAdapeter::commit()</li>
 			<li><strong>see</strong> - <a href="../Prosper/BaseAdapter.html#methodbegin">BaseAdapter::begin()</a></li>
-			<li><strong>access</strong> - protected</li>
 		</ul>
 </div>
 <a name="methodescape" id="methodescape"><!-- --></a>
 <div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method escape</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a83">83</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method escape</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a80">80</a></span>)
  </h4> 
 <h4><i>string</i> <strong>escape(
 string
@@ -946,7 +999,7 @@ $str)</strong></h4>
 </div>
 <a name="methodexecute" id="methodexecute"><!-- --></a>
 <div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method execute</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a152">152</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method execute</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a157">157</a></span>)
  </h4> 
 <h4><i>mixed</i> <strong>execute(
 string
@@ -973,7 +1026,7 @@ $mode = Query::SELECT_STMT])</strong></h4>
 </div>
 <a name="methodfalse_value" id="methodfalse_value"><!-- --></a>
 <div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method false_value</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a313">313</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method false_value</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a328">328</a></span>)
  </h4> 
 <h4><i>mixed</i> <strong>false_value(
 )</strong></h4>
@@ -984,6 +1037,10 @@ $mode = Query::SELECT_STMT])</strong></h4>
 	</dl>
 		<dl>
 	<dt><a href="../Prosper/MSSqlAdapter.html#methodfalse_value">MSSqlAdapter::false_value()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/MSSqlNativeAdapter.html#methodfalse_value">MSSqlNativeAdapter::false_value()</a></dt>
 		<dd></dd>
 	</dl>
 		<dl>
@@ -1010,7 +1067,7 @@ $mode = Query::SELECT_STMT])</strong></h4>
 </div>
 <a name="methodfetch_assoc" id="methodfetch_assoc"><!-- --></a>
 <div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method fetch_assoc</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a210">210</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method fetch_assoc</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a225">225</a></span>)
  </h4> 
 <h4><i>array</i> <strong>fetch_assoc(
 mixed
@@ -1049,11 +1106,19 @@ $set)</strong></h4>
 		<dd></dd>
 	</dl>
 		<dl>
+	<dt><a href="../Prosper/FirebirdAdapter.html#methodfetch_assoc">FirebirdAdapter::fetch_assoc()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
 	<dt><a href="../Prosper/IngresAdapter.html#methodfetch_assoc">IngresAdapter::fetch_assoc()</a></dt>
 		<dd></dd>
 	</dl>
 		<dl>
 	<dt><a href="../Prosper/MaxDBAdapter.html#methodfetch_assoc">MaxDBAdapter::fetch_assoc()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/MSSqlNativeAdapter.html#methodfetch_assoc">MSSqlNativeAdapter::fetch_assoc()</a></dt>
 		<dd></dd>
 	</dl>
 		<dl>
@@ -1096,7 +1161,7 @@ $set)</strong></h4>
 </div>
 <a name="methodfree_result" id="methodfree_result"><!-- --></a>
 <div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method free_result</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a219">219</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method free_result</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a234">234</a></span>)
  </h4> 
 <h4><i>nothing</i> <strong>free_result(
 mixed
@@ -1127,11 +1192,19 @@ $set)</strong></h4>
 		<dd></dd>
 	</dl>
 		<dl>
+	<dt><a href="../Prosper/FirebirdAdapter.html#methodfree_result">FirebirdAdapter::free_result()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
 	<dt><a href="../Prosper/IngresAdapter.html#methodfree_result">IngresAdapter::free_result()</a></dt>
 		<dd></dd>
 	</dl>
 		<dl>
 	<dt><a href="../Prosper/MaxDBAdapter.html#methodfree_result">MaxDBAdapter::free_result()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/MSSqlNativeAdapter.html#methodfree_result">MSSqlNativeAdapter::free_result()</a></dt>
 		<dd></dd>
 	</dl>
 		<dl>
@@ -1171,9 +1244,62 @@ $set)</strong></h4>
 	<ul>
 		</ul>
 </div>
-<a name="methodinsert_id" id="methodinsert_id"><!-- --></a>
+<a name="methodhas_transactions" id="methodhas_transactions"><!-- --></a>
 <div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method insert_id</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a201">201</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method has_transactions</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a110">110</a></span>)
+ </h4> 
+<h4><i>bool</i> <strong>has_transactions(
+)</strong></h4>
+	<p>Overridden in child classes as:<br />
+		<dl>
+	<dt><a href="../Prosper/FrontBaseAdapter.html#methodhas_transactions">FrontBaseAdapter::has_transactions()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/DB2Adapter.html#methodhas_transactions">DB2Adapter::has_transactions()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/FirebirdAdapter.html#methodhas_transactions">FirebirdAdapter::has_transactions()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/IngresAdapter.html#methodhas_transactions">IngresAdapter::has_transactions()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/MaxDBAdapter.html#methodhas_transactions">MaxDBAdapter::has_transactions()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/MSSqlNativeAdapter.html#methodhas_transactions">MSSqlNativeAdapter::has_transactions()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/MySqlAdapter.html#methodhas_transactions">MySqlAdapter::has_transactions()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/OracleAdapter.html#methodhas_transactions">OracleAdapter::has_transactions()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/OvrimosAdapter.html#methodhas_transactions">OvrimosAdapter::has_transactions()</a></dt>
+		<dd></dd>
+	</dl>
+	</p>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Determine if an adapter supports transactions, defaults to false</h5>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>return</strong> - true if supports transactions, false otherwise</li>
+		</ul>
+</div>
+<a name="methodinsert_id" id="methodinsert_id"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method insert_id</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a216">216</a></span>)
  </h4> 
 <h4><i>int</i> <strong>insert_id(
 mixed
@@ -1197,6 +1323,10 @@ $set)</strong></h4>
 	</dl>
 		<dl>
 	<dt><a href="../Prosper/MaxDBAdapter.html#methodinsert_id">MaxDBAdapter::insert_id()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/MSSqlNativeAdapter.html#methodinsert_id">MSSqlNativeAdapter::insert_id()</a></dt>
 		<dd></dd>
 	</dl>
 		<dl>
@@ -1226,8 +1356,8 @@ $set)</strong></h4>
 		</ul>
 </div>
 <a name="methodlimit" id="methodlimit"><!-- --></a>
-<div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method limit</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a105">105</a></span>)
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method limit</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a102">102</a></span>)
  </h4> 
 <h4><i>sql</i> <strong>limit(
 string
@@ -1237,6 +1367,10 @@ $offset)</strong></h4>
 	<p>Overridden in child classes as:<br />
 		<dl>
 	<dt><a href="../Prosper/MSSqlAdapter.html#methodlimit">MSSqlAdapter::limit()</a></dt>
+		<dd>Microsoft T-SQL sucks and can't easily do limit offset like every other  reasonable rdbms, this creates a complex windowing function to do something  that everyone else has built-in.</dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/MSSqlNativeAdapter.html#methodlimit">MSSqlNativeAdapter::limit()</a></dt>
 		<dd>Microsoft T-SQL sucks and can't easily do limit offset like every other  reasonable rdbms, this creates a complex windowing function to do something  that everyone else has built-in.</dd>
 	</dl>
 	</p>
@@ -1256,8 +1390,8 @@ $offset)</strong></h4>
 		</ul>
 </div>
 <a name="methodmktime" id="methodmktime"><!-- --></a>
-<div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method mktime</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a297">297</a></span>)
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method mktime</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a312">312</a></span>)
  </h4> 
 <h4><i>void</i> <strong>mktime(
 
@@ -1276,8 +1410,8 @@ $timestamp)</strong></h4>
 		</ul>
 </div>
 <a name="methodmodulus" id="methodmodulus"><!-- --></a>
-<div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method modulus</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a323">323</a></span>)
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method modulus</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a338">338</a></span>)
  </h4> 
 <h4><i>string</i> <strong>modulus(
 string
@@ -1298,8 +1432,8 @@ $rhs)</strong></h4>
 		</ul>
 </div>
 <a name="methodplatform_execute" id="methodplatform_execute"><!-- --></a>
-<div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method platform_execute</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a183">183</a></span>)
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method platform_execute</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a189">189</a></span>)
  </h4> 
 <h4><i>mixed</i> <strong>platform_execute(
 string
@@ -1370,8 +1504,8 @@ $mode)</strong></h4>
 		</ul>
 </div>
 <a name="methodplatform_type" id="methodplatform_type"><!-- --></a>
-<div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method platform_type</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a252">252</a></span>)
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method platform_type</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a267">267</a></span>)
  </h4> 
 <h4><i>array</i> <strong>platform_type(
 array
@@ -1399,8 +1533,8 @@ $cross)</strong></h4>
 		</ul>
 </div>
 <a name="methodquote" id="methodquote"><!-- --></a>
-<div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method quote</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a74">74</a></span>)
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method quote</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a71">71</a></span>)
  </h4> 
 <h4><i>quoted</i> <strong>quote(
 string
@@ -1408,6 +1542,10 @@ $str)</strong></h4>
 	<p>Overridden in child classes as:<br />
 		<dl>
 	<dt><a href="../Prosper/MSSqlAdapter.html#methodquote">MSSqlAdapter::quote()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/MSSqlNativeAdapter.html#methodquote">MSSqlNativeAdapter::quote()</a></dt>
 		<dd></dd>
 	</dl>
 		<dl>
@@ -1428,9 +1566,34 @@ $str)</strong></h4>
 			<li><strong>return</strong> - string</li>
 		</ul>
 </div>
+<a name="methodrebind" id="methodrebind"><!-- --></a>
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method rebind</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a207">207</a></span>)
+ </h4> 
+<h4><i>nothing</i> <strong>rebind(
+
+$bindings)</strong></h4>
+	<p>Overridden in child classes as:<br />
+		<dl>
+	<dt><a href="../Prosper/PreparedAdapter.html#methodrebind">PreparedAdapter::rebind()</a></dt>
+		<dd>Used to rebind a statement</dd>
+	</dl>
+	</p>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<h5>Used to rebind the query</h5>
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong> $bindings</strong>: </li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+		</ul>
+</div>
 <a name="methodrollback" id="methodrollback"><!-- --></a>
 <div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method rollback</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a126">126</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method rollback</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a131">131</a></span>)
  </h4> 
 <h4><i>void</i> <strong>rollback(
 )</strong></h4>
@@ -1444,11 +1607,19 @@ $str)</strong></h4>
 		<dd></dd>
 	</dl>
 		<dl>
+	<dt><a href="../Prosper/FirebirdAdapter.html#methodrollback">FirebirdAdapter::rollback()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
 	<dt><a href="../Prosper/IngresAdapter.html#methodrollback">IngresAdapter::rollback()</a></dt>
 		<dd></dd>
 	</dl>
 		<dl>
 	<dt><a href="../Prosper/MaxDBAdapter.html#methodrollback">MaxDBAdapter::rollback()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/MSSqlNativeAdapter.html#methodrollback">MSSqlNativeAdapter::rollback()</a></dt>
 		<dd></dd>
 	</dl>
 		<dl>
@@ -1474,7 +1645,7 @@ $str)</strong></h4>
 </div>
 <a name="methodtables" id="methodtables"><!-- --></a>
 <div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method tables</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a228">228</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method tables</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a243">243</a></span>)
  </h4> 
 <h4><i>array</i> <strong>tables(
 [array
@@ -1500,7 +1671,7 @@ $filter = null])</strong></h4>
 </div>
 <a name="methodtimestamp" id="methodtimestamp"><!-- --></a>
 <div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method timestamp</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a289">289</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method timestamp</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a304">304</a></span>)
  </h4> 
 <h4><i>void</i> <strong>timestamp(
 
@@ -1520,7 +1691,7 @@ $timestamp)</strong></h4>
 </div>
 <a name="methodtrue_value" id="methodtrue_value"><!-- --></a>
 <div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method true_value</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a305">305</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method true_value</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a320">320</a></span>)
  </h4> 
 <h4><i>mixed</i> <strong>true_value(
 )</strong></h4>
@@ -1531,6 +1702,10 @@ $timestamp)</strong></h4>
 	</dl>
 		<dl>
 	<dt><a href="../Prosper/MSSqlAdapter.html#methodtrue_value">MSSqlAdapter::true_value()</a></dt>
+		<dd></dd>
+	</dl>
+		<dl>
+	<dt><a href="../Prosper/MSSqlNativeAdapter.html#methodtrue_value">MSSqlNativeAdapter::true_value()</a></dt>
 		<dd></dd>
 	</dl>
 		<dl>
@@ -1557,7 +1732,7 @@ $timestamp)</strong></h4>
 </div>
 <a name="methodtype_array" id="methodtype_array"><!-- --></a>
 <div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method type_array</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a270">270</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method type_array</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersBaseAdapter.php.html#a285">285</a></span>)
  </h4> 
 <h4><i>array</i> <strong>type_array(
 string
@@ -1605,7 +1780,7 @@ setupAllTabs();
 </script>
 	<div id="credit">
 		<hr />
-		Documentation generated on Tue, 22 Dec 2009 10:48:15 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Mon, 01 Mar 2010 14:56:15 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</div>
 </body>
 </html>

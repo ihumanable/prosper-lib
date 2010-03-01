@@ -142,11 +142,6 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
         </div>
     <div class="method-definition">
             <span class="method-result">void</span>
-        <a href="#methodbegin" title="details" class="method-name">begin</a>
-        ()
-        </div>
-    <div class="method-definition">
-            <span class="method-result">void</span>
         <a href="#methodcommit" title="details" class="method-name">commit</a>
         ()
         </div>
@@ -162,11 +157,6 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
         </div>
     <div class="method-definition">
             <span class="method-result">void</span>
-        <a href="#methodend" title="details" class="method-name">end</a>
-        ()
-        </div>
-    <div class="method-definition">
-            <span class="method-result">void</span>
         <a href="#methodfetch_assoc" title="details" class="method-name">fetch_assoc</a>
         (<span class="var-type"></span>&nbsp;<span class="var-name">$set</span>)
         </div>
@@ -174,6 +164,11 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
             <span class="method-result">void</span>
         <a href="#methodfree_result" title="details" class="method-name">free_result</a>
         (<span class="var-type"></span>&nbsp;<span class="var-name">$set</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
+        <a href="#methodhas_transactions" title="details" class="method-name">has_transactions</a>
+        ()
         </div>
     <div class="method-definition">
             <span class="method-result">void</span>
@@ -196,8 +191,8 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
 
 
 <a name="methodaffected_rows" id="methodaffected_rows"><!-- --></a>
-<div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method affected_rows</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersOvrimosAdapter.php.html#a74">74</a></span>)
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method affected_rows</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersOvrimosAdapter.php.html#a65">65</a></span>)
  </h4> 
 <h4><i>void</i> <strong>affected_rows(
 
@@ -213,21 +208,6 @@ $set)</strong></h4>
 	<h4>Info</h4>
 	<ul>
 			<li><strong>see</strong> - BaseAdapter::affected_rows($set)</li>
-		</ul>
-</div>
-<a name="methodbegin" id="methodbegin"><!-- --></a>
-<div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method begin</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersOvrimosAdapter.php.html#a29">29</a></span>)
- </h4> 
-<h4><i>void</i> <strong>begin(
-)</strong></h4>
-
-<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodbegin">BaseAdapter::begin()</a> Begins a transaction, if the adapter doesn't support transactions, this is a no-op</p>
-	<!-- ========== Info from phpDoc block ========= -->
-		
-	<h4>Info</h4>
-	<ul>
-			<li><strong>see</strong> - <a href="../Prosper/BaseAdapter.html#methodbegin">BaseAdapter::begin()</a></li>
 		</ul>
 </div>
 <a name="methodcommit" id="methodcommit"><!-- --></a>
@@ -275,25 +255,9 @@ $set)</strong></h4>
 			<li><strong>see</strong> - <a href="../Prosper/BaseAdapter.html#methoddisconnect">BaseAdapter::disconnect()</a></li>
 		</ul>
 </div>
-<a name="methodend" id="methodend"><!-- --></a>
-<div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method end</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersOvrimosAdapter.php.html#a52">52</a></span>)
- </h4> 
-<h4><i>void</i> <strong>end(
-)</strong></h4>
-
-<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodend">BaseAdapter::end()</a> Turns transactions off, this function should be called by BaseAdapter::commit() and BaseAdapter::rollback()</p>
-	<!-- ========== Info from phpDoc block ========= -->
-		
-	<h4>Info</h4>
-	<ul>
-			<li><strong>see</strong> - <a href="../Prosper/BaseAdapter.html#methodend">BaseAdapter::end()</a></li>
-			<li><strong>access</strong> - protected</li>
-		</ul>
-</div>
 <a name="methodfetch_assoc" id="methodfetch_assoc"><!-- --></a>
-<div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method fetch_assoc</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersOvrimosAdapter.php.html#a81">81</a></span>)
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method fetch_assoc</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersOvrimosAdapter.php.html#a72">72</a></span>)
  </h4> 
 <h4><i>void</i> <strong>fetch_assoc(
 
@@ -312,8 +276,8 @@ $set)</strong></h4>
 		</ul>
 </div>
 <a name="methodfree_result" id="methodfree_result"><!-- --></a>
-<div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method free_result</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersOvrimosAdapter.php.html#a94">94</a></span>)
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method free_result</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersOvrimosAdapter.php.html#a85">85</a></span>)
  </h4> 
 <h4><i>void</i> <strong>free_result(
 
@@ -331,9 +295,24 @@ $set)</strong></h4>
 			<li><strong>see</strong> - BaseAdapter::free_result($set)</li>
 		</ul>
 </div>
+<a name="methodhas_transactions" id="methodhas_transactions"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method has_transactions</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersOvrimosAdapter.php.html#a29">29</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>has_transactions(
+)</strong></h4>
+
+<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodhas_transactions">BaseAdapter::has_transactions()</a> Determine if an adapter supports transactions, defaults to false</p>
+	<!-- ========== Info from phpDoc block ========= -->
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - <a href="../Prosper/BaseAdapter.html#methodhas_transactions">BaseAdapter::has_transactions()</a></li>
+		</ul>
+</div>
 <a name="methodprepared_execute" id="methodprepared_execute"><!-- --></a>
 <div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method prepared_execute</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersOvrimosAdapter.php.html#a59">59</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method prepared_execute</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersOvrimosAdapter.php.html#a50">50</a></span>)
  </h4> 
 <h4><i>void</i> <strong>prepared_execute(
 
@@ -355,7 +334,7 @@ $mode)</strong></h4>
 </div>
 <a name="methodrollback" id="methodrollback"><!-- --></a>
 <div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method rollback</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersOvrimosAdapter.php.html#a44">44</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method rollback</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersOvrimosAdapter.php.html#a43">43</a></span>)
  </h4> 
 <h4><i>void</i> <strong>rollback(
 )</strong></h4>
@@ -370,7 +349,7 @@ $mode)</strong></h4>
 </div>
 <a name="methodstandard_execute" id="methodstandard_execute"><!-- --></a>
 <div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method standard_execute</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersOvrimosAdapter.php.html#a67">67</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method standard_execute</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersOvrimosAdapter.php.html#a58">58</a></span>)
  </h4> 
 <h4><i>void</i> <strong>standard_execute(
 
@@ -458,6 +437,10 @@ $mode)</strong></h4>
 		</h4> 
 
 				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/PreparedAdapter.html#methodrebind">PreparedAdapter::rebind()</a></strong> - Used to rebind a statement
+		</h4> 
+
+				<h4>
 <img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/PreparedAdapter.html#methodstandard_execute">PreparedAdapter::standard_execute()</a></strong> - Execute ad-hoc SQL
 		</h4> 
 
@@ -501,7 +484,7 @@ $mode)</strong></h4>
 		</h4> 
 
 				<h4>
-<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodend">BaseAdapter::end()</a></strong> - Turns transactions off, this function should be called by BaseAdapter::commit() and BaseAdapter::rollback()
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodend">BaseAdapter::end()</a></strong> - Turns transactions off
 		</h4> 
 
 				<h4>
@@ -522,6 +505,10 @@ $mode)</strong></h4>
 
 				<h4>
 <img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodfree_result">BaseAdapter::free_result()</a></strong> - Do optional memory cleanup, not necessary but will allow for long running scripts
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodhas_transactions">BaseAdapter::has_transactions()</a></strong> - Determine if an adapter supports transactions, defaults to false
 		</h4> 
 
 				<h4>
@@ -550,6 +537,10 @@ $mode)</strong></h4>
 
 				<h4>
 <img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodquote">BaseAdapter::quote()</a></strong> - Quotes a database object, uses the backtick by default
+		</h4> 
+
+				<h4>
+<img src="../media/images/PublicMethod.gif" border="0" /><strong class="method"> <a href="../Prosper/BaseAdapter.html#methodrebind">BaseAdapter::rebind()</a></strong> - Used to rebind the query
 		</h4> 
 
 				<h4>
@@ -588,7 +579,7 @@ setupAllTabs();
 </script>
 	<div id="credit">
 		<hr />
-		Documentation generated on Tue, 22 Dec 2009 10:48:20 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Mon, 01 Mar 2010 14:56:22 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</div>
 </body>
 </html>

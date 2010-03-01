@@ -4,7 +4,7 @@
      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
    <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>Docs For Class MySqlAdapter</title>
+  <title>Docs For Class MSSqlNativeAdapter</title>
   <link rel="stylesheet" href="../media/stylesheet.css" />
   <script src="../media/lib/classTree.js"></script>
 <link id="webfx-tab-style-sheet" type="text/css" rel="stylesheet" href="../media/lib/tab.webfx.css" />
@@ -89,8 +89,8 @@
 <!-- template designed by Julien Damon based on PHPEdit's generated templates, and tweaked by Greg Beaver -->
 <body bgcolor="#ffffff" ><!-- Start of Class Data -->
 <h2>
-	Class MySqlAdapter
-</h2> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a10">10</a></span>)
+	Class MSSqlNativeAdapter
+</h2> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMSSqlNativeAdapter.php.html#a10">10</a></span>)
 <div class="tab-pane" id="tabPane1">
 <script type="text/javascript">
 tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
@@ -103,12 +103,12 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
    |
    --<a href="../Prosper/PreparedAdapter.html">PreparedAdapter</a>
       |
-      --MySqlAdapter</pre>
+      --MSSqlNativeAdapter</pre>
 <p>
-	<b><i>Located in File: <a href="_adapters---MySqlAdapter.php.html">/adapters/MySqlAdapter.php</a></i></b><br>
+	<b><i>Located in File: <a href="_adapters---MSSqlNativeAdapter.php.html">/adapters/MSSqlNativeAdapter.php</a></i></b><br>
 </p>
 <!-- ========== Info from phpDoc block ========= -->
-<h5>MySql Database Adapter</h5>
+<h5>Microsoft SQL Server Database Adapter</h5>
 <ul>
 	</ul>
 <br /><hr />
@@ -152,11 +152,6 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
         </div>
     <div class="method-definition">
             <span class="method-result">void</span>
-        <a href="#methodcleanup" title="details" class="method-name">cleanup</a>
-        ()
-        </div>
-    <div class="method-definition">
-            <span class="method-result">void</span>
         <a href="#methodcommit" title="details" class="method-name">commit</a>
         ()
         </div>
@@ -167,17 +162,7 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
         </div>
     <div class="method-definition">
             <span class="method-result">void</span>
-        <a href="#methodcross_type" title="details" class="method-name">cross_type</a>
-        (<span class="var-type"></span>&nbsp;<span class="var-name">$platform</span>)
-        </div>
-    <div class="method-definition">
-            <span class="method-result">void</span>
         <a href="#methoddisconnect" title="details" class="method-name">disconnect</a>
-        ()
-        </div>
-    <div class="method-definition">
-            <span class="method-result">void</span>
-        <a href="#methodend" title="details" class="method-name">end</a>
         ()
         </div>
     <div class="method-definition">
@@ -206,19 +191,19 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
         (<span class="var-type"></span>&nbsp;<span class="var-name">$set</span>)
         </div>
     <div class="method-definition">
-            <span class="method-result">void</span>
-        <a href="#methodplatform_type" title="details" class="method-name">platform_type</a>
-        (<span class="var-type"></span>&nbsp;<span class="var-name">$cross</span>)
-        </div>
-    <div class="method-definition">
-            <span class="method-result">void</span>
-        <a href="#methodprepare" title="details" class="method-name">prepare</a>
-        (<span class="var-type"></span>&nbsp;<span class="var-name">$value</span>)
+            <span class="method-result">string</span>
+        <a href="#methodlimit" title="details" class="method-name">limit</a>
+        (<span class="var-type">string</span>&nbsp;<span class="var-name">$sql</span>, <span class="var-type">int</span>&nbsp;<span class="var-name">$limit</span>, <span class="var-type">int</span>&nbsp;<span class="var-name">$offset</span>)
         </div>
     <div class="method-definition">
             <span class="method-result">void</span>
         <a href="#methodprepared_execute" title="details" class="method-name">prepared_execute</a>
         (<span class="var-type"></span>&nbsp;<span class="var-name">$sql</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$mode</span>)
+        </div>
+    <div class="method-definition">
+            <span class="method-result">void</span>
+        <a href="#methodquote" title="details" class="method-name">quote</a>
+        (<span class="var-type"></span>&nbsp;<span class="var-name">$str</span>)
         </div>
     <div class="method-definition">
             <span class="method-result">void</span>
@@ -232,11 +217,6 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
         </div>
     <div class="method-definition">
             <span class="method-result">void</span>
-        <a href="#methodtables" title="details" class="method-name">tables</a>
-        (<span class="var-type"></span>&nbsp;<span class="var-name">$filter</span>)
-        </div>
-    <div class="method-definition">
-            <span class="method-result">void</span>
         <a href="#methodtrue_value" title="details" class="method-name">true_value</a>
         ()
         </div>
@@ -246,8 +226,8 @@ tp1 = new WebFXTabPane( document.getElementById( "tabPane1" ));
 
 
 <a name="methodaddslashes" id="methodaddslashes"><!-- --></a>
-<div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method addslashes</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a157">157</a></span>)
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method addslashes</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMSSqlNativeAdapter.php.html#a127">127</a></span>)
  </h4> 
 <h4><i>void</i> <strong>addslashes(
 
@@ -266,8 +246,8 @@ $str)</strong></h4>
 		</ul>
 </div>
 <a name="methodaffected_rows" id="methodaffected_rows"><!-- --></a>
-<div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method affected_rows</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a87">87</a></span>)
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method affected_rows</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMSSqlNativeAdapter.php.html#a88">88</a></span>)
  </h4> 
 <h4><i>void</i> <strong>affected_rows(
 
@@ -286,8 +266,8 @@ $set)</strong></h4>
 		</ul>
 </div>
 <a name="methodbegin" id="methodbegin"><!-- --></a>
-<div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method begin</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a38">38</a></span>)
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method begin</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMSSqlNativeAdapter.php.html#a48">48</a></span>)
  </h4> 
 <h4><i>void</i> <strong>begin(
 )</strong></h4>
@@ -300,25 +280,9 @@ $set)</strong></h4>
 			<li><strong>see</strong> - <a href="../Prosper/BaseAdapter.html#methodbegin">BaseAdapter::begin()</a></li>
 		</ul>
 </div>
-<a name="methodcleanup" id="methodcleanup"><!-- --></a>
-<div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method cleanup</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a135">135</a></span>)
- </h4> 
-<h4><i>void</i> <strong>cleanup(
-)</strong></h4>
-
-<p><strong>Overrides :</strong> <a href="../Prosper/PreparedAdapter.html#methodcleanup">PreparedAdapter::cleanup()</a> Cleans up any prepared state</p>
-	<!-- ========== Info from phpDoc block ========= -->
-<h5>Clean up needs to clear the type string, this isn't performed by default</h5>
-		
-	<h4>Info</h4>
-	<ul>
-			<li><strong>see</strong> - <a href="../Prosper/PreparedAdapter.html#methodcleanup">PreparedAdapter::cleanup()</a></li>
-		</ul>
-</div>
 <a name="methodcommit" id="methodcommit"><!-- --></a>
 <div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method commit</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a45">45</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method commit</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMSSqlNativeAdapter.php.html#a55">55</a></span>)
  </h4> 
 <h4><i>void</i> <strong>commit(
 )</strong></h4>
@@ -333,7 +297,7 @@ $set)</strong></h4>
 </div>
 <a name="methodconnect" id="methodconnect"><!-- --></a>
 <div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method connect</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a17">17</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method connect</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMSSqlNativeAdapter.php.html#a15">15</a></span>)
  </h4> 
 <h4><i>void</i> <strong>connect(
 )</strong></h4>
@@ -346,29 +310,9 @@ $set)</strong></h4>
 			<li><strong>see</strong> - <a href="../Prosper/BaseAdapter.html#methodconnect">BaseAdapter::connect()</a></li>
 		</ul>
 </div>
-<a name="methodcross_type" id="methodcross_type"><!-- --></a>
-<div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method cross_type</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a210">210</a></span>)
- </h4> 
-<h4><i>void</i> <strong>cross_type(
-
-$platform)</strong></h4>
-
-<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodcross_type">BaseAdapter::cross_type()</a> Translates a platform specific type into a cross platform type</p>
-	<!-- ========== Info from phpDoc block ========= -->
-		<h4>Parameters</h4>
-	<ul>
-			<li><strong> $platform</strong>: </li>
-		</ul>
-		
-	<h4>Info</h4>
-	<ul>
-			<li><strong>see</strong> - BaseAdapter::cross_type($platform)</li>
-		</ul>
-</div>
 <a name="methoddisconnect" id="methoddisconnect"><!-- --></a>
-<div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method disconnect</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a24">24</a></span>)
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method disconnect</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMSSqlNativeAdapter.php.html#a34">34</a></span>)
  </h4> 
 <h4><i>void</i> <strong>disconnect(
 )</strong></h4>
@@ -381,24 +325,9 @@ $platform)</strong></h4>
 			<li><strong>see</strong> - <a href="../Prosper/BaseAdapter.html#methoddisconnect">BaseAdapter::disconnect()</a></li>
 		</ul>
 </div>
-<a name="methodend" id="methodend"><!-- --></a>
-<div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method end</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a59">59</a></span>)
- </h4> 
-<h4><i>void</i> <strong>end(
-)</strong></h4>
-
-<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodend">BaseAdapter::end()</a> Turns transactions off</p>
-	<!-- ========== Info from phpDoc block ========= -->
-		
-	<h4>Info</h4>
-	<ul>
-			<li><strong>see</strong> - <a href="../Prosper/BaseAdapter.html#methodend">BaseAdapter::end()</a></li>
-		</ul>
-</div>
 <a name="methodfalse_value" id="methodfalse_value"><!-- --></a>
 <div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method false_value</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a150">150</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method false_value</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMSSqlNativeAdapter.php.html#a173">173</a></span>)
  </h4> 
 <h4><i>void</i> <strong>false_value(
 )</strong></h4>
@@ -413,7 +342,7 @@ $platform)</strong></h4>
 </div>
 <a name="methodfetch_assoc" id="methodfetch_assoc"><!-- --></a>
 <div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method fetch_assoc</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a101">101</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method fetch_assoc</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMSSqlNativeAdapter.php.html#a106">106</a></span>)
  </h4> 
 <h4><i>void</i> <strong>fetch_assoc(
 
@@ -433,7 +362,7 @@ $set)</strong></h4>
 </div>
 <a name="methodfree_result" id="methodfree_result"><!-- --></a>
 <div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method free_result</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a125">125</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method free_result</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMSSqlNativeAdapter.php.html#a113">113</a></span>)
  </h4> 
 <h4><i>void</i> <strong>free_result(
 
@@ -453,7 +382,7 @@ $set)</strong></h4>
 </div>
 <a name="methodhas_transactions" id="methodhas_transactions"><!-- --></a>
 <div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method has_transactions</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a31">31</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method has_transactions</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMSSqlNativeAdapter.php.html#a41">41</a></span>)
  </h4> 
 <h4><i>void</i> <strong>has_transactions(
 )</strong></h4>
@@ -468,7 +397,7 @@ $set)</strong></h4>
 </div>
 <a name="methodinsert_id" id="methodinsert_id"><!-- --></a>
 <div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method insert_id</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a94">94</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method insert_id</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMSSqlNativeAdapter.php.html#a95">95</a></span>)
  </h4> 
 <h4><i>void</i> <strong>insert_id(
 
@@ -486,49 +415,34 @@ $set)</strong></h4>
 			<li><strong>see</strong> - BaseAdapter::insert_id($set)</li>
 		</ul>
 </div>
-<a name="methodplatform_type" id="methodplatform_type"><!-- --></a>
+<a name="methodlimit" id="methodlimit"><!-- --></a>
 <div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method platform_type</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a217">217</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method limit</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMSSqlNativeAdapter.php.html#a140">140</a></span>)
  </h4> 
-<h4><i>void</i> <strong>platform_type(
+<h4><i>string</i> <strong>limit(
+string
+$sql, int
+$limit, int
+$offset)</strong></h4>
 
-$cross)</strong></h4>
-
-<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodplatform_type">BaseAdapter::platform_type()</a> Translates a cross platform type into the best possible platform type</p>
+<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodlimit">BaseAdapter::limit()</a> Since various databases support a wide variety of limit syntaxes the  adapter is responsible for writing the limit syntax.</p>
 	<!-- ========== Info from phpDoc block ========= -->
+<h5>Microsoft T-SQL sucks and can't easily do limit offset like every other  reasonable rdbms, this creates a complex windowing function to do something  that everyone else has built-in.</h5>
 		<h4>Parameters</h4>
 	<ul>
-			<li><strong> $cross</strong>: </li>
+			<li><strong>string $sql</strong>: sql statement</li>
+			<li><strong>int $limit</strong>: how many records to return</li>
+			<li><strong>int $offset</strong>: where to start returning</li>
 		</ul>
 		
 	<h4>Info</h4>
 	<ul>
-			<li><strong>see</strong> - BaseAdapter::platform_type($cross)</li>
-		</ul>
-</div>
-<a name="methodprepare" id="methodprepare"><!-- --></a>
-<div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method prepare</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a164">164</a></span>)
- </h4> 
-<h4><i>void</i> <strong>prepare(
-
-$value)</strong></h4>
-
-<p><strong>Overrides :</strong> <a href="../Prosper/PreparedAdapter.html#methodprepare">PreparedAdapter::prepare()</a> If any special processing is needed for the platform then this function</p>
-	<!-- ========== Info from phpDoc block ========= -->
-		<h4>Parameters</h4>
-	<ul>
-			<li><strong> $value</strong>: </li>
-		</ul>
-		
-	<h4>Info</h4>
-	<ul>
-			<li><strong>see</strong> - PreparedAdapter::prepare($value)</li>
+			<li><strong>return</strong> - modified sql statement</li>
 		</ul>
 </div>
 <a name="methodprepared_execute" id="methodprepared_execute"><!-- --></a>
-<div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method prepared_execute</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a66">66</a></span>)
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method prepared_execute</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMSSqlNativeAdapter.php.html#a69">69</a></span>)
  </h4> 
 <h4><i>void</i> <strong>prepared_execute(
 
@@ -548,9 +462,29 @@ $mode)</strong></h4>
 			<li><strong>see</strong> - PreparedAdapter::prepared_execute($sql, $mode)</li>
 		</ul>
 </div>
+<a name="methodquote" id="methodquote"><!-- --></a>
+<div style="background='#ffffff'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method quote</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMSSqlNativeAdapter.php.html#a120">120</a></span>)
+ </h4> 
+<h4><i>void</i> <strong>quote(
+
+$str)</strong></h4>
+
+<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodquote">BaseAdapter::quote()</a> Quotes a database object, uses the backtick by default</p>
+	<!-- ========== Info from phpDoc block ========= -->
+		<h4>Parameters</h4>
+	<ul>
+			<li><strong> $str</strong>: </li>
+		</ul>
+		
+	<h4>Info</h4>
+	<ul>
+			<li><strong>see</strong> - BaseAdapter::query($str)</li>
+		</ul>
+</div>
 <a name="methodrollback" id="methodrollback"><!-- --></a>
 <div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method rollback</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a52">52</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method rollback</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMSSqlNativeAdapter.php.html#a62">62</a></span>)
  </h4> 
 <h4><i>void</i> <strong>rollback(
 )</strong></h4>
@@ -565,7 +499,7 @@ $mode)</strong></h4>
 </div>
 <a name="methodstandard_execute" id="methodstandard_execute"><!-- --></a>
 <div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method standard_execute</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a80">80</a></span>)
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method standard_execute</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMSSqlNativeAdapter.php.html#a81">81</a></span>)
  </h4> 
 <h4><i>void</i> <strong>standard_execute(
 
@@ -585,29 +519,9 @@ $mode)</strong></h4>
 			<li><strong>see</strong> - PreparedAdapter::standard_execute($sql, $mode)</li>
 		</ul>
 </div>
-<a name="methodtables" id="methodtables"><!-- --></a>
-<div style="background='#eeeeee'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method tables</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a181">181</a></span>)
- </h4> 
-<h4><i>void</i> <strong>tables(
-
-$filter)</strong></h4>
-
-<p><strong>Overrides :</strong> <a href="../Prosper/BaseAdapter.html#methodtables">BaseAdapter::tables()</a> Retrieve table information from the current schema</p>
-	<!-- ========== Info from phpDoc block ========= -->
-		<h4>Parameters</h4>
-	<ul>
-			<li><strong> $filter</strong>: </li>
-		</ul>
-		
-	<h4>Info</h4>
-	<ul>
-			<li><strong>see</strong> - BaseAdapter::tables($filter)</li>
-		</ul>
-</div>
 <a name="methodtrue_value" id="methodtrue_value"><!-- --></a>
-<div style="background='#ffffff'"><h4>
-<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method true_value</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMySqlAdapter.php.html#a143">143</a></span>)
+<div style="background='#eeeeee'"><h4>
+<img src="../media/images/PublicMethod.gif" border="0" /> <strong class="method">Method true_value</strong> (line <span class="linenumber"><a href="../__filesource/fsource_Prosper__adaptersMSSqlNativeAdapter.php.html#a166">166</a></span>)
  </h4> 
 <h4><i>void</i> <strong>true_value(
 )</strong></h4>

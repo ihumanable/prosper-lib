@@ -25,8 +25,8 @@
 <li><div class="src-line"><a name="a13"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*&nbsp;</font><strong><font color = "#0099FF">@see</font></strong><font color="#009999">&nbsp;BaseAdapter::connect()</font></div></li>
 <li><div class="src-line"><a name="a14"></a><font color="#009999">&nbsp;&nbsp;&nbsp;*/</font></div></li>
 <li><div class="src-line"><a name="a15"></a>&nbsp;&nbsp;<font color="blue">function&nbsp;</font><a href="../Prosper/InformixAdapter.html#methodconnect">connect</a><strong>(</strong><strong>)&nbsp;</strong><strong>{&nbsp;&nbsp;</strong></div></li>
-<li><div class="src-line"><a name="a16"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$database&nbsp;</strong>=&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$schema">schema</a>&nbsp;.&nbsp;<font color="#66cccc">&quot;@&quot;&nbsp;</font>.&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$hostname">hostname</a><strong>;</strong></div></li>
-<li><div class="src-line"><a name="a17"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$connection">connection</a>&nbsp;=&nbsp;ifx_connect<strong>(</strong><strong>$database</strong><strong>,&nbsp;</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$username">username</a><strong>,&nbsp;</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$password">password</a><strong>)</strong><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a16"></a>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$database&nbsp;</strong>=&nbsp;<strong>(</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$schema">schema</a>&nbsp;!=&nbsp;<font color="#66cccc">&quot;&quot;</font><strong>)&nbsp;</strong>?&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$schema">schema</a>&nbsp;.&nbsp;<font color="#66cccc">&quot;@&quot;&nbsp;</font>.&nbsp;<strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$hostname">hostname</a>&nbsp;<strong>;&nbsp;</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$hostname">hostname</a><strong>;</strong></div></li>
+<li><div class="src-line"><a name="a17"></a>&nbsp;&nbsp;&nbsp;&nbsp;<font color="blue">return&nbsp;</font>ifx_connect<strong>(</strong><strong>$database</strong><strong>,&nbsp;</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$username">username</a><strong>,&nbsp;</strong><strong>$this</strong><strong>-&gt;</strong><a href="../Prosper/BaseAdapter.html#var$password">password</a><strong>)</strong><strong>;</strong></div></li>
 <li><div class="src-line"><a name="a18"></a>&nbsp;&nbsp;<strong>}</strong></div></li>
 <li><div class="src-line"><a name="a19"></a>&nbsp;&nbsp;</div></li>
 <li><div class="src-line"><a name="a20"></a>&nbsp;&nbsp;<font color="#009999">/**</font></div></li>
@@ -71,7 +71,7 @@
 </div>
 	<div id="credit">
 		<hr />
-		Documentation generated on Tue, 22 Dec 2009 10:48:17 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+		Documentation generated on Mon, 01 Mar 2010 14:56:18 -0500 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
 	</div>
 </body>
 </html>
