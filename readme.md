@@ -124,6 +124,20 @@ This can be useful for building up different queries for different scenarios.
 		//do something with the row
 	}
 
+### rebinding ###
+
+Just like with a parameterized query, as of version 0.8 Prosper supports the concept of rebinding prepared statements.  This is accomplished with the `rebind()` function.
+
+	$query = Prosper\Query::select->from('example')->where('something = ?', 1);
+	
+	//Effectively executes SELECT * FROM \`example\` where \`example\`.\`something\` = '1'
+	$query->execute();
+	
+	$query->rebind(5);
+	
+	//Effectively executes SELECT * FROM \`example\` where \`example\`.\`something\` = '5'
+	$query->execute();
+	
 ### opt out ###
 
 Prosper is designed to be __the__ way for your application or library to talk to the database.  Part of acheiving this lofty goal is realizing that there will be times that despite its best efforts, prosper will be incapable of doing something you need it to do.  Prosper is prepared for this eventuality with the native function and the is_* family of functions.  It allows you to write code like this:
@@ -339,6 +353,16 @@ That was simple.
     
 ## changelog ##
 
+- 2010.03.01 - v0.8
+	- Proper escaping for Sybase
+	- Proper escaping for Microsoft SQL Server
+	- New Native Adapter for Microsoft SQL Server
+	- Added the `group()` and `having()` functions
+	- Architectural changes to allow concurrent query generation
+	- Added 142 Unit Tests
+	- Queries can have their parameters rebound now
+	- Query implements the IteratorAggregate interface
+	- Prosper is officially Unlicensed
 - 2009.12.22 - v0.7
     - Added prepared statement support
     - Added transaction management facilities
