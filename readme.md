@@ -1,6 +1,6 @@
 # prosper #
 
-Version 0.7 - 2009.12.22
+Version 0.8 - 2010.03.01
 
 by Matt Nowack
 
@@ -101,6 +101,28 @@ With version 0.7 Prosper now supports explicit transaction management.  With the
     } else {
       //Do non-transactional operation
     }
+
+### iterable ###
+
+With version 0.8 Prosper now supports iterating over a result set, coupled with lazy evaluation, this makes a query more like a first-class object.  Before 0.8 it was necessary to call either the `execute()` or the `verbose()` function to retreive the result set of a query.  This is no longer, the case, the Query object can now be iterated over in a straight forward manner.
+
+	$query = Prosper\Query::select()->from('example');
+	foreach($query as $row) {
+		//do something with the row
+	}
+
+This can be useful for building up different queries for different scenarios.
+
+	$query = Prosper\Query::select()->from('example');
+	if($_GET['something'] == "some_case") {
+		$query->where('param = ?', $param);
+	} else {
+		$query->order('sort_order');
+	}
+	
+	foreach($query as $row) {
+		//do something with the row
+	}
 
 ### opt out ###
 
@@ -224,6 +246,18 @@ You can perform multi-column orderings by passing an associative array, let's or
     Prosper\Query::select()->from('user')->order(array('age' => 'desc', 'name' => 'asc'));
 
 This should give you all the control needed to order your results.
+
+#### group clause ####
+
+Grouping of data is done through the `group()` clause.  Grouping can be done on multiple columns, the `group()` function takes a vararg.
+
+	Prosper\Query::select()->from('user')->group('age');
+	
+#### having clause ####
+
+Having clauses can now be done through the `having()` clause.  This is used in conjunction with the `group()` function to create complex queries.  Here is how we would return all the states that have at any users older than 50.
+
+	Prosper\Query::select()->from('user')->group('state')->having('MAX(age) > 50');
 
 ### insert ###
 
