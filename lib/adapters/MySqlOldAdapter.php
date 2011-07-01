@@ -17,7 +17,7 @@ class MySqlOldAdapter extends BaseAdapter {
     if($this->schema != "") {
       mysql_select_db($this->schema, $connection);
     }
-    return $connection
+    return $connection;
   }
   
   /**
