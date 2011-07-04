@@ -17,7 +17,7 @@ class MSqlAdapter extends BaseAdapter {
     if($this->schema != "") {
       msql_select_db($this->schema, $connection);
     }
-    return $connection
+    return $connection;
   }
   
   /**

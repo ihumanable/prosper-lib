@@ -13,7 +13,7 @@ class InformixAdapter extends BaseAdapter {
    * @see BaseAdapter::connect()
    */
   function connect() {  
-    $database = ($this->schema != "") ? $this->schema . "@" . $this->hostname ; $this->hostname;
+    $database = ($this->schema != "") ? $this->schema . "@" . $this->hostname : $this->hostname;
     return ifx_connect($database, $this->username, $this->password);
   }
   
