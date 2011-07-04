@@ -17,7 +17,7 @@ class FrontBaseAdapter extends BaseAdapter {
     if($this->schema != "") {
       fbsql_select_db($this->schema, $connection);
     }
-    return $connection
+    return $connection;
   }
   
   /**

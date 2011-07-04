@@ -17,7 +17,7 @@ class SybaseAdapter extends BaseAdapter {
     if($this->schema != "") {
       sybase_select_db($this->schema, $connection);
     }
-    return $connection
+    return $connection;
   }
   
   /**
